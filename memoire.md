@@ -30,6 +30,8 @@
 
 **Smallest independent set**: finding or approximating a smallest dominating set. [6]
 
+**Bisection on UID**: https://community.dur.ac.uk/george.mertzios/papers/Conf/Conf_Bisection-Unit-Disk.pdf
+
 ****
 
 
