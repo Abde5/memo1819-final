@@ -16,6 +16,8 @@
 
 **Lemma:** $G$ planar $\to$ $G$ is $CG$.
 
+**Definition:** A unit disk graph is a $c$-strip graph if it has a unit disk representation in which all centers of the unit disks lie between two parallel lines at distance $c$. [7]
+
 ## Main UD problems:
 
 **Channel Assignment Problem**: (To explain)
@@ -48,3 +50,4 @@ $MIS$ is a problem that is classed $NP$-hard and $NC$-complete (Nick's Class) ->
 - [4] (Algorithm for maximum clique): https://arxiv.org/abs/1712.05010
 - [5] (On coloring unit disk graphs): https://link.springer.com/content/pdf/10.1007%2FPL00009196.pdf
 - [6] (The number of disk graphs): http://www.math.rug.nl/~tobias/Papers/countingDGsFinal.pdf
+- [7] (c-Strip graphs): https://www.sciencedirect.com/science/article/pii/S0166218X15000207
