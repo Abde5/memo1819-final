@@ -34,6 +34,14 @@
 
 **Bisection on UID**: https://community.dur.ac.uk/george.mertzios/papers/Conf/Conf_Bisection-Unit-Disk.pdf
 
+**Clique with UD "percer"**: Transversal number, cmb de points besoin pour percer une clique d'un UD. TRANSVERSAL NUMBER. Stabbing (check).
+
+**Clique dans ro-disk graph$**
+
+
+
+
+
 ****
 
 
@@ -51,3 +59,4 @@ $MIS$ is a problem that is classed $NP$-hard and $NC$-complete (Nick's Class) ->
 - [5] (On coloring unit disk graphs): https://link.springer.com/content/pdf/10.1007%2FPL00009196.pdf
 - [6] (The number of disk graphs): http://www.math.rug.nl/~tobias/Papers/countingDGsFinal.pdf
 - [7] (c-Strip graphs): https://www.sciencedirect.com/science/article/pii/S0166218X15000207
+- [8] (graphclasses): https://graphclasses.org
