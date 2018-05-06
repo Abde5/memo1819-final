@@ -1,0 +1,14 @@
+*.gz
+*.xml
+*.bcf
+*_latexmk
+*.aux
+*.fls
+*.idx
+*.log
+*.out
+*.toc
+*.blg
+*.bbl
+*.ind
+*.ilg
