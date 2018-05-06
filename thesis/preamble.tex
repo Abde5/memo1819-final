@@ -1,0 +1,75 @@
+% ------ PACKAGES ------
+
+\usepackage[utf8]{inputenc}%encodage en utf8
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} %permet cararct spéciaux
+\usepackage{hyperref}  %liens hypertextes
+
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{amssymb}
+
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{datagidx}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+\usepackage{adjustbox} %pour que les tableus depasse pas les bords
+
+\usepackage{amsmath} %pour les maths
+\usepackage{setspace}%pour avoir un inteligne de 1.5
+
+\usepackage{multirow}  %Tableaux à plusieurs lignes
+
+\usepackage{geometry}%réglages mise en page
+\usepackage{fancyhdr}%for headers and footers
+\pagestyle{fancy}
+\usepackage{multicol}
+\usepackage{ulem}
+\usepackage{listings}% pour le code
+
+
+\usepackage{imakeidx}%pour gérer l'index
+\makeindex
+
+\onehalfspacing   %interligne de 1.5
+
+% ------ ADD SUBSUBSECITONS ------
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+% ------ BIBLIOGRAPHIE ------
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+\addbibresource{main.bib}
+
+% ------ PAGE LAYOUT ------
+\geometry{
+%a4paper
+%body={170mm,260mm},
+left=25mm, top=25mm,
+bottom=25mm, right=25mm
+%headheight=10mm, headsep=10mm,
+%footskip=10mm
+}
+
+
+% ------ HEADERS AND FOOTERS -----------
+\lhead{INFO-F308}
+\chead{Université Libre de Bruxelles}
+\rhead{Velo pour tous}
+\lfoot{J. De Stefani}
+\cfoot{\thepage}
+\rfoot{Années 2016-2017}
+
+% ---------- COMMAND SETTERS -----------
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} %newcommand for cover page
+\frenchbsetup{StandardItemLabels=true}
