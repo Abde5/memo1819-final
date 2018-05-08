@@ -5,3 +5,47 @@
 %% \files=
 %% prompt when you run the file main.tex through LaTeX.
 \chapter{Complexity}
+
+Problem solving is based on the complexity of a problem and not only a particular algorithm that solves it \cite{sipser2006}.
+
+\begin{definition}
+Let $\Sigma$ be a finite alphabet, $\Sigma^*$ every word derived from $\Sigma$, $L \subseteq \Sigma^*$ is a decision problem.
+\end{definition}
+
+\begin{definition}
+The algorithm $A$ decides problem $L \subseteq \Sigma^*$ if for all word $w \in \Sigma^*$:
+\begin{itemize}
+  \item $A$ finishes and returns TRUE if $w \in L$.
+  \item $A$ finishes and returns FALSE if $w \notin L$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+A problem is decidable if there's an algorithm that decides it.
+\end{definition}
+
+\begin{definition}
+A problem is decidable if there's an algorithm that decides it.
+\end{definition}
+
+\section{P vs NP}
+
+\begin{definition}
+A problem $L \in \mathcal{P}$ if $L$ can be decided in polynomial time $\mathcal{O}(n^k)$.
+\end{definition}
+
+\begin{definition}
+A problem $L \in \mathcal{NP}$ if $L$ can be verified in polynomial time $\mathcal{O}(n^k)$. Thus, $\mathcal{P} \subseteq \mathcal{NP}$.
+\end{definition}
+
+\section{$\exists \mathbb{R}$ complexity class}
+
+$\exists \mathbb{R}$ is the class that describes the problems such that they can be reduced to \textit{the existential theory of the reals}\cite{ExistentialTheoryReals2006}. The existential theory of the reals
+
+\subsection{Problems in $\exists \mathbb{R}$}
+
+The art gallery problem is $\exists \mathbb{R}$-complete.\cite{abrahamsenArtGalleryProblem2017}
+
+Recognition of Unit Disk Graphs is $\exists \mathbb{R}$-complete. (corollary of graph realizability problem)\cite{Schaefer2013}
+
+Stretchability is $\exists \mathbb{R}$-complete.

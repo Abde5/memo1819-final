@@ -27,6 +27,7 @@
 
 \documentclass[12pt,twoside]{mitthesis}
 \usepackage{lgrind}
+\usepackage{amssymb}
 %% These have been added at the request of the MIT Libraries, because
 %% some PDF conversions mess up the ligatures.  -LB, 1/22/2014
 \usepackage{cmap}
@@ -42,6 +43,13 @@
 %%\def\all{all}
 %%\ifx\files\all \typeout{Including all files.} \else \typeout{Including only \files.} \includeonly{\files} \fi
 
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[chapter]
+
+
 \begin{document}
 
 \include{cover}
@@ -56,7 +64,7 @@
 \include{chap3}
 \include{chap4}
 \appendix
-\include{appa}
-\include{appb}
+%\include{appa}
+%\include{appb}
 \include{biblio}
 \end{document}
