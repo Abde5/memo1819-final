@@ -1,70 +1,134 @@
-% -*- Mode:TeX -*-
+\documentclass[10pt]{article}
 
-%% IMPORTANT: The official thesis specifications are available at:
-%%            http://libraries.mit.edu/archives/thesis-specs/
-%%
-%%            Please verify your thesis' formatting and copyright
-%%            assignment before submission.  If you notice any
-%%            discrepancies between these templates and the
-%%            MIT Libraries' specs, please let us know
-%%            by e-mailing thesis@mit.edu
-
-%% The documentclass options along with the pagestyle can be used to generate
-%% a technical report, a draft copy, or a regular thesis.  You may need to
-%% re-specify the pagestyle after you \include  cover.tex.  For more
-%% information, see the first few lines of mitthesis.cls.
-
-%\documentclass[12pt,vi,twoside]{mitthesis}
-%%
-%%  If you want your thesis copyright to you instead of MIT, use the
-%%  ``vi'' option, as above.
-%%
-%\documentclass[12pt,twoside,leftblank]{mitthesis}
-%%
-%% If you want blank pages before new chapters to be labelled ``This
-%% Page Intentionally Left Blank'', use the ``leftblank'' option, as
-%% above.
-
-\documentclass[12pt,twoside]{mitthesis}
-\usepackage{lgrind}
-\usepackage{amssymb}
-%% These have been added at the request of the MIT Libraries, because
-%% some PDF conversions mess up the ligatures.  -LB, 1/22/2014
-\usepackage{cmap}
-\usepackage[T1]{fontenc}
 \pagestyle{plain}
-
-%% This bit allows you to either specify only the files which you wish to
-%% process, or `all' to process all files which you \include.
-%% Krishna Sethuraman (1990).
-
-%%\typein [\files]{Enter file names to process, (chap1,chap2 ...), or `all' to
-%%process all files:}
-%%\def\all{all}
-%%\ifx\files\all \typeout{Including all files.} \else \typeout{Including only \files.} \includeonly{\files} \fi
+\textwidth 6.5 in
+\oddsidemargin 0 in
+\evensidemargin 0 in
+\topmargin 0 in
+\textheight 8 in
 
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
+
+\pagestyle{empty}
+
+
+  \usepackage[all]{xy}
+ \usepackage{graphicx}
+ \usepackage{units}
+
+ \usepackage{enumerate}
+
+\usepackage{amssymb, amsmath, pict2e}
+ \pagestyle{myheadings}
+
+\usepackage{pdfsync}
+
+\usepackage{rotating}
+
+\usepackage{multirow}
+
+
+  \usepackage[normalem]{ulem}
+  \usepackage{cancel}
+
+
+
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+
+\title{Characterization and complexity of Thin Strip Graphs}
+
+\author{Abdeselam El-Haman Abdeselam \\  Department of Computer Science \\ Universite Libre de Bruxelles}
+
+
+\date{May 7, 2014}
+
+%%%%%%%%%%%%%%%%  start macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}
+\newtheorem{defn}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}{Definition}[chapter]
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
 
+\newtheorem{hyp}[theorem]{Hypothesis}
+\newtheorem{alg}[theorem]{Algorithm}
+
+\newcommand{\qed}{\mbox{$\Box$}}
+\newcommand{\proof}{\medbreak\par\noindent{\bf Proof. }}
+ \newcommand{\GP}{{\vec{G}}_P}
+\newcommand{\GN}{{\vec{G}}_N}
+
+\newcommand{\cover}{\mathrel{\rlap{$\prec$}
+                                \rlap{\hskip 0.7em $\cdot$}
+                                 \phantom{\prec}}}
+
+\newcommand{\re}{re}
+
+\newcommand{\up}{\mbox{\rm{up}}}
+\newcommand{\side}{\mbox{\rm{side}}}
+\newcommand{\type}{\mbox{\rm{type}}}
+
+
+\def\reals{{\mathbb R}}
+
+
+\newcommand{\ahat}{{\hat{a}}}
+\newcommand{\bhat}{{\hat{b}}}
+\newcommand{\chat}{{\hat{c}}}
+\newcommand{\dhat}{{\hat{d}}}
+\newcommand{\bolda}{{\bf{a}}}
+\newcommand{\boldb}{{\bf{b}}}
+\newcommand{\boldc}{{\bf{c}}}
+\newcommand{\boldd}{{\bf{d}}}
+
+\newcommand{\iplus}{{\cal I}^+}
+\newcommand{\iminus}{{\cal I}^-}
+\newcommand{\ipm}{{\cal I}^{\pm}}
+\newcommand{\ipmix}{{\cal I}^{{\cal M}}}
+
+\newcommand{\upl}{{\cal U}^+}
+\newcommand{\uminus}{{\cal U}^-}
+\newcommand{\upm}{{\cal U}^{\pm}}
+\newcommand{\upmix}{{\cal U}^{{\cal M}}}
+
+
+\newcommand{\ppl}{{\cal P}^+}
+\newcommand{\pminus}{{\cal P}^-}
+\newcommand{\ppm}{{\cal P}^{\pm}}
+\newcommand{\ppmix}{{\cal P}^{{\cal M}}}
+\newcommand{\bpm}{{\cal B}^{\pm}}
+\newcommand{\tpm}{{\cal T}^{\pm}}
+\newcommand{\bpmix}{{\cal B}^{{\cal M}}}
+\newcommand{\tpmix}{{\cal T}^{{\cal M}}}
+%%%%%%%%%%%%%%%%  end macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\include{cover}
-% Some departments (e.g. 5) require an additional signature page.  See
-% signature.tex for more information and uncomment the following line if
-% applicable.
-% \include{signature}
-\pagestyle{plain}
-\include{contents}
-\include{chap1}
-\include{chap2}
-\include{chap3}
-\include{chap4}
-\appendix
-%\include{appa}
-%\include{appb}
-\include{biblio}
+  \maketitle
+
+\bibliographystyle{plain}
+
+
+\begin{center} {\sl ABSTRACT} \end{center}
+
+\begin{quotation}
+
+Abstract
+
+\end{quotation}
+
+\input{chap1}
+\input{chap2}
+\input{chap3}
+\input{chap4}
+
+\bibliography{main}
+
 \end{document}
