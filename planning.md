@@ -42,3 +42,9 @@
         - Algebraic combinatorics
         - Quantum calculus
         - Polytope convexe
+
+- Mardi 15/5/18
+    - Confirm forbidden graphs MUIG (characterization) in TSG. (describe every MUIG forbidden graph).
+    - Prouver proprement parenthèse après Fig. 4.
+    - Existe-t-il TSG $=$ UDG intersect UUIG.
+    - Algorithm polynomial for characterization of these classes? Prove.
