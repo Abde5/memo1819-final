@@ -7,35 +7,39 @@
 \topmargin 0 in
 \textheight 8 in
 
-
-
 \pagestyle{empty}
 
-
-  \usepackage[all]{xy}
- \usepackage{graphicx}
- \usepackage{units}
-
- \usepackage{enumerate}
+\usepackage[all]{xy}
+\usepackage{graphicx}
+\usepackage{units}
+\usepackage{enumerate}
 
 \usepackage{amssymb, amsmath, pict2e}
  \pagestyle{myheadings}
 
 \usepackage{pdfsync}
-
 \usepackage{rotating}
-
 \usepackage{multirow}
-
-
-  \usepackage[normalem]{ulem}
-  \usepackage{cancel}
-
-
+\usepackage[normalem]{ulem}
+\usepackage{cancel}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage{tikz}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usepackage{environ}
+\usepackage{environ}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
 
 
 \title{Characterization and complexity of Thin Strip Graphs}

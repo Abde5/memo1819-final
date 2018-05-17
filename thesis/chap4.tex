@@ -24,9 +24,14 @@ $c$-strip graphs are unit disk graphs such that the centers of the disks are del
   SG($0$) $\neq$ TSG. This can be seen
 \end{remark}
 
+
+% Figure about the K_1,3 construction
 \begin{figure}
 \centering
-\begin{tikzpicture}
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5]
+
 \draw (-2,0) -- (2,0);
 \draw[red ,opacity = 0.5] (-2,0.07) -- (2,0.07);
 \draw  (-1,0) circle [radius=0.5];
@@ -37,6 +42,13 @@ $c$-strip graphs are unit disk graphs such that the centers of the disks are del
 \draw[color=black] (1,0.2265) node {$v_3$};
 
 \draw[red, opacity = 0.5] (0,0.07) circle [radius=0.5];
+
+\draw[color=black] (2.4386,0.0367) node {\tiny $\varepsilon > 0$};
+
+% lines to describe distance (epsilon)
+\draw[very thin] (2.1,0.07) -- (2.1,0);
+\draw[very thin] (2.05,0.07) -- (2.1,0.07);
+\draw[very thin] (2.05,0) -- (2.1,0);
 
 \draw[opacity = 0.5] (-2,-2.07) -- (2,-2.07);
 \draw[red] (-2,-2) -- (2,-2);
@@ -58,6 +70,10 @@ $c$-strip graphs are unit disk graphs such that the centers of the disks are del
 \draw  (v1) edge (v3);
 \draw  (v1) edge (v4);
 \end{tikzpicture}
+\end{scaletikzpicturetowidth}
+
+\caption{A construction of $K_{1,3}$ with a disk realization, being this graph a TSG.}
+\label{fig:thinK13}
 \end{figure}
 
 $K_{1,3}$ in TSG, which is not possible for UIG.
