@@ -5,6 +5,7 @@
 %% \files=
 %% prompt when you run the file main.tex through LaTeX.
 \section{Graphs and disks}
+\label{sec:graphs}
 
 
 \subsection{Graphs}
@@ -15,24 +16,20 @@ A graph $G$ is defined as $G = (V,E)$, where $V$ is the set of vertices and $E$ 
   An embedding of a graph $G$ is a representation of this graph on the plane.
 \end{defn}
 
-\begin{defn}
-  A graph $G$ is planar iff there is an embedding of this graph that doesn't have any crossing between the edges.
-\end{defn}
+A graph $G$ is planar if there is an embedding of this graph that doesn't have any crossing between the edges.
+
+\begin{theorem}[Kuratowski]
+  A graph $G$ is planar iff it doesn't contain $K_5$ or $K_{3,3}$ as a minor.
+\end{theorem}
 
 
 \subsection{Intersection graphs}
 
-% This is an example of how you would use tgrind to include an example
-% of source code; it is commented out in this template since the code
-% example file does not exist.  To use it, you need to remove the '%' on the
-% beginning of the line, and insert your own information in the call.
-%
-%\tagrind[htbp]{./biblio.tex}{Post Multiply Normalization}{opt:pmn}
 
 Given a geometric construction with multiple objects, an intersection graph is a graph that maps the objects into vertices and every intersection between objects is an edge between the corresponding vertices.
 
 \begin{defn}
-  A graph $G$ is a comparibility graph if there is a partial order... (check c-strip article, good definition).
+  A graph $G$ is a comparibility graph if for each edge $\{u,v\} \in E$ there is a partial order $\leq$ such that $u \leq v$ or $v \leq u$.
 \end{defn}
 
 \subsubsection{Interval graphs}
@@ -44,12 +41,7 @@ Properties
 Definition of MIXED interval graphs
 \subsubsection{Unit disk graphs}
 
-% This is an example of how you would use tgrind to include an example
-% of source code; it is commented out in this template since the code
-% example file does not exist.  To use it, you need to remove the '%' on the
-% beginning of the line, and insert your own information in the call.
-%
-%\tgrind[htbp]{code/be.s.tex}{Block Exponent}{opt:be}
-Definition of UID.
+
+Definition of UDG.
 
 Definition of a realization.
