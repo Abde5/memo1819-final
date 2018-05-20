@@ -22,7 +22,7 @@ The algorithm $A$ decides problem $L \subseteq \Sigma^*$ if for all word $w \in 
 \end{defn}
 
 \begin{defn}
-A problem is decidable if there's an algorithm that decides it.
+A problem is verifiable if there's an algorithm that verifies it.
 \end{defn}
 
 \begin{defn}
@@ -41,8 +41,33 @@ A problem $L \in \mathcal{NP}$ if $L$ can be verified in polynomial time $\mathc
 
 \subsection{$\exists \mathbb{R}$ complexity class}
 
-$\exists \mathbb{R}$ is the class that describes the problems such that they can be reduced to \textit{the existential theory of the reals}\cite{ExistentialTheoryReals2006}. The existential theory of the reals
+$\exists \mathbb{R}$ is the class that describes the problems such that they can be reduced to \textit{the existential theory of the reals}\cite{ExistentialTheoryReals2006}. The decidability of the existential theory of the reals is the problem to decide if a sentence of this shape is true:
 
+$$(\exists X_1 \dots \exists X_n): F(\exists X_1, \dots,\exists X_n)$$\\
+
+where $F$ is a quantifier-free formula in the reals. In other words, it's a conjuntion
+of clauses where each clause is a real polynomial inequality where each variable $X_k$ is a real number. We can see that ETR is NP-hard because SAT can be reduced to it.
+
+
+\begin{proof}
+  Let's take an instance of SAT $\phi_{SAT}$ with clauses $c_k$ and variables $x_k$, we can construct an instance of ETR $\phi_{ETR}$ where we can construct *booleans* variables with inequalities, so for each variable $X_k$:
+  $$0 \leq X_k \leq 1$$
+  $$X_k - X_k^2 = 0$$
+
+  Each litteral of each clause will be positive or negative depending if the litteral is cancelled in $\phi_{SAT}$:
+
+  $$x_k \to l = X_k$$
+  $$\neg x_k \to l = -X_k$$
+
+  Then for each clause we can have a polynomial that will sum the value of every litteral in the clause must be greater that one, so at least one litteral is true:
+
+  $$\sum_{l\in c_k} l \geq 1$$
+
+  This done, it's easy to see that if $\phi_{ETR}$ is valid if and only if $\phi_{SAT}$ is also valid  \qed\\
+
+\end{proof}
+
+This result can show us that $P \subseteq NP \subseteq \exists \mathbb{R}$
 \subsubsection{Problems in $\exists \mathbb{R}$}
 
 The art gallery problem is $\exists \mathbb{R}$-complete.\cite{abrahamsenArtGalleryProblem2017}
