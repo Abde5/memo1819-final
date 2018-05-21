@@ -10,7 +10,7 @@
 
 \subsection{Graphs}
 
-A graph $G$ is defined as $G = (V,E)$, where $V$ is the set of vertices and $E$ the set of edges. A vertex $v \in V$ is the fundamental unit of a graph. An edge $e \in E$ is a structures that links two vertices. The vertices $vw \in V$ that $e \in E$ links are called the \textit{endpoints}.
+A graph $G$ is defined as $G = (V,E)$, where $V$ is the set of vertices and $E$ the set of edges. A vertex $v \in V$ is the fundamental unit of a graph. An edge $e \in E$ links two vertices. The vertices $vw \in V$ that $e \in E$ links are called the \textit{endpoints}.
 
 \begin{defn}
   An embedding of a graph $G$ is a representation of this graph on the plane.
@@ -26,10 +26,13 @@ A graph $G$ is planar if there is an embedding of this graph that doesn't have a
 \subsection{Intersection graphs}
 
 
-Given a geometric construction with multiple objects, an intersection graph is a graph that maps the objects into vertices and every intersection between objects is an edge between the corresponding vertices.
+Given a geometric construction with multiple objects, an intersection graph is a
+graph that maps the objects into vertices and every intersection between objects
+is an edge between the corresponding vertices.
 
 \begin{defn}
-  A graph $G$ is a comparibility graph if for each edge $\{u,v\} \in E$ there is a partial order $\leq$ such that $u \leq v$ or $v \leq u$.
+  A graph $G$ is a comparibility graph if for each edge $\{u,v\} \in E$ there is
+  a partial order $\leq$ such that $u \leq v$ or $v \leq u$.
 \end{defn}
 
 \subsubsection{Interval graphs}

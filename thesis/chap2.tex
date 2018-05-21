@@ -41,17 +41,21 @@ A problem $L \in \mathcal{NP}$ if $L$ can be verified in polynomial time $\mathc
 
 \subsection{$\exists \mathbb{R}$ complexity class}
 
-$\exists \mathbb{R}$ is the class that describes the problems such that they can be reduced to \textit{the existential theory of the reals}\cite{ExistentialTheoryReals2006}. The decidability of the existential theory of the reals is the problem to decide if a sentence of this shape is true:
+$\exists \mathbb{R}$ is the class that describes the problems that can be reduced to \textit{the existential theory of the reals}\cite{ExistentialTheoryReals2006}. The decidability of the existential theory of the reals is the problem that decides if a sentence of this form is true:
 
 $$(\exists X_1 \dots \exists X_n): F(\exists X_1, \dots,\exists X_n)$$\\
 
-where $F$ is a quantifier-free formula in the reals. In other words, it's a conjuntion
-of clauses where each clause is a real polynomial inequality where each variable $X_k$ is a real number. We can see that ETR is NP-hard because SAT can be reduced to it.
+where $F$ is a quantifier-free formula in the reals. In other words, it's a
+conjuntion of clauses where each clause is a real polynomial inequality where
+each variable $X_k$ is a real number. We can see that ETR is NP-hard because
+SAT can be reduced to it.
 
 
 \begin{proof}
-  Let's take an instance of SAT $\phi_{SAT}$ with clauses $c_k$ and variables $x_k$, we can construct an instance of ETR $\phi_{ETR}$ where we can construct *booleans* variables with inequalities, so for each variable $X_k$:
-  $$0 \leq X_k \leq 1$$
+  Let's take an instance of SAT $\phi_{SAT}$ with clauses $c_k$ and variables
+  $x_k$, we can construct an instance of ETR $\phi_{ETR}$ where we can
+  construct variables in the domain $\{0,1\}$ with this equality, so for each
+  variable $X_k$:
   $$X_k - X_k^2 = 0$$
 
   Each litteral of each clause will be positive or negative depending if the litteral is cancelled in $\phi_{SAT}$:
@@ -59,18 +63,69 @@ of clauses where each clause is a real polynomial inequality where each variable
   $$x_k \to l = X_k$$
   $$\neg x_k \to l = -X_k$$
 
-  Then for each clause we can have a polynomial that will sum the value of every litteral in the clause must be greater that one, so at least one litteral is true:
+  Then for each clause we can have a polynomial that will sum the value of every litteral in the clause must be greater that one, so that at least one litteral is true:
 
   $$\sum_{l\in c_k} l \geq 1$$
 
-  This done, it's easy to see that if $\phi_{ETR}$ is valid if and only if $\phi_{SAT}$ is also valid  \qed\\
+  With this proof, it's easy to see that $\phi_{ETR}$ is valid if and only if $\phi_{SAT}$ is also valid.  \qed\\
 
 \end{proof}
 
-This result can show us that $P \subseteq NP \subseteq \exists \mathbb{R}$
+This result can show us that $P \subseteq NP \subseteq \exists \mathbb{R}$.
+
 \subsubsection{Problems in $\exists \mathbb{R}$}
 
-The art gallery problem is $\exists \mathbb{R}$-complete.\cite{abrahamsenArtGalleryProblem2017}
+In this section we will describe some problems that are $\exists
+\mathbb{R}$-complete and will give an overview about the proof since it is
+not the main goal of this paper (donner détail de pourquoi je donne un
+overview).
+
+\paragraph{The art gallery problem} Given a simple polygon $P$ (without
+crossings between every side), we introduce \textit{guards}. A guard $g$ is
+a point that every point of the polygon is watched by a guard. A point
+$p$ is watched by a point $q$ if the segment $pq$ is contained in $P$. The
+subset $G$, being $G$ the set of guards and $G \subseteq P$, is optimum if it
+has the minimal cardinality covering the whole polygon.
+
+The art gallery problem decides given a polygon $P$ and a number of guards $k$
+if there exists a configuration of $k$ guards in $G$ guarding the whole
+polygon. The art gallery problem is $\exists \mathbb{R}$-complete
+\cite{abrahamsenArtGalleryProblem2017}.
+
+\paragraph{Proof idea} First of all, we can see that the art gallery problem
+is in $\exists \mathbb{R}$ if we reduce this problem to ETR. If we have an
+instance $(P,k)$ of the art gallery problem we can have a formula
+\cite{EFRAT2006238} like this:
+
+$$\phi = \{\exists x_1y_1,\dots x_ky_k \forall p_xp_y :
+\text{INSIDE-POLYGON}(p_x,p_y) \to \bigvee_{1 \leq i \leq k}
+\text{SEES}(x_i,y_i,p_x,p_y)\}$$
+
+Where INSIDE-POLYGON returns $1$ if $(p_x,p_y) \in P$ and SEES returns $1$ if
+the segment $(x,y)(p_x,p_y) \in P$. $\phi$ is not a ETR formula, so we'd like
+to construct a quantifier-free formula with the idea of $\phi$. To achieve this,
+the main idea is to have a small set of points $Q \subseteq P$ such that if these
+points are watched, the whole polygon is watched. This subset $Q$ is called
+the \textit{witness set}. The only thing is now to create a polynome for each
+point that ensures the point is watched by a guard.
+
+To finish the proof we have to prove that the art gallery problem is $\exists
+\mathbb{R}$-hard. For this part an $\exists \mathbb{R}$-complete
+problem has been deducted from ETR. For the problem ETR-INV we have a set of
+variables $\{x_1,\dots,x_n\}$ and a set of equations of this form:
+
+$$x = 1,\ \ x + y = z,\ \ x \cdot y = 1 $$
+
+and the problem decides if it exists a solution to this set of equations such
+that the value of each variable is real in $[\frac{1}{2},2]$.
+
+A reduction of ETR-INV is found to the art gallery problem by constructing
+a polygon $P$ and finding a number $g$ for that polygon such that the instance
+of ETR-INT is true if and only if $P$ is covered by at most $g$ guards.
+
+\paragraph{Unit Disk Graph recognition} The Unit Disk Graph recognition is
+the problem that decides if a graph $G$ has a realization $\phi$ as a Unit
+Disk Graph. Unit Disk Graph recognition is $\exists \mathbb{R}$-complete.
 
 Recognition of Unit Disk Graphs is $\exists \mathbb{R}$-complete. (corollary of graph realizability problem)\cite{Schaefer2013}
 
