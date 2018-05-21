@@ -31,8 +31,12 @@ graph that maps the objects into vertices and every intersection between objects
 is an edge between the corresponding vertices.
 
 \begin{defn}
+  A binary relation $R$
+\end{defn}
+
+\begin{defn}
   A graph $G$ is a comparibility graph if for each edge $\{u,v\} \in E$ there is
-  a partial order $\leq$ such that $u \leq v$ or $v \leq u$.
+  a binary relation $R$ such that $u \leq v$ or $v \leq u$.
 \end{defn}
 
 \subsubsection{Interval graphs}
@@ -42,9 +46,64 @@ Definition of interval Graphs
 Properties
 
 Definition of MIXED interval graphs
-\subsubsection{Unit disk graphs}
 
 
-Definition of UDG.
+\subsection{Realizations}
 
-Definition of a realization.
+\begin{defn}
+  A realization of a graph $G$ is a mapping of this graph in $\mathbb{R}^2$
+  respecting some properties, i.e. 2 points are linked if and only if
+  their distance equals 1 (Unit Distance Graphs).
+\end{defn}
+
+The \textit{graph realizability problem} is the problem that finds a realization
+of a given length $l(e)$ for a graph $G$ (this means that the edge $e$ has to
+be represented by a straight line of length $l(e)$ in $\mathbb{R}^2$).
+
+A unit distance graph $G$ is a graph that has a realization where 2 points $u,v$
+have $\text{dist}(u,v) = 1$ if and only if their respective vertices are linked.
+This problem  will be shown at chapter \ref{sec:complex} to be $\exists
+\mathbb{R}$-complete. If  this realization doesn't have any crossing then $G$ is a
+\textit{matchstick graph}.\\
+
+A unit disk graph $G$ is a graph that has a realization where 2 points have
+$\text{dist}(u,v) \leq 1$ if and only if their respective vertices are linked.
+Each point can be represented as the center of a disk of unit diameter and the
+edges can be represented as the intersection of 2 disks. This class of graphs
+is important for this thesis, as the Thin Strip Graphs are a sub-class of
+Unit Disk Graphs (section \ref{sec:thin}). Unit Disk Graph realizability is
+$\exists \mathbb{R}$-complete. We will refer to the Unit Disk Graph class as
+UDG and an example of a realization can be found in the figure \ref{fig:udg}.
+
+% Figure about the K_1,3 construction
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5]
+
+  \draw (-0.5,2.5) circle [radius=0.5];
+  \draw (0,2.5) circle [radius=0.5];
+  \draw (-0.5,2) circle [radius=0.5];
+  \draw (0,2) circle [radius=0.5];
+
+
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v1) at (-2.5,2.5) {};
+
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v2) at (-2,2.2) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v3) at (-2,2.8) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v4) at (-1.5,2.5) {};
+
+  \draw  (v3) edge (v2);
+  \draw  (v4) edge (v1);
+  \draw  (v3) edge (v1);
+  \draw  (v4) edge (v2);
+  \draw  (v3) edge (v4);
+  \draw  (v1) edge (v2);
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+
+\caption{Realization of a UDG (Unit Disk Graph).}
+\label{fig:udg}
+\end{figure}

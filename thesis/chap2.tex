@@ -7,7 +7,10 @@
 \section{Complexity}
 \label{sec:complex}
 
-Problem solving is based on the complexity of a problem and not only a particular algorithm that solves it \cite{sipser2006}.
+Complexity theory has the objective to establish lower bounds on how efficient
+an algorithm can be for a given problem \cite{sipser2006}. This approach let us
+have a reference point to establish the difficulty of a problem.
+
 
 \begin{defn}
 Let $\Sigma$ be a finite alphabet, $\Sigma^*$ every word derived from $\Sigma$, $L \subseteq \Sigma^*$ is a decision problem.
@@ -36,8 +39,34 @@ A problem $L \in \mathcal{P}$ if $L$ can be decided in polynomial time $\mathcal
 \end{defn}
 
 \begin{defn}
-A problem $L \in \mathcal{NP}$ if $L$ can be verified in polynomial time $\mathcal{O}(n^k)$. Thus, $\mathcal{P} \subseteq \mathcal{NP}$.
+A problem $L \in \mathcal{NP}$ if $L$ can be verified in polynomial time
+$\mathcal{O}(n^k)$. Thus, $\mathcal{P} \subseteq \mathcal{NP}$.
 \end{defn}
+
+To prove a bound of complexity on an unknown problem $L$ we have to find other
+problems with already known complexity and find equivalences between those 2. This
+can be achieved through \textit{reductions}.
+
+\begin{defn}
+  A reduction of a problem $L$ to a problem $M$ is a mapping of an instance of $L$ ($I_L$)
+  to an isntance of $M$ ($I_M$) such that $I_L$ is true for the problem $L$ if and
+  only if $I_M$ is true for the problem $M$. This is noted $L \leq M$ and $L \leq_P M$
+  if the reduction is done in polynomial time.
+\end{defn}
+
+With this concept we can define new complexity classes. $\mathcal{NP}$-hard is
+the set of problems so that we can reduce every $\mathcal{NP}$ problem to. The set
+of problems that are $\mathcal{NP}$-hard and $\mathcal{NP}$ are called $\mathcal{NP}$-complete.
+This is generalized to every complexity class ($\mathcal{P}$, $\exists \mathbb{R}$, RP, etc...)
+
+\paragraph{Satisfiability problem} The satisfiability problem (SAT) decides the satisfiability
+of a CNF formula $\phi$. A CNF formula is a boolean formula that is a conjunction of multiple
+clauses $c_k$. A clause is a disjunction of multiple litterals. A litteral may be a variable
+or a negation of a variable.
+
+\begin{theorem}[Cook-Levin]
+  SAT is $\mathcal{NP}$-complete.
+\end{theorem}
 
 \subsection{$\exists \mathbb{R}$ complexity class}
 
