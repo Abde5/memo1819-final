@@ -110,16 +110,17 @@ not the main goal of this paper (donner détail de pourquoi je donne un
 overview).
 
 \paragraph{The art gallery problem} Given a simple polygon $P$ (without
-crossings between every side), we introduce \textit{guards}. A guard $g$ is
-a point that every point of the polygon is watched by a guard. A point
-$p$ is watched by a point $q$ if the segment $pq$ is contained in $P$. The
-subset $G$, being $G$ the set of guards and $G \subseteq P$, is optimum if it
-has the minimal cardinality covering the whole polygon.
+crossings between every side), we introduce \textit{guards}. A guard
+$g$ is a point that every point of the polygon is watched by a guard.
+A point $p$ is watched by a point $q$ if the segment $pq$ is contained
+in $P$. The subset $G$, being $G$ the set of guards and $G \subseteq
+P$, is optimum if it has the minimal cardinality covering the whole
+polygon.
 
-The art gallery problem decides given a polygon $P$ and a number of guards $k$
-if there exists a configuration of $k$ guards in $G$ guarding the whole
-polygon. The art gallery problem is $\exists \mathbb{R}$-complete
-\cite{abrahamsenArtGalleryProblem2017}.
+The art gallery problem decides given a polygon $P$ and a number of
+guards $k$ if there exists a configuration of $k$ guards in $G$
+guarding the whole polygon. The art gallery problem is $\exists
+\mathbb{R}$-complete \cite{abrahamsenArtGalleryProblem2017}.
 
 \paragraph{Proof idea} First of all, we can see that the art gallery problem
 is in $\exists \mathbb{R}$ if we reduce this problem to ETR. If we have an
@@ -136,7 +137,7 @@ to construct a quantifier-free formula with the idea of $\phi$. To achieve this,
 the main idea is to have a small set of points $Q \subseteq P$ such that if these
 points are watched, the whole polygon is watched. This subset $Q$ is called
 the \textit{witness set}. The only thing is now to create a polynome for each
-point that ensures the point is watched by a guard.
+point that ensures that the point is watched by a guard.
 
 To finish the proof we have to prove that the art gallery problem is $\exists
 \mathbb{R}$-hard. For this part an $\exists \mathbb{R}$-complete

@@ -31,13 +31,50 @@ graph that maps the objects into vertices and every intersection between objects
 is an edge between the corresponding vertices.
 
 \begin{defn}
-  A binary relation $R$
+  A binary relation $R$ on a set $S$ is a
+\end{defn}
+
+\begin{defn}
+  A poset is a partially ordered set. A partially ordered set is a binary relation
+  $\leq$ over a set $A$ satisfying this axioms:
+  \begin{itemize}
+    \item $a \leq a$ (reflexivity).
+    \item if $a \leq b$ and $b \leq a$ then $a = b$ (antisymmetry).
+    \item if $a \leq b$ and $b \leq c$ then $a \leq c$ (transitivity).
+  \end{itemize}
 \end{defn}
 
 \begin{defn}
   A graph $G$ is a comparibility graph if for each edge $\{u,v\} \in E$ there is
-  a binary relation $R$ such that $u \leq v$ or $v \leq u$.
+  a binary relation $R$ such that $u \leq v$ or $v \leq u$. Equivalently, $G$
+  is a comparability graph if it is the comparability graph of a poset. For
+  example, the Hasse diagram (figure \ref{fig:hasse}) is a comparability graph
+  where the relation is inclusion.
 \end{defn}
+
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5]
+  \draw (-1cm,0cm) node (v2) {$\{x\}$};
+  \draw (1cm,0cm)  node (v3) { $\{y\}$ };
+  \draw (0cm,-1cm) node (v4) {$\varnothing$};
+  \draw (0cm,1cm)  node (v1) {$\{x,y\}$};
+
+
+  \draw[thick]  (v1) edge (v2);
+  \draw[thick]  (v3) edge (v1);
+  \draw[thick]  (v3) edge (v4);
+  \draw[thick]  (v2) edge (v4);
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+
+\caption{Hasse diagram of a poset of the power set of 2 elements ordered by inclusion.
+This graph is also a comparability graph, elements at each level are not comparable.}
+\label{fig:hasse}
+\end{figure}
 
 \subsubsection{Interval graphs}
 
