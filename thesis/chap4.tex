@@ -3,7 +3,9 @@
 \label{sec:thin}
 
 
-$c$-strip graphs are unit disk graphs such that the centers of the disks are delimited on the area $\{(x,y) : -\infty < x < \infty, 0 < y \leq c\}$ and its class noted SG($c$). We can say that SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
+$c$-strip graphs are unit disk graphs such that the centers of the disks belong to
+$\{(x,y) : -\infty < x < \infty, 0 < y \leq c\}$. The class is denoted by SG($c$). We
+have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
 
 \begin{defn}
   Thin strip graphs are defined as TSG $= \bigcap_{c > 0}$ SG($c$).
@@ -76,14 +78,18 @@ Unfettered unit interval graphs = UUIG\\
 MUIG $\subsetneq$ TSG $\subsetneq$ UUIG\\
 
 UUIG $\subseteq$ co-comparability graphs (to prove).
+\paragraph{Proof} Let's have a relation of non-increasing order $\leq$ between the left
+endpoints of each interval $v$ ($l(v)$). This relation will (nope, find another proof...).
 
-In the following sections we state the problems that are being studied for the thesis.
 
-\subsection{Forbidden subgraphs of Thin Strip Graphs}
+\subsection{Open questions about Thin Strip Graphs}
+In this section we state the problems that are being studied for the thesis.
+
+\paragraph{Forbidden subgraphs of Thin Strip Graphs}
   We've proven that MUIG $\subsetneq$ TSG $\subsetneq$ UUIG. Knowing the\\
   (Why $F_k$ is a co-comparability unit disk graph?)
 
-\subsection{Complexity class of TSG recognition}
+\paragraph{Complexity class of TSG recognition}
   We've shown in section \ref{sec:complex} that some intersection
   geometric problems are in $\exists \mathbb{R}$ (unit disk graph
   recognition problem or the stretchability problem) and we'd like to

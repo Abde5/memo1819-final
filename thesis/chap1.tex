@@ -10,38 +10,58 @@
 
 \subsection{Graphs}
 
-A graph $G$ is defined as $G = (V,E)$, where $V$ is the set of vertices and $E$ the set of edges. A vertex $v \in V$ is the fundamental unit of a graph. An edge $e \in E$ links two vertices. The vertices $vw \in V$ that $e \in E$ links are called the \textit{endpoints}.
+A graph $G$ is defined as $G = (V,E)$, where $V$ is the set of vertices and $E$ the set of
+edges, where $E \subseteq \binom{V}{2}$. The vertices $v,w \in V$ such that $e = vw \in E$
+links are called the \textit{endpoints} of $e$.
 
 \begin{defn}
-  An embedding of a graph $G$ is a representation of this graph on the plane.
+  An embedding of a graph $G$ into a surface $\Sigma$ is a mapping of $G$ in
+  $\Sigma$ where the vertices correspond to distinct points and the edges
+  correspond to simple arcs connecting the images of their endpoints.
+  \cite{goyalGraphEmbeddingTechniques2017}.
 \end{defn}
 
-A graph $G$ is planar if there is an embedding of this graph that doesn't have any crossing between the edges.
+A graph $G$ is planar if there is an embedding of this graph that does not have
+any crossing between the edges.
+
+\begin{defn}
+  Let $G = (V,E)$ and $S \subset V$, an induced subgraph is a graph $H$ of $G$ whose
+  vertex set is $S$ and its edge set $F = \{vw : v,w \in S, vw \in E\}$.
+\end{defn}
+
+\begin{defn}
+  $H$ is called a \textit{minor} of $G$ if $H$ can be constructed by deleting edges and vertices,
+  or contracting edges.
+\end{defn}
+
+In graph theory, (forbidden graph characterization)...
 
 \begin{theorem}[Kuratowski]
-  A graph $G$ is planar iff it doesn't contain $K_5$ or $K_{3,3}$ as a minor.
+  A graph $G$ is planar if and only if it doesn't contain $K_5$ or $K_{3,3}$ as a minor or
+  a induced subgraph.
 \end{theorem}
 
 
 \subsection{Intersection graphs}
 
-
-Given a geometric construction with multiple objects, an intersection graph is a
-graph that maps the objects into vertices and every intersection between objects
-is an edge between the corresponding vertices.
-
 \begin{defn}
-  A binary relation $R$ on a set $S$ is a
+The \textit{intersection graph} of a collection $\zeta$ of objects is the graph
+$(\zeta,E)$ such that $c_1c_2\in E \Leftrightarrow c_1 \cap c_2 \neq \varnothing$.
 \end{defn}
 
+
 \begin{defn}
-  A poset is a partially ordered set. A partially ordered set is a binary relation
-  $\leq$ over a set $A$ satisfying this axioms:
+  A partial order set is a binary relation $\leq$ over a set $A$ satisfying these axioms:
   \begin{itemize}
     \item $a \leq a$ (reflexivity).
     \item if $a \leq b$ and $b \leq a$ then $a = b$ (antisymmetry).
     \item if $a \leq b$ and $b \leq c$ then $a \leq c$ (transitivity).
   \end{itemize}
+\end{defn}
+
+\begin{defn}
+   A partially ordered set or poset  $(S,\leq)$ where $S$ a set and $\leq$ a partial
+   order on $S$.
 \end{defn}
 
 \begin{defn}
@@ -57,22 +77,34 @@ is an edge between the corresponding vertices.
 
 \begin{scaletikzpicturetowidth}{\textwidth}
 \begin{tikzpicture}[scale=1.5]
+
+  % poset
   \draw (-1cm,0cm) node (v2) {$\{x\}$};
   \draw (1cm,0cm)  node (v3) { $\{y\}$ };
   \draw (0cm,-1cm) node (v4) {$\varnothing$};
   \draw (0cm,1cm)  node (v1) {$\{x,y\}$};
-
 
   \draw[thick]  (v1) edge (v2);
   \draw[thick]  (v3) edge (v1);
   \draw[thick]  (v3) edge (v4);
   \draw[thick]  (v2) edge (v4);
 
+  % graph
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v1g) at (3.5,1) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v2g) at (3.5,-1) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v3g) at (4.5,0) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v4g) at (2.5,0) {};
+  \draw  (v1g) edge (v2g);
+  \draw  (v1g) edge (v4g);
+  \draw  (v4g) edge (v2g);
+  \draw  (v1g) edge (v3g);
+  \draw  (v3g) edge (v2g);
+
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
 
-\caption{Hasse diagram of a poset of the power set of 2 elements ordered by inclusion.
-This graph is also a comparability graph, elements at each level are not comparable.}
+\caption{On the left, Hasse diagram of a poset of the power set of 2 elements ordered by inclusion.
+On the right, the comparability graph of this poset.}
 \label{fig:hasse}
 \end{figure}
 
@@ -88,9 +120,7 @@ Definition of MIXED interval graphs
 \subsection{Realizations}
 
 \begin{defn}
-  A realization of a graph $G$ is a mapping of this graph in $\mathbb{R}^2$
-  respecting some properties, i.e. 2 points are linked if and only if
-  their distance equals 1 (Unit Distance Graphs).
+  A graph $G$ is said \textit{realizable} if
 \end{defn}
 
 The \textit{graph realizability problem} is the problem that finds a realization
@@ -98,13 +128,13 @@ of a given length $l(e)$ for a graph $G$ (this means that the edge $e$ has to
 be represented by a straight line of length $l(e)$ in $\mathbb{R}^2$).
 
 A unit distance graph $G$ is a graph that has a realization where 2 points $u,v$
-have $\text{dist}(u,v) = 1$ if and only if their respective vertices are linked.
+have $\text{dist}(u,v) = 1$ if and only if their respective vertices are adjacent.
 This problem  will be shown at chapter \ref{sec:complex} to be $\exists
 \mathbb{R}$-complete. If  this realization doesn't have any crossing then $G$ is a
 \textit{matchstick graph}.\\
 
 A unit disk graph $G$ is a graph that has a realization where 2 points have
-$\text{dist}(u,v) \leq 1$ if and only if their respective vertices are linked.
+$\text{dist}(u,v) \leq 1$ if and only if their respective vertices are adjacent.
 Each point can be represented as the center of a disk of unit diameter and the
 edges can be represented as the intersection of 2 disks. This class of graphs
 is important for this thesis, as the Thin Strip Graphs are a sub-class of

@@ -17,34 +17,29 @@ Let $\Sigma$ be a finite alphabet, $\Sigma^*$ every word derived from $\Sigma$, 
 \end{defn}
 
 \begin{defn}
-The algorithm $A$ decides problem $L \subseteq \Sigma^*$ if for all word $w \in \Sigma^*$:
-\begin{itemize}
-  \item $A$ finishes and returns TRUE if $w \in L$.
-  \item $A$ finishes and returns FALSE if $w \notin L$.
-\end{itemize}
+  A decider for a decision problem $A$ is an deterministic algorithm $V$ where
+    $$A = \{w | V \textit{accepts } w\}$$
+  $A$ is polynomially decidable if it has a polynomial time decider \cite{sipser2006}.
 \end{defn}
 
 \begin{defn}
-A problem is verifiable if there's an algorithm that verifies it.
-\end{defn}
-
-\begin{defn}
-A problem is decidable if there's an algorithm that decides it.
+A verifier for a decision problem $A$ is an deterministic algorithm $V$ where
+  $$A = \{w | V \textit{accepts } \langle w,c\rangle \textit{ for some string } c\}$$
+$A$ is polynomially verifiable if it has a polynomial time verifier \cite{sipser2006}.
 \end{defn}
 
 \subsection{P vs NP}
 
 \begin{defn}
-A problem $L \in \mathcal{P}$ if $L$ can be decided in polynomial time $\mathcal{O}(n^k)$.
+A problem $L \in \mathcal{P}$ if $L$ is polynomially decidable.
 \end{defn}
 
 \begin{defn}
-A problem $L \in \mathcal{NP}$ if $L$ can be verified in polynomial time
-$\mathcal{O}(n^k)$. Thus, $\mathcal{P} \subseteq \mathcal{NP}$.
+A problem $L \in \mathcal{NP}$ if $L$ is polynomially verifiable. Thus, $\mathcal{P} \subseteq \mathcal{NP}$.
 \end{defn}
 
 To prove a bound of complexity on an unknown problem $L$ we have to find other
-problems with already known complexity and find equivalences between those 2. This
+problems with already known complexity and find equivalences between those two. This
 can be achieved through \textit{reductions}.
 
 \begin{defn}
@@ -59,9 +54,9 @@ the set of problems so that we can reduce every $\mathcal{NP}$ problem to. The s
 of problems that are $\mathcal{NP}$-hard and $\mathcal{NP}$ are called $\mathcal{NP}$-complete.
 This is generalized to every complexity class ($\mathcal{P}$, $\exists \mathbb{R}$, RP, etc...)
 
-\paragraph{Satisfiability problem} The satisfiability problem (SAT) decides the satisfiability
+\paragraph{Satisfiability problem} The satisfiability problem (SAT) is to decide the satisfiability
 of a CNF formula $\phi$. A CNF formula is a boolean formula that is a conjunction of multiple
-clauses $c_k$. A clause is a disjunction of multiple litterals. A litteral may be a variable
+clauses $c_k$. A clause is a disjunction of multiple literals. A literal may be a variable
 or a negation of a variable.
 
 \begin{theorem}[Cook-Levin]
@@ -70,11 +65,14 @@ or a negation of a variable.
 
 \subsection{$\exists \mathbb{R}$ complexity class}
 
-$\exists \mathbb{R}$ is the class that describes the problems that can be reduced to \textit{the existential theory of the reals}\cite{ExistentialTheoryReals2006}. The decidability of the existential theory of the reals is the problem that decides if a sentence of this form is true:
+$\exists \mathbb{R}$ is the class that describes the problems that can be reduced to
+\textit{the existential theory of the reals}\cite{ExistentialTheoryReals2006}. The
+existential theory of the reals is the problem of deciding if a sentence of this form
+is true:
 
 $$(\exists X_1 \dots \exists X_n): F(\exists X_1, \dots,\exists X_n)$$\\
 
-where $F$ is a quantifier-free formula in the reals. In other words, it's a
+where $F$ is a quantifier-free formula in the reals. In other words, it is a
 conjuntion of clauses where each clause is a real polynomial inequality where
 each variable $X_k$ is a real number. We can see that ETR is NP-hard because
 SAT can be reduced to it.
@@ -87,16 +85,16 @@ SAT can be reduced to it.
   variable $X_k$:
   $$X_k - X_k^2 = 0$$
 
-  Each litteral of each clause will be positive or negative depending if the litteral is cancelled in $\phi_{SAT}$:
+  Each literal of each clause will be positive or negative depending if the literal is cancelled in $\phi_{SAT}$:
 
   $$x_k \to l = X_k$$
   $$\neg x_k \to l = -X_k$$
 
-  Then for each clause we can have a polynomial that will sum the value of every litteral in the clause must be greater that one, so that at least one litteral is true:
+  Then for each clause we can have a polynomial that will sum the value of every literal in the clause must be greater that one, so that at least one literal is true:
 
   $$\sum_{l\in c_k} l \geq 1$$
 
-  With this proof, it's easy to see that $\phi_{ETR}$ is valid if and only if $\phi_{SAT}$ is also valid.  \qed\\
+  With this proof, it is easy to see that $\phi_{ETR}$ is valid if and only if $\phi_{SAT}$ is also valid.  \qed\\
 
 \end{proof}
 
@@ -105,20 +103,18 @@ This result can show us that $P \subseteq NP \subseteq \exists \mathbb{R}$.
 \subsubsection{Problems in $\exists \mathbb{R}$}
 
 In this section we will describe some problems that are $\exists
-\mathbb{R}$-complete and will give an overview about the proof since it is
-not the main goal of this paper (donner détail de pourquoi je donne un
-overview).
+\mathbb{R}$-complete and will give an overview of the proof.
 
 \paragraph{The art gallery problem} Given a simple polygon $P$ (without
 crossings between every side), we introduce \textit{guards}. A guard
-$g$ is a point that every point of the polygon is watched by a guard.
+$g$ is a point such that every point of the polygon is watched by a guard.
 A point $p$ is watched by a point $q$ if the segment $pq$ is contained
 in $P$. The subset $G$, being $G$ the set of guards and $G \subseteq
 P$, is optimum if it has the minimal cardinality covering the whole
 polygon.
 
-The art gallery problem decides given a polygon $P$ and a number of
-guards $k$ if there exists a configuration of $k$ guards in $G$
+The art gallery problem is to decide, given a polygon $P$ and a number of
+guards $k$, whether there exists a configuration of $k$ guards in $G$
 guarding the whole polygon. The art gallery problem is $\exists
 \mathbb{R}$-complete \cite{abrahamsenArtGalleryProblem2017}.
 
@@ -132,11 +128,11 @@ $$\phi = \{\exists x_1y_1,\dots x_ky_k \forall p_xp_y :
 \text{SEES}(x_i,y_i,p_x,p_y)\}$$
 
 Where INSIDE-POLYGON returns $1$ if $(p_x,p_y) \in P$ and SEES returns $1$ if
-the segment $(x,y)(p_x,p_y) \in P$. $\phi$ is not a ETR formula, so we'd like
+the segment $(x,y)(p_x,p_y) \in P$. $\phi$ is not a ETR formula, so we would like
 to construct a quantifier-free formula with the idea of $\phi$. To achieve this,
 the main idea is to have a small set of points $Q \subseteq P$ such that if these
 points are watched, the whole polygon is watched. This subset $Q$ is called
-the \textit{witness set}. The only thing is now to create a polynome for each
+the \textit{witness set}. The only thing is now to create a polynomial for each
 point that ensures that the point is watched by a guard.
 
 To finish the proof we have to prove that the art gallery problem is $\exists

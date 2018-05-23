@@ -12,16 +12,19 @@ subjects. In our case, it is interesting to know some properties about
 the intersection of disks, those being convex objects.
 
 A set $S$ is convex if:
-$$\forall p,q \in S\  \forall \lambda \in [0,1]: (1-\lambda)p + \lambda q \in S$$
-
+$$\forall p,q \in S\  \forall \lambda \in [0,1]: (1-\lambda)p + \lambda q \in S$$.
 
 \subsection{Stabbing}
+A \textit{stabbing} is a point that traverses a set of intersecting objects. A lot of
+research has been done \cite{schlipf2013stabbing} on the minimal amount of stabbings to
+cover every object in a set. Stabbings can also be done with more complex structures
+than points, in that case we're talking about \textit{coverings}.
 
-Definition of stabbing.
-
-Stabbing geometric structures.\cite{schlipf2013stabbing}
+\begin{theorem}[Helly]
+  Given a set $Q$ of objects in $\mathbb{R}^d$, if for each subset of $Q$ of
+  size $d+1$ their intersection is non empty, then $\bigcap_{q \in Q} \neq
+  \varnothing$. \cite{Helly1923175}
+\end{theorem}
 
 Koebe's planar $\subseteq$ disk
   = Planar graph duality
-
-Helly's theorem
