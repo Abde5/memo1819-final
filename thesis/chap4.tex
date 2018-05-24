@@ -89,9 +89,16 @@ In this section we state the problems that are being studied for the thesis.
   We've proven that MUIG $\subsetneq$ TSG $\subsetneq$ UUIG. Knowing the\\
   (Why $F_k$ is a co-comparability unit disk graph?)
 
-\paragraph{Complexity class of TSG recognition}
+\paragraph{Complexity class for TSG recognition}
   We've shown in section \ref{sec:complex} that some intersection
   geometric problems are in $\exists \mathbb{R}$ (unit disk graph
   recognition problem or the stretchability problem) and we'd like to
   know if TSG recognition or even SG($c$) recognition is in NP knowing
-  that TSG $\subseteq$ UDG.
+  that TSG $\subseteq$ UDG $\cap$ UUIG.
+
+\paragraph{Complexity class of graph problems applied in TSG}
+  We've shown in section \ref{sec:complex} that CLIQUE is in $\mathcal{P}$ for
+  unit disk graphs. Knowing that TSG $\subseteq$ UDG $\cap$ UUIG we know that CLIQUE
+  is also polynomial for TSG. The question is, is there any problem that for the superclasses
+  UUIG (and also co-comparability graphs) and UDG such that their complexity is reduced
+  when applied to TSGs?

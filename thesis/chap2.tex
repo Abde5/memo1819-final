@@ -63,6 +63,17 @@ or a negation of a variable.
   SAT is $\mathcal{NP}$-complete.
 \end{theorem}
 
+\paragraph{Clique problem} The clique problem is to find a maximum clique of a graph
+$G$.
+
+\begin{theorem}
+  CLIQUE is $\mathcal{NP}$-complete. \cite{Karp1972}
+\end{theorem}
+
+\begin{theorem}[Clark-Colbourn]
+  CLIQUE is $\mathcal{P}$ when applied to unit disk graphs. \cite{CLARK1990165}
+\end{theorem}
+
 \subsection{$\exists \mathbb{R}$ complexity class}
 
 $\exists \mathbb{R}$ is the class that describes the problems that can be reduced to
@@ -88,9 +99,10 @@ SAT can be reduced to it.
   Each literal of each clause will be positive or negative depending if the literal is cancelled in $\phi_{SAT}$:
 
   $$x_k \to l = X_k$$
-  $$\neg x_k \to l = -X_k$$
+  $$\neg x_k \to l = (1-X_k)$$
 
-  Then for each clause we can have a polynomial that will sum the value of every literal in the clause must be greater that one, so that at least one literal is true:
+  Then for each clause we can have a polynomial for which the sum of the values of every
+  literal in the clause must be greater than one, so that at least one literal is true:
 
   $$\sum_{l\in c_k} l \geq 1$$
 
@@ -149,10 +161,21 @@ A reduction of ETR-INV is found to the art gallery problem by constructing
 a polygon $P$ and finding a number $g$ for that polygon such that the instance
 of ETR-INT is true if and only if $P$ is covered by at most $g$ guards.
 
+\paragraph{Stretchability} A pseudoline is a simple closed curve in the plane.
+Given a pseudoline arrangement, is it equivalent to an arrangement of straight lines?
+
+\paragraph{Proof idea} ETR can be reduced to STRETCHABILITY due to Mnev's
+universality theorem. \cite{10.1007/978-3-642-11805-0_32}
+
 \paragraph{Unit Disk Graph recognition} The Unit Disk Graph recognition is
-the problem that decides if a graph $G$ has a realization $\phi$ as a Unit
-Disk Graph. Unit Disk Graph recognition is $\exists \mathbb{R}$-complete.
+the problem that decides if a graph $G$ is a Unit Disk Graph. Unit Disk Graph
+recognition is $\exists \mathbb{R}$-complete. \cite{Schaefer2013}
 
-Recognition of Unit Disk Graphs is $\exists \mathbb{R}$-complete. (corollary of graph realizability problem)\cite{Schaefer2013}
+\paragraph{Proof idea} UDG recognition is a corollary of deciding whether a graph
+with a given length is realizable. This problem is $\exists \mathbb{R}$-complete.
 
-Stretchability is $\exists \mathbb{R}$-complete.
+The reduction is done from STRETCHABILITY \cite{Schaefer2013}. The reduction is
+done by adding a vertex to $V$ for each pseudoline intersection. For each three
+consecutive points $u_1, u_2, u_3$ along a pseudoline a widget that will
+be only realizable if and only if the pseudoline can be stretched with the same
+arrangement.
