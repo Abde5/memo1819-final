@@ -13,7 +13,8 @@ have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
 
 \begin{remark}
   SG($0$) $\neq$ TSG. We can construct a $K_{1,3}$ such that we have 3 vertices with the coordinates
-  $(1,0)$, $(0,0)$, $(1,0)$ and a last one $(0,\varepsilon)$ with $\varepsilon > 0$ as seen in Figure \ref{fig:thinK13}.
+  $(1,0)$, $(0,0)$, $(1,0)$ and a last one $(0,\varepsilon)$ with $\varepsilon > 0$ and arbitrarily small
+  as seen in Figure \ref{fig:thinK13}.
 \end{remark}
 
 
@@ -34,7 +35,6 @@ have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
 \draw[color=black] (1,0.2265) node {$v_3$};
 
 \draw[red, opacity = 0.5] (0,0.07) circle [radius=0.5];
-
 \draw[color=black] (2.4386,0.0367) node {\tiny $\varepsilon > 0$};
 
 % lines to describe distance (epsilon)
@@ -68,37 +68,52 @@ have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
 \label{fig:thinK13}
 \end{figure}
 
-It has been proven that MUIG $\subsetneq$ TSG.\\
+\begin{theorem}
+  There is no constant $t$ such that SG($t$) = TSG.
+\end{theorem}
 
+Since this class is newly defined we have to characterize it. For this purpose,
+some relations have been found between this class and interval graphs.
 
-Denote that there's not constant $t$ such that SG($t$) = TSG.\\
+\subsection{Interval graphs}
 
-Unfettered unit interval graphs = UUIG\\
+\begin{theorem}
+  MUIG $\subsetneq$ TSG.
+\end{theorem}
 
-MUIG $\subsetneq$ TSG $\subsetneq$ UUIG\\
+We can define a new class of graphs: unfettered unit interval graphs. These graphs
+are unit interval graphs where if two intersections touch, we can decide whether
+they intersect or not. We denote this class UUIG.
 
-UUIG $\subseteq$ co-comparability graphs (to prove).
-\paragraph{Proof} Let's have a relation of non-increasing order $\leq$ between the left
-endpoints of each interval $v$ ($l(v)$). This relation will (nope, find another proof...).
+\begin{theorem}
+  TSG $\subsetneq$ UUIG.
+\end{theorem}
 
 
 \subsection{Open questions about Thin Strip Graphs}
 In this section we state the problems that are being studied for the thesis.
 
 \paragraph{Forbidden subgraphs of Thin Strip Graphs}
-  We've proven that MUIG $\subsetneq$ TSG $\subsetneq$ UUIG. Knowing the\\
-  (Why $F_k$ is a co-comparability unit disk graph?)
+  We have proven that MUIG $\subsetneq$ TSG $\subsetneq$ UUIG. Knowing some
+  characterizations of MUIG, we can have an approach to this question by
+  exploring the already known forbidden subgraphs of MUIG.
+
+  From the results shown in this section, we can say that TSG $\subseteq$ UDG
+  $\cap$ UUIG, being UUIG a subclass of co-comparability graphs.
 
 \paragraph{Complexity class for TSG recognition}
-  We've shown in section \ref{sec:complex} that some intersection
+  We have shown in section \ref{sec:complex} that some intersection
   geometric problems are in $\exists \mathbb{R}$ (unit disk graph
-  recognition problem or the stretchability problem) and we'd like to
+  recognition problem or the stretchability problem) and we would like to
   know if TSG recognition or even SG($c$) recognition is in NP knowing
   that TSG $\subseteq$ UDG $\cap$ UUIG.
 
-\paragraph{Complexity class of graph problems applied in TSG}
-  We've shown in section \ref{sec:complex} that CLIQUE is in $\mathcal{P}$ for
+\paragraph{Complexity class of graph problems applied to TSG}
+  We have shown in section \ref{sec:complex} that CLIQUE is in $\mathcal{P}$ for
   unit disk graphs. Knowing that TSG $\subseteq$ UDG $\cap$ UUIG we know that CLIQUE
   is also polynomial for TSG. The question is, is there any problem that for the superclasses
-  UUIG (and also co-comparability graphs) and UDG such that their complexity is reduced
-  when applied to TSGs?
+  UUIG (and also co-comparability graphs) and UDG whose complexity is reduced for
+  TSG or TSG($c$)?
+
+  We can also analyze the domains of $c$ for which some problems are easier. This could
+  help us bound the complexity of those problems.

@@ -7,6 +7,8 @@
 \section{Geometry}
 \label{sec:geom}
 
+There are many geometric problems associated to disk graphs,
+
 The intersection of convex objects is a matter well studied for multiple
 subjects. In our case, it is interesting to know some properties about
 the intersection of disks, those being convex objects.
@@ -18,7 +20,7 @@ $$\forall p,q \in S\  \forall \lambda \in [0,1]: (1-\lambda)p + \lambda q \in S$
 A \textit{stabbing} is a point that traverses a set of intersecting objects. A lot of
 research has been done \cite{schlipf2013stabbing} on the minimal amount of stabbings to
 cover every object in a set. Stabbings can also be done with more complex structures
-than points, in that case we're talking about \textit{coverings}.
+than points, in that case we are talking about \textit{coverings}.
 
 \begin{theorem}[Helly]
   Given a set $Q$ of objects in $\mathbb{R}^d$, if for each subset of $Q$ of
@@ -26,5 +28,29 @@ than points, in that case we're talking about \textit{coverings}.
   \varnothing$. \cite{Helly1923175}
 \end{theorem}
 
-Koebe's planar $\subseteq$ disk
-  = Planar graph duality
+\begin{theorem}
+  The problem that for a set of $n$ disks whether there exists a regular n-gon
+  whose vertices stab every disk of the set can be decided in $O(n^{10.5} / \sqrt{\log(n)})$ \cite{schlipf2013stabbing}
+\end{theorem}
+
+\subsection{Coin graphs}
+
+Penny graphs can be defined as disk graphs where the disks can just touch each
+other without overlapping. A famous theorem is derived from this class of graphs:
+the circle packing theorem.
+
+\begin{theorem}[Circle packing theorem]
+  The circle packing theorem states that for every simple connected planar graph
+  $G$ is a penny graph. \cite{doi:10.1137/0406017}
+\end{theorem}
+
+\begin{corollary}
+  Planar graphs $\subseteq$ disk graphs \cite{spinradEfficientGraphRepresentations2012}.
+\end{corollary}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{res/circle_packing}
+\caption{Circle packing of a planar graph. \cite{nachmiasPlanarMapsRandom2016}}
+\label{fig:circle}
+\end{figure}

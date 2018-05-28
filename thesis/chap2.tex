@@ -38,8 +38,8 @@ A problem $L \in \mathcal{P}$ if $L$ is polynomially decidable.
 A problem $L \in \mathcal{NP}$ if $L$ is polynomially verifiable. Thus, $\mathcal{P} \subseteq \mathcal{NP}$.
 \end{defn}
 
-To prove a bound of complexity on an unknown problem $L$ we have to find other
-problems with already known complexity and find equivalences between those two. This
+To prove a bound of complexity on an unknown problem $L$ we have to find another
+problem with already known complexity and find equivalences between those two. This
 can be achieved through \textit{reductions}.
 
 \begin{defn}
@@ -51,7 +51,7 @@ can be achieved through \textit{reductions}.
 
 With this concept we can define new complexity classes. $\mathcal{NP}$-hard is
 the set of problems so that we can reduce every $\mathcal{NP}$ problem to. The set
-of problems that are $\mathcal{NP}$-hard and $\mathcal{NP}$ are called $\mathcal{NP}$-complete.
+of problems that are both $\mathcal{NP}$-hard and $\mathcal{NP}$ are called $\mathcal{NP}$-complete.
 This is generalized to every complexity class ($\mathcal{P}$, $\exists \mathbb{R}$, RP, etc...)
 
 \paragraph{Satisfiability problem} The satisfiability problem (SAT) is to decide the satisfiability
@@ -68,6 +68,10 @@ $G$.
 
 \begin{theorem}
   CLIQUE is $\mathcal{NP}$-complete. \cite{Karp1972}
+\end{theorem}
+
+\begin{theorem}
+  CLIQUE is QPTAS when applied to disk graphs. \cite{DBLP:journals/corr/abs-1712-05010}
 \end{theorem}
 
 \begin{theorem}[Clark-Colbourn]
@@ -167,8 +171,8 @@ Given a pseudoline arrangement, is it equivalent to an arrangement of straight l
 \paragraph{Proof idea} ETR can be reduced to STRETCHABILITY due to Mnev's
 universality theorem. \cite{10.1007/978-3-642-11805-0_32}
 
-\paragraph{Unit Disk Graph recognition} The Unit Disk Graph recognition is
-the problem that decides if a graph $G$ is a Unit Disk Graph. Unit Disk Graph
+\paragraph{Unit disk graph recognition} The unit disk graph recognition is
+the problem that decides if a graph $G$ is a unit disk graph. Unit disk graph
 recognition is $\exists \mathbb{R}$-complete. \cite{Schaefer2013}
 
 \paragraph{Proof idea} UDG recognition is a corollary of deciding whether a graph
@@ -176,6 +180,6 @@ with a given length is realizable. This problem is $\exists \mathbb{R}$-complete
 
 The reduction is done from STRETCHABILITY \cite{Schaefer2013}. The reduction is
 done by adding a vertex to $V$ for each pseudoline intersection. For each three
-consecutive points $u_1, u_2, u_3$ along a pseudoline a widget that will
+consecutive points $u_1, u_2, u_3$ along a pseudoline a widget will be added that will
 be only realizable if and only if the pseudoline can be stretched with the same
 arrangement.

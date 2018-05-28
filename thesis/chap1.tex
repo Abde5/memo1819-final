@@ -30,12 +30,17 @@ any crossing between the edges.
 \end{defn}
 
 \begin{defn}
+  Let $G = (V,E)$ its complement graph $\overline{G}$ is the graph such that its edge set
+  is defined as: $\{vw: v,w\in V, vw\notin E\}$.
+\end{defn}
+
+\begin{defn}
   $H$ is called a \textit{minor} of $G$ if $H$ can be constructed by deleting edges and vertices,
   or contracting edges.
 \end{defn}
 
 \begin{theorem}[Kuratowski]
-  A graph $G$ is planar if and only if it doesn't contain $K_5$ or $K_{3,3}$ as a minor or
+  A graph $G$ is planar if and only if it does not contain $K_5$ or $K_{3,3}$ as a minor or
   a induced subgraph.
 \end{theorem}
 
@@ -55,13 +60,14 @@ any crossing between the edges.
 
 \begin{defn}
   A graph $G = (V,E)$ is complete if every pair of distinct $v_1,v_2 \in V$ are
-  adjacent. This is denoted $K_n$ with $n$ the number of elements. If $G$ is an
+  adjacent. This is denoted $K_n$ with $n$ the size of the graph. If $G$ is an
   induced graph of $H$ then $G$ is a clique of $H$.
 \end{defn}
 
 \begin{defn}
-  A graph $G$ is bipartite if there are two disjoint independent sets $A,B \subset V$
-  such that every vertex of $A$ connects to one in $B$.
+  A graph $G$ is bipartite if there exist two disjoint subsets $A,B \subset V$ such
+  that $A\cup B = V$ and each edge $e\in E$ has an endpoint on $A$ and the
+  another on $B$.
 \end{defn}
 
 \begin{defn}
@@ -69,6 +75,33 @@ any crossing between the edges.
   every pair of vertices $v\in A, w\in B$ are adjacent. It is denoted as $K_{n,m}$,
   being $n$ and $m$ the size of each bipartition.
 \end{defn}
+
+\begin{defn}
+  An induced forbidden subgraph of a graph class $X$ is a graph such that if it is the induced
+  subgraph of a graph $G$, we know that $G \notin X$.
+\end{defn}
+
+The coloration of a graph is a color assignment to each vertex such that the color
+of the two endpoints of every edge of the graph is different.
+
+\begin{defn}
+  The chromatic number of a graph $\chi(G)$ is the smallest number of colors needed to
+  have an acceptable coloration of $G$.
+\end{defn}
+
+\begin{defn}
+  The clique number of a graph $\omega(G)$ is the size of the biggest clique of $G$. We
+  can observe that for every graph: $\chi(G) \geq \omega(G)$.
+\end{defn}
+
+\begin{defn}
+  A perfect graph is a graph that respects this condition for every induced subgraph:
+  $$ \omega(G) = \chi(G)$$
+\end{defn}
+
+\begin{theorem}[Lovasz]
+  $G$ is perfect if and only if $\overline{G}$ is perfect.
+\end{theorem}
 
 \subsection{Intersection graphs}
 
@@ -169,6 +202,8 @@ mixed interval graphs and their class is denoted MUIG.
   \mathcal{U}^{+-}$ are the same (equivalent for $\mathcal{I}$). \cite{DOURADO20123357}
 \end{theorem}
 
+
+
 \begin{figure}
 \centering
 
@@ -204,21 +239,30 @@ mixed interval graphs and their class is denoted MUIG.
 \label{fig:muigK13}
 \end{figure}
 
-Unlike for UIG class, $K_{1,3}$ is a MUIG as seen in figure \ref{fig:muigK13}.
+Unlike for UIG class, $K_{1,3}$ is a MUIG as seen in figure \ref{fig:muigK13}. Some
+characterizations have been already found for these classes of graphs \cite{shuchatUnitMixedInterval2014}
+\cite{joosCharacterizationMixedUnit2013}.
 
 \subsubsection{Disks}
 
-A unit disk graph $G$ is a graph that is an intersection graph of unit
-disks on the plane. This class of graphs
-is important for this thesis, as the Thin Strip Graphs are a sub-class of
-Unit Disk Graphs (section \ref{sec:thin}).
+A disk graph $G$ is a graph that is an intersection graph of disks on the plane, when the size
+of the disk is unitary, we talk about unit disk graphs. This class of graphs
+is important for this thesis, as thin strip graphs are a sub-class of
+unit disk graphs (section \ref{sec:thin}).
 
-We will refer to the Unit Disk Graph class as UDG and an example of a realization
-can be found in the figure \ref{fig:udg}.\\
+We will refer to the unit disk graph class as UDG and an example of a realization
+can be found in the figure \ref{fig:udg}.
 
+\paragraph{Induced forbidden subgraphs} The class of unit disk graph can be
+characterized in terms of minimal forbidden subgraphs \cite{atminasForbiddenInducedSubgraphs2016}.
 
-Properties of UDG...
+\begin{theorem}[Atminas-Zamaraev]
+  For every integer $k > 1$, $\overline{K_2 + C_{2k+1}}$ is a minimal induced subgraph.
+\end{theorem}
 
+\begin{theorem}[Atminas-Zamaraev]
+  For every integer $k > 4$, $\overline{C_{2k}}$ is a minimal induced subgraph.
+\end{theorem}
 
 \begin{figure}
 \centering
