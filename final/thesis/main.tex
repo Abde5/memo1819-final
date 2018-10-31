@@ -1,0 +1,202 @@
+\documentclass[11pt,a4paper,oneside]{book}
+\usepackage[hmargin={1.25in,1.25in},vmargin={1.25in,1.25in}]{geometry}
+
+\makeindex
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{makeidx}
+\pagestyle{myheadings}
+\fancyhf{}
+\rhead[\leftmark]{thepage}
+
+\usepackage[T1]{fontenc}
+\usepackage{url}
+
+\usepackage[all]{xy}
+\usepackage{graphicx}
+\usepackage{units}
+\usepackage{enumerate}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+
+
+\usepackage{amssymb, amsmath, pict2e}
+ \pagestyle{myheadings}
+
+\usepackage{pdfsync}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{cancel}
+
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usepackage{environ}
+\usepackage{environ}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+
+%%%%%%%%%%%%%%%%  start macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}
+\newtheorem{defn}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{hyp}[theorem]{Hypothesis}
+\newtheorem{alg}[theorem]{Algorithm}
+
+\newcommand{\qed}{\mbox{$\Box$}}
+\newcommand{\proof}{\medbreak\par\noindent{\bf Proof. }}
+ \newcommand{\GP}{{\vec{G}}_P}
+\newcommand{\GN}{{\vec{G}}_N}
+
+\newcommand{\cover}{\mathrel{\rlap{$\prec$}
+                                \rlap{\hskip 0.7em $\cdot$}
+                                 \phantom{\prec}}}
+
+\newcommand{\re}{re}
+
+\newcommand{\up}{\mbox{\rm{up}}}
+\newcommand{\side}{\mbox{\rm{side}}}
+\newcommand{\type}{\mbox{\rm{type}}}
+
+
+\def\reals{{\mathbb R}}
+
+
+\newcommand{\ahat}{{\hat{a}}}
+\newcommand{\bhat}{{\hat{b}}}
+\newcommand{\chat}{{\hat{c}}}
+\newcommand{\dhat}{{\hat{d}}}
+\newcommand{\bolda}{{\bf{a}}}
+\newcommand{\boldb}{{\bf{b}}}
+\newcommand{\boldc}{{\bf{c}}}
+\newcommand{\boldd}{{\bf{d}}}
+
+\newcommand{\iplus}{{\cal I}^+}
+\newcommand{\iminus}{{\cal I}^-}
+\newcommand{\ipm}{{\cal I}^{\pm}}
+\newcommand{\ipmix}{{\cal I}^{{\cal M}}}
+
+\newcommand{\upl}{{\cal U}^+}
+\newcommand{\uminus}{{\cal U}^-}
+\newcommand{\upm}{{\cal U}^{\pm}}
+\newcommand{\upmix}{{\cal U}^{{\cal M}}}
+
+
+\newcommand{\ppl}{{\cal P}^+}
+\newcommand{\pminus}{{\cal P}^-}
+\newcommand{\ppm}{{\cal P}^{\pm}}
+\newcommand{\ppmix}{{\cal P}^{{\cal M}}}
+\newcommand{\bpm}{{\cal B}^{\pm}}
+\newcommand{\tpm}{{\cal T}^{\pm}}
+\newcommand{\bpmix}{{\cal B}^{{\cal M}}}
+\newcommand{\tpmix}{{\cal T}^{{\cal M}}}
+%%%%%%%%%%%%%%%%  end macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\parindent0em
+\parskip1.5ex
+
+\begin{document}
+
+\frontmatter
+\begin{titlepage}
+\begin{center}
+\textbf{UNIVERSIT\'E LIBRE DE BRUXELLES}\\
+\textbf{Facult\'e des Sciences}\\
+\textbf{D\'epartement d'Informatique}
+\vfill{}\vfill{}
+
+{\Huge  Characterization and complexity of \vspace*{.5cm} \linebreak[4] Thin Strip Graphs}
+
+% s \vspace*{.5cm}  \linebreak[4] possibly on many lines   \linebreak[4]  nevertheless a short title is better
+
+{\Huge \par}
+\begin{center}{\LARGE Abdeselam El-Haman Abdeselam}\end{center}{\Huge \par}
+\vfill{}\vfill{}
+\begin{flushright}{\large \textbf{Promotor :} Prof. Jean Cardinal}\hfill{}{\large Master Thesis in Computer Sciences}\\
+{\large }\hfill{}{}\end{flushright}{\large\par}
+\vfill{}\vfill{}\enlargethispage{3cm}
+\textbf{Academic year 2018~-~2019}
+\end{center}
+\end{titlepage}
+\newpage
+\thispagestyle{empty}
+\null
+
+\newenvironment{vcenterpage}
+{\newpage\thispagestyle{empty}
+\vspace*{\fill}}
+{\vspace*{\fill}\par\pagebreak}
+
+\begin{vcenterpage}
+\begin{flushright}
+    \large\em\null\vskip1in
+    You may want\\
+   to write a dedication here\vfill
+  \end{flushright}
+\end{vcenterpage}
+\thispagestyle{empty}
+\vspace*{5cm}
+
+\begin{quotation}
+\noindent ``\emph{You may also include one or more general quotes related to your topic.}''
+\begin{flushright}\textbf{Name of the author, date}\end{flushright}
+\end{quotation}
+
+\medskip
+
+\begin{quotation}
+\noindent ``\emph{Another quote.}''
+\begin{flushright}\textbf{Name of the author, date}\end{flushright}
+\end{quotation}
+\chapter*{Acknowledgment}
+\thispagestyle{empty}
+
+\noindent I want to thank ...
+
+\thispagestyle{empty}
+\setcounter{page}{0}
+\tableofcontents
+\mainmatter
+\setcounter{page}{1}
+
+%% CHAPTERS %%
+\input{intro/main}
+\input{chap1/main}
+%% CHAPTERS %%
+
+\chapter*{Conclusions}
+
+The conclusions are to be written with care\index{Care}, because it will be sometimes the part that could convince a potential reader to read the whole document.
+
+\appendix
+
+\backmatter
+
+\printindex % use makeindex to generate the index
+
+\bibliographystyle{alpha}
+
+\bibliography{main} %use bibtex to generate the bibliography
+
+\end{document}
