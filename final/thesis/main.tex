@@ -11,6 +11,8 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{url}
+\setlength {\marginparwidth}{2cm}
+\usepackage{todonotes}
 
 \usepackage[all]{xy}
 \usepackage{graphicx}
@@ -30,10 +32,9 @@
 \usepackage{cancel}
 
 \usepackage{color}
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{pgf,tikz}
 \usetikzlibrary{arrows}
-\usepackage{environ}
 \usepackage{environ}
 \makeatletter
 \newsavebox{\measure@tikzpicture}
@@ -114,7 +115,7 @@
 
 
 \parindent0em
-\parskip1.5ex
+\parskip1.0ex
 
 \begin{document}
 
@@ -183,6 +184,9 @@
 %% CHAPTERS %%
 \input{intro/main}
 \input{chap1/main}
+\input{chap2/main}
+\input{chap3/main}
+\input{chap4/main}
 %% CHAPTERS %%
 
 \chapter*{Conclusions}
@@ -198,5 +202,7 @@ The conclusions are to be written with care\index{Care}, because it will be some
 \bibliographystyle{alpha}
 
 \bibliography{main} %use bibtex to generate the bibliography
+
+\listoftodos
 
 \end{document}
