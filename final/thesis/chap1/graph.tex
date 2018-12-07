@@ -54,9 +54,14 @@ any crossing between the edges.
 \end{defn}
 
 \begin{defn}
-  A chord of a cycle $C_n$ is an edge that connects two non consecutive vertices
+  A chord of a cycle $C_n$ with $n \geq 4 $ is an edge that connects two non consecutive vertices
   of $C_n$.
 \end{defn}
+
+\begin{defn}
+  A triangular chord of a cycle is a chord that will create a new triangle ($C_3$).
+\end{defn}
+
 
 \begin{defn}
   A graph $G = (V,E)$ is complete if every pair of distinct $v_1,v_2 \in V$ are
@@ -131,6 +136,10 @@ $(\zeta,E)$ such that $c_1c_2\in E \Leftrightarrow c_1 \cap c_2 \neq \varnothing
   Equivalently, $G$ is a comparability graph if it is the comparability graph of
   a poset. For example, the Hasse diagram (figure \ref{fig:hasse}) is a
   comparability graph where the relation is inclusion.
+\end{defn}
+
+\begin{defn}
+  A graph $G = (V,E)$ is a co-comparability graph if its complement is a comparability graph.
 \end{defn}
 
 \begin{figure}

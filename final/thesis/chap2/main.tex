@@ -1,96 +1,216 @@
-\chapter{Thin Strip Graphs}
+\chapter{Interval Graphs}
 
-\todo{Introduction of the chapter.}
+In this chapter an overview of the MUIG and UUIG families will be given, with their characterization.
 
-\section{Definition}
+\todo[inline]{in the case of UUIG I want to find a more exhaustive characterization using MUUIG's families to use them in TSG. In this case it will be easy to proof complexity on TSG recognition}
 
-$c$-strip graphs are unit disk graphs such that the centers of the disks belong to
-$\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$. The class is denoted by SG($c$). We
-have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
+\section{Mixed Unit Interval Graphs}
 
-\begin{defn}
-  Thin strip graphs are defined as TSG $= \bigcap_{c > 0}$ SG($c$).
-\end{defn}
+\todo[inline]{Show and describe every family with demos from Joos' article}
 
-\begin{remark}
-  SG($0$) $\neq$ TSG. We can construct a $K_{1,3}$ such that we have 3 vertices with the coordinates
-  $(1,0)$, $(0,0)$, $(1,0)$ and a last one $(0,\varepsilon)$ with $\varepsilon > 0$ and arbitrarily small
-  as seen in Figure \ref{fig:thinK13}.
-\end{remark}
+\subsection{Families}
 
-% Figure about the K_1,3 construction
+Here we are going to define every family of forbidden induced subgraphs for MUUIG.
+
+\theorem\label{compaTriangular}[Gilmore, Hoffman]{A graph G is a comparability graph if and only if each odd cycle has at least one triangular chord. \cite{gilmoreCharacterizationComparabilityGraphs1964}}
+
+An important family of forbidden induced subgraphs in paper TSG: $\mathcal{R}_k$
+
 \begin{figure}
-\centering
+\begin{center}
+  \begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
 
-\begin{scaletikzpicturetowidth}{\textwidth}
-\begin{tikzpicture}[scale=1.5]
+\def\xa{0.5}
+\def\ya{0}
 
-\draw (-2,0) -- (2,0);
-\draw[red ,opacity = 0.5] (-2,0.07) -- (2,0.07);
-\draw  (-1,0) circle [radius=0.5];
-\draw[color=black] (-1,0.2265) node {$v_1$};
-\draw  (0,0) circle [radius=0.5];
-\draw[color=black] (0,0.2265) node {$v_4$};
-\draw  (1,0) circle [radius=0.5];
-\draw[color=black] (1,0.2265) node {$v_3$};
+\def\xb{4}
+\def\yb{0}
 
-\draw[red, opacity = 0.5] (0,0.07) circle [radius=0.5];
-\draw[color=black] (2.4386,0.0367) node {\tiny $\varepsilon > 0$};
+\def\xc{8}
+\def\yc{0}
 
-% lines to describe distance (epsilon)
-\draw[very thin] (2.1,0.07) -- (2.1,0);
-\draw[very thin] (2.05,0.07) -- (2.1,0.07);
-\draw[very thin] (2.05,0) -- (2.1,0);
+\def\xd{3.5}
+\def\yd{-2.5}
 
-\draw[opacity = 0.5] (-2,-2.07) -- (2,-2.07);
-\draw[red] (-2,-2) -- (2,-2);
-\draw[opacity = 0.5]  (0,-2.07) circle [radius=0.5];
-\draw[opacity = 0.5]  (1,-2.07) circle [radius=0.5];
-\draw[opacity = 0.5]  (-1,-2.07) circle [radius=0.5];
-\draw[red] (0,-2) circle [radius=0.5];
-\draw[color=black] (0,-1.765) node {$v_2$};
 
-\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v1) at (0,2.75) {};
-\draw[color=black] (0,3) node {$v_4$};
-\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v3) at (0,1.75) {};
-\draw[color=black] (0,1.5) node {$v_2$};
-\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v2) at (-1,1.75) {};
-\draw[color=black] (1,1.5) node {$v_3$};
-\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v4) at (1,1.75) {};
-\draw[color=black] (-1,1.5) node {$v_1$};
-\draw  (v1) edge (v2);
-\draw  (v1) edge (v3);
-\draw  (v1) edge (v4);
+%graph R_0
+\path[fill] (\xa+0.5,\ya) circle (\ver);
+\path[fill] (\xa+1,\ya+1) circle (\ver);
+\path[fill] (\xa+2,\ya+1) circle (\ver);
+\path[fill] (\xa+2.5,\ya) circle (\ver);
+\path[fill] (\xa+1.5,\ya) circle (\ver);
+
+\draw[thick] (\xa+0.5,\ya)--(\xa+1.5,\ya)--(\xa+1,\ya+1)
+(\xa+2,\ya+1)--(\xa+1.5,\ya)--(\xa+2.5,\ya);
+
+\node (1) at (\xa+1.5,\ya-0.7) {$R_0$};
+
+%graph R_1
+\path[fill] (\xb,\yb) circle (\ver);
+\path[fill] (\xb+1,\yb) circle (\ver);
+\path[fill] (\xb+2,\yb) circle (\ver);
+\path[fill] (\xb+3,\yb) circle (\ver);
+\path[fill] (\xb+0.5,\yb+1) circle (\ver);
+\path[fill] (\xb+1.5,\yb+1) circle (\ver);
+\path[fill] (\xb+2.5,\yb+1) circle (\ver);
+
+\draw[thick] (\xb,\yb)--(\xb+1,\yb)--(\xb+2,\yb)--(\xb+3,\yb)
+(\xb+0.5,\yb+1)--(\xb+1,\yb)--(\xb+1.5,\yb+1)--(\xb+2,\yb)--(\xb+2.5,\yb+1);
+
+\node (1) at (\xb+1.5,\yb-0.7) {$R_1$};
+
+
+%graph R_2
+\path[fill] (\xc,\yc) circle (\ver);
+\path[fill] (\xc+1,\yc) circle (\ver);
+\path[fill] (\xc+2,\yc) circle (\ver);
+\path[fill] (\xc+3,\yc) circle (\ver);
+\path[fill] (\xc+4,\yc) circle (\ver);
+\path[fill] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill] (\xc+1.5,\yc+1) circle (\ver);
+\path[fill] (\xc+2.5,\yc+1) circle (\ver);
+\path[fill] (\xc+3.5,\yc+1) circle (\ver);
+
+\draw[thick] (\xc,\yc)--(\xc+1,\yc)--(\xc+2,\yc)--(\xc+3,\yc)--(\xc+4,\yc)
+(\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+1.5,\yc+1)--(\xc+2,\yc)--(\xc+2.5,\yc+1)--(\xc+3,\yc)--(\xc+3.5,\yc+1);
+
+\node (1) at (\xc+2,\yc-0.7) {$R_2$};
+
+%graph R_i
+\path[fill] (\xd,\yd) circle (\ver);
+\path[fill] (\xd+1,\yd) circle (\ver);
+\path[fill] (\xd+2,\yd) circle (\ver);
+\path[fill] (\xd+3,\yd) circle (\ver);
+\path[fill] (\xd+4.5,\yd) circle (\ver);
+\path[fill] (\xd+5.5,\yd) circle (\ver);
+\path[fill] (\xd+6.5,\yd) circle (\ver);
+\path[fill] (\xd+0.5,\yd+1) circle (\ver);
+\path[fill] (\xd+1.5,\yd+1) circle (\ver);
+\path[fill] (\xd+2.5,\yd+1) circle (\ver);
+\path[fill] (\xd+5,\yd+1) circle (\ver);
+\path[fill] (\xd+6,\yd+1) circle (\ver);
+
+\fill (\xd+3.35,\yd) circle (\ver/2);
+\fill (\xd+3.75,\yd) circle (\ver/2);
+\fill (\xd+4.15,\yd) circle (\ver/2);
+
+\draw[thick] (\xd,\yd)--(\xd+3,\yd)
+(\xd+4.5,\yd)--(\xd+6.5,\yd)
+(\xd+0.5,\yd+1)--(\xd+1,\yd)--(\xd+1.5,\yd+1)--(\xd+2,\yd)--(\xd+2.5,\yd+1)--(\xd+3,\yd)
+(\xd+4.5,\yd)--(\xd+5,\yd+1)--(\xd+5.5,\yd)--(\xd+6,\yd+1);
+
+\draw[thick,decoration={brace,mirror,raise=0.2cm},decorate] (\xd+1,\yd) -- (\xd+5.5,\yd)
+node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
+
+\node (1) at (\xd+6,\yd-0.7) {$R_i$};
+
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
-
-\caption{A construction of $K_{1,3}$ with a disk realization, being this graph a TSG.}
-\label{fig:thinK13}
+\end{center}
+\caption{The class $\mathcal{R}$.}\label{graphsR}
 \end{figure}
 
-\begin{theorem}
-  There is no constant $t$ such that SG($t$) = TSG.
-\end{theorem}
+\begin{figure}
+\begin{center}
+  \begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
 
-Since this class is newly defined we have to characterize it. For this purpose,
-some relations have been found between this class and interval graphs.
+\def\xa{0.5}
+\def\ya{0}
 
-\subsection{Interval graphs}
+\def\xb{4}
+\def\yb{0}
 
-\begin{theorem}
-  MUIG $\subsetneq$ TSG.
-\end{theorem}
+\def\xc{2.5}
+\def\yc{-4.5}
 
-We can define a new class of graphs: unfettered unit interval graphs. These graphs
-are unit interval graphs where if two intersections touch, we can decide whether
-they intersect or not. We denote this class UUIG.
+%graph R^C_0
+\path[fill] (\xa+0.5,\ya) circle (\ver);
+\path[fill] (\xa+0.5,\ya+1) circle (\ver);
+\path[fill] (\xa+1.5,\ya+1) circle (\ver);
+\path[fill] (\xa+1.5,\ya) circle (\ver);
+\path[fill] (\xa+2,\ya+0.5) circle (\ver);
 
-\begin{theorem}
-  TSG $\subsetneq$ UUIG.
-\end{theorem}
+\draw[thick] (\xa+0.5,\ya)--(\xa+0.5,\ya+1)--(\xa+1.5,\ya+1)
+(\xa+0.5,\ya)--(\xa+1.5,\ya)--(\xa+1.5,\ya+1);
+\draw[thick] (\xa+0.5,\ya)--(\xa+1.5,\ya+1);
+\draw[thick] (\xa+0.5,\ya+1)--(\xa+1.5,\ya);
 
-\todo{Complete description of TSG}
+\node (1) at (\xa+1.5,\ya-1) {$R^C_0$};
 
-\section{Characterization of UUIG}
+%graph R_1
+  % clique vertices
+\path[fill] (\xb+1,\yb) circle (\ver);
+\path[fill] (\xb+2,\yb) circle (\ver);
+\path[fill] (\xb+0.5,\yb+1) circle (\ver);
+\path[fill] (\xb+2.5,\yb+1) circle (\ver);
+\path[fill] (\xb+1.5,\yb+1.7) circle (\ver);
 
-\todo{}
+  % other vertices
+\path[fill] (\xb+0.5,\yb+2) circle (\ver);
+\path[fill] (\xb+2.9,\yb+0.2) circle (\ver);
+
+
+\draw[thick](\xb+0.5,\yb+1)--(\xb+1,\yb)--(\xb+2,\yb)--(\xb+2.5,\yb+1)--(\xb+1.5,\yb+1.7)--(\xb+0.5,\yb+1);
+\draw[thick] (\xb+0.5,\yb+1)--(\xb+2,\yb)--(\xb+1.5,\yb+1.7)--(\xb+1,\yb)--(\xb+2.5,\yb+1)--(\xb+0.5,\yb+1);
+
+\draw[thick](\xb+0.5,\yb+1)--(\xb+0.5,\yb+2)--(\xb+1.5,\yb+1.7);
+\draw[thick](\xb+2.5,\yb+1)--(\xb+2.9,\yb+0.2)--(\xb+2,\yb);
+\node (1) at (\xb+1.5,\yb-1) {$R^C_1$};
+
+%graph R_2
+  % clique vertices
+\path[fill] (\xc+0.5,\yc) circle (\ver);
+\path[fill] (\xc+2.5,\yc) circle (\ver);
+\path[fill] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill] (\xc+2.5,\yc+1) circle (\ver);
+\path[fill] (\xc+1.5,\yc+1.7) circle (\ver);
+\path[fill] (\xc+1.5,\yc+1.7) circle (\ver);
+
+  % other vertices
+\path[fill] (\xc+0.5,\yc+2) circle (\ver);
+\path[fill] (\xc+2.9,\yc+0.2) circle (\ver);
+
+
+\draw[thick](\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+2,\yc)--(\xc+2.5,\yc+1)--(\xc+1.5,\yc+1.7)--(\xc+0.5,\yc+1);
+\draw[thick] (\xc+0.5,\yc+1)--(\xc+2,\yc)--(\xc+1.5,\yc+1.7)--(\xc+1,\yc)--(\xc+2.5,\yc+1)--(\xc+0.5,\yc+1);
+
+\draw[thick](\xc+0.5,\yc+1)--(\xc+0.5,\yc+2)--(\xc+1.5,\yc+1.7);
+\draw[thick](\xc+2.5,\yc+1)--(\xc+2.9,\yc+0.2)--(\xc+2,\yc);
+\node (1) at (\xc+1.5,\yc-1) {$R^C_2$ (à completer)};
+
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{The class $\mathcal{R}^C$.}\label{graphsRC}
+\end{figure}
+
+
+\lemma{$\mathcal{R}$ is a family of co-comparability graphs.}
+\proof{To prove that $\mathcal{R}$ is a family of co-comparability graphs we have to prove that its complement is a comparability graph. You can see in Figure \ref{graphsRC} the family of complements of $\mathcal{R}$ that we will call $\mathcal{R}^C$.
+
+For this proof we will analyze the topology of $R_k^C = (V,E)$. First of all we can define two disjoint subsets $A\cup B = V$ where $\#A = k+4$ and $\#B = k+1$. $A$ is a clique and $B$ is a set of vertices such that in $R_k$ their degree is greater than 3. We can also observe that the induced subgraph $A$ is actually a tree, so there is not a cycle in $A$.
+
+We will try to find an odd cycle $C$ such that we do not find any triangular chord in it:
+\begin{itemize}
+  \item $\forall_{v \in C}\ v \in A$: In this case, every cycle inside the cycle has a triangular chord.
+  \item $\exists_{v \in C}\ v \in B$: In this case, we will have to find a cycle $C$ with these conditions:
+
+  \begin{itemize}
+    \item If $\#(C\cap B) \geq 3$, then a triangular chord is found.
+    \item If $\#(C\cap B) = 2$, we will have to have an odd number of vertices on $A$. It can be either one (so it creates a triangulation, because both of the vertices share the same vertex in $A$) or more than 3.
+    \item If $\#(C\cap B) = 1$, we will have to have an even number of vertices on $A$.
+    \todo[inline]{Proof formality to be improved}
+  \end{itemize}
+\end{itemize}
+That is, because we cannot find an odd cycle with a triangular chord, the $\mathcal{R}^C$ is a family of comparability graphs, so $\mathcal{R}$ is a family of co-comparability graphs. \qed}
+
+\section{Unfettered Unit Interval Graphs}
+
+\todo[inline]{Try to characterize with known forbidden families of subgraphs (from MUIG? and TSG article)}
