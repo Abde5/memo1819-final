@@ -2,7 +2,7 @@
 
 To better characterize SG($c$) and TSG we can define a new class of graphs: $\sigma$-SG($c$).
 
-$\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong to $\{(x,y): -\inf < x < \inf, y \in \{0,c\}\}$, so more intuitively we can say that the center of the disks are placed on two horizontal lines
+$\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong to $\{(x,y): -\inf < x < \inf, y \in \{0,c\}\}$, so more intuitively we can say that the center of the disks are placed on two parallel horizontal lines
 
 \section{Characterization of $\sigma$-SG($c$)}
 
@@ -18,8 +18,18 @@ $\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong t
 }
 
 \proof{ (Idea) Let's take two subsets $A,B \subseteq G$ being $G$ a SG($c$)... }
-\todo{Definition of $\sigma$-SG($c$)}
 
+\theorem{$\sigma$-SG($\epsilon$) $\subsetneq$ TSG}
+
+\todo[inline]{FALSE PROOF/THEOREM -> TO MAKE NEW STATEMENT}
+
+\proof{By definition, we know that $\sigma$-SG($\epsilon$) $\subset$ TSG because the area where the disks can be placed in $\sigma$-SG($\epsilon$) is included in the area in TSG.
+
+We can prove that $\sigma$-SG($\epsilon$) $\neq$ TSG because we can construct a graph $G$ such that $G \in$ TSG and $G \notin$ $\sigma$-SG($\epsilon$). To construct this graph we take a clique $K_n$. Then, we take two disjoint vertices $x$ and $y$ and we add the edges $\forall c \in K_{n-1} : xc, yc \in E$ with $K_{n-1} \in K_{n}$. (informally: we attach 2 vertices to every vertex of the clique except 2... )
+
+We can create... }
+
+\todo[inline]{Then in the hierarchy, is MUIG $\subsetneq$ $\sigma$-SG($\epsilon$) or $\subsetneq$ $\sigma$-SG($\epsilon$) true? }
 \section{Induced forbidden subgraphs}
 
 \begin{figure}
@@ -83,7 +93,7 @@ $\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong t
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
 
-\caption{A $\sigma$-SG($c$) (below) with its representation (up). The set of disks on }
+\caption{ Forbidden graph in $\sigma$-SG($\epsilon$) }
 \label{fig:thinK13}
 \end{figure}
 
