@@ -2,24 +2,74 @@
 
 To better characterize SG($c$) and TSG we can define a new class of graphs: $\sigma$-SG($c$).
 
-$\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong to $\{(x,y): -\inf < x < \inf, y \in \{0,c\}\}$, so more intuitively we can say that the center of the disks are placed on two horizontal lines
+$\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong to $\{(x,y): -\inf < x < \inf, y \in \{0,c\}\}$, so more intuitively we can say that the center of the disks are placed on two parallel horizontal lines.
 
 \section{Characterization of $\sigma$-SG($c$)}
 
-\prop {An $\sigma$-SG($c$) graph $G$ (with $c < 1$) can be characterized by computing $\delta : A \times B \to \{1,0\}$ where $A,B \subseteq G$ and $A \cup B = \varnothing$:
+\prop {An $\sigma$-SG($c$) graph $G$ (with $c < 1$) can be characterized by computing $\delta : A \times B \to E$ where $A,B \subseteq G$, $A$ and $B$ are UIG, and $A \cup B = \varnothing$:
 
 \[
     \delta(x,y) =
     \begin{cases}
-      1        & \text{if } \text{dist}(x,y) \leq 1\\
-      0,       & \text{otherwise}
+      xy        & \text{if } \text{dist}(x,y) \leq 1\\
+      \varnothing,       & \text{otherwise}
     \end{cases}
 \]
 }
 
-\proof{ (Idea) Let's take two subsets $A,B \subseteq G$ being $G$ a SG($c$)... }
-\todo{Definition of $\sigma$-SG($c$)}
+\proof{ (Idea) Let's take two subsets $A,B \subseteq G$ being $G$ a SG($c$)...  Both of these subsets (A and B are UIG, because each element in each of these subsets is in the same line).
 
+\todo[inline]{Finish proof about characterization -> UIGs}}
+
+\theorem{$\sigma$-SG($\epsilon$) $\subsetneq$ TSG}
+
+\todo[inline]{prove with 2 clique adjacency}
+
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5]
+
+%graph
+\node[draw,circle,inner sep=1pt,fill,label distance=1cm] (v2) at (0,0.85) {};
+\node[draw,circle,inner sep=1pt,fill,label distance=1cm] (v2) at (-0.5,0) {};
+\node[draw,circle,inner sep=1pt,fill,label distance=1cm] (v2) at (0.5,0) {};
+\draw(0.5,0)--(-0.5,0)--(0,0.85)--(0.5,0);
+
+\node[draw,circle,inner sep=1pt,fill,label distance=1cm] (v2) at (0,0.5) {};
+\node[draw,circle,inner sep=1pt,fill,label distance=1cm] (v2) at (0.2,0.2) {};
+\node[draw,circle,inner sep=1pt,fill,label distance=1cm] (v2) at (-0.2,0.2) {};
+\draw(0,0.5)--(0.2,0.2)--(0.2,0.2)--(-0.2,0.2)--(0,0.5);
+
+\draw(0,0.5)--(0,0.85);
+\draw(-0.5,0)--(-0.2,0.2);
+\draw(0.2,0.2)--(0.5,0);
+
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+
+\caption{ Forbidden graph in $\sigma$-SG($\epsilon$) }
+\label{fig:forbSigma}
+\end{figure}
+
+\proof{By definition, we know that $\sigma$-SG($\epsilon$) $\subset$ TSG because the area where the disks can be placed in $\sigma$-SG($\epsilon$) is included in the area in TSG.
+
+We can prove that $\sigma$-SG($\epsilon$) $\neq$ TSG because we can construct a graph $G$ such that $G \in$ TSG and $G \notin$ $\sigma$-SG($\epsilon$). This graph $F$ is a net$^*$ graph as described in Figure \ref{fig:forbSigma}.
+\begin{proofpart}
+$F$ is a TSG because we can realize it as a TSG if we take as center of disks $(0,0)$, $(0,z)$, $(0,\epsilon)$, $(1,0)$, $(1,z)$, $(1,\epsilon)$ such that $0 < z < \epsilon$.
+\end{proofpart}
+\begin{proofpart}
+  Now we have to prove that $F$ is a forbidden induced subgraph of $\sigma$-SG($\epsilon$). We will try to construct it by taking a induced subgraph that is representable: we take $F_{-1} = (V,E)$ such that $V(F_{-1}) = V(F)\setminus\{x\}$ with $x\in V(F)$. We notice that $V(F_{-1})$ is $C_{4}$ ($abcd$) with a vertex $e$ attached to two of its vertices (adjacent) creating a triangle $abe$.\\
+  The only way to realize this is by taking $a = (0,0)$, $b = (0,\epsilon)$, $c = (1,\epsilon)$, $d = (1,0)$ and $e$
+\end{proofpart}
+
+\todo[inline]{How to prove for sigma?}
+
+ }
+
+\todo[inline]{Then in the hierarchy, is MUIG $\subsetneq$ $\sigma$-SG($\epsilon$) or $\subsetneq$ $\sigma$-SG($\epsilon$) true? }
 \section{Induced forbidden subgraphs}
 
 \begin{figure}
@@ -83,12 +133,8 @@ $\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong t
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
 
-\caption{A construction of $K_{1,3}$ with a disk realization, being this graph a TSG.}
-\label{fig:thinK13}
+\caption{ A representation of a $\sigma$-SG($c$) }
+\label{fig:sigma}
 \end{figure}
 
 \todo[inline]{Add forbidden subgraphs known for the moment with proofs.}
-
-\todo[inline]{Add known UDG forbidden families of subgraphs.}
-
-\todo[inline]{Develop proof of $F_k$ is a co-comparability graph.}

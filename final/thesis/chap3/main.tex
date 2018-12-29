@@ -1,11 +1,98 @@
-\chapter{Characterization of Interval Graphs}
+\chapter{Thin Strip Graphs}
 
-\section{Mixed Unit Interval Graphs}
+\todo{Introduction of the chapter.}
 
-\todo[inline]{Show and describe every family with demos from Joos' article}
+\section{Definition}
 
-\subsection{Families}
+$c$-strip graphs are unit disk graphs such that the centers of the disks belong to
+$\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$. The class is denoted by SG($c$). We
+have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
 
-\section{Unfettered Unit Interval Graphs}
+\begin{defn}
+  Thin strip graphs are defined as TSG $= \bigcap_{c > 0}$ SG($c$).
+\end{defn}
 
-\todo[inline]{Characterize with known forbidden families of subgraphs (from MUIG? and TSG article)}
+\begin{remark}
+  SG($0$) $\neq$ TSG. We can construct a $K_{1,3}$ such that we have 3 vertices with the coordinates
+  $(1,0)$, $(0,0)$, $(1,0)$ and a last one $(0,\varepsilon)$ with $\varepsilon > 0$ and arbitrarily small
+  as seen in Figure \ref{fig:thinK13}.
+\end{remark}
+
+% Figure about the K_1,3 construction
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5]
+
+\draw (-2,0) -- (2,0);
+\draw[red ,opacity = 0.5] (-2,0.07) -- (2,0.07);
+\draw  (-1,0) circle [radius=0.5];
+\draw[color=black] (-1,0.2265) node {$v_1$};
+\draw  (0,0) circle [radius=0.5];
+\draw[color=black] (0,0.2265) node {$v_4$};
+\draw  (1,0) circle [radius=0.5];
+\draw[color=black] (1,0.2265) node {$v_3$};
+
+\draw[red, opacity = 0.5] (0,0.07) circle [radius=0.5];
+\draw[color=black] (2.4386,0.0367) node {\tiny $\varepsilon > 0$};
+
+% lines to describe distance (epsilon)
+\draw[very thin] (2.1,0.07) -- (2.1,0);
+\draw[very thin] (2.05,0.07) -- (2.1,0.07);
+\draw[very thin] (2.05,0) -- (2.1,0);
+
+\draw[opacity = 0.5] (-2,-2.07) -- (2,-2.07);
+\draw[red] (-2,-2) -- (2,-2);
+\draw[opacity = 0.5]  (0,-2.07) circle [radius=0.5];
+\draw[opacity = 0.5]  (1,-2.07) circle [radius=0.5];
+\draw[opacity = 0.5]  (-1,-2.07) circle [radius=0.5];
+\draw[red] (0,-2) circle [radius=0.5];
+\draw[color=black] (0,-1.765) node {$v_2$};
+
+\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v1) at (0,2.75) {};
+\draw[color=black] (0,3) node {$v_4$};
+\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v3) at (0,1.75) {};
+\draw[color=black] (0,1.5) node {$v_2$};
+\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v2) at (-1,1.75) {};
+\draw[color=black] (1,1.5) node {$v_3$};
+\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v4) at (1,1.75) {};
+\draw[color=black] (-1,1.5) node {$v_1$};
+\draw  (v1) edge (v2);
+\draw  (v1) edge (v3);
+\draw  (v1) edge (v4);
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+
+\caption{A construction of $K_{1,3}$ with a disk realization, being this graph a TSG.}
+\label{fig:thinK13}
+\end{figure}
+
+\begin{theorem}
+  There is no constant $t$ such that SG($t$) = TSG.
+\end{theorem}
+
+Since this class is newly defined we have to characterize it. For this purpose,
+some relations have been found between this class and interval graphs.
+
+\subsection{Interval graphs}
+
+\begin{theorem}
+  MUIG $\subsetneq$ TSG.
+\end{theorem}
+
+We can define a new class of graphs: unfettered unit interval graphs. These graphs
+are unit interval graphs where if two intersections touch, we can decide whether
+they intersect or not. We denote this class UUIG.
+
+\todo[inline]{Complete description and properties of UUIG}
+
+\begin{theorem}
+  TSG $\subsetneq$ UUIG.
+\end{theorem}
+
+
+
+\section{Characterization of UUIG}
+
+\todo{}

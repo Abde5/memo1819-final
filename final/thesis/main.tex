@@ -34,7 +34,11 @@
 \usepackage{color}
 %\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{pgf,tikz}
-\usetikzlibrary{arrows}
+\usetikzlibrary{decorations,arrows}
+%\usetikzlibrary{decorations.pathmorphing}
+\usepgflibrary{decorations.pathreplacing}
+
+
 \usepackage{environ}
 \makeatletter
 \newsavebox{\measure@tikzpicture}
@@ -66,6 +70,10 @@
 
 \newcommand{\qed}{\mbox{$\Box$}}
 \newcommand{\proof}{\medbreak\par\noindent{\bf Proof. }}
+\newtheorem{proofpart}{Part}
+\makeatletter
+\@addtoreset{proofpart}{theorem}
+\makeatother
  \newcommand{\GP}{{\vec{G}}_P}
 \newcommand{\GN}{{\vec{G}}_N}
 
