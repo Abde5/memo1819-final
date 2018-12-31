@@ -1,5 +1,5 @@
 \documentclass[11pt,a4paper,oneside]{book}
-\usepackage[hmargin={1.25in,1.25in},vmargin={1.25in,1.25in}]{geometry}
+%\usepackage[hmargin={1.25in,1.25in},vmargin={1.25in,1.25in}]{geometry}
 
 \makeindex
 \usepackage{textcomp}
@@ -67,6 +67,7 @@
 
 \newtheorem{hyp}[theorem]{Hypothesis}
 \newtheorem{alg}[theorem]{Algorithm}
+\numberwithin{theorem}{section}
 
 \newcommand{\qed}{\mbox{$\Box$}}
 \newcommand{\proof}{\medbreak\par\noindent{\bf Proof. }}
@@ -122,8 +123,8 @@
 %%%%%%%%%%%%%%%%  end macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\parindent0em
-\parskip1.0ex
+\parindent1em
+%\parskip1.0ex
 
 \begin{document}
 

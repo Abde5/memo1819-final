@@ -21,9 +21,6 @@ $\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong t
 
 \todo[inline]{Finish proof about characterization -> UIGs}}
 
-\theorem{$\sigma$-SG($\epsilon$) $\subsetneq$ TSG}
-
-\todo[inline]{prove with 2 clique adjacency}
 
 \begin{figure}
 \centering
@@ -54,20 +51,42 @@ $\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong t
 \label{fig:forbSigma}
 \end{figure}
 
+This class of graphs
+
+\lemma{All realization of $C_4$ as a $\sigma$-SG($\epsilon$) is divided in two groups of two consecutive vertices where the points are
+located on the same line.}
+
+\proof{
+  First, we prove that there is no realization of a different arrangement for $G = C_4$:
+  \begin{itemize}
+    \item \textbf{4-0:} When every center of unit disks is located in the same line it is considered an UIG.
+    This is equal to stating that $C_4 \in$ UIG, which is impossible by Theorem \ref{theo:intervalChord}.
+    \item \textbf{3-1:} We define $a,b,c \in V(G)$ as the group of three consecutive points in one line ($y=0$). We know that $c_x > a_x+1$; $ac \notin E(G)$ and $a_x < b_x < c_x$ (so $a_x$ the is the leftmost vertex and $c_x$ the rightmost one).
+
+    We suppose that $d \in V(G)$ and ${ad,cd} \in E(G)$. Because $bd \notin E(G)$, $d_x \in \mathbb{R}\setminus [b_x-\sqrt{1-\epsilon^2},b_x+\sqrt{1-\epsilon^2}]$.\\
+    If $d_x > b_x + \sqrt{1-\epsilon^2}$: $ad \notin E(G)$ because $a_x < b_x$ and $d_x > b_x + \sqrt{1-\epsilon^2} > a_x + \sqrt{1-\epsilon^2}$.\\
+    Else if $d_x < b_x - \sqrt{1-\epsilon^2}$: $cd \notin E(G)$ with the same development.
+    Therefore, it is not possible to have a $C_4$ with the 3-1 configuration.
+  \end{itemize}
+
+
+}
+
+\theorem{$\sigma$-SG($\epsilon$) $\subsetneq$ TSG}
+\todo[inline]{prove with 2 clique adjacency}
+
 \proof{By definition, we know that $\sigma$-SG($\epsilon$) $\subset$ TSG because the area where the disks can be placed in $\sigma$-SG($\epsilon$) is included in the area in TSG.
 
 We can prove that $\sigma$-SG($\epsilon$) $\neq$ TSG because we can construct a graph $G$ such that $G \in$ TSG and $G \notin$ $\sigma$-SG($\epsilon$). This graph $F$ is a net$^*$ graph as described in Figure \ref{fig:forbSigma}.
 \begin{proofpart}
-$F$ is a TSG because we can realize it as a TSG if we take as center of disks $(0,0)$, $(0,z)$, $(0,\epsilon)$, $(1,0)$, $(1,z)$, $(1,\epsilon)$ such that $0 < z < \epsilon$.
+  $F$ is a TSG because we can realize it as a TSG if we take as center of disks $(0,0)$, $(0,z)$, $(0,\epsilon)$, $(1,0)$, $(1,z)$, $(1,\epsilon)$ such that $0 < z < \epsilon$.
 \end{proofpart}
 \begin{proofpart}
-  Now we have to prove that $F$ is a forbidden induced subgraph of $\sigma$-SG($\epsilon$). We will try to construct it by taking a induced subgraph that is representable: we take $F_{-1} = (V,E)$ such that $V(F_{-1}) = V(F)\setminus\{x\}$ with $x\in V(F)$. We notice that $V(F_{-1})$ is $C_{4}$ ($abcd$) with a vertex $e$ attached to two of its vertices (adjacent) creating a triangle $abe$.\\
-  The only way to realize this is by taking $a = (0,0)$, $b = (0,\epsilon)$, $c = (1,\epsilon)$, $d = (1,0)$ and $e$
+  Now we have to prove that $F$ is a forbidden induced subgraph of $\sigma$-SG($\epsilon$). We will try to construct it by taking a induced subgraph that is representable: we take $F_{-1} = F - x$ with $x\in V(F)$. We notice that $V(F_{-1})$ is $C_{4}$ ($abcd$) with a vertex $e$ adjacent to any two consecutive vertices $x,y \in V(C_4)$ creating the triangle $xye$.\\
+  The only way to realize this is by taking $a = (0,0)$, $b = (0,\epsilon)$, $c = (1,\epsilon)$, $d = (1,0)$ and $e$...
+  \todo{Finish proof here}
 \end{proofpart}
-
-\todo[inline]{How to prove for sigma?}
-
- }
+}
 
 \todo[inline]{Then in the hierarchy, is MUIG $\subsetneq$ $\sigma$-SG($\epsilon$) or $\subsetneq$ $\sigma$-SG($\epsilon$) true? }
 \section{Induced forbidden subgraphs}
