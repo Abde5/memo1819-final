@@ -13,9 +13,8 @@ In this chapter an overview of the MUIG and UUIG families will be given, with th
 
 Here we are going to define every family of forbidden induced subgraphs for MUUIG.
 
-\theorem\label{compaTriangular}[Gilmore, Hoffman]{A graph G is a comparability graph if and only if each odd cycle has at least one triangular chord. \cite{gilmoreCharacterizationComparabilityGraphs1964}}
-
 An important family of forbidden induced subgraphs in paper TSG: $\mathcal{R}_k$
+\todo{improve introduction to this subsection}
 
 \begin{figure}
 \begin{center}
@@ -114,103 +113,22 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 \caption{The class $\mathcal{R}$.}\label{graphsR}
 \end{figure}
 
-\begin{figure}
-\begin{center}
-  \begin{scaletikzpicturetowidth}{\textwidth}
-  \begin{tikzpicture}[scale=1]
-\def\ver{0.1} %size of a vertex
-\def\x{1}
-
-\def\xa{0.5}
-\def\ya{0}
-
-\def\xb{4}
-\def\yb{0}
-
-\def\xc{2.5}
-\def\yc{-4.5}
-
-%graph R^C_0
-\path[fill] (\xa+0.5,\ya) circle (\ver);
-\path[fill] (\xa+0.5,\ya+1) circle (\ver);
-\path[fill] (\xa+1.5,\ya+1) circle (\ver);
-\path[fill] (\xa+1.5,\ya) circle (\ver);
-\path[fill] (\xa+2,\ya+0.5) circle (\ver);
-
-\draw[thick] (\xa+0.5,\ya)--(\xa+0.5,\ya+1)--(\xa+1.5,\ya+1)
-(\xa+0.5,\ya)--(\xa+1.5,\ya)--(\xa+1.5,\ya+1);
-\draw[thick] (\xa+0.5,\ya)--(\xa+1.5,\ya+1);
-\draw[thick] (\xa+0.5,\ya+1)--(\xa+1.5,\ya);
-
-\node (1) at (\xa+1.5,\ya-1) {$R^C_0$};
-
-%graph R_1
-  % clique vertices
-\path[fill] (\xb+1,\yb) circle (\ver);
-\path[fill] (\xb+2,\yb) circle (\ver);
-\path[fill] (\xb+0.5,\yb+1) circle (\ver);
-\path[fill] (\xb+2.5,\yb+1) circle (\ver);
-\path[fill] (\xb+1.5,\yb+1.7) circle (\ver);
-
-  % other vertices
-\path[fill] (\xb+0.5,\yb+2) circle (\ver);
-\path[fill] (\xb+2.9,\yb+0.2) circle (\ver);
-
-
-\draw[thick](\xb+0.5,\yb+1)--(\xb+1,\yb)--(\xb+2,\yb)--(\xb+2.5,\yb+1)--(\xb+1.5,\yb+1.7)--(\xb+0.5,\yb+1);
-\draw[thick] (\xb+0.5,\yb+1)--(\xb+2,\yb)--(\xb+1.5,\yb+1.7)--(\xb+1,\yb)--(\xb+2.5,\yb+1)--(\xb+0.5,\yb+1);
-
-\draw[thick](\xb+0.5,\yb+1)--(\xb+0.5,\yb+2)--(\xb+1.5,\yb+1.7);
-\draw[thick](\xb+2.5,\yb+1)--(\xb+2.9,\yb+0.2)--(\xb+2,\yb);
-\node (1) at (\xb+1.5,\yb-1) {$R^C_1$};
-
-%graph R_2
-  % clique vertices
-\path[fill] (\xc+0.5,\yc) circle (\ver);
-\path[fill] (\xc+2.5,\yc) circle (\ver);
-\path[fill] (\xc+0.5,\yc+1) circle (\ver);
-\path[fill] (\xc+2.5,\yc+1) circle (\ver);
-\path[fill] (\xc+1.5,\yc+1.7) circle (\ver);
-\path[fill] (\xc+1.5,\yc+1.7) circle (\ver);
-
-  % other vertices
-\path[fill] (\xc+0.5,\yc+2) circle (\ver);
-\path[fill] (\xc+2.9,\yc+0.2) circle (\ver);
-
-
-\draw[thick](\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+2,\yc)--(\xc+2.5,\yc+1)--(\xc+1.5,\yc+1.7)--(\xc+0.5,\yc+1);
-\draw[thick] (\xc+0.5,\yc+1)--(\xc+2,\yc)--(\xc+1.5,\yc+1.7)--(\xc+1,\yc)--(\xc+2.5,\yc+1)--(\xc+0.5,\yc+1);
-
-\draw[thick](\xc+0.5,\yc+1)--(\xc+0.5,\yc+2)--(\xc+1.5,\yc+1.7);
-\draw[thick](\xc+2.5,\yc+1)--(\xc+2.9,\yc+0.2)--(\xc+2,\yc);
-\node (1) at (\xc+1.5,\yc-1) {$R^C_2$ (à completer)};
-
-
-\end{tikzpicture}
-\end{scaletikzpicturetowidth}
-\end{center}
-\caption{The class $\mathcal{R}^C$.}\label{graphsRC}
-\end{figure}
-
 
 \lemma{$\mathcal{R}$ is a family of co-comparability graphs.}
-\proof{To prove that $\mathcal{R}$ is a family of co-comparability graphs we have to prove that its complement is a comparability graph. You can see in Figure \ref{graphsRC} the family of complements of $\mathcal{R}$ that we will call $\mathcal{R}^C$.
+\proof{If we recall Theorem \ref{theo:spanning}, in order to prove that $\mathcal{R}$ is a family of co-comparability graphs we will have to find a spanning order for every $R_i$ with $i \geq 0$. We will proceed to label our vertices with a mapping function $f: V \to \mathbb{N}$ such that $f(v) \in [1,|V|]$. This mapping will give us a spanning order by induction:
 
-For this proof we will analyze the topology of $R_k^C = (V,E)$. First of all we can define two disjoint subsets $A\cup B = V$ where $\#A = k+4$ and $\#B = k+1$. $A$ is a clique and $B$ is a set of vertices such that in $R_k$ their degree is greater than 3. We can also observe that the induced subgraph $A$ is actually a tree, so there is not a cycle in $A$.
-
-We will try to find an odd cycle $C$ such that we do not find any triangular chord in it:
 \begin{itemize}
-  \item $\forall_{v \in C}\ v \in A$: In this case, every cycle inside the cycle has a triangular chord.
-  \item $\exists_{v \in C}\ v \in B$: In this case, we will have to find a cycle $C$ with these conditions:
+  \item $i = 0$: We assign the number $1$ to the vertex with maximum degree $v_1$. We assign then the rest of the numbers to the other vertices. We see then that $\forall u < v < w : uw\in E \to uv \in E$ because every vertex is adjacent to $v_1$.
 
-  \begin{itemize}
-    \item If $\#(C\cap B) \geq 3$, then a triangular chord is found.
-    \item If $\#(C\cap B) = 2$, we will have to have an odd number of vertices on $A$. It can be either one (so it creates a triangulation, because both of the vertices share the same vertex in $A$) or more than 3.
-    \item If $\#(C\cap B) = 1$, we will have to have an even number of vertices on $A$.
-    \todo[inline]{Proof formality to be improved}
-  \end{itemize}
+  \item $i = i+1$: We define $\lambda_i = 5+2i$ where $\lambda_i = |V(R_i)|$ (the size of the graph). We have two on each graph, where their labels are $\lambda_i+1$ and $\lambda_i+2$ and there are three new edges: $v_{\lambda_i}v_{\lambda_i-1},v_{\lambda_i}v_{\lambda_i+1},v_{\lambda_i}v_{\lambda_i+2} \in E$.
+
+  By induction we only have to see if the new edges break our order. We can say that $v_{\lambda_i}v_{\lambda_i-1}$ and $v_{\lambda_i}v_{\lambda_i+1}$ do not break it because:
+
+  $$\nexists k \in \mathbb{N} : i < k < i+1$$
+
+  Finally, we see that $v_{\lambda_i}v_{\lambda_i+2}$ is a valid edge because $v_{\lambda_i}v_{\lambda_i+1}\in E$. \qed
 \end{itemize}
-That is, because we cannot find an odd cycle without a triangular chord, the $\mathcal{R}^C$ is a family of comparability graphs, so $\mathcal{R}$ is a family of co-comparability graphs. \qed}
+}
 
 \section{Unfettered Unit Interval Graphs}
 

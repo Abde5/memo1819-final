@@ -144,7 +144,7 @@ An intersection can be seen as a relationship between two objects. In this thesi
 \end{defn}
 
 \begin{defn}
-  A spanning order $(V,<)$ of a graph $G = (V,E)$ is an order on $V$ such that for any three vertices $u < v < w$:
+  A spanning order $(V,<)$ of a graph $G = (V,E)$ is a total order on $V$ such that for any three vertices $u < v < w$:
 
   $$uw \in E \to uv \in E\ \text{or}\ vw \in E$$
 \end{defn}
@@ -165,6 +165,7 @@ An intersection can be seen as a relationship between two objects. In this thesi
 There are multiple characterizations for the co-comparability graph class; we will see one that uses a poset to characterize it:
 
 \begin{theorem}[Damaschke \cite{damaschkeDistancesCocomparabilityGraphs1992}]
+  \label{theo:spanning}
   A graph $G$ is a co-comparability graph if and only if it has a spanning order.
 \end{theorem}
 
