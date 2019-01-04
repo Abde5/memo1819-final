@@ -19,10 +19,9 @@
 \usepackage{units}
 \usepackage{enumerate}
 \usepackage[hidelinks]{hyperref}
-\usepackage[T1]{fontenc}
 
 
-\usepackage{amssymb, amsmath, pict2e}
+\usepackage{amssymb, amsmath, amsthm, pict2e}
  \pagestyle{myheadings}
 
 \usepackage{pdfsync}
@@ -54,11 +53,14 @@
 
 %%%%%%%%%%%%%%%%  start macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
 \newtheorem{defn}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{question}[theorem]{Question}
 
+\theoremstyle{plain}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{claim}[theorem]{Claim}
 \newtheorem{prop}[theorem]{Proposition}
@@ -69,8 +71,8 @@
 \newtheorem{alg}[theorem]{Algorithm}
 \numberwithin{theorem}{section}
 
-\newcommand{\qed}{\mbox{$\Box$}}
-\newcommand{\proof}{\medbreak\par\noindent{\bf Proof. }}
+%\newcommand{\qed}{\mbox{$\Box$}}
+%\newcommand{\proof}{\medbreak\par\noindent{\bf Proof. }}
 \newtheorem{proofpart}{Part}
 \makeatletter
 \@addtoreset{proofpart}{theorem}
@@ -143,7 +145,7 @@
 {\Huge \par}
 \begin{center}{\LARGE Abdeselam El-Haman Abdeselam}\end{center}{\Huge \par}
 \vfill{}\vfill{}
-\begin{flushright}{\large \textbf{Promotor :} Prof. Jean Cardinal}\hfill{}{\large Master Thesis in Computer Sciences}\\
+\begin{flushright}{\large \textbf{Promotor :} Prof. Jean Cardinal}\\\hfill{}{\large Master Thesis in Computer Sciences}\\
 {\large }\hfill{}{}\end{flushright}{\large\par}
 \vfill{}\vfill{}\enlargethispage{3cm}
 \textbf{Academic year 2018~-~2019}

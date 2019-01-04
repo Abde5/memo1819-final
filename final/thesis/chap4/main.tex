@@ -1,8 +1,9 @@
-\chapter{$\sigma$-SG($c$)}
+\chapter{Thin two-level graphs}
 
-To better characterize SG($c$) and TSG we can define a new class of graphs: $\sigma$-SG($c$).
+Breu \cite{breuAlgorithmicAspectsConstrained1996} has presented in his thesis a similar class of constrained unit disk graphs where the disks are placed on $k$ horizontal parallel lines. More formally: a disk $(x,y)$ can be placed in $x \in (-\infty,\infty)$ and $y \in L$ with $|L| = k$.
 
-$\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong to $\{(x,y): -\inf < x < \inf, y \in \{0,c\}\}$, so more intuitively we can say that the center of the disks are placed on two parallel horizontal lines.
+In this chapter I define thin two-level graphs as a two-level graph where $L = \{0,\epsilon\}$ where $\epsilon$ is an arbitrarily small real number.
+
 
 \section{Characterization of $\sigma$-SG($c$)}
 
@@ -53,24 +54,31 @@ $\sigma$-SG($c$) are unit disk graphs such that the center of the disks belong t
 
 This class of graphs
 
-\lemma{All realization of $C_4$ as a $\sigma$-SG($\epsilon$) is divided in two groups of two consecutive vertices where the points are
-located on the same line.}
+\lemma{$\phi$ is a $\sigma(\epsilon)$-realization of $C_4$ if and only if:
+\begin{itemize}
+  \item There are two disks on each line.
+  \item The two (left-)rightmost disks touch.
+\end{itemize}
+}
 
 \proof{
-  First, we prove that there is no realization of a different arrangement for $G = C_4$:
+  First, we prove that $\phi$ cannot be a $\sigma(\epsilon)$-realization if more than two disks are on the same line:
   \begin{itemize}
-    \item \textbf{4-0:} When every center of unit disks is located in the same line it is considered an UIG.
+    \item \textbf{4 disks on the same line:} When every center of unit disks is located in the same line it is considered an UIG.
     This is equal to stating that $C_4 \in$ UIG, which is impossible by Theorem \ref{theo:intervalChord}.
-    \item \textbf{3-1:} We define $a,b,c \in V(G)$ as the group of three consecutive points in one line ($y=0$). We know that $c_x > a_x+1$; $ac \notin E(G)$ and $a_x < b_x < c_x$ (so $a_x$ the is the leftmost vertex and $c_x$ the rightmost one).
+    \item \textbf{3 disks on the same line:} Let $G = C_4$. We define $a,b,c \in V(G)$ as the group of three consecutive points in one line ($y=0$). We know that $c_x > a_x+1$; $ac \notin E(G)$ and $a_x < b_x < c_x$ ($a_x$ is the leftmost vertex and $c_x$ the rightmost one).
 
-    We suppose that $d \in V(G)$ and ${ad,cd} \in E(G)$. Because $bd \notin E(G)$, $d_x \in \mathbb{R}\setminus [b_x-\sqrt{1-\epsilon^2},b_x+\sqrt{1-\epsilon^2}]$.\\
+    We have $d \in V(G)$ and ${ad,cd} \in E(G)$ to complete $C_4$. Because $bd \notin E(G)$, $d_x \in \mathbb{R}\setminus [b_x-\sqrt{1-\epsilon^2},b_x+\sqrt{1-\epsilon^2}]$.\\
     If $d_x > b_x + \sqrt{1-\epsilon^2}$: $ad \notin E(G)$ because $a_x < b_x$ and $d_x > b_x + \sqrt{1-\epsilon^2} > a_x + \sqrt{1-\epsilon^2}$.\\
     Else if $d_x < b_x - \sqrt{1-\epsilon^2}$: $cd \notin E(G)$ with the same development.
-    Therefore, it is not possible to have a $C_4$ with the 3-1 configuration.
+    Therefore, we cannot realize $C_4$ with three points in the same line.
   \end{itemize}
+  And because we prove
 
-
+  Secondly, \qed\\
 }
+
+With this preliminary result, we proceed to one of our main results:
 
 \theorem{$\sigma$-SG($\epsilon$) $\subsetneq$ TSG}
 \todo[inline]{prove with 2 clique adjacency}

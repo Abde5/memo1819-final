@@ -41,6 +41,7 @@ any crossing between the edges.
 \end{defn}
 
 \begin{theorem}[Kuratowski]
+  \label{theo:kura}
   A graph $G$ is planar if and only if it does not contain $K_5$ or $K_{3,3}$ as a minor or
   a induced subgraph.
 \end{theorem}
@@ -82,9 +83,14 @@ any crossing between the edges.
   being $n$ and $m$ the size of each bipartition.
 \end{defn}
 
+Some graphs can be characterized with properties. A property of a graph is a property that
+is preserved under all its isomophisms. These properties are called \textit{hereditary} if they
+are also preserved under all its induced subgraphs; they are called \textit{minor-hereditary} if they are
+also preserved under its minors (e.g. Kuratowski's planar graph characterization [\ref{theo:kura}]).
+
 \begin{defn}
-  An induced forbidden subgraph of a graph class $X$ is a graph such that if it is the induced
-  subgraph of a graph $G$, we know that $G \notin X$.
+  An forbidden induced subgraph (minor) of a graph class $X$ is a graph such that if it is the induced
+  subgraph (minor) of a graph $G$, we know that $G \notin X$.
 \end{defn}
 
 The coloration of a graph is a color assignment to each vertex such that the color
@@ -116,20 +122,33 @@ The \textit{intersection graph} of a collection $\zeta$ of objects is the graph
 $(\zeta,E)$ such that $c_1c_2\in E \Leftrightarrow c_1 \cap c_2 \neq \varnothing$.
 \end{defn}
 
+An intersection can be seen as a relationship between two objects. In this thesis, it will be important to define these relations more formally to characterize intersection graphs.
 
 \begin{defn}
   A partial order is a binary relation $\leq$ over a set $A$ satisfying these axioms:
   \begin{itemize}
-    \item $a \leq a$ (reflexivity).
     \item if $a \leq b$ and $b \leq a$ then $a = b$ (antisymmetry).
     \item if $a \leq b$ and $b \leq c$ then $a \leq c$ (transitivity).
+    \item $a \leq a$ (reflexivity).
   \end{itemize}
+\end{defn}
+
+\begin{defn}
+  A total order is a partial order where the reflexivity order is replaced by the connex property:
+  $$a \leq b\ \text{or}\  b \leq a$$
 \end{defn}
 
 \begin{defn}
    A partially ordered set or poset  $(S,\leq)$ where $S$ a set and $\leq$ a partial
    order on $S$.
 \end{defn}
+
+\begin{defn}
+  A spanning order $(V,<)$ of a graph $G = (V,E)$ is an order on $V$ such that for any three vertices $u < v < w$:
+
+  $$uw \in E \to uv \in E\ \text{or}\ vw \in E$$
+\end{defn}
+
 
 \begin{defn}
   A graph $G = (V,E)$ is a comparibility graph if there exists a partial order
@@ -142,6 +161,13 @@ $(\zeta,E)$ such that $c_1c_2\in E \Leftrightarrow c_1 \cap c_2 \neq \varnothing
 \begin{defn}
   A graph $G = (V,E)$ is a co-comparability graph if its complement is a comparability graph.
 \end{defn}
+
+There are multiple characterizations for the co-comparability graph class; we will see one that uses a poset to characterize it:
+
+\begin{theorem}[Damaschke \cite{damaschkeDistancesCocomparabilityGraphs1992}]
+  A graph $G$ is a co-comparability graph if and only if it has a spanning order.
+\end{theorem}
+
 
 \begin{figure}
 \centering

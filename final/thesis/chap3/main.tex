@@ -1,9 +1,7 @@
 \chapter{Thin Strip Graphs}
+\label{sec:thinDef}
 
 \todo{Introduction of the chapter.}
-
-\section{Definition}
-\label{sec:thinDef}
 
 $c$-strip graphs are unit disk graphs such that the centers of the disks belong to
 $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$. The class is denoted by SG($c$). We
@@ -69,7 +67,7 @@ have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
 \label{fig:thinK13}
 \end{figure}
 
-\begin{theorem}
+\begin{theorem}[Hayashi et al.]
   There is no constant $t$ such that SG($t$) = TSG.
 \end{theorem}
 
@@ -78,7 +76,7 @@ some relations have been found between this class and interval graphs.
 
 \subsection{Interval graphs}
 
-\begin{theorem}
+\begin{theorem}[Hayashi et al.]
   MUIG $\subsetneq$ TSG.
 \end{theorem}
 
@@ -88,12 +86,16 @@ they intersect or not. We denote this class UUIG.
 
 \todo[inline]{Complete description and properties of UUIG}
 
-\begin{theorem}
+\begin{theorem}[Hayashi et al.]
   TSG $\subsetneq$ UUIG.
 \end{theorem}
 
 
 
-\section{Characterization of UUIG}
+\section{Characterization of thin strip graphs}
 
-\todo{}
+One of the main goals of this thesis is to characterize TSG. by forbidden induced subgraphs. To approach this, we will see how many induced forbidden subgraphs are also forbidden for TSG. We have described the familes of forbidden induced subgraphs for MUIG in section \ref{sec:muig} and one of these familes has been proven to be a forbidden induced subgraph for TSG:
+
+\begin{theorem}[Hayashi et al.]
+  $\mathcal{R}$ is a forbidden induced subgraph family of TSG.
+\end{theorem}
