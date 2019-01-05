@@ -1,14 +1,10 @@
 \contentsline {todo}{Text about background intro}{2}{section*.4}
-\contentsline {todo}{Classes hereditaires}{2}{section*.5}
-\contentsline {todo}{Exploit these characterizations!! $\to $ explain them and use them to characterize UUIG.}{5}{section*.7}
-\contentsline {todo}{in the case of UUIG I want to find a more exhaustive characterization using MUUIG's families to use them in TSG. In this case it will be easy to proof complexity on TSG recognition}{12}{section*.19}
-\contentsline {todo}{Show and describe every family with demos from Joos' article}{12}{section*.20}
-\contentsline {todo}{improve introduction to this subsection}{13}{section*.21}
-\contentsline {todo}{Try to characterize with known forbidden families of subgraphs (from MUIG? and TSG article)}{13}{section*.22}
-\contentsline {todo}{Introduction of the chapter.}{14}{section*.23}
-\contentsline {todo}{Complete description and properties of UUIG}{14}{section*.24}
-\contentsline {todo}{Finish proof about characterization -> UIGs}{16}{section*.25}
-\contentsline {todo}{prove with 2 clique adjacency}{17}{section*.26}
-\contentsline {todo}{Finish proof here}{17}{section*.27}
-\contentsline {todo}{Then in the hierarchy, is MUIG $\subsetneq $ $\sigma $-SG($\epsilon $) or $\subsetneq $ $\sigma $-SG($\epsilon $) true? }{18}{section*.28}
-\contentsline {todo}{Add forbidden subgraphs known for the moment with proofs.}{18}{section*.29}
+\contentsline {todo}{improve introduction to this subsection}{12}{section*.16}
+\contentsline {todo}{Try to characterize with known forbidden families of subgraphs (from MUIG? and TSG article)}{13}{section*.17}
+\contentsline {todo}{Introduction of the chapter.}{14}{section*.18}
+\contentsline {todo}{Complete description and properties of UUIG}{14}{section*.19}
+\contentsline {todo}{Finish proof about characterization -> UIGs}{16}{section*.20}
+\contentsline {todo}{prove with 2 clique adjacency}{17}{section*.21}
+\contentsline {todo}{Finish proof here}{17}{section*.22}
+\contentsline {todo}{Then in the hierarchy, is MUIG $\subsetneq $ $\sigma $-SG($\epsilon $) or $\subsetneq $ $\sigma $-SG($\epsilon $) true? }{18}{section*.23}
+\contentsline {todo}{Add forbidden subgraphs known for the moment with proofs.}{18}{section*.24}
