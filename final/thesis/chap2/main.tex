@@ -1,8 +1,8 @@
-\chapter{Interval Graphs}
+\chapter{Interval graphs}
 
 An interval graph is a graph $G$ that is the intersection graph of a collection
 of closed intervals in $\mathbb{R}$. If the length of each interval is unitary,
-then $G$ is a unit interval graph (UIG). UIG is equivalent to the proper interval graph, where no interval can be properly included in another one.
+then $G$ is a unit interval graph (UIG). UIG is equivalent to the proper interval graphs class, where no interval can be properly included in another one \todo{put reference}.
 
 First we present the main characterizations of interval graphs. In the next sections we present some other subclasses of interval graphs that will help us characterize the thin strip graphs on chapter \ref{chap:thinDef}.
 
@@ -12,11 +12,11 @@ First we present the main characterizations of interval graphs. In the next sect
   points has a chord and any three independent vertices can be ordered ($u<v<w$) such that every path from $u$ to $w$ passes through a neighbour of $v$.
 \end{theorem}
 
-\begin{theorem}
-  An interval graph is a unit interval graph if and only if it has no induced subgraph $K_{1,3}$ \cite{roberts1968representations}.
+\begin{theorem}[Roberts \cite{roberts1968representations}]
+  An interval graph is a unit interval graph if and only if it has no induced subgraph $K_{1,3}$.
 \end{theorem}
 
-\section{Mixed Unit Interval Graphs}
+\section{Mixed unit interval graphs}
 \label{sec:muig}
 
 Another interesting class of interval graphs are mixed unit interval graphs, where each
@@ -80,9 +80,7 @@ Joos proves in his paper the following theorem:
   $G$ is a MUIG if and only if it is a $\{F\}\cup\mathcal{R}\cup\mathcal{S}\cup\mathcal{S''}\cup\mathcal{T}$-free interval graph.
 \end{theorem}
 
-We will present each family of subgraphs for
-An important family of forbidden induced subgraphs in paper TSG: $\mathcal{R}$
-\todo{improve introduction to this subsection}
+We will present each family of subgraphs and analyze whether they are included in other relevant classes of graphs (e.g. unit disk graphs). Only properties that will be used in next chapters will be presented,
 
 \begin{figure}
 \begin{center}
@@ -198,6 +196,61 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 \end{itemize}
 }
 
-\section{Unfettered Unit Interval Graphs}
+\begin{figure}
+\begin{center}
+  \begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=1]
+    \def\ver{0.1} %size of a vertex
+    \def\x{1}
 
-\todo[inline]{Try to characterize with known forbidden families of subgraphs (from MUIG? and TSG article)}
+    \def\xa{0}
+    \def\ya{0}
+
+    %G_1
+    \path[fill] (\xa+1,\ya) circle (\ver);
+    \path[fill] (\xa+2,\ya) circle (\ver);
+    \path[fill] (\xa+0.5,\ya+1) circle (\ver);
+    \path[fill] (\xa+1.5,\ya+1) circle (\ver);
+    \path[fill] (\xa+2.5,\ya+1) circle (\ver);
+    \fill (\xa,\ya) circle (\ver);
+
+    \draw[thick] (\xa+1,\ya)--(\xa+2,\ya)
+    (\xa+1,\ya)--(\xa+0.5,\ya+1)--(\xa+2,\ya)
+    (\xa+1,\ya)--(\xa+2.5,\ya+1)--(\xa+2,\ya)
+    (\xa+1,\ya)--(\xa+1.5,\ya+1)--(\xa+2,\ya)
+    (\xa+1,\ya)--(\xa,\ya)--(\xa+0.5,\ya+1);
+
+    \node (1) at (\xa+1.5,\ya-0.7) {$F$};
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{The graph $F$. \cite{joosCharacterizationMixedUnit2013}}\label{graphG1}
+\end{figure}
+
+\section{Unfettered unit interval graphs}
+\label{sec:UUIG}
+
+An unfettered unit interval graph can be defined as an interval graph such that for every touching
+
+Hayashi has characterized this class of graphs by levels. A \textit{level structure} of a graph $G = (V,E)$ is a partition $L = \{L_i : i \in [1,t]\}$ of $V$ such that
+
+$$v \in L_k \to N(v) \subseteq L_{k-1} \cup L_{k} \cup L_{k+1}$$
+
+where $L_0 = L_t+1 = \varnothing$.
+
+\begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
+  \label{theo:uuig_char}
+  A graph $G$ is an unfettered unit interval graph if and only if it has a level structure where each level is a clique.
+\end{theorem}
+
+We can clearly see that MUIG $\in$ UUIG. However, we still have to see what is the location of UUIG in the higher graph classes hierarchy:
+
+\begin{prop}
+  UUIG $\subset$ co-comparability.
+\end{prop}
+
+\proof{For each vertex of a partition $L_k$ of UUIG (Theorem \ref{theo:uuig_char}) we assign arbitrarily a number $i \in [\max(V(L_{k-1}))+1,\max(V(L_{k-1}))+|V(L_k)|+1]$; intuitively, we assign every available number from the beginning in order ($|V(L_1)|$ first numbers on the first partition and consecutively).
+
+Because we know that each partition $L_k$ is a clique, we can say that for each three vertices $u < v < w$, if $vw \in E \to uv\in E\  \text{or} \ vw\in E$. We know this because given $u \in L_i$ and $w \in L_j$: if $uw\in E$ it means that levels $L_i$ and $L_j$ are adjacent, which means that $v\in L_i$ or $v\in L_j$ so $v$ will be adjacent either to $u$ or $w$. \qed
+}

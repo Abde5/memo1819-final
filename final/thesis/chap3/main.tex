@@ -1,4 +1,4 @@
-\chapter{Thin Strip Graphs}
+\chapter{Thin strip graphs}
 \label{chap:thinDef}
 
 \todo{Introduction of the chapter.}
@@ -62,12 +62,11 @@ have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
 \draw  (v1) edge (v4);
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
-
 \caption{A construction of $K_{1,3}$ with a disk realization, being this graph a TSG.}
 \label{fig:thinK13}
 \end{figure}
 
-\begin{theorem}[Hayashi et al.]
+\begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   There is no constant $t$ such that SG($t$) = TSG.
 \end{theorem}
 
@@ -76,7 +75,7 @@ some relations have been found between this class and interval graphs.
 
 \subsection{Interval graphs}
 
-\begin{theorem}[Hayashi et al.]
+\begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   MUIG $\subsetneq$ TSG.
 \end{theorem}
 
@@ -84,18 +83,55 @@ We can define a new class of graphs: unfettered unit interval graphs. These grap
 are unit interval graphs where if two intersections touch, we can decide whether
 they intersect or not. We denote this class UUIG.
 
-\todo[inline]{Complete description and properties of UUIG}
-
-\begin{theorem}[Hayashi et al.]
+\begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   TSG $\subsetneq$ UUIG.
 \end{theorem}
-
 
 
 \section{Characterization of thin strip graphs}
 
 One of the main goals of this thesis is to characterize TSG. by forbidden induced subgraphs. To approach this, we will see how many induced forbidden subgraphs are also forbidden for TSG. We have described the familes of forbidden induced subgraphs for MUIG in section \ref{sec:muig} and one of these familes has been proven to be a forbidden induced subgraph for TSG:
 
-\begin{theorem}[Hayashi et al.]
+\begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   $\mathcal{R}$ is a forbidden induced subgraph family of TSG.
 \end{theorem}
+
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=2]
+
+%\draw  (0.1,0) circle [radius=0.5];
+%\draw  (0,0) circle [radius=0.5];
+%\draw  (-0.3,-0.95) circle [radius=0.5];
+%\draw  (0.3,-0.7) circle [radius=0.5];
+%\draw  (-0.7,-1) circle [radius=0.5];
+%\draw  (0.9,-0.7) circle [radius=0.5];
+
+% line
+\draw  (0,0) circle [radius=0.5];
+\draw  (0.1,0) circle [radius=0.5];
+\draw  (1,0) circle [radius=0.5];
+\draw  (1.1,0) circle [radius=0.5];
+
+%upper
+\draw  (0.55,0.85) circle [radius=0.5];
+\draw  (0.7,0.94) circle [radius=0.5];
+
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+
+\caption{A construction of $F$ with a unit disk realization.}
+\label{fig:fUDG}
+\end{figure}
+
+
+With the properties presented in this chapter, we can begin to state our first hypothesis:
+
+\begin{hyp}
+  $F \in (\text{UDG}\cap\text{UUIG}) \setminus \text{TSG}$.
+\end{hyp}
+
+We can see that $F \in$ UDG because we can have a unit disk realization (Figure \ref{fig:fUDG}) and also has a level structure $L = {K_2, K_3, K_1}$.
