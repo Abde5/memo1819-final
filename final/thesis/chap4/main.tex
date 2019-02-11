@@ -18,11 +18,7 @@ In this chapter I define thin two-level graphs as a two-level graph where $L = \
     \end{cases}
 \]
 }
-
-\proof{ (Idea) Let's take two subsets $A,B \subseteq G$ being $G$ a SG($c$)...  Both of these subsets (A and B are UIG, because each element in each of these subsets is in the same line).
-
-\todo[inline]{Finish proof about characterization -> UIGs}}
-
+\todo{this proposition is ugly, re-do this with Breu's notations.}
 
 \begin{figure}
 \centering
@@ -53,7 +49,7 @@ In this chapter I define thin two-level graphs as a two-level graph where $L = \
 \label{fig:forbSigma}
 \end{figure}
 
-This class of graphs
+This class of graphs is close to our main class TSG. But we have to know at what point we can rely in this class of graphs to study TSG:
 
 \lemma[Breu \cite{breuAlgorithmicAspectsConstrained1996}]{
   \label{lemma:chordlessLEVEL}
@@ -64,23 +60,31 @@ This class of graphs
 With this preliminary result, we proceed to one of our main results:
 
 \theorem{TTL $\subsetneq$ TSG}
-\todo[inline]{prove with 2 clique adjacency}
 
 \proof{By definition, we know that TTL $\subset$ TSG because the area where the disks can be placed in TTL is included in the area in TSG.
 
-We can prove that TTL $\neq$ TSG because we can construct a graph $G$ such that $G \in$ TSG and $G \notin$ TTL. This graph $F$ is a net$^*$ graph as described in Figure \ref{fig:forbSigma}.
+We can prove that TTL $\neq$ TSG because we can construct a graph $G$ such that $G \in$ TSG and $G \notin$ TTL. This graph $D$ is a net$^*$ graph as described in Figure \ref{fig:forbSigma}.
 \begin{proofpart}
-  $F$ is a TSG because we can realize it as a TSG if we take as center of disks $(0,0)$, $(0,z)$, $(0,\epsilon)$, $(1,0)$, $(1,z)$, $(1,\epsilon)$ such that $0 < z < \epsilon$.
+  $D$ is a TSG because we can realize it as a TSG if we take as center of disks $(0,0)$, $(0,z)$, $(0,\epsilon)$, $(1,0)$, $(1,z)$, $(1,\epsilon)$ such that $0 < z < \epsilon$.
 \end{proofpart}
 \begin{proofpart}
-  Now we have to prove that $F$ is a forbidden induced subgraph of TTL. We will try to construct it by taking a induced subgraph that is representable: we take $F_{-1} = F - x$ with $x\in V(F)$. We notice that $V(F_{-1})$ is a chordless $C_{4}$ ($abcd$) with a vertex $e$ adjacent to any two consecutive vertices $x,y \in V(C_4)$ creating the triangle $xye$.\\
+  Now we have to prove that $D$ is a forbidden induced subgraph of TTL. We will try to construct it by taking a induced subgraph that is realizable: we take $D_{-1} = D - x$ with $x\in V(D)$. We notice that $V(D_{-1})$ is a chordless $C_{4}$ ($abcd$) with a vertex $e$ adjacent to any two consecutive vertices $x,y \in V(C_4)$ creating the triangle $xye$.
 
-  By Lemma \ref{lemma:chordlessLEVEL} we know that $abcda$ is a cycle if $ab$ and $cd$ are level edges. We can classify these vertices in two sets: $\ell(V)$ and $\arr(V)$.
+  By Lemma \ref{lemma:chordlessLEVEL} we know that $abcda$ is a cycle if $ab$ and $cd$ are level edges. We can classify these vertices in two sets: $\ell(V) = {a,d}$ and $r(V) = {b,c}$ where $\forall u\in \ell(V) v\in r(V): \phi(u)_x < \phi(v)_x$.
+
+  To realize $D_{-1}$ we have to add a vertex $e$ to $C_4$. In our case, $e$ cannot be added in two
   \todo{Finish proof here}
 \end{proofpart}
 }
 
-\todo[inline]{Then in the hierarchy, is MUIG $\subsetneq$ TTL or $\subsetneq$ TTL true? }
+\subsection{Relation with MUIG}
+
+A big question that was asked during this research is: What is the relationship between TTL and MUIG? We know that the net*-graph is forbidden for every two-level graph, this graph is also forbidden for MUIG because it includes an induced $C_4$; we can also see that every forbidden induced subgraph for MUIG also is for TTL.
+
+However, $C_4$ is realizable for two-level graphs with small levels in general, which means TTL $\neq$ interval $=$ MUIG. We then know that TTL $\cup$ MUIG $\subseteq$ TSG with TTL $\neq$ MUIG.
+
+Thus, the study of this class of graphs will still give us a better understanding of thin strip graphs.
+
 \section{Induced forbidden subgraphs}
 
 \begin{figure}
@@ -113,10 +117,7 @@ We can prove that TTL $\neq$ TSG because we can construct a graph $G$ such that 
 \draw[very thin] (2.0489,0.5) -- (2.0997,0.5);
 \draw[very thin] (2.05,0) -- (2.1,0);
 
-
-
 %graph
-
 \draw plot [smooth cycle] coordinates {(-1.2314,-3.2019) (-2.7314,-1.7019) (-0.7314,-1.2019) } ;
 \draw plot [smooth cycle] coordinates {(1.2686,-3.2019) (0.7686,-1.2019) (2.7686,-1.7019) } ;
 
@@ -147,5 +148,3 @@ We can prove that TTL $\neq$ TSG because we can construct a graph $G$ such that 
 \caption{ A representation of a TL($c$) }
 \label{fig:sigma}
 \end{figure}
-
-\todo[inline]{Add forbidden subgraphs known for the moment with proofs.}

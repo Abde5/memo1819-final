@@ -3,6 +3,8 @@
 
 \todo{Introduction of the chapter.}
 
+\todo{Explain Breu's characterization of strip graphs}
+
 $c$-strip graphs are unit disk graphs such that the centers of the disks belong to
 $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$. The class is denoted by SG($c$). We
 have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
@@ -134,11 +136,29 @@ With the properties presented in this chapter, we can begin to state our first h
   $F \in (\text{UDG}\cap\text{UUIG}) \setminus \text{TSG}$.
 \end{hyp}
 
+\begin{claim}
+ $F \in (\text{UDG}\cap\text{UUIG})$
+\end{claim}
+
+\begin{proof}
+  We can see that $F \in$ UDG because we can have a unit disk realization (Figure \ref{fig:fUDG}) and also has a level structure $L = \{K_2, K_3, K_1\}$.
+\end{proof}
+
+\begin{theorem}
+$F \notin$ TSG.
+\end{theorem}
+
 \proof{
-  We can see that $F \in$ UDG because we can have a unit disk realization (Figure \ref{fig:fUDG}) and also has a level structure $L = \{K_2, K_3, K_1\}$. We only have to prove that $F \notin$ TSG.
+We define $\overrightarrow{G}$ as the complement oriented digraph of $G$ where $\overrightarrow{G} = (V,\overrightarrow{E})$ being $\overrightarrow{E}$ an orientation of $\overline{E}$.
+
+The orientation of $\overrightarrow{E}$ is based in the partial order on the $x$-coordinate of the vertices such that:
+
+$$ \overrightarrow{E} = \{uv: \phi(u)_x < \phi(v)_x \forall u,v \in V\}$$
+
+\todo[inline]{Now we have to check either there is a POSSIBLE partial order of $\overrightarrow{E}$ or there is not a dangerous cycle with more than 2 nodes of $ \overrightarrow{G}$ in the cycle... (to explain in rdv).}
 }
 
-\begin{claim}
- A diamond graph $G$ can be realized as a 2-level graph if and only if $x_a \notin [ x_b + \sqrt{1-\epsilon},x_b + \sqrt{1+\epsilon}]$ being $a,b$ the non adjacent vertices of $G$.
-\end{claim}
-\todo{proof?}
+\section{Recognition}
+
+The recognition of this class of graphs is stated by Breu in his thesis \todo{explain everything about dangerous cycles and
+complement oriented graphs in Breu's paper}.

@@ -2,7 +2,8 @@
 
 An interval graph is a graph $G$ that is the intersection graph of a collection
 of closed intervals in $\mathbb{R}$. If the length of each interval is unitary,
-then $G$ is a unit interval graph (UIG). UIG is equivalent to the proper interval graphs class, where no interval can be properly included in another one \todo{put reference}.
+then $G$ is a unit interval graph (UIG). UIG is equivalent to the proper interval graphs class, where no interval can be properly included in another one
+\cite{roberts1968representations}.
 
 First we present the main characterizations of interval graphs. In the next sections we present some other subclasses of interval graphs that will help us characterize the thin strip graphs on chapter \ref{chap:thinDef}.
 
@@ -80,7 +81,7 @@ Joos proves in his paper the following theorem:
   $G$ is a MUIG if and only if it is a $\{F\}\cup\mathcal{R}\cup\mathcal{S}\cup\mathcal{S''}\cup\mathcal{T}$-free interval graph.
 \end{theorem}
 
-We will present each family of subgraphs and analyze whether they are included in other relevant classes of graphs (e.g. unit disk graphs). Only properties that will be used in next chapters will be presented,
+We will present each family of forbidden induced subgraphs and analyze whether they are included in other relevant classes of graphs (e.g. unit disk graphs). Only properties that will be used in next chapters will be presented,
 
 \begin{figure}
 \begin{center}
@@ -186,7 +187,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 \begin{itemize}
   \item $i = 0$: We assign the number $1$ to the vertex with maximum degree $v_1$. We assign then the rest of the numbers to the other vertices. We see then that $\forall u < v < w : uw\in E \to uv \in E$ because every vertex is adjacent to $v_1$.
 
-  \item $i = i+1$: We define $\lambda_i = 5+2i$ where $\lambda_i = |V(R_i)|$ (the size of the graph). We have two on each graph, where their labels are $\lambda_i+1$ and $\lambda_i+2$ and there are three new edges: $v_{\lambda_i}v_{\lambda_i-1},v_{\lambda_i}v_{\lambda_i+1},v_{\lambda_i}v_{\lambda_i+2} \in E$.
+  \item $i = i+1$: We define $\lambda_i = 5+2i$ where $\lambda_i = |V(R_i)|$. We have two on each graph, where their labels are $\lambda_i+1$ and $\lambda_i+2$ and there are three new edges: $v_{\lambda_i}v_{\lambda_i-1},v_{\lambda_i}v_{\lambda_i+1},v_{\lambda_i}v_{\lambda_i+2} \in E$.
 
   By induction we only have to see if it holds with the new edges. We can say that it still holds with $v_{\lambda_i}v_{\lambda_i-1}$ and $v_{\lambda_i}v_{\lambda_i+1}$ because:
 
