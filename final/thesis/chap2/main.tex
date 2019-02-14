@@ -1,17 +1,26 @@
 \chapter{Interval graphs}
 
 An interval graph is a graph $G$ that is the intersection graph of a collection
-of closed intervals in $\mathbb{R}$. If the length of each interval is unitary,
-then $G$ is a unit interval graph (UIG). UIG is equivalent to the proper interval graphs class, where no interval can be properly included in another one
-\cite{roberts1968representations}.
+of closed intervals in $\mathbb{R}$.
 
 First we present the main characterizations of interval graphs. In the next sections we present some other subclasses of interval graphs that will help us characterize the thin strip graphs on chapter \ref{chap:thinDef}.
+
+\section{Interval graphs}
+Interval graphs
 
 \begin{theorem}[Fishburn \cite{FISHBURN1985135}]
   \label{theo:intervalChord}
   $G$ is an interval graph if and only if every simple cycle of four or more
   points has a chord and any three independent vertices can be ordered ($u<v<w$) such that every path from $u$ to $w$ passes through a neighbour of $v$.
 \end{theorem}
+
+
+
+\section{Unit interval graphs}
+
+If the length of each interval is unitary,
+then $G$ is a unit interval graph (UIG). UIG is equivalent to the proper interval graphs class, where no interval can be properly included in another one
+\cite{roberts1968representations}.
 
 \begin{theorem}[Roberts \cite{roberts1968representations}]
   An interval graph is a unit interval graph if and only if it has no induced subgraph $K_{1,3}$.
@@ -21,7 +30,7 @@ First we present the main characterizations of interval graphs. In the next sect
 \label{sec:muig}
 
 Another interesting class of interval graphs are mixed unit interval graphs, where each
-interval can be closed, open, open-closed or closed-open. In this paper we will
+interval is unitary and can be closed, open, open-closed or closed-open. In this paper we will
 denote those four classes like this:
 
 $$\mathcal{I}^{++} = \{[x,y] : x,y \in \mathbb{R}, x\leq y\}$$
