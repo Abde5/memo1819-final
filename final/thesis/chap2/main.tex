@@ -190,6 +190,108 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 \end{figure}
 
 
+
+\begin{figure}[t]
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xa{2}
+\def\ya{-3}
+
+\def\xb{0}
+\def\yb{0}
+
+\def\xc{0}
+\def\yc{0}
+
+\def\xd{5}
+\def\yd{0}
+
+%graph S^2_2
+\path[fill] (\xc,\yc) circle (\ver);
+\path[fill] (\xc+1,\yc) circle (\ver);
+\path[fill] (\xc+2,\yc) circle (\ver);
+\path[fill] (\xc+3,\yc) circle (\ver);
+\path[fill] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill] (\xc+1.5,\yc+1) circle (\ver);
+\path[fill] (\xc+2.5,\yc+1) circle (\ver);
+\path[fill] (\xc+1,\yc+1.5) circle (\ver);
+
+
+\draw[thick] (\xc,\yc)--(\xc+1,\yc)--(\xc+2,\yc)--(\xc+3,\yc)
+(\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+1.5,\yc+1)--(\xc+2,\yc)--(\xc+2.5,\yc+1)
+(\xc,\yc)--(\xc+0.5,\yc+1)--(\xc+1,\yc+1.5)--(\xc+1.5,\yc+1)
+(\xc+1,\yc)--(\xc+1,\yc+1.5);
+
+\draw[thick] (\xc+2,\yc) arc(-20:85:1.16);
+
+\node (1) at (\xc+1.5,\yc-0.7) {$S_2''$};
+
+%graph S^2_3
+\path[fill] (\xd-1,\yd) circle (\ver);
+\path[fill] (\xd-0.5,\yd+1) circle (\ver);
+\path[fill] (\xd,\yd) circle (\ver);
+\path[fill] (\xd+1,\yd) circle (\ver);
+\path[fill] (\xd+2,\yd) circle (\ver);
+\path[fill] (\xd+3,\yd) circle (\ver);
+\path[fill] (\xd+0.5,\yd+1) circle (\ver);
+\path[fill] (\xd+1.5,\yd+1) circle (\ver);
+\path[fill] (\xd+2.5,\yd+1) circle (\ver);
+\path[fill] (\xd,\yd+1.5) circle (\ver);
+
+
+\draw[thick] (\xd-1,\yd)--(\xd+3,\yd)
+(\xd-1,\yd)--(\xd-0.5,\yd+1)--(\xd,\yd)--(\xd+0.5,\yd+1)--(\xd+1,\yd)--(\xd+1.5,\yd+1)--(\xd+2,\yd)--(\xd+2.5,\yd+1)
+(\xd-0.5,\yd+1)--(\xd,\yd+1.5)--(\xd+0.5,\yd+1)
+(\xd,\yd)--(\xd,\yd+1.5);
+
+\draw[thick] (\xd+1,\yd) arc(-20:85:1.16);
+
+\node (1) at (\xd+1,\yd-0.7) {$S_3''$};
+
+%graph S_i''
+\path[fill] (\xa-1,\ya) circle (\ver);
+\path[fill] (\xa,\ya) circle (\ver);
+\path[fill] (\xa+1,\ya) circle (\ver);
+\path[fill] (\xa+2,\ya) circle (\ver);
+\path[fill] (\xa+3.5,\ya) circle (\ver);
+\path[fill] (\xa+4.5,\ya) circle (\ver);
+\path[fill] (\xa+5.5,\ya) circle (\ver);
+\path[fill] (\xa-0.5,\ya+1) circle (\ver);
+\path[fill] (\xa+0.5,\ya+1) circle (\ver);
+\path[fill] (\xa+1.5,\ya+1) circle (\ver);
+\path[fill] (\xa+4,\ya+1) circle (\ver);
+\path[fill] (\xa+5,\ya+1) circle (\ver);
+\path[fill] (\xa,\ya+1.5) circle (\ver);
+
+
+\draw[thick] (\xa-1,\ya)--(\xa+2,\ya)
+(\xa+3.5,\ya)--(\xa+5.5,\ya)
+(\xa-1,\ya)--(\xa-0.5,\ya+1)--(\xa,\ya)--(\xa+0.5,\ya+1)--(\xa+1,\ya)--(\xa+1.5,\ya+1)--(\xa+2,\ya)
+(\xa+3.5,\ya)--(\xa+4,\ya+1)--(\xa+4.5,\ya)--(\xa+5,\ya+1)
+(\xa-0.5,\ya+1)--(\xa,\ya+1.5)--(\xa+0.5,\ya+1)
+(\xa,\ya)--(\xa,\ya+1.5);
+
+\draw[thick] (\xa+1,\ya) arc(-20:85:1.16);
+
+\node (1) at (\xa+5,\ya-0.7) {$S_i''$};
+
+\fill (\xa+2.35,\ya) circle (\ver/2);
+\fill (\xa+2.75,\ya) circle (\ver/2);
+\fill (\xa+3.15,\ya) circle (\ver/2);
+
+\draw[thick,decoration={brace,mirror,raise=0.2cm},decorate] (\xa-1,\ya) -- (\xa+4.5,\ya)
+node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
+
+
+\end{tikzpicture}
+\end{center}
+\caption{The class $\mathcal{S}''$.}\label{graphsSS}
+\end{figure}
+
+
 \lemma{$\mathcal{R}$ is a family of co-comparability graphs.}
 \proof{If we recall Theorem \ref{theo:spanning}, in order to prove that $\mathcal{R}$ is a family of co-comparability graphs we will have to find a spanning order for every $R_i$ with $i \geq 0$. We will proceed to label our vertices with a mapping function $f: V \to \mathbb{N}$ such that $f(v) \in [1,|V|]$. This mapping will give us a spanning order by induction:
 
