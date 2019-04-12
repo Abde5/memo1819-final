@@ -148,9 +148,29 @@ With the properties presented in this chapter, we can begin to state our first h
 $F \notin$ TSG.
 \end{theorem}
 
+\todo{Symsolver SO HARD.}
+
+To prove this theorem we will first state some claims and observations on behalf of the characteristics of this graph.
+
+\begin{defn}
+  The \emph{critical region} of two points is noted as $\alpha_{ab} = \sqrt{1 - (a_y - b_y)^2}$. For a $c$-strip graph we have $\alpha_{ab} \leq \sqrt{1 - c^2}$.
+\end{defn}
+
+\begin{obs}
+  If a graph $G =(V,E)$ is a diamond with $V = \{a,b,c,d\}$ where $ad \notin E$, then:
+
+  $$\text{dist}(a,d) \leq 2$$
+
+  which also means that
+
+  $$|a_x, d_x| \leq 2\alpha_{ad}$$
+
+  and also, $b_x, c_x \in [a_x, d_x]$.
+\end{obs}
+
 \proof{
 
-\todo[inline]{The algebraic method did not work (it was only an implication). Proof again geometrically.}
+The distance between $a$ and $d$ has to be at most 2, because there is at least one vertex that is adjacent to both. And clearly, the other points have to be between them because they are adjacent to both, so if they were not.
 }
 
 \section{Recognition}
