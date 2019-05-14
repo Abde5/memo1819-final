@@ -1,4 +1,5 @@
 \chapter{Interval graphs}
+\label{chap:interval}
 
 In this chapter we are going to introduce the class of interval graphs, which is
  one of the most used classes of intersection graphs at all. There are multiple types of
@@ -14,7 +15,6 @@ Last, we present unfettered unit interval graphs, which have been defined by Hay
 defining thin strip graphs in their paper.
 
 \section{Interval graphs}
-
 
 An interval graph is a graph $G$ that is the intersection graph of a collection
 of closed intervals in $\mathbb{R}$.
@@ -232,7 +232,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 \end{figure}
 
 
-Except $F$, every family of forbidden graphs of MUIG is infinite, and is defined recursively by its precedent: then every property of these graphs has to be proved recursively. We begin first with $\mathcal{R}$.
+Without including $F$, every family of forbidden graphs of MUIG is infinite, and is defined recursively by its precedent: then every property of these graphs has to be proved recursively. We begin first with $\mathcal{R}$.
 
 
 \lemma{$\mathcal{R}$ is a family of co-comparability graphs.}
@@ -533,41 +533,65 @@ For each vertex of a partition $L_k$ of UUIG (Theorem \ref{theo:uuig_char}) we a
 Because we know that each partition $L_k$ is a clique, we can say that for each three vertices $u < v < w$, if $vw \in E \to uv\in E\  \text{or} \ vw\in E$. We know this because given $u \in L_i$ and $w \in L_j$: if $uw\in E$ it means that levels $L_i$ and $L_j$ are adjacent, which means that $v\in L_i$ or $v\in L_j$ so $v$ will be adjacent either to $u$ or $w$. This is a spanning order. \qed
 }\\
 
-If we recall the characterization of MUIG in section \ref{sec:muig_char}, we can see that every forbidden graph of MUIG is a
+If we recall the characterization of MUIG in section \ref{sec:muig_char}, we can see that every forbidden graph of MUIG is an
 UUIG (except for $\mathcal{R}$); which means that they are also co-comparability graphs.
+
+In the other hand, we can find a graph in UUIG that is not an UDG. This theorem will be used in chapter \ref{chap:thinDef}.
+
+\begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
+  UUIG $\neq$ UDG.
+\end{theorem}
+
+\begin{proof}
+  We can define $G = (L_1\cup L_2, E)$ a UUIG with two levels $L_1=\{v_1, v_2, v_3, v_4\}$ and $L_2=\powerset(L_1)$ and $E = \binom{L_1}{2} \cup \binom{L_2}{2} \cup \{vw: w\in L_2, v\in w\}$.
+
+  We can see $L_1$ as a Venn diagram with four sets. We know by instance that a Venn diagram cannot be constructed if the number of sets is bigger than four \cite{vennDiagrammaticMechanicalRepresentation1880}. Thus, $G \notin$ UDG.
+\end{proof}
+
 
 \subsection{Recognition}
 
-As we mentionned before, UUIG is a class of graphs very relevant to define TSG and that is why we have to know how this class of graphs is recognized. My first result in this thesis is to show that
-UUIG recognition is polynomial and can be solved with a recursive algorithm. The algorithm is based on the idea stated in the following lemma.
+As we mentionned in the previous section, UUIG is a class of graphs very relevant to define TSG and that is why we are interested in knowing how this class of graphs is recognized.
 
 \begin{lemma}
-  Let $G$ be an UUIG with a level structure with levels $L_1,\dots,L_n$. $G\setminus L_i$ is a graph where each connected component is also an UUIG and the number of connected components is not bigger than two.
+  Let $G$ be a connected UUIG with a level structure with levels $L_1,\dots,L_n$. $G\setminus L_i$ is a graph where each connected component is also an UUIG and the number of connected components is not bigger than two.
 \end{lemma}
 
-\proof{By definition for a graph with a level structure, if $v\in L_i$, $N(v) = L_{i-1} \cup L_{i} \cup L_{i+1}$. This said, if we take off any level $L_i$, $L_{i-1}$ and $L_{i+1}$ are disconnected, but they are still connected to the other consecutive levels ($L_{i-1}$ is connected to $L_{i-2}$, which is connected to $L_{i-3}$... and viceversa with $L_{i+1}$).
+\proof{By definition for a graph with a level structure, if $v\in L_i$, $N(v) = L_{i-1} \cup L_{i} \cup L_{i+1}$. This said, if we delete a level $L_i$, $L_{i-1}$ and $L_{i+1}$ are disconnected, but they are still connected to the other consecutive levels ($L_{i-1}$ is connected to $L_{i-2}$, which is connected to $L_{i-3}$... and viceversa with $L_{i+1}$).
 
-And because a level is only connected to two different levels, we only have two connected components, only one if $L_i = L_1$.\qed}
-
-We can then say by this lemma that we can design an algorithm that deletes a clique from the graph and then checks if the connected components of $G\setminus K_k$ are also UUIG until we arrive to the base case where $G\setminus K_k \dots \setminus K_l$ is also a clique (we will formalize the deleted clique by calling it $H$). Furthermore, that is not a necessary condition to recognize this graph. We also have to check if the vertices on the connected components ($C_1 \cup C_2 = G\setminus H$) are a clique (ie. if $v,w\in C_1$ and $v$ and $w$ are connected to $H$, then $v$ and $w$ also have to be adjacent).
-
-You can read in the Algorithm \ref{algo:uuig}. Our algorithm takes an arbitrary root set $R$ as input because for each recursive call we have to begin our clique with the elements adjacent to $H$. \todo{a finir demain}
-
-\begin{algorithm}[h]
- \KwData{A graph $G = (V,E)$ and set of roots $R$}
- \KwResult{$G$ has a level structure where each level is a clique}
+And because a level is only adjacent to two other levels, we only have two connected components, only one if $L_i = L_1$ or $L_i = L_n$.\qed}\\
 
 
- \while{not at end of this document}{
+By this lemma we can suppose that the input graph $G$ is a connected graph. Given an input graph $G$, we can compute a level structure where each level is a clique in exponential time.
 
-  \eIf{understand}{
-   go to next section\;
-   current section becomes this one\;
-   }{
-   go back to the beginning of current section\;
-  }
-  return true;
- }
- \caption{UUIG recognition}
- \label{algo:uuig}
-\end{algorithm}
+\begin{theorem}
+  UUIG recognition is in $\mathcal{NP}$.
+\end{theorem}
+
+\proof{
+We can design a deterministic algorithm that solves UUIG recognition in exponential time when $G$ is a connected graph. We begin by taking an arbitrary vertex $v \in G$. By instance, this vertex is included in the maximal clique $K \subseteq G$.
+
+We have $P(K\setminus\{v\})$ the powerset of the clique $K$ excluding $v$. For each subset $s \in P(K\setminus\{v\})$, we have a subgraph $H = G\setminus (s\cup \{v\})$. We recall that $q(G)$ denotes the set of connected components of $G$. We can have three cases:
+
+\begin{enumerate}
+  \item $|q(H)| > 2$: If the number of components of $H$ is bigger than $2$, the current chosen clique is connected to more than two different cliques (or different levels); this is an invalid level, and we choose another clique from $s \in P(K\setminus\{v\})$.
+  \item $0 < |q(H)| \leq 2$: The current chosen clique is connected to one or two levels, which still respects our definition of level structure for the current chosen level. We check recursively if those connected components are also UUIG.
+  \item $|q(H)| = 0$: The current clique is an UUIG with only one level. This is a valid valid.
+\end{enumerate}
+
+To prove that UUIG recognition is in UUIG, we have to prove that it is in $\mathcal{NP}$. We have an upper bound on the complexity of this algorithm that is given by:
+
+$$T(n) \leq 2^{\omega(G)-1}T(n-1)$$
+
+Which gives us:
+
+$$T(n) \leq (2^{\omega(G)-1})^n = 2^{O(n\omega(G))}$$
+
+with $\omega(G)$ the size of the maximum clique of $G$. \qed
+}
+
+Future work on the recognition of unit unfettered interval graphs would be to adapt this algorithm to avoid combinatorial complexity. In our case we are interested in seeing the recognition of UUIG for unit disk graphs. We know that the CLIQUE problem is in $\mathcal{P}$ for unit disk graphs and the first hypothesis was that given an UUIG $G$, at least one level of $G$ is a maximal clique of the graph. Nevertheless, we have a counterexample in $T_0$ (Fig. \ref{graphsT}) where the levels of the graph are $\{K_1, K_2, K_2, K_1\}$ while $\omega(T_0) = 3$.
+
+\begin{obs}
+  Given an \emph{UUIG} $G$, no level of $G$ has to be a maximal clique.
+\end{obs}

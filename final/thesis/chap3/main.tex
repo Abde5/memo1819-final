@@ -1,13 +1,15 @@
 \chapter{Thin strip graphs}
 \label{chap:thinDef}
 
-\todo{Introduction of the chapter.}
+The goal of this chapter is to introduce you to the main subject of this thesis. Thin strip graphs is a class of graphs that lay between unit disk graphs
+and mixed interval graphs. We can define formally a $c$-strip graph as a unit disk graph such that the centers of the disks belong to $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$, more intuitively we can see this as a unit disk graph where the centers of the disks lay between two parallel horizontal lines with a distance of $c$ between them. We denote this class by SG($c$). We
+have then that SG($0$) = UIG and SG($\infty$) = UDG.
 
-\todo{Explain Breu's characterization of strip graphs}
+The definition and main work for this class comes from Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. However, Hayashi et al. \cite{hayashiThinStripGraphs2017} expand his work by defining the class of \emph{thin strip graphs}.
 
-$c$-strip graphs are unit disk graphs such that the centers of the disks belong to
-$\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$. The class is denoted by SG($c$). We
-have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
+\section{Thin strip graphs}
+
+A thin strip graph can be intuitively defined as a $c$-strip graph where $c$ is an arbitrarily little $\varepsilon$. Also, we can see that SG($k$) $\subseteq$ SG($l$) with $k<l$. A more strict definition emerges from this observation:
 
 \begin{defn}
   Thin strip graphs are defined as TSG $= \bigcap_{c > 0}$ SG($c$).
@@ -72,14 +74,50 @@ have SG(0) = UIG and SG($\infty$) = UDG. \cite{hayashiThinStripGraphs2017}
   There is no constant $t$ such that SG($t$) = TSG.
 \end{theorem}
 
-Since this class is newly defined we have to characterize it. For this purpose,
-some relations have been found between this class and interval graphs.
+\begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
+  There is no constant $t$ such that SG($t$) = UDG.
+\end{theorem}
+
+Hayashi et al. left some open problems. I try to expand the knowledge around some of these problems
+to help the understanding of them, largely the recognition of this class of graphs. Before, we see where this class lays in the hierarchy of classes. We know by definition that TSG $\subsetneq$ UDG.
 
 \subsection{Interval graphs}
+
+Thin strip graphs shares their geometrical structure with interval graphs (remember SG($0$) = UIG). In this subsection, we overview the results of Hayashi et al. \cite{hayashiThinStripGraphs2017} where they find maximal and minimal superclasses for TSG in the interval graphs presented in chapter \ref{chap:interval}. The following theorem will be proven by taking the proof written by Hayashi et al. in order to use their mapping in other theorems (e.g. \ref{chap:twolevel}).
 
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   MUIG $\subsetneq$ TSG.
 \end{theorem}
+
+\proof{
+First, we prove that MUIG $\neq$ TSG. This can be proven because $C_4 \in$ TSG if we take as points $(0,0),(0,\varepsilon),(1,0),(1,\varepsilon)$ with $1 >\varepsilon > 0$ and $C_4 \notin$ MUIG because it is a chordal graph.
+
+Then, we have to prove that MUIG $\subseteq$ TSG. Let $G = (V,E) \in$ MUIG where each vertex is a unit mixed interval denoted as $I_v$. We define $t = \min\{|I_u\cap I_v| : |I_u\cap I_v| > 0, \{I_u,I_v\} \subseteq V\}$ and $s = \min\{\ell(I_v) - r(I_u) : \ell(I_v) > r(I_u), \{I_u,I_v\} \subseteq V\}$. We have then $t$ being the minimum length of an intersection bigger than zero (that is, not endpoint-adjacent) and $s$ is the minimum distance between non-adjacent vertices (also not endpoint-adjacent). We also define $c(I_v) = \frac{\ell(I_v) + r(I_v)}{2}$ as the center of the interval and $p(I_v) = (-1)^{\left \lfloor{c(I_v)}\right \rfloor }$.
+
+Let $d$ be a real such that $0 < d < \frac{2}{3}$, $d\leq \frac{t}{4}$, $d < \frac{s}{2}$ and $\varepsilon \geq 2\sqrt{d-d^2}$. If we let $h = \sqrt{d-d^2}$, then we can create a $2h$-realization of $G$ with the following mapping:
+
+\[ \phi(v) =
+  \begin{cases}
+      (c(I_v),0) & \text{if}\  I_v\  \text{is a closed interval} \\
+      (c(I_v),hp(I_v)) & \text{if}\  I_v\  \text{is an open interval} \\
+      (c(I_v)-d,hp(I_v)) & \text{if}\  I_v\  \text{is a closed-open interval} \\
+      (c(I_v)+d,hp(I_v)) & \text{if}\  I_v\  \text{is an open-closed interval}
+   \end{cases}
+\]
+
+For two vertices $u$ and $v$ of $G$ such that $u < v$, we have the three following cases:
+
+\begin{enumerate}
+  \item $r(I_u) < \ell(I_v)$:
+
+    $I_u$ and $I_v$ are not adjacents, which means that $\text{dist}(\phi(u),\phi(v)) > 1$.
+    If we minimize the distance between them we have $\phi(u) = (c(I_v)+d,hp(I_v))$ and $\phi(v) = (c(I_v)-d,hp(I_v))$. Therefore,
+
+    
+  \item $r(I_u) > \ell(I_v)$:
+  \item $r(I_u) = \ell(I_v)$:
+\end{enumerate}
+}
 
 We can define a new class of graphs: unfettered unit interval graphs. These graphs
 are unit interval graphs where if two intersections touch, we can decide whether
@@ -88,6 +126,10 @@ they intersect or not. We denote this class UUIG.
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   TSG $\subsetneq$ UUIG.
 \end{theorem}
+
+\proof{See \cite{hayashiThinStripGraphs2017}.}
+
+\todo{longer demonstration, maybe is going to go to the appendix.}
 
 
 \section{Characterization of thin strip graphs}
@@ -103,13 +145,6 @@ One of the main goals of this thesis is to characterize TSG. by forbidden induce
 
 \begin{scaletikzpicturetowidth}{\textwidth}
 \begin{tikzpicture}[scale=2]
-
-%\draw  (0.1,0) circle [radius=0.5];
-%\draw  (0,0) circle [radius=0.5];
-%\draw  (-0.3,-0.95) circle [radius=0.5];
-%\draw  (0.3,-0.7) circle [radius=0.5];
-%\draw  (-0.7,-1) circle [radius=0.5];
-%\draw  (0.9,-0.7) circle [radius=0.5];
 
 % line
 \draw  (0,0) circle [radius=0.5];
