@@ -153,6 +153,13 @@ For two vertices $u$ and $v$ of $G$ such that $u \leq v$, we have the three foll
 \end{enumerate}
 }
 
+From this theorem, UIG $\subsetneq$ TSG. Actually, there exists a stronger connection between these two classes:
+
+\begin{theorem}[Breu \cite{breuAlgorithmicAspectsConstrained1996}]
+  \label{theo:induced_TSG}
+  Let $G$ a $c$-strip graph with $c \in \mathbb{R}_0^+$. $G$ has an induced $K_{1,3}$ or $C_4$ if and only if $G$ is not an unit interval graph.
+\end{theorem}
+
 Thin strip graphs can also be seen as unfettered unit interval graphs, which means that if a graph is a thin strip graph, then we can partition this graph with a level structure where each level is a clique. This information will be relevant in the next section.
 
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
@@ -166,7 +173,7 @@ Thin strip graphs can also be seen as unfettered unit interval graphs, which mea
 
 One of the main goals of this thesis is to characterize thin strip graphs by forbidden induced subgraphs. We know that TSG is an hereditary class, then a way to characterize this class of graphs is by looking for its forbidden subgraphs the same way as MUIG has been characterized by Joos. Furthermore, MUIG $\subsetneq$ TSG by Theorem \ref{theo:muigTSG}, so the first we can do is to check if the forbidden subgraphs of MUIG are also for TSG.
 
-One of the main goals of this thesis is to characterize TSG. by forbidden induced subgraphs. To approach this, we will see how many induced forbidden subgraphs are also forbidden for TSG. We have described the familes of forbidden induced subgraphs for MUIG in section \ref{sec:muig} and one of these familes has been proven to be a forbidden induced subgraph for TSG.
+One of the main goals of this thesis is to characterize TSG. by forbidden induced subgraphs. To approach this, we will see how many induced forbidden subgraphs are also forbidden for TSG. We have described the families of forbidden induced subgraphs for MUIG in section \ref{sec:muig} and one of these familes has been proven to be a forbidden induced subgraph for TSG.
 
 \subsection{Mixed unit interval graph forbidden subgraphs}
 
@@ -175,20 +182,20 @@ One of the main goals of this thesis is to characterize TSG. by forbidden induce
 \end{theorem}
 
 \begin{proof}
-  We can prove that $\mathcal{R} \notin$ UUIG because TSG $\subsetneq$ UUIG. We can prove this by taking into consideration the display of the graphs in Figure \ref{graphsR}.
+  A way to prove this theorem is to prove that $\mathcal{R} \notin$ UUIG because TSG $\subsetneq$ UUIG. We can prove this by taking into consideration the embedding of the graphs in Figure \ref{graphsR}.
 
-  Let $v$ be the leftmost vertex of $R_k$ with $k \in \mathbb{N}$. We have two choices:
+  Let $v$ be the leftmost vertex of $R_k$ with $k \in \mathbb{N}$ and $L_i$ the $i^{th}$ level of the level structure of the graph. We have two choices:
 
   \begin{itemize}
     \item $v\in L_1 = K_1$: we have $H = R_k\setminus L_1$.
     $H$ has only one connected component, which means that it is a valid level. The next step is to take $N(L_1 \cap H) = L_2$, then $N(L_2 \cap H') = L_3$ where $H' = H\setminus L_2$.We repeat this until we arrive to the end of our graph. The last one will divide the graph in two components of $K_1$, which does not respect our condition because $L_n$ has already one adjacent level ($L_{n-1}$).
-    \item $v\in L_1' = K_2$: in this case $H$ has two connected components, $K_1$ and $H\setminus K_1$. This level is valid, however, because it has two components $L_1'$ cannot be the first level of our level structure, so we take the neighbour $K_1$ as the first level $L_1$. We can observe that we are in the same spot as in the previous case, where $L_1 = K_1$.
+    \item $v\in L_1' = K_2$: in this case $H$ has two connected components, $K_1$ and $H\setminus K_1$. This level is valid, however, because $H$ has two components $L_1'$ cannot be the first level of our level structure (see definition), so we take the neighbour $K_1$ as the first level $L_1$. We can observe that we are in the same case as before, where $L_1 = K_1$.
   \end{itemize}
 
   Another (more extended) proof can be found in \cite{hayashiThinStripGraphs2017}.
 \end{proof}
 
-We see that $\mathcal{R}$ is a class of forbidden subgraphs of TSG. Nevertheless, the rest of the forbidden subgraphs for MUIG are thin strip graphs. The main reason is because they are unfettered unit interval graphs. We see our first example with the forbidden graph for MUIG $F$.
+We see that $\mathcal{R}$ is a family of forbidden subgraphs of TSG. Nevertheless, the rest of the forbidden subgraphs for MUIG are thin strip graphs. The main reason is because they are unfettered unit interval graphs. We see our first example with the forbidden graph for MUIG $F$.
 
 \begin{figure}
 \begin{center}
@@ -250,8 +257,47 @@ $y$-coordinate we put it at the right side of $L_3$.
 $$\phi(w) = \Bigg(1 - \Big(\frac{\varepsilon}{4}\Big)^2, \varepsilon \frac{1}{4}\Bigg)$$ \qed
 }
 
-We prove the same thing for $\mathcal{T}$ with the same procedure:
+We can also prove the same for $\mathcal{T}$ and $\mathcal{S}''$. In this case these graphs have induced $K_{1,3}$ (before we had an induced $C_4$).
+There is a property about $K_{1,3}$ and TSGs that will help us embed those graphs in the plane.
 
+\begin{lemma}
+  The only way to represent $K_{1,3}$ as a thin strip graph is for three points $u,v,w$ such that $u_x=v_x-1$ and $w_x = v_x+1$ with the same
+  $y$-coordinate and the fourth point $t$ is placed such $t_x = v_x$ and $t_y \neq v_y$ (see Figure \ref{fig:thinK13}).
+\end{lemma}
+
+\proof{We begin constructing the realization of $K_{1,3}$ by taking its induced $P_3 \in K_{1,3}$. The middle point of $P_3$ has to be between
+the other two points horizontally, so we know then that $u_x < v_x < w_x$ with $v$ the middle point.
+
+Now we introduce $t$, the vertex that is adjacent to the middle point of $P_3$. We know by fact that $u_x < t_x < w_x$: if we take $t_x \leq u_x$, $t$ has to be adjacent to $u$ in order to intersect $v$ which is not the case; viceversa for $w$.
+
+Let $\alpha_{u,v} = \sqrt{1 - (u_y-v_y)^2}$ be the \emph{critical region} between two points. Note that if $|u_x - v_x| \leq \alpha_{u,v}$ then $u$ and $v$ are touching.
+
+Now that we know that $u_x < t_x < w_x$, if we set $t_x < v_x$ and maximize the distance between $u$ and $v$ (so $u_x = v_x-1$) we should have:
+
+$$t_x > \alpha_{u,t}+u_x$$
+
+for every $t_y$. %We assume that $u_y = 0$ without loss of generality:
+
+$$t_x > \alpha_{u,t}+v_x-1$$
+$$t_x +1 > \alpha_{u,t}+v_x$$
+
+We know that $t_x < v_x$, which means that $\alpha_{u,v}$ has to be bigger than one, which is impossible given the definition of $\alpha_{u,v}$. The same occurs with $w_x$ and $t_x > v_x$.
+
+The only case that is left is with $t_x = v_x$. If $u$ and $t$ touch then:
+
+$$t_x \leq \alpha_{u,t}+u_x$$
+$$t_x+1 \leq \alpha_{u,t}+v_x$$
+
+we know that $t_x = v_x$:
+
+$$v_x+1 \leq \alpha_{u,t}+v_x$$
+$$1 \leq \alpha_{u,t}$$
+$$1 \leq \sqrt{1-t_y^2}$$
+
+which is impossible except when $t_y = 0$, which means that the only solutions are when $t_y \neq v_y$, $t_x = v_x$, $u_x = v_x-1$ and $w_x = v_x+1$. \qed
+}
+
+%We prove the same thing for $\mathcal{T}$ and $\mathcal{S}''$ with the same procedure:
 
 \begin{figure}[t]
 \begin{center}
@@ -298,13 +344,29 @@ We prove the same thing for $\mathcal{T}$ with the same procedure:
 \caption{The graph $T_{2,1}$ with the diamond in blue and the arms in red.}\label{fig:graph_T_clique}
 \end{figure}
 
-\begin{theorem}
-  $\mathcal{T} \subset$ TSG.
-\end{theorem}
+%\begin{theorem}
+%  $\mathcal{S}'' \subset$ TSG.
+%\end{theorem}
 
-\proof{begin proving}
+We can see that $\mathcal{S}''$ and $\mathcal{T}$ both have induced $K_{1,3}$ while $F$ has an induced $C_4$.
+
+\todo[inline]{Main idea is that we construct first the induced $K_{1,3}$, then the rest follows, just have to finish writing.}
+
 
 \section{Recognition}
 
-The recognition of this class of graphs is stated by Breu in his thesis \todo{explain everything about dangerous cycles and
-complement oriented graphs in Breu's paper}.
+The recognition of this class of graphs is approached by Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. He gives a polynomial-time algorithm to recognise strip graphs for a given input with an assignment of $y$-coordinates for each vertex of the graph and an orientation of the edges of its complement.
+
+\begin{theorem}[Breu \cite{breuAlgorithmicAspectsConstrained1996}]
+  Let $G = (V,E,\gamma,\overrightarrow{E})$ a graph where $\gamma: V \to [0,c]$ is a function associating a $y$-coordinate (or a level) to each vertex and $\overrightarrow{E}$ an orientation of the complement of the graph. The recognition of $c$-strip graphs with this input is in \mathcal{P}.
+\end{theorem}
+
+\begin{obs}
+  Recognition of $c$-strip graphs without a given $\overrightarrow{E}$ is in $\mathcal{NP}$.
+\end{obs}
+
+\proof{
+  Given an polynomial-time algorithm with a complexity of $O(f(n))$ to solve recognition of $G = (V,E,\gamma,\overrightarrow{E})$, we can run again this algorithm by testing every possible orientation of its complement. This algorithm would take $O(f(n))2^{|E|-1} = O(f(n)2^{|E|})$ time to execute. \qed
+}\\
+
+We would like to have an algorithm that solves this problem without knowing the $y$-coordinates of the vertices. Nevertheless, further research would concentrate on recognition of UUIGs. We know that TSG $\subsetneq$ UUIG, and recognition of UUIGs is $\mathcal{NP}$. If we the problem of recognising TSG given a UUIG and is solved in polynomial time, then TSG recognition would be $\mathcal{NP}$. However, given the observations in the end of chapter \ref{chap:interval}, there may be a polynomial-time algorithm for UUIG.

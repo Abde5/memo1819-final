@@ -6,7 +6,9 @@ Breu \cite{breuAlgorithmicAspectsConstrained1996} has presented in his thesis a 
 In this chapter I define thin two-level graphs as a two-level graph where $L = \{0,\epsilon\}$ and $\epsilon$ is an arbitrarily small real number.
 
 
-\section{Characterization of TTL}
+\section{Thin two-level graph}
+
+A two-level graph can be defined
 
 \prop {An $\sigma$-SG($c$) graph $G$ (with $c < 1$) can be characterized by computing $\delta : A \times B \to E$ where $A,B \subseteq G$, $A$ and $B$ are UIG, and $A \cup B = \varnothing$:
 
@@ -45,7 +47,7 @@ In this chapter I define thin two-level graphs as a two-level graph where $L = \
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
 
-\caption{ Forbidden graph in TTL }
+\caption{ Forbidden graph in TTLG }
 \label{fig:forbSigma}
 \end{figure}
 
@@ -59,16 +61,16 @@ This class of graphs is close to our main class TSG. But we have to know at what
 
 With this preliminary result, we proceed to one of our main results:
 
-\theorem{TTL $\subsetneq$ TSG}
+\theorem{TTLG $\subsetneq$ TSG}
 
-\proof{By definition, we know that TTL $\subset$ TSG because the area where the disks can be placed in TTL is included in the area in TSG.
+\proof{By definition, we know that TTLG $\subset$ TSG because the area where the disks can be placed in TTLG is included in the area in TSG.
 
-We can prove that TTL $\neq$ TSG because we can construct a graph $G$ such that $G \in$ TSG and $G \notin$ TTL. This graph $D$ is a net$^*$ graph as described in Figure \ref{fig:forbSigma}.
+We can prove that TTLG $\neq$ TSG because we can construct a graph $G$ such that $G \in$ TSG and $G \notin$ TTLG. This graph $D$ is a net$^*$ graph as described in Figure \ref{fig:forbSigma}.
 \begin{proofpart}
   $D$ is a TSG because we can realize it as a TSG if we take as center of disks $(0,0)$, $(0,z)$, $(0,\epsilon)$, $(1,0)$, $(1,z)$, $(1,\epsilon)$ such that $0 < z < \epsilon$.
 \end{proofpart}
 \begin{proofpart}
-  Now we have to prove that $D$ is a forbidden induced subgraph of TTL. We will try to construct it by taking a induced subgraph that is realizable: we take $D_{-1} = D - x$ with $x\in V(D)$. We notice that $V(D_{-1})$ is a chordless $C_{4}$ ($abcd$) with a vertex $e$ adjacent to any two consecutive vertices $x,y \in V(C_4)$ creating the triangle $xye$.
+  Now we have to prove that $D$ is a forbidden induced subgraph of TTLG. We will try to construct it by taking a induced subgraph that is realizable: we take $D_{-1} = D - x$ with $x\in V(D)$. We notice that $V(D_{-1})$ is a chordless $C_{4}$ ($abcd$) with a vertex $e$ adjacent to any two consecutive vertices $x,y \in V(C_4)$ creating the triangle $xye$.
 
   By Lemma \ref{lemma:chordlessLEVEL} we know that $abcda$ is a cycle if $ab$ and $cd$ are level edges. We can classify these vertices in two sets: $\ell(V) = {a,d}$ and $r(V) = {b,c}$ where $\forall u\in \ell(V) v\in r(V): \phi(u)_x < \phi(v)_x$.
 
@@ -79,9 +81,9 @@ We can prove that TTL $\neq$ TSG because we can construct a graph $G$ such that 
 
 \subsection{Relation with MUIG}
 
-A big question that was asked during this research is: What is the relationship between TTL and MUIG? We know that the net*-graph is forbidden for every two-level graph, this graph is also forbidden for MUIG because it includes an induced $C_4$; we can also see that every forbidden induced subgraph for MUIG also is for TTL.
+A big question that was asked during this research is: What is the relationship between TTLG and MUIG? We know that the net*-graph is forbidden for every two-level graph, this graph is also forbidden for MUIG because it includes an induced $C_4$; we can also see that every forbidden induced subgraph for MUIG also is for TTLG.
 
-However, $C_4$ is realizable for two-level graphs with $c = 1$ in general, which means TTL $\neq$ interval $=$ MUIG. We then know that TTL $\cup$ MUIG $\subseteq$ TSG with TTL $\neq$ MUIG.
+However, $C_4$ is realizable for two-level graphs with $c = 1$ in general, which means TTLG $\neq$ interval $=$ MUIG. We then know that TTLG $\cup$ MUIG $\subseteq$ TSG with TTLGG $\neq$ MUIG.
 
 \todo[inline]{Rewrite this better.}
 
