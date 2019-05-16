@@ -3,24 +3,13 @@
 
 Breu \cite{breuAlgorithmicAspectsConstrained1996} has presented in his thesis a similar class of constrained unit disk graphs where the disks are placed on $k$ horizontal parallel lines. More formally: a disk $(x,y)$ can be placed in $x \in (-\infty,\infty)$ and $y \in L$ with $|L| = k$.
 
-In this chapter I define thin two-level graphs as a two-level graph where $L = \{0,\epsilon\}$ and $\epsilon$ is an arbitrarily small real number.
+In this chapter I define thin two-level graphs as a two-level graph where $L = \{0,\varepsilon\}$ and $\varepsilon$ is an arbitrarily small real number.
 
 
 \section{Thin two-level graph}
 
-A two-level graph can be defined
-
-\prop {An $\sigma$-SG($c$) graph $G$ (with $c < 1$) can be characterized by computing $\delta : A \times B \to E$ where $A,B \subseteq G$, $A$ and $B$ are UIG, and $A \cup B = \varnothing$:
-
-\[
-    \delta(x,y) =
-    \begin{cases}
-      xy        & \text{if } \text{dist}(x,y) \leq 1\\
-      \varnothing,       & \text{otherwise}
-    \end{cases}
-\]
-}
-\todo{this proposition is ugly, re-do this with Breu's notations.}
+A two-level graph can be defined intuitively as a strip graph such that the disks are placed only on the horizontal lines. In the same way,
+we can define also
 
 \begin{figure}
 \centering
@@ -59,35 +48,61 @@ This class of graphs is close to our main class TSG. But we have to know at what
 }
 
 
-With this preliminary result, we proceed to one of our main results:
+With this preliminary result, we proceed to one of our main result:
 
 \theorem{TTLG $\subsetneq$ TSG}
 
 \proof{By definition, we know that TTLG $\subset$ TSG because the area where the disks can be placed in TTLG is included in the area in TSG.
 
 We can prove that TTLG $\neq$ TSG because we can construct a graph $G$ such that $G \in$ TSG and $G \notin$ TTLG. This graph $D$ is a net$^*$ graph as described in Figure \ref{fig:forbSigma}.
+
 \begin{proofpart}
   $D$ is a TSG because we can realize it as a TSG if we take as center of disks $(0,0)$, $(0,z)$, $(0,\epsilon)$, $(1,0)$, $(1,z)$, $(1,\epsilon)$ such that $0 < z < \epsilon$.
 \end{proofpart}
 \begin{proofpart}
-  Now we have to prove that $D$ is a forbidden induced subgraph of TTLG. We will try to construct it by taking a induced subgraph that is realizable: we take $D_{-1} = D - x$ with $x\in V(D)$. We notice that $V(D_{-1})$ is a chordless $C_{4}$ ($abcd$) with a vertex $e$ adjacent to any two consecutive vertices $x,y \in V(C_4)$ creating the triangle $xye$.
+  Now we have to prove that $D$ is a forbidden induced subgraph of TTLG. We will try to construct it by taking an induced subgraph that is realizable: we take $D_{-1} = D - x$ with $x\in V(D)$. We notice that $V(D_{-1})$ is a chordless $C_{4}$ ($abcd$) with a vertex $e$ adjacent to any two consecutive vertices $x,y \in V(C_4)$ creating the triangle $xye$.
 
-  By Lemma \ref{lemma:chordlessLEVEL} we know that $abcda$ is a cycle if $ab$ and $cd$ are level edges. We can classify these vertices in two sets: $\ell(V) = {a,d}$ and $r(V) = {b,c}$ where $\forall u\in \ell(V) v\in r(V): \phi(u)_x < \phi(v)_x$.
+  By Lemma \ref{lemma:chordlessLEVEL} we know that $abcda$ is a cycle if $ab$ and $cd$ are level edges. We can classify these vertices in two sets: $\ell(V) = {a,d}$ and $r(V) = {b,c}$ where $\forall u\in \ell(V) v\in r(V): u_x < v_x$.
 
-  To realize $D_{-1}$ we have to add a vertex $e$ to $C_4$. In our case, $e$ cannot be added in two
-  \todo{Finish proof here}
+  To realize $D_{-1}$ we have to add a vertex $i$ to $C_4$. We can either put it between two line-vertices or put it between two vertices with different level.
+  In the case where we want to put it between two line vertices $a$ and $b$ we have:
+
+  $$b_x < d_x <c_x$$
+
+  In this case, we have $d_x$ that is adjacent to at least one vertex of the other level. The only way to do this is to put it adjacent to two different level vertices ($a$ and $b$). Now that we have a realization of $D_{-1}$, we should add a last vertex $j$ adjacent to $i$, $c$ and $d$. If we put $j$ on the right of the cycle, then $i$ has to be on the left to be able to touch $c$ and $d$. However, it is impossible for $j$ to reach $i$ because between because at each level there is a region $a\cap d$ and $b\cap c$ that neither of these disks can breach, so they will always be disjoint.\qed
 \end{proofpart}
 }
 
-\subsection{Relation with MUIG}
+\subsection{Relation with interval graphs}
 
-A big question that was asked during this research is: What is the relationship between TTLG and MUIG? We know that the net*-graph is forbidden for every two-level graph, this graph is also forbidden for MUIG because it includes an induced $C_4$; we can also see that every forbidden induced subgraph for MUIG also is for TTLG.
+The relationship between two-level graphs and interval graphs is clear: a $k$-two-level graph with $k > 1$ gives us a disconnected graph where every connected component is a unit interval graph. Here we could say that a two-level graph $G = F \cup H$ being $F$ and $H$ unit interval graphs.
 
-However, $C_4$ is realizable for two-level graphs with $c = 1$ in general, which means TTLG $\neq$ interval $=$ MUIG. We then know that TTLG $\cup$ MUIG $\subseteq$ TSG with TTLGG $\neq$ MUIG.
+Furthermore, this relationship between unit interval graphs and two-level graphs is even stronger:
 
-\todo[inline]{Rewrite this better.}
+\begin{theorem}[Breu \cite{breuAlgorithmicAspectsConstrained1996}]
+For any value of $k$, a $k$-two-level-graph is an union of two unit interval graphs.
+\end{theorem}
 
-\section{Induced forbidden subgraphs}
+Before proving this, we have to define:
+
+\begin{defn}
+  A short edge $\tau$-two-level graph is a $\tau$-two-level graph $G(V,E)$ such that given $vw \in E$, then $|v_x-w_x| \leq \sqrt{1-\tau^2}$.
+\end{defn}
+
+\begin{claim}
+  A short edge two-level graph is a unit interval graph.
+\end{claim}
+
+\proof{See \cite{breuAlgorithmicAspectsConstrained1996}.}
+
+
+\proof[Proof of theorem]{
+  Let $G =(V,E)$ be a two-level graph. Let have $G_S = (V,E_S)$ the graph induced on the short edges and $G_L = (V,E_L)$ a graph induced on the line-edges (between points in the same line). Both of these graphs are unit interval graphs.
+
+  We can see that $E_S \cup E_L \subseteq E$, we only have to prove that $E \subseteq E_S \cup E_L$. Given an edge $vw\in E$, if $|v_x-w_x| > \alpha$, then $vw \in E_L$ because two graphs on different levels cannot touch. In the other case, when $|v_x-w_x| \leq \alpha$, v and w can be either in the same level or in different levels.
+
+  This shows that every edge of $E$ is in either $E_L$ or $E_S$, so $E \subseteq E_L \cup E_S$. Which means that $G = G_L \cup G_S$.
+}
 
 \begin{figure}
 \centering
