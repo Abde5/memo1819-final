@@ -78,8 +78,8 @@ A thin strip graph can be intuitively defined as a $c$-strip graph where $c$ is 
   There is no constant $t$ such that SG($t$) = UDG.
 \end{theorem}
 
-Hayashi et al. left some open problems. I try to expand the knowledge around some of these problems
-to better understand them, largely for the recognition of this class of graphs. Before that, we see where this class lays in the hierarchy of classes. We know by definition that TSG $\subsetneq$ UDG.
+Hayashi et al. left some open problems. We try to expand the knowledge around some of these problems
+to understand them better, largely for the recognition of this class of graphs. Before that, we see where this class lays in the hierarchy of classes. We know by definition that TSG $\subsetneq$ UDG.
 
 \subsection{Interval graphs}
 
@@ -177,6 +177,10 @@ One of the main goals of this thesis is to characterize TSG. by forbidden induce
 
 \subsection{Mixed unit interval graph forbidden subgraphs}
 
+In the previous section we have shown that MUIG $\subsetneq$ TSG \ref{theo:muigTSG}. We have even shown every forbidden induced subgraph of MUIG in Chapter \ref{chap:interval}. Here we are going to overview these forbidden induced subgraphs and we their inclusion in TSG. \todo{to continue phrasing}
+
+In this subsection, we are going to see the relationship between thin strip graphs and mixed unit interval graphs.
+
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   $\mathcal{R}$ is a forbidden induced subgraph family of TSG.
 \end{theorem}
@@ -265,18 +269,20 @@ There is a property about $K_{1,3}$ and TSGs that will help us embed those graph
   $y$-coordinate and the fourth point $t$ is placed such $t_x = v_x$ and $t_y \neq v_y$ (see Figure \ref{fig:thinK13}).
 \end{lemma}
 
-\proof{We begin constructing the realization of $K_{1,3}$ by taking its induced $P_3 \in K_{1,3}$. The middle point of $P_3$ has to be between
+\proof{
+We proceed to prove this lemma by contradiction. We begin constructing the realization of $K_{1,3}$ by taking its induced $P_3 \in K_{1,3}$. The middle point of $P_3$ has to be between
 the other two points horizontally, so we know then that $u_x < v_x < w_x$ with $v$ the middle point.
 
 Now we introduce $t$, the vertex that is adjacent to the middle point of $P_3$. We know by fact that $u_x < t_x < w_x$: if we take $t_x \leq u_x$, $t$ has to be adjacent to $u$ in order to intersect $v$ which is not the case; viceversa for $w$.
 
-Let $\alpha_{u,v} = \sqrt{1 - (u_y-v_y)^2}$ be the \emph{critical region} between two points. Note that if $|u_x - v_x| \leq \alpha_{u,v}$ then $u$ and $v$ are touching.
+Let $\alpha_{u,v} = \sqrt{1 - (u_y-v_y)^2}$ be a real number that represents the \emph{critical region} between two points.
+Note that if $|u_x - v_x| \leq \alpha_{u,v}$ then $u$ and $v$ are touching.
 
 Now that we know that $u_x < t_x < w_x$, if we set $t_x < v_x$ and maximize the distance between $u$ and $v$ (so $u_x = v_x-1$) we should have:
 
 $$t_x > \alpha_{u,t}+u_x$$
 
-for every $t_y$. %We assume that $u_y = 0$ without loss of generality:
+for every $t_y$. We assume that $u_y = 0$ and $u_x = k$ with $k \in \mathbb{R}$ without loss of generality.
 
 $$t_x > \alpha_{u,t}+v_x-1$$
 $$t_x +1 > \alpha_{u,t}+v_x$$

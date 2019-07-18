@@ -1,5 +1,4 @@
 \documentclass[12pt,a4paper,oneside]{book}
-%\usepackage[left=3.5cm, top=2.5cm, bottom=2.5cm, right=2.5cm]{geometry}
 
 
 \usepackage{setspace}
@@ -133,6 +132,57 @@
 \newcommand{\tpm}{{\cal T}^{\pm}}
 \newcommand{\bpmix}{{\cal B}^{{\cal M}}}
 \newcommand{\tpmix}{{\cal T}^{{\cal M}}}
+
+%quoting
+
+\definecolor{quotemark}{gray}{0.7}
+\makeatletter
+\newlength\origparskip
+
+\newcommand{\fquote}{%
+  \@ifnextchar[{\fquote@i}{\fquote@i[]}%]
+}
+
+\def\fquote@i[#1]{%
+  \def\tempa{#1}%
+  \@ifnextchar[{\fquote@ii}{\fquote@ii[]}%]
+}%
+
+\def\fquote@ii[#1]{%
+  \def\tempb{#1}%
+  %\vspace{1em}%
+  \noindent%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{0.3\textwidth}%
+    \setlength{\rightmargin}{0.1\textwidth}%
+    \setlength{\origparskip}{\parskip}%
+  }%
+    \item[]%
+      \begin{picture}(0,0)%
+        \put(-15,-8){\makebox(0,0){\scalebox{4}{%
+          \textcolor{quotemark}{\textquotedblright}}}}%
+      \end{picture}%
+      \begingroup
+      \itshape
+      \ignorespaces}%
+
+\def\endfquote{%
+  \endgroup
+  \par
+  \raggedleft
+  \ifx\tempa\empty
+  \else
+    {\bfseries --- \tempa\par}%
+    \setlength{\parskip}{\origparskip}%
+    \ifx\tempb\empty
+    \else
+      (\tempb)%
+  \fi
+  \par
+  %\vspace{0.5em}%
+  \end{list}}
+\makeatother
+
 %%%%%%%%%%%%%%%%  end macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
