@@ -1,10 +1,111 @@
 \chapter{Background}
 \label{chap:background}
 
-In this chapter we review some definitions, notations of the background knowledge of this thesis. We limit ourselves to the basic notations used during the work. Nevertheless, the bibliography of each subject will be referenced for further details about the topic.
+In this chapter we review some definitions and notations of the background knowledge of this thesis. We limit ourselves to the basic notations used during the work. Nevertheless, the bibliography of each subject will be referenced for further details about the topic.
 
 %\todo{Text about background intro}
 
 %\input{chap1/graph}
 %\input{chap1/complexity}
 %\input{chap1/geometry}
+
+\section{Graph theory}
+
+A \emph{graph} is defined as a tuple $G = (V,E)$ where $V$ is the set of \emph{vertices} and $E$. When the the set of \emph{edges}, where $E = \binom{V}{2}$. If two vertices are share the same edge $e$ they are called \emph{adjacent} and also the \emph{endpoints} of $e$. A \emph{subgraph} $H = (V', E')$ of a graph $G$ is a graph such that $V' \subseteq V$ and $E' \subseteq E$. An \emph{induced subgraph} of a graph is a subgraph $H$ of a graph $G$ such that for every edge of $G$ is also in $H$ if its two endpoints are in $V'$. A \emph{clique} is a subgraph such that every vertex is adjacent to each other. A graph that is also a clique is called a \emph{complete graph} and it is denoted as $K_n$. A graph is \emph{bipartite} if there exist two disjoint subsets of the vertex set $A \cup B = V$ such that two vertices of the same subset are not adjacent. A \emph{complete bipartite graph} $K_{n,m}$ is a bipartite graph such that $v \in A$ and $w \in B$ implies $vw \in E$ where $n$ and $m$ are the size of each bipartition.
+
+A \emph{path} $P_n = v_1\dots v_{n+1}$ of a graph is a sequence of $n$ vertices such that two consequent vertices are adjacent. A \emph{cycle} is a path $C_n = v_1\dots v_nv_{n+1}$ such that $v_1=v_{n+1}$. A graph is \emph{connected} if there exists a path between every pair of vertices. A \emph{chord} of a cycle $C_n$ with $n \geqslant 4$ is an edge that connects two non adjacent vertices of the cycle. A graph is \emph{chordal} if there is a chord in every cycle bigger than four.
+
+\subsection{Intersection graphs}
+
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5]
+
+  \draw (-0.5,2.5) circle [radius=0.5];
+  \draw (0,2.5) circle [radius=0.5];
+  \draw (-0.5,2) circle [radius=0.5];
+  \draw (0,2) circle [radius=0.5];
+
+
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v1) at (-2.5,2.25) {};
+
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v2) at (-2,1.95) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v3) at (-2,2.55) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v4) at (-1.5,2.25) {};
+
+  \draw  (v3) edge (v2);
+  \draw  (v4) edge (v1);
+  \draw  (v3) edge (v1);
+  \draw  (v4) edge (v2);
+  \draw  (v3) edge (v4);
+  \draw  (v1) edge (v2);
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+
+\caption{Realization of a UDG (unit disk graph).}
+\label{fig:udg}
+\end{figure}
+
+
+An \emph{intersection graph} is a graph $G = (\zeta,E)$ of a collection of objects $\zeta$ is a graph such that $v,w \in \zeta$ and $v \cup w \neq \varnothing$ implies that $vw \in E$. An \emph{interval graph} is an intersection graph of intervals on the plane; when the size of the intervals is equal they are called \emph{unit interval graphs}. A \emph{unit disk graph} is an intersection graph of disks on a plane that have the same diameter - you can find an example in Figure \ref{fig:udg}.
+
+\section{Order and set theory}
+
+The \emph{powerset} $\powerset(S)$ of a set $S$ is the set of subsets of $S$. A \emph{partial order} is a binary relation $\leqslant$ over a set $A$ satisfying three axioms:
+
+\begin{itemize}
+  \item if $a \leqslant b$ and $b \leqslant a$ then $a = b$ (\emph{antisymmetry}).
+  \item if $a \leqslant b$ and $b \leqslant c$ then $a \leqslant c$ (\emph{transitivity}).
+  \item $a \leqslant a$ (\emph{reflexivity}).
+\end{itemize}
+
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5]
+
+  % poset
+  \draw (-1cm,0cm) node (v2) {$\{x\}$};
+  \draw (1cm,0cm)  node (v3) { $\{y\}$ };
+  \draw (0cm,-1cm) node (v4) {$\varnothing$};
+  \draw (0cm,1cm)  node (v1) {$\{x,y\}$};
+
+  \draw[thick]  (v1) edge (v2);
+  \draw[thick]  (v3) edge (v1);
+  \draw[thick]  (v3) edge (v4);
+  \draw[thick]  (v2) edge (v4);
+
+  % graph
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v1g) at (3.5,1) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v2g) at (3.5,-1) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v3g) at (4.5,0) {};
+  \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v4g) at (2.5,0) {};
+  \draw  (v1g) edge (v2g);
+  \draw  (v1g) edge (v4g);
+  \draw  (v4g) edge (v2g);
+  \draw  (v1g) edge (v3g);
+  \draw  (v3g) edge (v2g);
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+
+\caption{On the left, Hasse diagram of a poset of the power set of 2 elements ordered by inclusion.
+On the right, the comparability graph of this poset.}
+\label{fig:hasse}
+\end{figure}
+
+In the other side, a \emph{total order} is a partial order where the reflexivity order is replaced by the \emph{connexity} property -- $a \leq b\ \text{or}\  b \leq a$. A \emph{partially ordered set} (or \emph{poset}) $(S,\leqslant)$ is a set such that the elements of $S$ are partially ordered by the relation $\leqslant$. A good way to represent a poset is the \emph{Hasse diagram} (figure \ref{fig:hasse}).
+
+\subsection{Comparability graphs}
+
+A \emph{spanning order} $(V,<)$ on a graph $G = (V,E)$ is a total order on $V$ such that for any three vertices $u < v < w$:
+
+  $$uw \in E \to uv \in E\ \text{or}\ vw \in E$$
+
+The class of comparability graphs are built on the ideas of order theory. A graph $G$ is a \emph{comparability graph} if there exists a partial order $\leqslant$ such that $uv \in E \Leftrightarrow v \leqslant w\  \text{or}\  w \leqslant v$.
+
+\section{Geometry}
