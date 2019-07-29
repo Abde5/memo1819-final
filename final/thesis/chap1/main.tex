@@ -1,7 +1,7 @@
 \chapter{Background}
 \label{chap:background}
 
-In this chapter we review some definitions and notations of the background knowledge of this thesis. We limit ourselves to the basic notations used during the work. Nevertheless, the bibliography of each subject will be referenced for further details about the topic.
+In this chapter we review some definitions and notations used in this thesis. We limit ourselves to the basic notations used during the work. However, the bibliography of each subject will be referenced for further details about the topic.
 
 %\todo{Text about background intro}
 
@@ -11,9 +11,13 @@ In this chapter we review some definitions and notations of the background knowl
 
 \section{Graph theory}
 
-A \emph{graph} is defined as a tuple $G = (V,E)$ where $V$ is the set of \emph{vertices} and $E$. When the the set of \emph{edges}, where $E = \binom{V}{2}$. If two vertices are share the same edge $e$ they are called \emph{adjacent} and also the \emph{endpoints} of $e$. A \emph{subgraph} $H = (V', E')$ of a graph $G$ is a graph such that $V' \subseteq V$ and $E' \subseteq E$. An \emph{induced subgraph} of a graph is a subgraph $H$ of a graph $G$ such that for every edge of $G$ is also in $H$ if its two endpoints are in $V'$. A \emph{clique} is a subgraph such that every vertex is adjacent to each other. A graph that is also a clique is called a \emph{complete graph} and it is denoted as $K_n$. A graph is \emph{bipartite} if there exist two disjoint subsets of the vertex set $A \cup B = V$ such that two vertices of the same subset are not adjacent. A \emph{complete bipartite graph} $K_{n,m}$ is a bipartite graph such that $v \in A$ and $w \in B$ implies $vw \in E$ where $n$ and $m$ are the size of each bipartition.
+A \emph{graph} is defined as a tuple $G = (V,E)$ where $V$ is the set of \emph{vertices} and $E$ is a set of \emph{edges} where $E = \binom{V}{2}$. An \emph{orientation} of a graph $G$ is an assignment of a direction to each edge, we denote the orientation of the edges by $\overrightarrow{E}$. An orientation is \emph{transitive} if $uv \in \overrightarrow{E}$ and $vw in \overrightarrow{E}$, then $uw \in \overrightarrow{E}$. If two vertices are share the same edge $e$ they are called \emph{adjacent} and also the \emph{endpoints} of $e$. A \emph{subgraph} $H = (V', E')$ of a graph $G$ is a graph such that $V' \subseteq V$ and $E' \subseteq E$. An \emph{induced subgraph} of a graph is a subgraph $H$ of a graph $G$ such that for every edge of $G$ is also in $H$ if its two endpoints are in $V'$. A \emph{clique} is a subgraph such that every vertex is adjacent to each other. A graph that is also a clique is called a \emph{complete graph} and it is denoted as $K_n$. A graph is \emph{bipartite} if there exist two disjoint subsets of the vertex set $A \cup B = V$ such that two vertices of the same subset are not adjacent. A \emph{complete bipartite graph} $K_{n,m}$ is a bipartite graph such that $v \in A$ and $w \in B$ implies $vw \in E$ where $n$ and $m$ are the size of each bipartition.
 
-A \emph{path} $P_n = v_1\dots v_{n+1}$ of a graph is a sequence of $n$ vertices such that two consequent vertices are adjacent. A \emph{cycle} is a path $C_n = v_1\dots v_nv_{n+1}$ such that $v_1=v_{n+1}$. A graph is \emph{connected} if there exists a path between every pair of vertices. A \emph{chord} of a cycle $C_n$ with $n \geqslant 4$ is an edge that connects two non adjacent vertices of the cycle. A graph is \emph{chordal} if there is a chord in every cycle bigger than four.
+A \emph{path} $P_n = v_1\dots v_{n+1}$ of a graph is a sequence of pairwise distinct $n$ vertices such that two consequent vertices are adjacent. A \emph{cycle} is a path $C_n = v_1\dots v_nv_{n+1}$ such that $v_1=v_{n+1}$. A graph is \emph{connected} if there exists a path between every pair of vertices. A \emph{chord} of a cycle $C_n$ with $n \geqslant 4$ is an edge that connects two non adjacent vertices of the cycle. A graph is \emph{chordal} if there is a chord in every cycle bigger than four.
+
+Some graphs can be characterized with properties. An \emph{isomorphism} between two graphs $G= (V,E)$ and $H = (V', E')$ is a bijection $f : V \to V'$ between the two vertex sets such that $u,v$ are adjacent in $G$ if and only if $f(u), f(v)$ are adjacent in $H$. A graph \emph{property} is a property of the graph that is preserved in all its isomophisms; this will help us to set properties that are based on the abstraction of the graph and not only its drawings. A property is \emph{hereditary} if it is also preserved under all taking subgraphs.
+
+For notation in this thesis, sometimes the class of a certain type of graphs is denoted by its initials (\textit{e.g.} the class of unit interval graphs is denoted by \emph{UIG}) to avoid extreme repetition.
 
 \subsection{Intersection graphs}
 
@@ -50,7 +54,9 @@ A \emph{path} $P_n = v_1\dots v_{n+1}$ of a graph is a sequence of $n$ vertices 
 \end{figure}
 
 
-An \emph{intersection graph} is a graph $G = (\zeta,E)$ of a collection of objects $\zeta$ is a graph such that $v,w \in \zeta$ and $v \cup w \neq \varnothing$ implies that $vw \in E$. An \emph{interval graph} is an intersection graph of intervals on the plane; when the size of the intervals is equal they are called \emph{unit interval graphs}. A \emph{unit disk graph} is an intersection graph of disks on a plane that have the same diameter - you can find an example in Figure \ref{fig:udg}.
+An \emph{intersection graph} is a graph $G = (\zeta,E)$ of a collection of objects $\zeta$ is a graph such that $v,w \in \zeta$ and $v \cup w \neq \varnothing$ implies that $vw \in E$. An \emph{interval graph} is an intersection graph of intervals on the plane; when the size of the intervals is equal they are called \emph{unit interval graphs}. A \emph{unit disk graph} is an intersection graph of disks on a plane that have the same diameter - you can find an example in Figure \ref{fig:udg}.\\
+
+For more details about graph theory we recommend
 
 \section{Order and set theory}
 
@@ -98,7 +104,7 @@ On the right, the comparability graph of this poset.}
 \label{fig:hasse}
 \end{figure}
 
-In the other side, a \emph{total order} is a partial order where the reflexivity order is replaced by the \emph{connexity} property -- $a \leq b\ \text{or}\  b \leq a$. A \emph{partially ordered set} (or \emph{poset}) $(S,\leqslant)$ is a set such that the elements of $S$ are partially ordered by the relation $\leqslant$. A good way to represent a poset is the \emph{Hasse diagram} (figure \ref{fig:hasse}).
+On the other side, a \emph{total order} is a partial order where the reflexivity order is replaced by the \emph{connexity} property -- $a \leq b\ \text{or}\  b \leq a$. A \emph{partially ordered set} (or \emph{poset}) $(S,\leqslant)$ is a set such that the elements of $S$ are partially ordered by the relation $\leqslant$. A good way to represent a poset is the \emph{Hasse diagram} (Figure \ref{fig:hasse}).
 
 \subsection{Comparability graphs}
 
@@ -106,6 +112,28 @@ A \emph{spanning order} $(V,<)$ on a graph $G = (V,E)$ is a total order on $V$ s
 
   $$uw \in E \to uv \in E\ \text{or}\ vw \in E$$
 
-The class of comparability graphs are built on the ideas of order theory. A graph $G$ is a \emph{comparability graph} if there exists a partial order $\leqslant$ such that $uv \in E \Leftrightarrow v \leqslant w\  \text{or}\  w \leqslant v$.
+The class of comparability graphs are built on the ideas of order theory. A graph $G$ is a \emph{comparability graph} if there exists a partial order $\leqslant$ such that $uv \in E \Leftrightarrow v \leqslant w\  \text{or}\  w \leqslant v$. The complement of comparability graphs are called \emph{co-comparability graphs}.
+
+
+\section{Complexity}
+
+Complexity theory has the objective to establish lower bounds on how efficient an algorithm can be for a given problem. This approach let us have a reference point to establish the difficulty of a problem. A \emph{decision problem} is a problem where we have to decide if a statement is true or false. A \emph{decider} of a decision problem is defined as the deterministic machine that solves this problem. The problem is \emph{polinomially decidable} if it has a polynomial time decider. A \emph{verifier} of a decision problem is a deterministic machine that verifies whether an answer to the decision problem is true or false. Equally, a problem is \emph{polinomially verifiable} if it has a polynomial time verifier. We denote by $\mathcal{P}$ the class of polinomially decidable problems. On the other hand, $\mathcal{NP}$ denotes the class of polinomially verifiable problems. We can see that $\mathcal{P} \subseteq \mathcal{NP}$.\\
+
+A \emph{reduction} of a problem $L$ to a problem $M$ is a mapping of an instance of $L$ ($I_L$) to an instance of $M$ ($I_M$) such that $I_L$ is true for the problem $L$ if and
+only if $I_M$ is true for the problem $M$. This is denoted by $L \leq M$ and $L \leq_P M$ if the reduction is done in polynomial time. We usually prove bounds of complexity for an unknown problem $L$ by reducing it to another problem with an already known complexity. Thus, we can define the class \emph{$\mathcal{NP}$-hard} as the set of problems such that we can reduce every $\mathcal{NP}$ problem to one of them. The set of problems that are both $\mathcal{NP}$ and $\mathcal{NP}$-hard are called \emph{$\mathcal{NP}$-complete}.
 
 \section{Geometry}
+
+We must recall some really basic definitions of geometry. Every geometrical object of this thesis is located in $\mathbb{R}^2$ if it is not otherwise specified. The \emph{distance} between two points as $\text{dist}(a,b)$. An object $S$ is \emph{convex} if for every point $p,q$ the segment between the two points is also contained in $S$. More formally:
+
+$$\forall \lambda \in [0,1]: (1-\lambda)p + \lambda q \in S$$
+
+A \emph{stabbing} is a point that traverses a set of intersecting objects. A lot of research has been done \cite{schlipf2013stabbing} on the minimal amount of stabbings to cover every object in a set. If instead of points we use more complex object, we denote it by a \emph{covering}. The \emph{Helly} theorem says that:
+
+\begin{_theo}[Helly (\cite{Helly1923175}]
+  Given a set $S$ of objects in $\mathbb{R}^d$, if for each subset of $S$ of
+  size $d+1$ their intersection is non empty, then $\bigcap_{s \in S} \neq
+  \varnothing$.
+\end{_theo}
+
+We say that a set $S$ satisfies the \emph{Helly property} if every subfamily of $S$ composed of pairwise intersecting objects has also a non-empty intersection. For more details about algorithmic geometry, we recommend the reading of Berg \textit{et al.} \cite{bergComputationalGeometryAlgorithms2008}.

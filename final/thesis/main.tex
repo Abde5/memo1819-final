@@ -60,6 +60,9 @@
 }
 
 %%%%%%%%%%%%%%%%  start macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\emph\relax % there's no \RedeclareTextFontCommand
+\DeclareTextFontCommand{\emph}{\bfseries\em}
+
 \newtheorem{theorem}{Theorem}
 \theoremstyle{definition}
 \newtheorem{defn}[theorem]{Definition}

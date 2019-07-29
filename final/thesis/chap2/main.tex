@@ -5,42 +5,22 @@
   There’s no such thing in the world as absolute reality. Most of what they call real is actually fiction; what you think you see is only as real as your brain tells you it is. It’s not whether you were right or wrong, but how much faith you were willing to have, that decides the future.
 \end{fquote}
 
-In this chapter we are going to introduce the class of interval graphs, which is
+The goal of this chapter is to present the family of classes of interval graphs that are related to the class of thin strip graphs. We introduce the class of interval graphs, which is
  one of the most used classes of intersection graphs. There are multiple types of
  interval graphs and those that are the most relevant for the thesis are going to be defined below.
 
-The mixed unit interval graphs have been introduced by Dourado et al.
-\cite{douradoMixedUnitInterval2012} and its characterization is given by Joos
-\cite{joosCharacterizationMixedUnit2013}. The proof of the characterization will not
-be given because of the length of it, but each family of forbidden subgraphs will be
-presented.
-
-Last, we present unfettered unit interval graphs, which have been defined by Hayashi et al. \cite{hayashiThinStripGraphs2017} while
-defining thin strip graphs in their paper.
+ First, we recall the basic definition of an interval graphs and their multiple characterizations. Also, we present unit interval graphs, where we see their characterization and complexity such as Robert's characterization \cite{roberts1968representations}. Then, we see some characterizations such as Joos's paper about mixed unit interval graphs \cite{joosCharacterizationMixedUnit2013} and the paper from Hayashi \textit{et al.} \cite{hayashiThinStripGraphs2017} where the unfettered unit interval graphs are defined and also characterized as well as some equivalences with \emph{unit disk graphs} are presented.
 
 \section{Interval graphs}
 
-An interval graph is a graph $G$ that is the intersection graph of a collection
-of closed intervals in $\mathbb{R}$.
-
-First we present the main characterizations of interval graphs. In the next sections we present some other subclasses of interval graphs that will help us characterize the thin strip graphs on chapter \ref{chap:thinDef}. There are multiple characterizations of interval graphs that are equivalent, in this thesis we are going to present only one, which is the most relevant for our research:
+First we present the main characterizations of interval graphs. In the next sections we present some other subclasses of interval graphs that will help us characterize the thin strip graphs on Chapter \ref{chap:thinDef}. There are multiple characterizations of interval graphs that are equivalent, in this thesis we present Gilmore and Hoffman's characterization described in Theorem \ref{theo:intvalChord}. From this theorem it is clear that \textit{IG} class is a subclass of the \textit{CO-CO} class.
 
 \begin{theorem}[Gilmore and Hoffman \cite{gilmoreCharacterizationComparabilityGraphs1964}]
-  \label{theo:intervalChord}
-  $G$ is an interval graph if and only if $G$ does not contain $C_4$ as an induced subgraph and $\overline{G}$ has a transitive orientation (it is a co-comparability graph).
+  \label{theo:intvalChord}
+  $G$ is an interval graph if and only if $G$ does not contain $C_4$ as an induced subgraph and $\overline{G}$ can be ordered partially, in other words, $\overline{G}$ is a comparability graph.
 \end{theorem}
 
-\proof{
-  We want to prove that $G$ is an interval graph if and only if does not contain $C_4$ and it is
-}
-
-\subsection{Unit interval graphs}
-When every interval has the same length (or \emph{unitary}), the intersection graph of this interval set is referred to as a unit interval graph (or UIG).
-Roberts \cite{roberts1968representations} shows in his paper about indifference relations a characterization of UIG and an interesting equivalence with another class:
-
-\begin{theorem}[Roberts \cite{roberts1968representations}]
-  A graph is a unit interval graph if and only if it is a proper interval graph (an interval graph where no interval is a strict subset of another).
-\end{theorem}
+The first interesting subclass of IG is the class of \emph{unit interval graphs} which is defined by the interval graphs that have intervals with the same length (or equal to one). This class of graphs is equivalent to the class of \emph{proper interval graph} which is the class of intervals where no interval is a strict subset of another. This statement is powerful because the study of unit interval graphs can be more confortable because of the simplicity of its definition and characterization as seen in Theorem \ref{theo:k_13}.
 
 \begin{theorem}[Roberts \cite{roberts1968representations}]
   \label{theo:k_13}
@@ -50,10 +30,9 @@ Roberts \cite{roberts1968representations} shows in his paper about indifference 
 \section{Mixed unit interval graphs}
 \label{sec:muig}
 
-The next class of interval graphs that we present are mixed unit interval graphs, where each
-interval is unitary and can be closed, open, open-closed or closed-open.
+We can define a new class of graphs that is related to UIG by its definition. This class is closely related to thin strip graphs as we will see in Chapter \ref{chap:thinDef}. \emph{Mixed unit interval graphs} are graphs where the intervals have the same size as the unit interval graphs. However, in this class, the endpoints of the intervals can be open or closed - or one of each.
 
-In this paper we define four classes of unitary interval graphs:
+Formally, MUIG is defined by using the next classes of graphs:
 
 $$\mathcal{U}^{++} = \{[x,y] : x,y \in \mathbb{R}, x\leq y\}$$
 $$\mathcal{U}^{--} = \{(x,y) : x,y \in \mathbb{R}, x\leq y\}$$
@@ -61,7 +40,11 @@ $$\mathcal{U}^{+-} = \{[x,y) : x,y \in \mathbb{R}, x\leq y\}$$
 $$\mathcal{U}^{-+} = \{(x,y] : x,y \in \mathbb{R}, x\leq y\}$$
 
 where $\mathcal{U}^{++} = \text{UIG}$.
+
+Dourado, by defining these classes of unit interval graphs with open/closed intervals also found that, for unit interval graphs, it does not matter if the endpoints are open, closed, or closed open (Theorem \ref{theo:douradoEquiv}).
+
 \begin{theorem}[Dourado et al. \cite{DOURADO20123357}]
+  \label{theo:douradoEquiv}
   The classes of the graphs $\mathcal{U}^{--}$, $\mathcal{U}^{++}$,
   $\mathcal{U}^{-+}$, $\mathcal{U}^{+-}$, and  $\mathcal{U}^{-+} \cup
   \mathcal{U}^{+-}$ are the same.
@@ -100,26 +83,32 @@ where $\mathcal{U}^{++} = \text{UIG}$.
 \label{fig:muigK13}
 \end{figure}
 
-We can already show an equivalence between UIG and MUIG:
+However, MUIG is defined as $\mathcal{U}^{++} \cup \mathcal{U}^{--} \cup \mathcal{U}^{+-} \cup \mathcal{U}^{-+}$ which is also denoted as $\mathcal{U}$. In this case it is clear that this class is not equivalent to UIG. As we have seen in Theorem \ref{theo:k_13}, a UIG can be seen as a $K_{1,3}$-free IG. Nevertheless, MUIG can accept this graph as seen in Proposition \ref{prop:k_13MUIG}
 
-\begin{theorem}[Dourado et al. \cite{douradoMixedUnitInterval2012}]
-  $\text{UIG} \subsetneq \text{MUIG}$.
-\end{theorem}
-
-\begin{proof}
-  The strict inclusion is straightforward: we know that $\text{UIG} = \mathcal{U}^{++} \subset MUIG$ by definition.
-
-  And we only have to find a forbidden subgraph in UIG that is a MUIG. By theorem \ref{theo:k_13} we have $K_{1,3}$ forbidden in UIG,
-  but it is in fact in MUIG if we take an interval set $a,b,c,d$ such that:
+\begin{prop}[Dourado \textit{et al.} \cite{douradoMixedUnitInterval2012}]
+  \label{prop:k_13MUIG}
+  MUIG has a $K_{1,3}$ representation. Also, for every MUIG representation $\phi : V(K_{1,3}) \to \mathcal{U}$ such that $\phi(V(K_{1,3}))$ contains:
 
   \begin{itemize}
     \item $a = [x, x+1]$
     \item $b = (x, x+1)$
-    \item $c = [x+1, x+2]$ (or $[x+1, x+2)$)
-    \item $d = [x-1, x]$ (or $[x-1, x)$)
+    \item $c = [x+1, x+2]$ or $[x+1, x+2)$
+    \item $d = [x-1, x]$ or $[x-1, x)$
   \end{itemize}
+\end{prop}
 
-  for all $x \in \mathbb{R}$ (see Figure \ref{fig:muigK13}).
+\begin{proof}
+Let $\phi : V(K_{1,3}) \to \mathcal{U}$ be the representation of $K_{1,3}$ as a mixed unit interval intersection diagram as illustrated in Figure \ref{fig:muigK13}. Let $V(K_{1,3}) = \{v_1, v_2, v_3, v_4\}$ and $E(K_{1,3}) = \{v_1v4, v_2v_4, v_3v_4\}$. Let $x(v_1) = I(v_1) \cap I(v_4)$, $x(v_2) = I(v_2) \cap I(v_4)$ and $x(v_3) = I(v_3) \cap I(v_4)$. Because $v_1, v_2$ and $v_3$ are not adjacent, we can assume that $x(v_1) < x(v_2) < x(v_3)$. Since $x(v_1) \in I(v_4)$ and $x(v_3) \in I(v_4)$, then $x(v_3) - x(v_1) \leqslant 1$. Since $I(v_1), I(v_2)$ and $I(v_3)$ are disjoint, $I(v_2)$ must be a proper subset of $(x(v_1), x(v_3))$. Since $I(v_2)$ is a mixed unit interval, then it implies that $x(v_3) = x(v_1) + 1$, $I(v_2) = (x(v_1), x(v_1+1))$, $I(v_4) = [x(v_1), x(v_1)+1]$, $I(v_1) = \{(x(v_1) -1, x(v_1)], [x(v_1) -1, x(v_1)]\}$ and $I(v_3) = \{[x(v_3) -1, x(v_3)), [x(v_3) -1, x(v_3)]\}$.
+\end{proof}
+
+\todo[inline]{continue HERE}
+
+\begin{theorem}[Dourado \textit{et al.} \cite{douradoMixedUnitInterval2012}]
+  $\text{UIG} \subsetneq \text{MUIG}$.
+\end{theorem}
+
+\begin{proof}
+  The strict inclusion is straightforward: we know that $\text{UIG} = \mathcal{U}^{++} \subset MUIG$ by definition. For the inequality, we prove it by Proposition \ref{prop:k_13MUIG}, as $K_{1,3}$ is not realizable in UIG.
 \end{proof}
 
  A complete characterization by induced forbidden subgraphs have been found independently by A. Schuchat et al. \cite{shuchatUnitMixedInterval2014a} and F. Joos \cite{joosCharacterizationMixedUnit2013}. However, the Schuchat paper gives a polynomial algorithm to recognize MUIGs:
@@ -540,7 +529,7 @@ Because we know that each partition $L_k$ is a clique, we can say that for each 
 If we recall the characterization of MUIG in section \ref{sec:muig_char}, we can see that every forbidden graph of MUIG is an
 UUIG (except for $\mathcal{R}$); which means that they are also co-comparability graphs.
 
-In the other hand, we can find a graph in UUIG that is not an UDG. This theorem will be used in chapter \ref{chap:thinDef}.
+In the other hand, we can find a graph in UUIG that is not an UDG. This theorem will be used in Chapter \ref{chap:thinDef}.
 
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   UUIG $\neq$ UDG.

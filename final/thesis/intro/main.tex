@@ -4,15 +4,16 @@
 
 \chapter{Introduction}
 
-\begin{fquote}[Princess Zelda][The Legend of Zelda: Ocarina of Time]
-  The flow of time is always cruel... its speed seems different for each person, but no one can change it... A thing that does not change with time is a memory of younger days...
+\begin{fquote}[Solid Snake][Metal Gear Solid 2]
+  There’s no such thing in the world as absolute reality. Most of what they call real is actually fiction; what you think you see is only as real as your brain tells you it is. It’s not whether you were right or wrong, but how much faith you were willing to have, that decides the future.
 \end{fquote}
+
 
 This work is mainly focused on the characterization and complexity of variants of unit disk graphs, where the domain of possible locations for the disks is limited. We are also going to see their close relation to a certain family of interval graphs. In this chapter, we will overview the open questions we will focus on and our main results. Further details about the results discussed in this chapter will be introduced later in the thesis as well as a background in Chapter \ref{chap:background}.
 
 \section*{Interval graphs}
 
-In Chapter \ref{chap:interval} we introduce the concept of interval graphs and some of their use cases. An \emph{interval graph} is a graph such that each one of its vertices are closed intervals on the real line and they are adjacent if they overlap; interval graphs such that the length of each interval is unitary is called \emph{unit interval graphs (UIG)}.
+In Chapter \ref{chap:interval} we introduce the concept of interval graphs and some of their use cases. An \emph{interval graph} is a graph in which each one of its vertices is a closed interval on the real line and they are adjacent if they overlap; interval graphs where the length of its intervals is the same is called \emph{unit interval graphs (UIG)}.
 
 Moreover, we introduce two new subclasses of graphs. \emph{Mixed unit interval graphs (MUIG)} \cite{joosCharacterizationMixedUnit2013} can be seen as unit interval graphs but the endpoints of each interval can be open or closed. Another variant are \emph{unfettered unit interval graphs (UUIG)} \cite{hayashiThinStripGraphs2017}, where we can chose whether two touching intervals (so that one of their endpoints are in the same position) are adjacent or not.
 
@@ -31,7 +32,7 @@ In Chapter \ref{chap:thinDef} we introduce the main class of graphs of this thes
 
 \subsection*{Thin strip graphs}
 
-\emph{Thin strip graphs (TSG)} is a subclass of UDG that that can be defined as the intersection of every SG($c$) with $c > 0$. This is equivalent to say that $TSG = SG(\varepsilon)$ with $\varepsilon$ and arbitrarily small number. Hayashi et al. \ref{hayashiThinStripGraphs2017} present this class of graphs in their work and found some interesting properties about them.
+\emph{Thin strip graphs (TSG)} is a subclass of UDG that that can be defined as the intersection of every SG($c$) with $c > 0$. This is equivalent to say that $TSG = SG(\varepsilon)$ with $\varepsilon$ and arbitrarily small number. Hayashi et al. \cite{hayashiThinStripGraphs2017} present this class of graphs in their work and found some interesting properties about them.
 
 \begin{_theo}
   There is no constant $t$ such that $TSG = SG(t)$.
