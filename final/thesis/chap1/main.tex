@@ -1,6 +1,10 @@
 \chapter{Background}
 \label{chap:background}
 
+\begin{fquote}[G-Man][Half-Life 2]
+  The right man in the wrong place can make all the difference in the world.
+\end{fquote}
+
 In this chapter we review some definitions and notations used in this thesis. We limit ourselves to the basic notations used during the work. However, the bibliography of each subject will be referenced for further details about the topic.
 
 %\todo{Text about background intro}
@@ -117,7 +121,7 @@ The class of comparability graphs are built on the ideas of order theory. A grap
 
 \section{Complexity}
 
-Complexity theory has the objective to establish lower bounds on how efficient an algorithm can be for a given problem. This approach let us have a reference point to establish the difficulty of a problem. A \emph{decision problem} is a problem where we have to decide if a statement is true or false. A \emph{decider} of a decision problem is defined as the deterministic machine that solves this problem. The problem is \emph{polinomially decidable} if it has a polynomial time decider. A \emph{verifier} of a decision problem is a deterministic machine that verifies whether an answer to the decision problem is true or false. Equally, a problem is \emph{polinomially verifiable} if it has a polynomial time verifier. We denote by $\mathcal{P}$ the class of polinomially decidable problems. On the other hand, $\mathcal{NP}$ denotes the class of polinomially verifiable problems. We can see that $\mathcal{P} \subseteq \mathcal{NP}$.\\
+Complexity theory has the objective to establish lower bounds on how efficient an algorithm can be for a given problem. This approach let us have a reference point to establish the difficulty of a problem. A \emph{decision problem} is a problem where we have to decide if a statement is true or false. A \emph{decider} of a decision problem is defined as the deterministic machine that solves this problem. The problem is \emph{polinomially decidable} if it has a polynomial time decider. A \emph{verifier} of a decision problem is a deterministic machine that verifies whether an answer to the decision problem is true or false. Equally, a problem is \emph{polinomially verifiable} if it has a polynomial time verifier. The problem of \emph{recognition} is the problem to decide whether a graph $G$ is in a class of graphs. We denote by $\mathcal{P}$ the class of polinomially decidable problems. On the other hand, $\mathcal{NP}$ denotes the class of polinomially verifiable problems. We can see that $\mathcal{P} \subseteq \mathcal{NP}$.\\
 
 A \emph{reduction} of a problem $L$ to a problem $M$ is a mapping of an instance of $L$ ($I_L$) to an instance of $M$ ($I_M$) such that $I_L$ is true for the problem $L$ if and
 only if $I_M$ is true for the problem $M$. This is denoted by $L \leq M$ and $L \leq_P M$ if the reduction is done in polynomial time. We usually prove bounds of complexity for an unknown problem $L$ by reducing it to another problem with an already known complexity. Thus, we can define the class \emph{$\mathcal{NP}$-hard} as the set of problems such that we can reduce every $\mathcal{NP}$ problem to one of them. The set of problems that are both $\mathcal{NP}$ and $\mathcal{NP}$-hard are called \emph{$\mathcal{NP}$-complete}.

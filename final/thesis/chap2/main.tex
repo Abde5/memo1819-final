@@ -1,15 +1,16 @@
 \chapter{Interval graphs}
 \label{chap:interval}
 
-\begin{fquote}[Solid Snake][Metal Gear Solid 2]
-  There’s no such thing in the world as absolute reality. Most of what they call real is actually fiction; what you think you see is only as real as your brain tells you it is. It’s not whether you were right or wrong, but how much faith you were willing to have, that decides the future.
+\begin{fquote}[Robert Callaghan][Big Hero 6]
+  If you like easy, my program isn’t for you. Nothing great comes from easy.
 \end{fquote}
+
 
 The goal of this chapter is to present the family of classes of interval graphs that are related to the class of thin strip graphs. We introduce the class of interval graphs, which is
  one of the most used classes of intersection graphs. There are multiple types of
  interval graphs and those that are the most relevant for the thesis are going to be defined below.
 
- First, we recall the basic definition of an interval graphs and their multiple characterizations. Also, we present unit interval graphs, where we see their characterization and complexity such as Robert's characterization \cite{roberts1968representations}. Then, we see some characterizations such as Joos's paper about mixed unit interval graphs \cite{joosCharacterizationMixedUnit2013} and the paper from Hayashi \textit{et al.} \cite{hayashiThinStripGraphs2017} where the unfettered unit interval graphs are defined and also characterized as well as some equivalences with \emph{unit disk graphs} are presented.
+ First, we recall the basic definition of an interval graphs and their multiple characterizations. Also, we present unit interval graphs, where we see their characterization and complexity such as Robert's characterization \cite{roberts1968representations}. Then, we see some characterizations such as Joos's paper about mixed unit interval graphs \cite{joosCharacterizationMixedUnit2013} and the paper from Hayashi \textit{et al.} \cite{hayashiThinStripGraphs2017} where the unfettered unit interval graphs are defined and also characterized as well as some equivalences with \emph{unit disk graphs} are presented. Also, the complexity of the recognition for each one of the classes presented will be discussed.
 
 \section{Interval graphs}
 
@@ -98,10 +99,8 @@ However, MUIG is defined as $\mathcal{U}^{++} \cup \mathcal{U}^{--} \cup \mathca
 \end{prop}
 
 \begin{proof}
-Let $\phi : V(K_{1,3}) \to \mathcal{U}$ be the representation of $K_{1,3}$ as a mixed unit interval intersection diagram as illustrated in Figure \ref{fig:muigK13}. Let $V(K_{1,3}) = \{v_1, v_2, v_3, v_4\}$ and $E(K_{1,3}) = \{v_1v4, v_2v_4, v_3v_4\}$. Let $x(v_1) = I(v_1) \cap I(v_4)$, $x(v_2) = I(v_2) \cap I(v_4)$ and $x(v_3) = I(v_3) \cap I(v_4)$. Because $v_1, v_2$ and $v_3$ are not adjacent, we can assume that $x(v_1) < x(v_2) < x(v_3)$. Since $x(v_1) \in I(v_4)$ and $x(v_3) \in I(v_4)$, then $x(v_3) - x(v_1) \leqslant 1$. Since $I(v_1), I(v_2)$ and $I(v_3)$ are disjoint, $I(v_2)$ must be a proper subset of $(x(v_1), x(v_3))$. Since $I(v_2)$ is a mixed unit interval, then it implies that $x(v_3) = x(v_1) + 1$, $I(v_2) = (x(v_1), x(v_1+1))$, $I(v_4) = [x(v_1), x(v_1)+1]$, $I(v_1) = \{(x(v_1) -1, x(v_1)], [x(v_1) -1, x(v_1)]\}$ and $I(v_3) = \{[x(v_3) -1, x(v_3)), [x(v_3) -1, x(v_3)]\}$.
+Let $\phi : V(K_{1,3}) \to \mathcal{U}$ be the representation of $K_{1,3}$ as a mixed unit interval intersection diagram as illustrated in Figure \ref{fig:muigK13}. Let $V(K_{1,3}) = \{v_1, v_2, v_3, v_4\}$ and $E(K_{1,3}) = \{v_1v_4, v_2v_4, v_3v_4\}$. Let $x(v_1) = I(v_1) \cap I(v_4)$, $x(v_2) = I(v_2) \cap I(v_4)$ and $x(v_3) = I(v_3) \cap I(v_4)$. Because $v_1, v_2$ and $v_3$ are not adjacent, we can assume that $x(v_1) < x(v_2) < x(v_3)$. Since $x(v_1) \in I(v_4)$ and $x(v_3) \in I(v_4)$, then $x(v_3) - x(v_1) \leqslant 1$. Since $I(v_1), I(v_2)$ and $I(v_3)$ are disjoint, $I(v_2)$ must be a proper subset of $(x(v_1), x(v_3))$. Since $I(v_2)$ is a mixed unit interval, then it implies that $x(v_3) = x(v_1) + 1$, $I(v_2) = (x(v_1), x(v_1+1))$, $I(v_4) = [x(v_1), x(v_1)+1]$, $I(v_1) = \{(x(v_1) -1, x(v_1)], [x(v_1) -1, x(v_1)]\}$ and $I(v_3) = \{[x(v_3) -1, x(v_3)), [x(v_3) -1, x(v_3)]\}$.
 \end{proof}
-
-\todo[inline]{continue HERE}
 
 \begin{theorem}[Dourado \textit{et al.} \cite{douradoMixedUnitInterval2012}]
   $\text{UIG} \subsetneq \text{MUIG}$.
@@ -111,16 +110,17 @@ Let $\phi : V(K_{1,3}) \to \mathcal{U}$ be the representation of $K_{1,3}$ as a 
   The strict inclusion is straightforward: we know that $\text{UIG} = \mathcal{U}^{++} \subset MUIG$ by definition. For the inequality, we prove it by Proposition \ref{prop:k_13MUIG}, as $K_{1,3}$ is not realizable in UIG.
 \end{proof}
 
- A complete characterization by induced forbidden subgraphs have been found independently by A. Schuchat et al. \cite{shuchatUnitMixedInterval2014a} and F. Joos \cite{joosCharacterizationMixedUnit2013}. However, the Schuchat paper gives a polynomial algorithm to recognize MUIGs:
-
-\begin{theorem}[Schuchat et al. \cite{shuchatUnitMixedInterval2014}]
-  The MUIG recognition problem is in $\mathcal{P}$. Moreover, there is an algorithm that solves it in $O(|V|^2)$ for $V$ the vertex set of a graph.
-\end{theorem}
+In terms of recognition, interval graphs as long as unit interval graphs can be recognized in \emph{linear time}. Interval graph linear time recognition was discovered by
 
 \subsection{Characterization}
 \label{sec:muig_char}
 
-In this section we will go over the characterization of MUIG given by Joos with forbidden subgraphs. We will also review each one of these forbidden subgraphs and discuss them:
+A complete characterization by induced forbidden subgraphs have been found independently by A. Schuchat et al. \cite{shuchatUnitMixedInterval2014a} and F. Joos \cite{joosCharacterizationMixedUnit2013}. In this section we will go over the characterization of MUIG given by Joos with forbidden subgraphs. We will also review each one of these forbidden subgraphs and discuss them. In the other hand, the Schuchat paper gives a polynomial algorithm to recognize MUIG.
+
+\begin{theorem}[Schuchat et al. \cite{shuchatUnitMixedInterval2014}]
+ The MUIG recognition problem is in $\mathcal{P}$. Moreover, there is an algorithm that solves it in $O(|V|^2)$ for $V$ the vertex set of a graph.
+\end{theorem}
+
 
 \begin{theorem}[Joos \cite{joosCharacterizationMixedUnit2013}]
   $G$ is a MUIG if and only if it is a $\{F\}\cup\mathcal{R}\cup\mathcal{S}\cup\mathcal{S''}\cup\mathcal{T}$-free interval graph.
@@ -531,6 +531,33 @@ UUIG (except for $\mathcal{R}$); which means that they are also co-comparability
 
 In the other hand, we can find a graph in UUIG that is not an UDG. This theorem will be used in Chapter \ref{chap:thinDef}.
 
+
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5]
+
+\draw[fill=red, fill opacity=0.2]  (-1,-1) circle [radius=2];
+\draw[fill=green, fill opacity=0.2]  (1,1) circle [radius=2];
+\draw[fill=blue, fill opacity=0.2]  (1,-1) circle [radius=2];
+\draw[fill=yellow, fill opacity=0.2]  (-1,1) circle [radius=2];
+
+\draw[color=black] (1.7,1.7) node {$v_1$};
+\draw[color=black] (1.7,0) node {$v_1v_2$};
+\draw[color=black] (1.7,-1.7) node {$v_2$};
+\draw[color=black] (0,-1.7) node {$v_2v_3$};
+\draw[color=black] (-1.7,-1.7) node {$v_3$};
+\draw[color=black] (-1.7,0) node {$v_3v_4$};
+\draw[color=black] (-1.7,1.7) node {$v_4$};
+\draw[color=black] (0,1.7) node {$v_4v_1$};
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\caption{A Venn diagram of four sets. You may notice that some subsets are not represented here (\textit{e.g.} $v_2v_4$ or $v_1v_3$.)}
+\label{fig:uuigudg}
+\end{figure}
+
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   UUIG $\neq$ UDG.
 \end{theorem}
@@ -538,7 +565,7 @@ In the other hand, we can find a graph in UUIG that is not an UDG. This theorem 
 \begin{proof}
   We can define $G = (L_1\cup L_2, E)$ a UUIG with two levels $L_1=\{v_1, v_2, v_3, v_4\}$ and $L_2=\powerset(L_1)$ and $E = \binom{L_1}{2} \cup \binom{L_2}{2} \cup \{vw: w\in L_2, v\in w\}$.
 
-  We can see $L_1$ as a Venn diagram with four sets. We know by instance that a Venn diagram cannot be constructed if the number of sets is bigger than four \cite{vennDiagrammaticMechanicalRepresentation1880}. Thus, $G \notin$ UDG.
+  We can see the UDG representation of $G$ as a Venn diagram of four disks ($L_1$) where there is a disk of $L_2$ that intersects only with its subset associated. We know by instance that a Venn diagram cannot be constructed with disks if the number of sets is bigger than four \cite{vennDiagrammaticMechanicalRepresentation1880} as you can see in Figure \ref{fig:uuigudg}. Thus, there will be at least one disk that is not able to intersect with its associated subset because there is at least one subset that is not representable by a disk Venn Diagram. Which means that $G \notin$ UDG.
 \end{proof}
 
 
@@ -561,30 +588,10 @@ By this lemma we can suppose that the input graph $G$ is a connected graph. Give
   UUIG recognition is in $\mathcal{NP}$.
 \end{theorem}
 
-\proof{
-We can design a deterministic algorithm that solves UUIG recognition in exponential time when $G$ is a connected graph. We begin by taking an arbitrary vertex $v \in G$. By instance, this vertex is included in the maximal clique $K \subseteq G$.
-
-We have $P(K\setminus\{v\})$ the powerset of the clique $K$ excluding $v$. For each subset $s \in P(K\setminus\{v\})$, we have a subgraph $H = G\setminus (s\cup \{v\})$. We recall that $q(G)$ denotes the set of connected components of $G$. We can have three cases:
-
-\begin{enumerate}
-  \item $|q(H)| > 2$: If the number of components of $H$ is bigger than $2$, the current chosen clique is connected to more than two different cliques (or different levels); this is an invalid level, and we choose another clique from $s \in P(K\setminus\{v\})$.
-  \item $0 < |q(H)| \leq 2$: The current chosen clique is connected to one or two levels, which still respects our definition of level structure for the current chosen level. We check recursively if those connected components are also UUIG.
-  \item $|q(H)| = 0$: The current clique is an UUIG with only one level. This is a valid valid.
-\end{enumerate}
-
-To prove that UUIG recognition is in UUIG, we have to prove that it is in $\mathcal{NP}$. We have an upper bound on the complexity of this algorithm that is given by:
-
-$$T(n) \leq 2^{\omega(G)-1}T(n-1)$$
-
-Which gives us:
-
-$$T(n) \leq (2^{\omega(G)-1})^n = 2^{O(n\omega(G))}$$
-
-with $\omega(G)$ the size of the maximum clique of $G$. \qed
-}
+\proof{The UUIG recognition of a graph $G$ is in $\mathcal{NP}$ because we can build a \emph{polinomial time verifier} that takes a level structure of $G$ and check whether each level is a clique or not. Viceversa, we can build another one that takes a separation and check whether each clique is a level of a level structure.}
 
 Future work on the recognition of unit unfettered interval graphs would be to adapt this algorithm to avoid combinatorial complexity. In our case we are interested in seeing the recognition of UUIG for unit disk graphs. We know that the CLIQUE problem is in $\mathcal{P}$ for unit disk graphs and the first hypothesis was that given an UUIG $G$, at least one level of $G$ is a maximal clique of the graph. Nevertheless, we have a counterexample in $T_{0,0}$ (Fig. \ref{graphsT}) where the levels of the graph are $\{K_1, K_2, K_2, K_1\}$ while $\omega(T_{0,0}) = 3$.
 
 \begin{obs}
-  Given an \emph{UUIG} $G$, no level of $G$ has to be a maximal clique.
+  Given an UUIG $G$, no level of $G$ has to be a maximal clique.
 \end{obs}
