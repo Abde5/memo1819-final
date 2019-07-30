@@ -28,6 +28,8 @@ The first interesting subclass of IG is the class of \emph{unit interval graphs}
   An interval graph is a unit interval graph if and only if it has no induced subgraph $K_{1,3}$ (or \emph{claw}).
 \end{theorem}
 
+In terms of recognition, interval graphs as long as unit interval graphs can be recognized in \emph{linear time}. Interval graph linear time recognition was discovered by Booth \textit{et al.} by doing so with a \emph{breadth-first search} \cite{boothTestingConsecutiveOnes1976}. UIG recognition has also been proven to be linear \cite{corneil1987extensions}.
+
 \section{Mixed unit interval graphs}
 \label{sec:muig}
 
@@ -84,7 +86,7 @@ Dourado, by defining these classes of unit interval graphs with open/closed inte
 \label{fig:muigK13}
 \end{figure}
 
-However, MUIG is defined as $\mathcal{U}^{++} \cup \mathcal{U}^{--} \cup \mathcal{U}^{+-} \cup \mathcal{U}^{-+}$ which is also denoted as $\mathcal{U}$. In this case it is clear that this class is not equivalent to UIG. As we have seen in Theorem \ref{theo:k_13}, a UIG can be seen as a $K_{1,3}$-free IG. Nevertheless, MUIG can accept this graph as seen in Proposition \ref{prop:k_13MUIG}
+However, MUIG is defined as $\mathcal{U}^{++} \cup \mathcal{U}^{--} \cup \mathcal{U}^{+-} \cup \mathcal{U}^{-+}$ which is also denoted as $\mathcal{U}$. In this case it is clear that this class is not equivalent to UIG. As we have seen in Theorem \ref{theo:k_13}, a UIG can be seen as a $K_{1,3}$-free IG. Nevertheless, MUIG can accept this graph as seen in Proposition \ref{prop:k_13MUIG}.
 
 \begin{prop}[Dourado \textit{et al.} \cite{douradoMixedUnitInterval2012}]
   \label{prop:k_13MUIG}
@@ -110,22 +112,33 @@ Let $\phi : V(K_{1,3}) \to \mathcal{U}$ be the representation of $K_{1,3}$ as a 
   The strict inclusion is straightforward: we know that $\text{UIG} = \mathcal{U}^{++} \subset MUIG$ by definition. For the inequality, we prove it by Proposition \ref{prop:k_13MUIG}, as $K_{1,3}$ is not realizable in UIG.
 \end{proof}
 
-In terms of recognition, interval graphs as long as unit interval graphs can be recognized in \emph{linear time}. Interval graph linear time recognition was discovered by
+Nevertheless, MUIG still shares some properties with UIG. In the previous section we mentioned that the class of unit interval graphs is the same as the class of proper interval graphs. In our case, mixed unit interval graphs is also exactly the same as the mixed proper interval graphs -- where no mixed interval can be a proper subset of another one.
 
-\subsection{Characterization}
-\label{sec:muig_char}
+\begin{theorem}
+  For a graph $G$, the following two statements are equivalent.
+  \begin{itemize}
+    \item $G$ is a mixed proper interval graph.
+    \item $G$ is a mixed unit interval graph.
+  \end{itemize}
+\end{theorem}
 
-A complete characterization by induced forbidden subgraphs have been found independently by A. Schuchat et al. \cite{shuchatUnitMixedInterval2014a} and F. Joos \cite{joosCharacterizationMixedUnit2013}. In this section we will go over the characterization of MUIG given by Joos with forbidden subgraphs. We will also review each one of these forbidden subgraphs and discuss them. In the other hand, the Schuchat paper gives a polynomial algorithm to recognize MUIG.
+Shuchat \textit{et al.} \cite{shuchatUnitMixedInterval2014} describe an algorithm to recognize mixed unit interval graphs in polynomial time with a characterization. Proof and details about the algorithm will not be provided but we encourage the reading of their paper.
 
 \begin{theorem}[Schuchat et al. \cite{shuchatUnitMixedInterval2014}]
  The MUIG recognition problem is in $\mathcal{P}$. Moreover, there is an algorithm that solves it in $O(|V|^2)$ for $V$ the vertex set of a graph.
 \end{theorem}
 
 
+\subsection{Characterization}
+\label{sec:muig_char}
+
+A complete characterization by induced forbidden subgraphs have been found independently by A. Schuchat et al. \cite{shuchatUnitMixedInterval2014a} and F. Joos \cite{joosCharacterizationMixedUnit2013}. In this section we will present briefly the characterization of MUIG given by Joos with forbidden subgraphs. We will also review each one of these forbidden subgraphs and discuss the properties compared of one of them that will be relevant in the next chapter. However, the proof of this characterization will not be given in this thesis because of its length. His work follows Dourado \textit{et al.} \cite{douradoMixedUnitInterval2012} where they characterized \emph{diamond-free} mixed unit interval graphs.
+
 \begin{theorem}[Joos \cite{joosCharacterizationMixedUnit2013}]
   $G$ is a MUIG if and only if it is a $\{F\}\cup\mathcal{R}\cup\mathcal{S}\cup\mathcal{S''}\cup\mathcal{T}$-free interval graph.
 \end{theorem}
 
+The forbidden families can be seen in Figures \ref{fig:graphsR}, \ref{fig:graphsS}, \ref{fig:graphsSS}, \ref{fig:graphF}, \ref{fig:graphsT}. You can notive that, without including $F$, every family of forbidden graphs of MUIG is infinite and is defined recursively by its predecessor. Our only goal in this section is to focus in the properties of $\mathcal{R}$ because, as we will see in Chapter \ref{chap:thinDef}, it is the only forbidden graph for MUIG that is also forbidden for thin strip graphs.
 
 \begin{figure}[H]
 \begin{center}
@@ -221,11 +234,8 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
 \end{center}
-\caption{The class $\mathcal{R}$. \cite{joosCharacterizationMixedUnit2013}}\label{graphsR}
+\caption{The class $\mathcal{R}$. \cite{joosCharacterizationMixedUnit2013}}\label{fig:graphsR}
 \end{figure}
-
-
-Without including $F$, every family of forbidden graphs of MUIG is infinite, and is defined recursively by its precedent: then every property of these graphs has to be proved recursively. We begin first with $\mathcal{R}$.
 
 
 \lemma{$\mathcal{R}$ is a family of co-comparability graphs.}
@@ -243,6 +253,98 @@ Without including $F$, every family of forbidden graphs of MUIG is infinite, and
   Finally, we see that $v_{\lambda_i}v_{\lambda_i+2}$ is a valid edge because $v_{\lambda_i}v_{\lambda_i+1}\in E$. \qed
 \end{itemize}
 }
+
+\begin{figure}[t]
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{0}
+\def\yb{0}
+
+\def\xc{4}
+\def\yc{0}
+
+\def\xd{9}
+\def\yd{0}
+
+
+%graph S_1
+\path[fill] (\xb+1,\yb) circle (\ver);
+\path[fill] (\xb+2,\yb) circle (\ver);
+\path[fill] (\xb+3,\yb) circle (\ver);
+\path[fill] (\xb+2,\yb+1.5) circle (\ver);
+\path[fill] (\xb+1.5,\yb+1) circle (\ver);
+\path[fill] (\xb+2.5,\yb+1) circle (\ver);
+
+\draw[thick] (\xb+1,\yb)--(\xb+2,\yb)--(\xb+3,\yb)
+(\xb+1,\yb)--(\xb+1.5,\yb+1)--(\xb+2,\yb)--(\xb+2.5,\yb+1)
+--(\xb+2,\yb+1.5)--(\xb+2,\yb)
+(\xb+1.5,\yb+1)--(\xb+2,\yb+1.5);
+
+\node (1) at (\xb+2,\yb-0.7) {$S_1$};
+
+
+
+%graph S_2
+\path[fill] (\xc,\yc) circle (\ver);
+\path[fill] (\xc+1,\yc) circle (\ver);
+\path[fill] (\xc+2,\yc) circle (\ver);
+\path[fill] (\xc+3,\yc) circle (\ver);
+\path[fill] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill] (\xc+1.5,\yc+1) circle (\ver);
+\path[fill] (\xc+2.5,\yc+1) circle (\ver);
+\path[fill] (\xc+1,\yc+1.5) circle (\ver);
+
+
+\draw[thick] (\xc,\yc)--(\xc+1,\yc)--(\xc+2,\yc)--(\xc+3,\yc)
+(\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+1.5,\yc+1)--(\xc+2,\yc)--(\xc+2.5,\yc+1)
+(\xc,\yc)--(\xc+0.5,\yc+1)--(\xc+1,\yc+1.5)--(\xc+1.5,\yc+1)
+(\xc+1,\yc)--(\xc+1,\yc+1.5);
+
+\node (1) at (\xc+1.5,\yc-0.7) {$S_2$};
+
+%graph S_3
+\path[fill] (\xd-1,\yd) circle (\ver);
+\path[fill] (\xd-0.5,\yd+1) circle (\ver);
+\path[fill] (\xd,\yd) circle (\ver);
+\path[fill] (\xd+1,\yd) circle (\ver);
+\path[fill] (\xd+2,\yd) circle (\ver);
+\path[fill] (\xd+3.5,\yd) circle (\ver);
+\path[fill] (\xd+4.5,\yd) circle (\ver);
+\path[fill] (\xd+5.5,\yd) circle (\ver);
+\path[fill] (\xd+0.5,\yd+1) circle (\ver);
+\path[fill] (\xd+1.5,\yd+1) circle (\ver);
+\path[fill] (\xd+4,\yd+1) circle (\ver);
+\path[fill] (\xd+5,\yd+1) circle (\ver);
+\path[fill] (\xd,\yd+1.5) circle (\ver);
+
+\fill (\xd+2.35,\yd) circle (\ver/2);
+\fill (\xd+2.75,\yd) circle (\ver/2);
+\fill (\xd+3.15,\yd) circle (\ver/2);
+
+\draw[thick] (\xd-1,\yd)--(\xd+2,\yd)
+(\xd+3.5,\yd)--(\xd+5.5,\yd)
+(\xd-1,\yd)--(\xd-0.5,\yd+1)--(\xd,\yd)--(\xd+0.5,\yd+1)--(\xd+1,\yd)--(\xd+1.5,\yd+1)--(\xd+2,\yd)
+(\xd+3.5,\yd)--(\xd+4,\yd+1)--(\xd+4.5,\yd)--(\xd+5,\yd+1)
+(\xd-0.5,\yd+1)--(\xd,\yd+1.5)--(\xd+0.5,\yd+1)
+(\xd,\yd)--(\xd,\yd+1.5);
+
+\draw[thick,decoration={brace,mirror,raise=0.2cm},decorate] (\xd-1,\yd) -- (\xd+4.5,\yd)
+node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
+
+\node (1) at (\xd+4.5,\yd-0.7) {$S_i$};
+
+
+
+\end{tikzpicture}
+\end{center}
+\caption{The class $\mathcal{S}$ \cite{joosCharacterizationMixedUnit2013}.}\label{fig:graphsS}
+\end{figure}
 
 
 \begin{figure}[H]
@@ -342,7 +444,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 
 \end{tikzpicture}
 \end{center}
-\caption{The class $\mathcal{S}''$. \cite{joosCharacterizationMixedUnit2013}}\label{graphsSS}
+\caption{The class $\mathcal{S}''$. \cite{joosCharacterizationMixedUnit2013}}\label{fig:graphsSS}
 \end{figure}
 
 
@@ -375,7 +477,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
 \end{center}
-\caption{The graph $F$. \cite{joosCharacterizationMixedUnit2013}}\label{graphG1}
+\caption{The graph $F$. \cite{joosCharacterizationMixedUnit2013}}\label{fig:graphF}
 \end{figure}
 
 \begin{figure}[t]
@@ -493,7 +595,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
 
 \end{tikzpicture}
 \end{center}
-\caption{The class $\mathcal{T}$. \cite{joosCharacterizationMixedUnit2013}}\label{graphsT}
+\caption{The class $\mathcal{T}$. \cite{joosCharacterizationMixedUnit2013}}\label{fig:graphsT}
 \end{figure}
 
 
@@ -554,7 +656,7 @@ In the other hand, we can find a graph in UUIG that is not an UDG. This theorem 
 
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
-\caption{A Venn diagram of four sets. You may notice that some subsets are not represented here (\textit{e.g.} $v_2v_4$ or $v_1v_3$.)}
+\caption{A disk Venn diagram of four sets. Each circle of color represent a set. You may notice that some subsets are not represented here (\textit{e.g.} $v_2v_4$ or $v_1v_3$). So a disk that touches $v_4$ and $v_2$ in this representation is not possible without intersecting also $v_3$ or $v_1$.}
 \label{fig:uuigudg}
 \end{figure}
 
