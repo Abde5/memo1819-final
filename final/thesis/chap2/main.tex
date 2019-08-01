@@ -138,7 +138,31 @@ A complete characterization by induced forbidden subgraphs have been found indep
   $G$ is a MUIG if and only if it is a $\{F\}\cup\mathcal{R}\cup\mathcal{S}\cup\mathcal{S''}\cup\mathcal{T}$-free interval graph.
 \end{theorem}
 
-The forbidden families can be seen in Figures \ref{fig:graphsR}, \ref{fig:graphsS}, \ref{fig:graphsSS}, \ref{fig:graphF}, \ref{fig:graphsT}. You can notive that, without including $F$, every family of forbidden graphs of MUIG is infinite and is defined recursively by its predecessor. Our only goal in this section is to focus in the properties of $\mathcal{R}$ because, as we will see in Chapter \ref{chap:thinDef}, it is the only forbidden graph for MUIG that is also forbidden for thin strip graphs.
+The forbidden families can be seen in Figures \ref{fig:graphsR}, \ref{fig:graphsS}, \ref{fig:graphsSS}, \ref{fig:graphF}, \ref{fig:graphsT}. You can notive that, without including $F$, every family of forbidden graphs of MUIG is infinite and is defined recursively by its predecessor. Our only goal in this section is to focus in the properties of $\mathcal{R}$ because, as we will see in Chapter \ref{chap:thinDef}, it is the only forbidden graph family for MUIG that is also forbidden for thin strip graphs.
+
+We know that $\mathcal{R}$ is a family of forbidden subgraph for mixed unit interval graphs. If we look up in the graph classes hierarchy \ref{fig:hierarchyMUIG} we find that MUIG $\subsetneq$ CO-CO. The first step to see if $\mathcal{R}$ is a family of proper forbidden subgraph for MUIG is to prove if $\mathcal{R} \subsetneq$ CO-CO. In the first place, we present a characterization of cocomparability graphs.
+
+\begin{theorem}[Damaschke \cite{damaschkeDistancesCocomparabilityGraphs1992}]
+  \label{theo:spanning}
+  A graph $G$ is a co-comparability graph if and only if it has a spanning order.
+\end{theorem}
+
+
+
+\begin{figure}
+\begin{center}
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1]
+  \node (1) [draw, rounded rectangle] {co-comparability graphs};
+  \node (2) [below=of 1, draw, rounded rectangle] {mixed unit interval graphs};
+  \node (3) [below=of 2, draw, rounded rectangle] {unit interval graphs};
+  \draw[<-] (1) edge (2) (2) edge (3);
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{The hierarchy of the classes between \emph{UIG} and \emph{CO-CO}. The arrows represent a relation of $\subsetneq$.}\label{fig:hierarchyMUIG}
+\end{figure}
+
 
 \begin{figure}[H]
 \begin{center}
@@ -608,7 +632,7 @@ Hayashi has characterized this class of graphs by levels. A \emph{level structur
 
 $$v \in L_k \to N(v) \subseteq L_{k-1} \cup L_{k} \cup L_{k+1}$$
 
-where $L_0 = L_t+1 = \varnothing$.
+where $L_0 = L_{t+1} = \varnothing$.
 
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   \label{theo:uuig_char}
