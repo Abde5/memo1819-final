@@ -25,7 +25,7 @@ The first interesting subclass of IG is the class of \emph{unit interval graphs}
 
 \begin{theorem}[Roberts \cite{roberts1968representations}]
   \label{theo:k_13}
-  An interval graph is a unit interval graph if and only if it has no induced subgraph $K_{1,3}$ (or \emph{claw}).
+  An interval graph is a unit interval graph if and only if it has no induced subgraph $K_{1,3}$ \footnote{$K_{1,3}$ is also called \emph{claw}.}.
 \end{theorem}
 
 In terms of recognition, interval graphs as long as unit interval graphs can be recognized in \emph{linear time}. Interval graph linear time recognition was discovered by Booth \textit{et al.} by doing so with a \emph{breadth-first search} \cite{boothTestingConsecutiveOnes1976}. UIG recognition has also been proven to be linear \cite{corneil1987extensions}.
@@ -42,14 +42,14 @@ $$\mathcal{U}^{--} = \{(x,y) : x,y \in \mathbb{R}, x\leq y\}$$
 $$\mathcal{U}^{+-} = \{[x,y) : x,y \in \mathbb{R}, x\leq y\}$$
 $$\mathcal{U}^{-+} = \{(x,y] : x,y \in \mathbb{R}, x\leq y\}$$
 
-where $\mathcal{U}^{++} = \text{UIG}$.
+where $\mathcal{U}^{xx}$ is the class of unit interval graphs where its intervals can be open or closed depending on their sign. For exemple, $\mathcal{U}^{++} = \text{UIG}$.
 
 Dourado, by defining these classes of unit interval graphs with open/closed intervals also found that, for unit interval graphs, it does not matter if the endpoints are open, closed, or closed open (Theorem \ref{theo:douradoEquiv}).
 
 \begin{theorem}[Dourado et al. \cite{DOURADO20123357}]
   \label{theo:douradoEquiv}
   The classes of the graphs $\mathcal{U}^{--}$, $\mathcal{U}^{++}$,
-  $\mathcal{U}^{-+}$, $\mathcal{U}^{+-}$, and  $\mathcal{U}^{-+} \cup
+  $\mathcal{U}^{-+}$, $\mathcal{U}^{+-}$, and  $\mathcal{U}^{-+} \bigcup
   \mathcal{U}^{+-}$ are the same.
 \end{theorem}
 
@@ -86,7 +86,7 @@ Dourado, by defining these classes of unit interval graphs with open/closed inte
 \label{fig:muigK13}
 \end{figure}
 
-However, MUIG is defined as $\mathcal{U}^{++} \cup \mathcal{U}^{--} \cup \mathcal{U}^{+-} \cup \mathcal{U}^{-+}$ which is also denoted as $\mathcal{U}$. In this case it is clear that this class is not equivalent to UIG. As we have seen in Theorem \ref{theo:k_13}, a UIG can be seen as a $K_{1,3}$-free IG. Nevertheless, MUIG can accept this graph as seen in Proposition \ref{prop:k_13MUIG}.
+However, MUIG is defined as $\mathcal{U}^{++} \bigcup \mathcal{U}^{--} \bigcup \mathcal{U}^{+-} \bigcup \mathcal{U}^{-+}$ which is also denoted as $\mathcal{U}$. In this case it is clear that this class is not equivalent to UIG. As we have seen in Theorem \ref{theo:k_13}, a UIG can be seen as a $K_{1,3}$-free IG. Nevertheless, MUIG can accept this graph as seen in Proposition \ref{prop:k_13MUIG}.
 
 \begin{prop}[Dourado \textit{et al.} \cite{douradoMixedUnitInterval2012}]
   \label{prop:k_13MUIG}
@@ -146,7 +146,6 @@ We know that $\mathcal{R}$ is a family of forbidden subgraph for mixed unit inte
   \label{theo:spanning}
   A graph $G$ is a co-comparability graph if and only if it has a spanning order.
 \end{theorem}
-
 
 
 \begin{figure}
@@ -263,7 +262,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 
 
 \lemma{$\mathcal{R}$ is a family of co-comparability graphs.}
-\proof{If we recall Theorem \ref{theo:spanning}, in order to prove that $\mathcal{R}$ is a family of co-comparability graphs we will have to find a spanning order for every $R_i$ with $i \geq 0$. We will proceed to label our vertices with a mapping function $f: V \to \mathbb{N}$ such that $f(v) \in [1,|V|]$. This mapping will give us a spanning order by induction:
+\proof{If we recall Theorem \ref{theo:spanning}, in order to prove that $\mathcal{R}$ is a family of co-comparability graphs we will have to find a spanning order for every $R_i$ with $i \geq 0$. We will proceed to label our vertices with a mapping function $f: V \to \mathbb{N}$ such that $f(v) \in \{1, \dots, |V|\}$. This mapping will give us a spanning order by induction:
 
 \begin{itemize}
   \item $i = 0$: We assign the number $1$ to the vertex with maximum degree $v_1$. We assign then the rest of the numbers to the other vertices. We see then that $\forall u < v < w : uw\in E \to uv \in E$ because every vertex is adjacent to $v_1$.
@@ -626,11 +625,12 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
 \section{Unfettered unit interval graphs}
 \label{sec:UUIG}
 
-An unfettered unit interval graph can be defined as an unit interval graph such that for every touching endpoints we can chose either if they are adjacent or not.
+In this section we detail the properties of unfettered \emph{\index{unfettered unit interval graphs}}.
+An unfettered unit interval graph can be defined as an unit interval graph such that for every touching endpoints we can chose either if they are adjacent or not. We remark that by definition, every unit interval graph is feasible in UUIG. This class is a minimal superclass of TSG, \textit{i.e.} TSG $\subsetneq$ UUIG.
 
-Hayashi has characterized this class of graphs by levels. A \emph{level structure} of a graph $G = (V,E)$ is a partition $L = \{L_i : i \in [1,t]\}$ of $V$ such that
+This class has a characterization by levels done by Hayashi \textit{et al.} where levels are used. A \emph{level structure} of a graph $G = (V,E)$ is a partition $L = \{L_i : i \in [1,t]\}$ of $V$ such that
 
-$$v \in L_k \to N(v) \subseteq L_{k-1} \cup L_{k} \cup L_{k+1}$$
+$$v \in L_k \Rightarrow N(v) \subseteq L_{k-1} \cup L_{k} \cup L_{k+1}$$
 
 where $L_0 = L_{t+1} = \varnothing$.
 
@@ -639,17 +639,33 @@ where $L_0 = L_{t+1} = \varnothing$.
   A graph $G$ is an unfettered unit interval graph if and only if it has a level structure where each level is a clique.
 \end{theorem}
 
+\proof{
+We begin by proving the if-part. Let $G$ be a graph with levels $L_1, \dots, L_t$ where every level is a clique. For every vertex $v \in L_i$, we assign an interval $[i-1, i]$. We see that every interval within a level is in the same position, so they are all adjacent. Then, for $L_i$ we have its adjacent levels $L_{i-1}$ and $L_{i+1}$. The right endpoints of the intervals $L_{i-1}$ match the left endpoints of $L_i$. On the other side, the left endpoints of $L_{i+1}$ match the right endpoints of $L_i$. As we know, we can chose whether the endpoints touch or not between levels. This will construct its respective UUIG.
+
+Now we prove the only-if. Let $G$ be a UUIG and $I(v)$ the interval representation of $v \in V(G)$ and $\ell(I(v))$ the left side of an interval. Let $I'(v) = [\floor{\ell(I(v))},\floor{\ell(I(v))}+1]$. This gives us exactly the same graph because the following holds:
+
+\begin{equation}
+\begin{split}
+  \ell(I(v)) - \ell(I(v)) \leqslant 1 \Rightarrow & \floor{\ell(I(v))} - \floor{\ell(I(v))} \leqslant 1 \\
+  \ell(I(v)) - \ell(I(v)) \geqslant 1 \Rightarrow & \floor{\ell(I(v))} - \floor{\ell(I(v))} \geqslant 1
+\end{split}
+\end{equation}
+
+We can have a partition $L_i = \{v : \ell(I'(v)) = i\}$ where every $L_i$ is a clique. Also, this partition is a level structure because the endpoints of $L_i$ meet the endpoints of $L_{i-1}$ and $L_{i+1}$. \qed
+
+}
+
 We can clearly see that MUIG $\in$ UUIG. However, we still have to see what is the location of UUIG in the higher graph classes hierarchy:
 
 \begin{prop}
   UUIG $\subset$ co-comparability.
 \end{prop}
 
-\proof{This proposition is equivalent to say that a graph $G$ is a UUIG if and only if it has a spanning order.
+\proof{This proposition is equivalent to say that if a graph $G$ is a UUIG, then it also has a spanning order.
 
 For each vertex of a partition $L_k$ of UUIG (Theorem \ref{theo:uuig_char}) we assign arbitrarily a number $i \in [\max(V(L_{k-1}))+1,\max(V(L_{k-1}))+|V(L_k)|+1]$; intuitively, we assign every available number from the beginning in increasing order ($|V(L_1)|$ first numbers on the first partition and consecutively).
 
-Because we know that each partition $L_k$ is a clique, we can say that for each three vertices $u < v < w$, if $vw \in E \to uv\in E\  \text{or} \ vw\in E$. We know this because given $u \in L_i$ and $w \in L_j$: if $uw\in E$ it means that levels $L_i$ and $L_j$ are adjacent, which means that $v\in L_i$ or $v\in L_j$ so $v$ will be adjacent either to $u$ or $w$. This is a spanning order. \qed
+Because we know that each partition $L_k$ is a clique, we can say that for each three vertices $u < v < w$, if $vw \in E \Rightarrow uv\in E\  \text{or} \ vw\in E$. We know this because given $u \in L_i$ and $w \in L_j$: if $uw\in E$ it means that levels $L_i$ and $L_j$ are adjacent, which means that $v\in L_i$ or $v\in L_j$ so $v$ will be adjacent either to $u$ or $w$. This is a spanning order. \qed
 }\\
 
 If we recall the characterization of MUIG in section \ref{sec:muig_char}, we can see that every forbidden graph of MUIG is an
@@ -657,6 +673,81 @@ UUIG (except for $\mathcal{R}$); which means that they are also co-comparability
 
 In the other hand, we can find a graph in UUIG that is not an UDG. This theorem will be used in Chapter \ref{chap:thinDef}.
 
+\begin{figure}
+  \begin{center}
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=2]
+\def\xa{-2}
+\def\ya{0.5}
+\def\xb{2}
+
+\def\ver{0.1} %size of a vertex
+
+
+% LEVEL 1 edges
+\draw[thick] (\xa,\ya) -- (\xa+0.7,\ya-1) -- (\xa-0.7,\ya-1) -- (\xa, \ya);
+
+% LEVEL 2 edges
+\draw[thick] (\xb,-2) -- (\xb-0.7,-1) -- (\xb-0.7,0) -- (\xb, 1) -- (\xb+0.7,0) -- (\xb+0.7,-1) -- (\xb,-2) -- (\xb, 1);
+
+\draw[thick] (\xb-0.7,-1) -- (\xb+0.7,0) -- (\xb-0.7,0) -- (\xb+0.7, -1) -- (\xb-0.7,-1);
+
+\draw[thick] (\xb, 1) -- (\xb-0.7, -1) -- (\xb, 0);
+\draw[thick] (\xb, 1) -- (\xb+0.7, -1) -- (\xb, 0);
+\draw[thick] (\xb, -2) -- (\xb+0.7, 0) -- (\xb, -1);
+\draw[thick] (\xb, -2) -- (\xb-0.7, 0) -- (\xb, -1);
+
+
+% between levels
+\draw[thick, color=blue] (\xa, \ya) -- (\xb+0.7, -1);
+\draw[thick, color=green] (\xa+0.7,\ya-1) -- (\xb, -1);
+\draw[thick, color=red] (\xa-0.7,\ya-1) -- (\xb-0.7, -1);
+
+\draw[thick, color=blue] (\xa,\ya) -- (\xb+0.7, 0);
+\draw[thick, color=blue] (\xa,\ya) -- (\xb, 0);
+\draw[thick, color=red] (\xa-0.7,\ya-1) -- (\xb-0.7, 0);
+\draw[thick, color=red] (\xa-0.7,\ya-1) -- (\xb+0.7, 0);
+\draw[thick, color=green] (\xa+0.7,\ya-1) -- (\xb-0.7, 0);
+\draw[thick, color=green] (\xa+0.7,\ya-1) -- (\xb, 0);
+
+\draw[thick, color=blue] (\xa, \ya) -- (\xb, 1);
+\draw[thick, color=green] (\xa+0.7,\ya-1) -- (\xb, 1);
+\draw[thick, color=red] (\xa-0.7,\ya-1) -- (\xb, 1);
+
+% LEVEL 1 vertices
+
+\fill[color=blue]  (\xa,\ya)      circle (\ver);
+\fill[color=green]    (\xa+0.7,\ya-1)   circle (\ver);
+\fill[color=red]   (\xa-0.7,\ya-1)  circle (\ver);
+
+% LEVEL 2 vertices
+
+\fill (\xb,-2) circle (\ver);
+
+\fill[color=blue] (\xb+0.7,-1) circle (\ver);
+\fill[color=red] (\xb-0.7,-1) circle (\ver);
+\fill[color=green] (\xb,-1) circle (\ver);
+
+\fill[color=green] (\xb,0) -- (\xb+\ver, 0) arc (0:180:\ver) -- (\xb, 0);
+\fill[color=blue] (\xb,0) -- (\xb-\ver, 0) arc (180:360:\ver) -- (\xb, 0);
+
+\fill[color=red] (\xb + 0.7,0) -- (\xb + 0.7+\ver, 0) arc (0:180:\ver) -- (\xb + 0.7, 0);
+\fill[color=blue] (\xb + 0.7,0) -- (\xb + 0.7-\ver, 0) arc (180:360:\ver) -- (\xb + 0.7, 0);
+
+\fill[color=green] (\xb - 0.7,0) -- (\xb - 0.7+\ver, 0) arc (0:180:\ver) -- (\xb - 0.7, 0);
+\fill[color=red] (\xb - 0.7,0) -- (\xb - 0.7-\ver, 0) arc (180:360:\ver) -- (\xb - 0.7, 0);
+
+
+\fill[color=green] (\xb,1) -- (\xb+\ver, 1) arc (0:120:\ver) -- (\xb, 1);
+\fill[color=red] (\xb,1) -- (\xb - 0.5*\ver, 1 + 0.86*\ver) arc (120:240:\ver) -- (\xb, 1);
+\fill[color=blue] (\xb,1) -- (\xb - 0.5*\ver, 1 - 0.86*\ver) arc (240:360:\ver) -- (\xb, 1);
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{Representation of $T$ with three vertices in the first level instead of four. The colors represent the three vertices of the first level. The multicolored vertices represent sets of the vertices in the first level.}
+\label{fig:udg3}
+\end{figure}
 
 \begin{figure}
 \centering
@@ -685,14 +776,35 @@ In the other hand, we can find a graph in UUIG that is not an UDG. This theorem 
 \end{figure}
 
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
+  \label{theo:uuigudg}
   UUIG $\neq$ UDG.
 \end{theorem}
 
 \begin{proof}
-  We can define $G = (L_1\cup L_2, E)$ a UUIG with two levels $L_1=\{v_1, v_2, v_3, v_4\}$ and $L_2=\powerset(L_1)$ and $E = \binom{L_1}{2} \cup \binom{L_2}{2} \cup \{vw: w\in L_2, v\in w\}$.
+  We can define $T = (L_1\cup L_2, E)$ a UUIG with two levels $L_1=\{v_1, v_2, v_3, v_4\}$ and $L_2=\powerset(L_1)$ and $E = \binom{L_1}{2} \cup \binom{L_2}{2} \cup \{vw: w\in L_2, v\in w\}$. For a better visualisation, you can find in Figure \ref{fig:udg3} the representation as an UDG in the case where $L_1 = \{v_1, v_2, v_3\}$.
 
   We can see the UDG representation of $G$ as a Venn diagram of four disks ($L_1$) where there is a disk of $L_2$ that intersects only with its subset associated. We know by instance that a Venn diagram cannot be constructed with disks if the number of sets is bigger than four \cite{vennDiagrammaticMechanicalRepresentation1880} as you can see in Figure \ref{fig:uuigudg}. Thus, there will be at least one disk that is not able to intersect with its associated subset because there is at least one subset that is not representable by a disk Venn Diagram. Which means that $G \notin$ UDG.
 \end{proof}
+
+\begin{figure}
+  \begin{center}
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1]
+  \node (1) [draw, rounded rectangle] {co-comparability graphs};
+  \node (2) [below=of 1, draw, rounded rectangle] {unfettered unit interval graphs};
+  \node (3) [below=of 2, draw, rounded rectangle] {mixed unit interval graphs};
+  \node (4) [below=of 3, draw, rounded rectangle] {unit interval graphs};
+  \node (5) [left=of 1, draw, rounded rectangle] {unit disk graphs};
+  \node (6) [left=of 2, below=of 5] {};
+  \draw[<-] (1) edge (2) (2) edge (3) (3) edge (4)
+            (5) edge (6.south);
+  \draw[-] (2) edge (6.south);
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{Extension of the graph classes diagram from Figure \ref{fig:hierarchyMUIG} with \emph{UUIG} and \emph{UDG}.}
+\label{fig:hierarchyUUIG}
+\end{figure}
 
 
 \subsection{Recognition}
@@ -707,16 +819,15 @@ As we mentioned in the previous section, UUIG is a class of graphs very relevant
 
 And because a level is only adjacent to two other levels, we only have two connected components, only one if $L_i = L_1$ or $L_i = L_n$.\qed}\\
 
-
-By this lemma we can suppose that the input graph $G$ is a connected graph. Given an input graph $G$, we can compute a level structure where each level is a clique in exponential time.
+By this lemma we can suppose that the input graph $G$ is a connected graph. This observation reduces the complexity of the problem for a graph $G$ from $O(f(|V(G)|)$ to $O(f(|V(H)|))$ where $H \subseteq G$ the biggest component of $G$.
 
 \begin{theorem}
   UUIG recognition is in $\mathcal{NP}$.
 \end{theorem}
 
-\proof{The UUIG recognition of a graph $G$ is in $\mathcal{NP}$ because we can build a \emph{polinomial time verifier} that takes a level structure of $G$ and check whether each level is a clique or not. Viceversa, we can build another one that takes a separation and check whether each clique is a level of a level structure.}
+\proof{The UUIG recognition of a graph $G$ is in $\mathcal{NP}$ because we can build a \emph{polynomial time verifier} that takes a level structure of $G$ and check whether each level is a clique or not. Viceversa, we can build another one that takes a partition and check whether each clique is a level of a level structure. \qed}
 
-Future work on the recognition of unit unfettered interval graphs would be to adapt this algorithm to avoid combinatorial complexity. In our case we are interested in seeing the recognition of UUIG for unit disk graphs. We know that the CLIQUE problem is in $\mathcal{P}$ for unit disk graphs and the first hypothesis was that given an UUIG $G$, at least one level of $G$ is a maximal clique of the graph. Nevertheless, we have a counterexample in $T_{0,0}$ (Fig. \ref{graphsT}) where the levels of the graph are $\{K_1, K_2, K_2, K_1\}$ while $\omega(T_{0,0}) = 3$.
+Future work on the recognition of unfettered unit interval graphs would be to adapt this algorithm to avoid combinatorial complexity. In our case we are interested in seeing the recognition of UUIG for unit disk graphs. We know that the CLIQUE problem is in $\mathcal{P}$ for unit disk graphs and the first hypothesis was that given an UUIG $G$, at least one level of $G$ is a maximal clique of the graph. Nevertheless, we have a counterexample in $T_{0,0}$ (Fig. \ref{graphsT}) where the levels of the graph are $\{K_1, K_2, K_2, K_1\}$ while $\omega(T_{0,0}) = 3$.
 
 \begin{obs}
   Given an UUIG $G$, no level of $G$ has to be a maximal clique.
