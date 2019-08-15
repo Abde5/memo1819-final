@@ -5,11 +5,12 @@
   Sometimes it is the people no one imagines anything of who do the things that no one can imagine.
 \end{fquote}
 
-The goal of this chapter is to introduce you to the main subject of this thesis. Thin strip graphs is a class of graphs that lay between unit disk graphs
-and mixed interval graphs. We can define formally a $c$-strip graph as a unit disk graph such that the centers of the disks belong to $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$, more intuitively we can see this as a unit disk graph where the centers of the disks lay between two parallel horizontal lines with a distance of $c$ between them. We denote this class by SG($c$). We
-have then that SG($0$) = UIG and SG($\infty$) = UDG.
+The goal of this chapter is to introduce the main subject of this thesis. \emph{\index{Thin strip graphs}} is a class of graphs that lie between unit disk graphs
+and mixed interval graphs. We can define formally a \emph{\index{$c$-strip graph}} as a unit disk graph such that the centers of the disks belong to $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$, more intuitively we can see this as a unit disk graph where the centers of the disks lie between two parallel horizontal lines with a distance of $c$ between them. We denote this class by SG($c$). We have then that SG($0$) = UIG and SG($\infty$) = UDG.
 
-The definition and main work for this class comes from Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. However, Hayashi et al. \cite{hayashiThinStripGraphs2017} expand his work by defining the class of \emph{thin strip graphs}.
+The definition and main work for this class comes from Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. However, Hayashi et al. \cite{hayashiThinStripGraphs2017} expand his work by defining the class of thin strip graphs.
+
+\section{$c$-strip graphs}
 
 \section{Thin strip graphs}
 
@@ -173,34 +174,160 @@ Thin strip graphs can also be seen as unfettered unit interval graphs, which mea
 \proof{See \cite{hayashiThinStripGraphs2017}.}
 
 
+\begin{figure}
+\begin{center}
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1]
+  \node (0) [draw, rounded rectangle] {co-comparability graphs};
+  \node (1) [below= of 0, draw, rounded rectangle] {unfettered unit interval graphs};
+  \node (2) [below=of 1, draw, rounded rectangle] {thin strip graphs};
+  \node (3) [below=of 2, draw, rounded rectangle] {mixed unit interval graphs};
+  \node (4) [below=of 3, draw, rounded rectangle] {unit interval graphs};
+  \node (5) [left=of 1, draw, rounded rectangle] {unit disk graphs};
+  \node (6) [left=of 2, below=of 5] {};
+  \draw[<-] (0) edge (1) (1) edge (2) (2) edge (3) (3) edge (4) (5) edge (6.south);
+  \draw[-] (2) edge (6.south);
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+  \caption{Extension of the graph classes diagram from Figure \ref{fig:hierarchyTSG} with \emph{TSG} and \emph{UDG}.}
+\label{fig:hierarchyTSG}
+\end{figure}
+
 \section{Characterization of thin strip graphs}
 
 One of the main goals of this thesis is to characterize thin strip graphs by forbidden induced subgraphs. We know that TSG is an hereditary class, then a way to characterize this class of graphs is by looking for its forbidden subgraphs the same way as MUIG has been characterized by Joos. Furthermore, MUIG $\subsetneq$ TSG by Theorem \ref{theo:muigTSG}, so the first we can do is to check if the forbidden subgraphs of MUIG are also for TSG.
 
-One of the main goals of this thesis is to characterize TSG. by forbidden induced subgraphs. To approach this, we will see how many induced forbidden subgraphs are also forbidden for TSG. We have described the families of forbidden induced subgraphs for MUIG in section \ref{sec:muig} and one of these familes has been proven to be a forbidden induced subgraph for TSG.
 
 \subsection{Mixed unit interval graph forbidden subgraphs}
 
-In the previous section we have shown that MUIG $\subsetneq$ TSG \ref{theo:muigTSG}. We have even shown every forbidden induced subgraph of MUIG in Chapter \ref{chap:interval}. Here we are going to overview these forbidden induced subgraphs and we their inclusion in TSG. \todo{to continue phrasing}
+In the previous section we have shown that MUIG $\subsetneq$ TSG \ref{theo:muigTSG}. We have even shown every forbidden induced subgraph of MUIG in Chapter \ref{chap:interval}. Here we are going to overview these forbidden induced subgraphs and we their inclusion in TSG. Moreover, we will verify if one of these families is at least in UUIG.
 
 In this subsection, we are going to see the relationship between thin strip graphs and mixed unit interval graphs.
 
+\begin{figure}
+\begin{center}
+  \begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xa{0.5}
+\def\ya{0}
+
+\def\xd{4.5}
+\def\yd{0}
+
+
+%graph R_0
+\path[fill] (\xa+0.5,\ya) circle (\ver);
+\path[fill] (\xa+1,\ya+1) circle (\ver);
+\path[fill] (\xa+2,\ya+1) circle (\ver);
+\path[fill] (\xa+2.5,\ya) circle (\ver);
+\path[fill] (\xa+1.5,\ya) circle (\ver);
+
+\draw[thick] (\xa+0.5,\ya)--(\xa+1.5,\ya)--(\xa+1,\ya+1)
+(\xa+2,\ya+1)--(\xa+1.5,\ya)--(\xa+2.5,\ya);
+
+
+\draw[thick,red] (\xa+2,\ya+1+ \ver+0.2) coordinate(a1)  arc (90:450:\ver +0.2) coordinate(a2);
+
+\draw[thick,red] (\xa+1,\ya+1+ \ver+0.2) coordinate(d1)  arc (90:450:\ver +0.2) coordinate(d2);
+
+\draw[thick,red] (\xa+2.5,\ya+ \ver+0.2) coordinate(e1)  arc (90:450:\ver +0.2) coordinate(e2);
+
+\draw[thick,red] (\xa+0.5,\ya+ \ver+0.2) coordinate(b1)  arc (90:270:\ver +0.2) coordinate(b2);
+\draw[thick,red] (\xa+1.5,\ya- \ver-0.2) coordinate(c1)  arc (270:450:\ver +0.2) coordinate(c2);
+
+% reliate
+\draw[thick,red] (c1) -- (b2) (c2)--(b1);
+
+%graph R_0
+\path[fill] (\xd+0.5,\yd) circle (\ver);
+\path[fill] (\xd+1,\yd+1) circle (\ver);
+\path[fill] (\xd+2,\yd+1) circle (\ver);
+\path[fill] (\xd+2.5,\yd) circle (\ver);
+\path[fill] (\xd+1.5,\yd) circle (\ver);
+
+\draw[thick] (\xd+0.5,\yd)--(\xd+1.5,\yd)--(\xd+1,\yd+1)
+(\xd+2,\yd+1)--(\xd+1.5,\yd)--(\xd+2.5,\yd);
+
+\draw[thick,red] (\xd+2,\yd+1+ \ver+0.2) coordinate(a1)  arc (90:450:\ver +0.2) coordinate(a2);
+\draw[thick,red] (\xd+1,\yd+1+ \ver+0.2) coordinate(d1)  arc (90:450:\ver +0.2) coordinate(d2);
+\draw[thick,red] (\xd+2.5,\yd+ \ver+0.2) coordinate(e1)  arc (90:450:\ver +0.2) coordinate(e2);
+\draw[thick,red] (\xd+1.5,\yd+ \ver+0.2) coordinate(d1)  arc (90:450:\ver +0.2) coordinate(d2);
+\draw[thick,red] (\xd+0.5,\yd+ \ver+0.2) coordinate(e1)  arc (90:450:\ver +0.2) coordinate(e2);
+
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{Every possible clique partition of $R_0$. You may notice that any of the partitions is a level structure.}\label{fig:R0level}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+  \begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xd{0}
+\def\yd{0}
+
+\draw[thick] (\xd,\yd)--(\xd+3,\yd)
+(\xd+4.5,\yd)--(\xd+5.5,\yd)
+(\xd+0.5,\yd+1)--(\xd+1,\yd)--(\xd+1.5,\yd+1)--(\xd+2,\yd)--(\xd+2.5,\yd+1)--(\xd+3,\yd)
+(\xd+4.5,\yd)--(\xd+5,\yd+1);
+
+\draw[thick, dashed, color=red] (\xd+6.5,\yd) -- (\xd+5.5,\yd)--(\xd+6,\yd+1) (\xd+5,\yd+1)--(\xd+5.5,\yd);
+
+%graph R_i
+\path[fill] (\xd,\yd) circle (\ver);
+\path[fill] (\xd+1,\yd) circle (\ver);
+\path[fill] (\xd+2,\yd) circle (\ver);
+\path[fill] (\xd+3,\yd) circle (\ver);
+\path[fill] (\xd+4.5,\yd) circle (\ver);
+\path[fill] (\xd+5.5,\yd) circle (\ver);
+\path[fill, color=red] (\xd+6.5,\yd) circle (\ver);
+\path[fill] (\xd+0.5,\yd+1) circle (\ver);
+\path[fill] (\xd+1.5,\yd+1) circle (\ver);
+\path[fill] (\xd+2.5,\yd+1) circle (\ver);
+\path[fill] (\xd+5,\yd+1) circle (\ver);
+\path[fill, color=red] (\xd+6,\yd+1) circle (\ver);
+
+\fill (\xd+3.35,\yd) circle (\ver/2);
+\fill (\xd+3.75,\yd) circle (\ver/2);
+\fill (\xd+4.15,\yd) circle (\ver/2);
+
+\node (1) at (\xd+5.5,\yd-0.3) {$b$};
+\node (2) at (\xd+6.5,\yd-0.3) {$d$};
+\node (2) at (\xd+4.5,\yd-0.3) {$e$};
+\node (4) at (\xd+5,\yd+1+0.3) {$a$};
+\node (3) at (\xd+6,\yd+1+0.3) {$c$};
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{The graph $R_{i+1}$. You can see that the red edges and vertices are what differ from $R_i$.}\label{fig:ri+1}
+\end{figure}
+
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
-  $\mathcal{R}$ is a forbidden induced subgraph family of TSG.
+  $\mathcal{R}$ is a forbidden induced subgraph family of UUIG.
 \end{theorem}
 
 \begin{proof}
-  A way to prove this theorem is to prove that $\mathcal{R} \notin$ UUIG because TSG $\subsetneq$ UUIG. We can prove this by taking into consideration the embedding of the graphs in Figure \ref{graphsR}.
-
-  Let $v$ be the leftmost vertex of $R_k$ with $k \in \mathbb{N}$ and $L_i$ the $i^{th}$ level of the level structure of the graph. We have two choices:
+  We can prove this by induction on $i$.
 
   \begin{itemize}
-    \item $v\in L_1 = K_1$: we have $H = R_k\setminus L_1$.
-    $H$ has only one connected component, which means that it is a valid level. The next step is to take $N(L_1 \cap H) = L_2$, then $N(L_2 \cap H') = L_3$ where $H' = H\setminus L_2$.We repeat this until we arrive to the end of our graph. The last one will divide the graph in two components of $K_1$, which does not respect our condition because $L_n$ has already one adjacent level ($L_{n-1}$).
-    \item $v\in L_1' = K_2$: in this case $H$ has two connected components, $K_1$ and $H\setminus K_1$. This level is valid, however, because $H$ has two components $L_1'$ cannot be the first level of our level structure (see definition), so we take the neighbour $K_1$ as the first level $L_1$. We can observe that we are in the same case as before, where $L_1 = K_1$.
+    \item \emph{Case $i=0$}: $R_0 \notin$ UUIG because there is no clique partition of $R_0$ that is also a level structure as seen in Figure \ref{fig:R0level}.
+    \item \emph{Case $i = i+1$}: We suppose that every valid clique partition of $R_i$ is not a level structure. See in Figure \ref{fig:ri+1} the edges and vertices that we add to generate $R_{i+1}$. We call $a,b$ the vertices that were disjoint in $R_i$ and $c,d$ the new vertices. These two vertices are adjacent to $b$.
+
+    Let $\{b,c\}$ or $\{b,d\}$ be a level of our clique partition. By the hypothesis of induction we know that this is partition is not a level structure because this partition is a valid partition of $R_i$ because $a$ and $b$ are in different levels. The only way to create a new partition that is not a valid clique partition of $R_i$ is if $\{a,b\}$ is a level. In this case, however, the clique level $\{a,b\}$ will be adjacent to three cliques $\{c\}, \{d\}$ and $\{e, \dots\}$ so this clique partition is not a level structure either.
   \end{itemize}
 
-  Another (more extended) proof can be found in \cite{hayashiThinStripGraphs2017}.
+  This proves that $R_i$ for every $i \in \mathbb{N}_0$ has not a clique level structure; thus, it is not an UUIG.
 \end{proof}
 
 We see that $\mathcal{R}$ is a family of forbidden subgraphs of TSG. Nevertheless, the rest of the forbidden subgraphs for MUIG are thin strip graphs. The main reason is because they are unfettered unit interval graphs. We see our first example with the forbidden graph for MUIG $F$.
@@ -236,7 +363,12 @@ We see that $\mathcal{R}$ is a family of forbidden subgraphs of TSG. Nevertheles
     \path[fill=blue] (\xa+2.5,\ya+1) circle (\ver);
     \path[fill=green] (\xa,\ya) circle (\ver);
 
-    \node (1) at (\xa+1.5,\ya-0.7) {$F$};
+    \node (1) at (\xa,\ya-0.4) {$u_0$};
+    \node (1) at (\xa+0.5,\ya+1.3) {$u_1$};
+    \node (1) at (\xa+1,\ya-0.4) {$v_0$};
+    \node (1) at (\xa+2,\ya-0.4) {$v_1$};
+    \node (1) at (\xa+1.5,\ya+1.3) {$v_2$};
+    \node (1) at (\xa+2.5,\ya+1.3) {$w$};
 
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
@@ -244,70 +376,80 @@ We see that $\mathcal{R}$ is a family of forbidden subgraphs of TSG. Nevertheles
 \caption{The graph $F$ where each level is represented by a different color.}\label{fig:graphF_clique}
 \end{figure}
 
+\begin{figure}[t]
+\begin{center}
+\begin{tikzpicture}[scale=1.7]
+
+\def\ver{0.5}
+\def\verp{0.04} %size of a vertex
+\def\epsilon{0.5}
+
+
+\draw[color=green] ({((\epsilon/4)*(\epsilon/4) - 1)*2*\ver},{(\epsilon/4)*2*\ver}) circle (\ver);
+\draw[color=green] (-1,0) circle (\ver);
+
+\draw[color=red] (0,0) circle (\ver);
+\draw[color=red] (0,{(\epsilon / 2) *2* \ver}) circle (\ver);
+\draw[color=red] (0,{(2* \epsilon / 2)*2* \ver}) circle (\ver);
+
+\draw[color=blue] ({(1 - (\epsilon/4)*(\epsilon/4))*2*\ver},{(\epsilon/4)*2*\ver}) circle (\ver);
+
+
+\end{tikzpicture}
+\end{center}
+\caption{Realization of $F$ as a thin strip graph.}\label{fig:graphF_thin}
+\end{figure}
+
 \begin{theorem}
   $F \in$ TSG.
 \end{theorem}
 
 \proof{
-To prove this we have to find an $\epsilon$-realization for our graph $F = (V,E)$ with $\varepsilon$ arbitrarily small. Let $\phi(v)$ be the mapping of our vertices on the plane. We know that the level structure of $F$ is $L = \{L_1 = K_2, L_2=K_3, L_3=K_1\}$ as seen in Figure \ref{fig:graphF_clique}. For each $v_k \in L_2$ with $k\in [0,2]$ as follows:
+To prove this we have to find an $\varepsilon$-realization for our graph $F = (V,E)$ with $\varepsilon$ arbitrarily small. Let $\phi(v)$ be the mapping of our vertices on the plane. $F$ has a level structure $L = \{\{u_0, u_1\}, \{v_0, v_1, v_2\}, \{w\}\}$ as shown in Figure \ref{fig:graphF_clique}.
+
+We begin to construct the representation as a thin strip graph by placing the vertices $v_0, v_1, v_2$ on the plane. Simply, we place them on the same $x$ coordinate with an equal distance from $v_0$ to $v_1$ and $v_1$ to $v_2$ such that they are all adjacent, being those on a $y$ coordinate smaller than $\varepsilon$:
 
 $$\phi(v_k) = \Bigg(0, \varepsilon \frac{k}{2}\Bigg)$$
 
-Then, for each $u_k \in L_1$ with $l\in [1,2]$ as follows if we take into consideration that $v_0u_0, v_1u_0, v_0u_1 \in E$:
+for $k \in \{0,1,2\}$.\\
 
-$$\phi(u_1) = \Bigg(\Big(\frac{\varepsilon}{4}\Big)^2 -1, \varepsilon \frac{1}{4}\Bigg)$$
+We continue with $w$; $w$ has to be adjacent to $v_0$ and $v_1$, but not $v_2$. We pursue to place it on a $y$ coordinate that is located in the middle between $0$ and $\frac{\varepsilon}{2}$ (the $y$ coordinates of $v_0$ and $v_1$), which is $\frac{\varepsilon}{4}$. Now we have to find a $x$ coordinate for $w$ such that it touches both $v_0$ and $v_1$ but does not intersect with $v_2$. By symmetry, we only have to check the adjacency of $v_0$ and $v_2$. We can calculate a point such that the distance between $w$ and $v_0$ equals one:
+
+\begin{equation*}
+  \begin{split}
+    \sqrt{\phi(w)_y^2 + \Big(\frac{\varepsilon}{4}\Big)^2} &= 1\\
+    \phi(w)_x^2 + \Big(\frac{\varepsilon}{4}\Big)^2 &= 1\\
+    \phi(w)_x^2 &= 1 - \Big(\frac{\varepsilon}{4}\Big)^2\\
+    \phi(w)_x &= \sqrt{1 - \Big(\frac{\varepsilon}{4}\Big)^2}\\
+    \phi(w)_x &= \sqrt{\frac{16 - \varepsilon^2}{16}}\\
+    \phi(w)_x &= \frac{\sqrt{16 - \varepsilon^2}}{4}\\
+  \end{split}
+\end{equation*}
+
+and by symmetry, $-\frac{\sqrt{16 - \varepsilon^2}}{4}$ is also a candidate. We only have to see if it touches $v_2$ for every $\varepsilon$:
+
+\begin{equation*}
+  \begin{split}
+    \sqrt{\Bigg(\frac{\sqrt{16 - \varepsilon^2}}{4}\Bigg)^2 + \varepsilon^2} &> 1\\
+    \sqrt{\frac{16 - \varepsilon^2}{16} + \varepsilon^2} &> 1\\
+    \sqrt{\frac{16 - \varepsilon^2 + 16\varepsilon}{16}} &> 1\\
+    \sqrt{\frac{16 + 15\varepsilon^2}{16}} &> 1\\
+    \frac{1}{4}\sqrt{16 + 15\varepsilon^2} &> 1\\
+  \end{split}
+\end{equation*}
+
+the expression of the left will always be bigger than one if $\varepsilon \neq 0$, which means that $w$ will never be adjacent to $v_2$.
+
+$$\phi(w) = \Bigg(\frac{\sqrt{16 - \varepsilon^2}}{4}, \frac{\varepsilon}{4}\Bigg)$$
+
+Finally, we have to place $u_0, u_1$. We can remark that the neighbours of $u_1$ in the second level correspond to the neighbours of $w$ , so it will be placed symmetrically with respect to 0 with the same $y$ coordinate, as we have proven before. Finally, $u_0$ has to be adjacent to $v_0$. We can place it at $(-1,0)$ with the same argument as the construction of $K_{1,3}$ (see Figure \ref{fig:thinK13}). The other vertices of the second level $v_1$ and $v_2$ will not be adjacent to $u_0$ unless their $y$ coordinate is 0, which is not the case.
+
+$$\phi(u_1) = \Bigg(-\frac{\sqrt{16 - \varepsilon^2}}{4}, \frac{\varepsilon}{4}\Bigg)$$
 $$\phi(u_2) = (-1, 0)$$
 
-
-If you can see $L_1$ at the left of $L_2$. Finally, we have $w\in L_3$. We can see that $w$ and $u_1$ share the same neighbours, so they can be put in the same
-$y$-coordinate we put it at the right side of $L_3$.
-
-$$\phi(w) = \Bigg(1 - \Big(\frac{\varepsilon}{4}\Big)^2, \varepsilon \frac{1}{4}\Bigg)$$ \qed
+You can find a visual representation of this graph in Figure \ref{fig:graphF_thin}. \qed
 }
 
-We can also prove the same for $\mathcal{T}$ and $\mathcal{S}''$. In this case these graphs have induced $K_{1,3}$ (before we had an induced $C_4$).
-There is a property about $K_{1,3}$ and TSGs that will help us embed those graphs in the plane.
-
-\begin{lemma}
-  The only way to represent $K_{1,3}$ as a thin strip graph is for three points $u,v,w$ such that $u_x=v_x-1$ and $w_x = v_x+1$ with the same
-  $y$-coordinate and the fourth point $t$ is placed such $t_x = v_x$ and $t_y \neq v_y$ (see Figure \ref{fig:thinK13}).
-\end{lemma}
-
-\proof{
-We proceed to prove this lemma by contradiction. We begin constructing the realization of $K_{1,3}$ by taking its induced $P_3 \in K_{1,3}$. The middle point of $P_3$ has to be between
-the other two points horizontally, so we know then that $u_x < v_x < w_x$ with $v$ the middle point.
-
-Now we introduce $t$, the vertex that is adjacent to the middle point of $P_3$. We know by fact that $u_x < t_x < w_x$: if we take $t_x \leq u_x$, $t$ has to be adjacent to $u$ in order to intersect $v$ which is not the case; viceversa for $w$.
-
-Let $\alpha_{u,v} = \sqrt{1 - (u_y-v_y)^2}$ be a real number that represents the \emph{critical region} between two points.
-Note that if $|u_x - v_x| \leq \alpha_{u,v}$ then $u$ and $v$ are touching.
-
-Now that we know that $u_x < t_x < w_x$, if we set $t_x < v_x$ and maximize the distance between $u$ and $v$ (so $u_x = v_x-1$) we should have:
-
-$$t_x > \alpha_{u,t}+u_x$$
-
-for every $t_y$. We assume that $u_y = 0$ and $u_x = k$ with $k \in \mathbb{R}$ without loss of generality.
-
-$$t_x > \alpha_{u,t}+v_x-1$$
-$$t_x +1 > \alpha_{u,t}+v_x$$
-
-We know that $t_x < v_x$, which means that $\alpha_{u,v}$ has to be bigger than one, which is impossible given the definition of $\alpha_{u,v}$. The same occurs with $w_x$ and $t_x > v_x$.
-
-The only case that is left is with $t_x = v_x$. If $u$ and $t$ touch then:
-
-$$t_x \leq \alpha_{u,t}+u_x$$
-$$t_x+1 \leq \alpha_{u,t}+v_x$$
-
-we know that $t_x = v_x$:
-
-$$v_x+1 \leq \alpha_{u,t}+v_x$$
-$$1 \leq \alpha_{u,t}$$
-$$1 \leq \sqrt{1-t_y^2}$$
-
-which is impossible except when $t_y = 0$, which means that the only solutions are when $t_y \neq v_y$, $t_x = v_x$, $u_x = v_x-1$ and $w_x = v_x+1$. \qed
-}
-
-%We prove the same thing for $\mathcal{T}$ and $\mathcal{S}''$ with the same procedure:
 
 \begin{figure}[t]
 \begin{center}
@@ -327,40 +469,77 @@ which is impossible except when $t_y = 0$, which means that the only solutions a
 \def\xd{3}
 \def\yd{-2.5}
 
-\draw[thick] (\xc,\yc)--(\xc+6,\yc)
-(\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+1.5,\yc+1)--(\xc+2,\yc)--(\xc+2.5,\yc+1)--(\xc+3,\yc)--(\xc+4.5,\yc+1)
-(\xc+5.5,\yc+1)--(\xc+5,\yc)--(\xc+4.5,\yc+1)--(\xc+4,\yc)--(\xc+2.5,\yc+1);
+\draw[thick] (\xc-2,\yc)--(\xc+7,\yc)
+(\xc-1.5,\yc+1)--(\xc-1,\yc)--(\xc-0.5,\yc+1)--(\xc,\yc)--(\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+1.5,\yc+1)--(\xc+2,\yc)--(\xc+2.5,\yc+1)--(\xc+3,\yc)--(\xc+4.5,\yc+1)
+(\xc+5.5,\yc+1)--(\xc+5,\yc)--(\xc+4.5,\yc+1)--(\xc+4,\yc)--(\xc+2.5,\yc+1)
+(\xc+5.5,\yc+1)--(\xc+6,\yc)--(\xc+6.5,\yc+1);
 
 %graph T_{2,1}
-\path[fill=red] (\xc,\yc) circle (\ver);
-\path[fill=red] (\xc+1,\yc) circle (\ver);
-\path[fill=red] (\xc+2,\yc) circle (\ver);
-\path[fill=blue] (\xc+3,\yc) circle (\ver);
-\path[fill=blue] (\xc+4,\yc) circle (\ver);
-\path[fill=red] (\xc+5,\yc) circle (\ver);
-\path[fill=red] (\xc+6,\yc) circle (\ver);
-\path[fill=red] (\xc+0.5,\yc+1) circle (\ver);
-\path[fill=red] (\xc+1.5,\yc+1) circle (\ver);
-\path[fill=blue] (\xc+2.5,\yc+1) circle (\ver);
-\path[fill=blue] (\xc+4.5,\yc+1) circle (\ver);
-\path[fill=red] (\xc+5.5,\yc+1) circle (\ver);
+\path[fill=blue] (\xc-2,\yc) circle (\ver);
+\path[fill=blue] (\xc-1,\yc) circle (\ver);
+\path[fill=blue] (\xc,\yc) circle (\ver);
+\path[fill=green] (\xc+1,\yc) circle (\ver);
+\path[fill=green] (\xc+2,\yc) circle (\ver);
+\path[fill=red] (\xc+3,\yc) circle (\ver);
+\path[fill=red] (\xc+4,\yc) circle (\ver);
+\path[fill=blue] (\xc+5,\yc) circle (\ver);
+\path[fill=blue] (\xc+6,\yc) circle (\ver);
+\path[fill=blue] (\xc+7,\yc) circle (\ver);
 
+\path[fill=blue] (\xc-1.5,\yc+1) circle (\ver);
+\path[fill=blue] (\xc-0.5,\yc+1) circle (\ver);
+\path[fill=green] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill=green] (\xc+1.5,\yc+1) circle (\ver);
+\path[fill=red] (\xc+2.5,\yc+1) circle (\ver);
+\path[fill=red] (\xc+4.5,\yc+1) circle (\ver);
+\path[fill=blue] (\xc+5.5,\yc+1) circle (\ver);
+\path[fill=blue] (\xc+6.5,\yc+1) circle (\ver);
 
-\node (1) at (\xc+3,\yc-0.7) {$T_{2,1}$};
-
+\node (1) at (\xc+3,\yc-0.7) {$T_{4,2}$};
 
 \end{tikzpicture}
 \end{center}
-\caption{The graph $T_{2,1}$ with the diamond in blue and the arms in red.}\label{fig:graph_T_clique}
+\caption{The graph $T_{4,2}$ with the diamond in red and the arms in green. The $K_{1,3}$ bis from previous lemma is in blue.}\label{fig:graph_T_clique}
 \end{figure}
 
-%\begin{theorem}
-%  $\mathcal{S}'' \subset$ TSG.
-%\end{theorem}
+\begin{figure}[t]
+\begin{center}
+\begin{tikzpicture}[rotate=90, scale=1.7]
 
-We can see that $\mathcal{S}''$ and $\mathcal{T}$ both have induced $K_{1,3}$ while $F$ has an induced $C_4$.
+\def\ver{0.6}
+\def\verp{0.04} %size of a vertex
 
-\todo[inline]{Main idea is that we construct first the induced $K_{1,3}$, then the rest follows, just have to finish writing.}
+\draw[color=blue] (\ver*4-0.1,0) circle (\ver);
+\draw[color=blue] (\ver*4-0.1+0.12,0) circle (\ver);
+\draw[color=blue] (\ver*6-0.1,0) circle (\ver);
+\draw[color=blue] (\ver*6-0.1,\ver+\ver/9) circle (\ver);
+\draw[color=blue] (\ver*8-0.1,0) circle (\ver);
+
+\draw[color=red] (0,0) circle (\ver);
+\draw[color=red] (\ver*2-0.1,0) circle (\ver);
+\draw[color=red] (\ver*2,0) circle (\ver);
+\draw[color=red] (-0.1,0) circle (\ver);
+\draw[color=green] (-\ver*2,0) circle (\ver);
+\draw[color=green] (-\ver*2-0.12,0) circle (\ver);
+\draw[color=green] (-\ver*4,0) circle (\ver);
+\draw[color=green] (-\ver*4-0.14,0) circle (\ver);
+\draw[color=blue] (-\ver*6,0) circle (\ver);
+\draw[color=blue] (-\ver*6-0.16,0) circle (\ver);
+\draw[color=blue] (-\ver*8,0) circle (\ver);
+\draw[color=blue] (-\ver*8,\ver+\ver/9) circle (\ver);
+\draw[color=blue] (-\ver*10,0) circle (\ver);
+
+\path[fill] (\ver*3+0.02,0) circle (\verp);
+\path[fill] (-\ver-0.1,0) circle (\verp);
+\path[fill] (-\ver*3-0.12,0) circle (\verp);
+\path[fill] (-\ver*5-0.14,0) circle (\verp);
+
+\end{tikzpicture}
+\end{center}
+\caption{A realization as a thin strip graph of $T_{4,2}$ from Figure \ref{fig:graph_T_clique}. The distance between the disks disminishes with the value of $\varepsilon$, but the disks designated by the black points will never touch.}
+\end{figure}
+
+\todo[inline]{Add drawings for $S$ and $S''$ like Figure \ref{fig:graph_T_clique} and the actual proofs (similar to proof of $F$, only have to write them!).}
 
 
 \section{Recognition}

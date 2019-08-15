@@ -794,15 +794,11 @@ In the other hand, we can find a graph in UUIG that is not an UDG. This theorem 
   \node (2) [below=of 1, draw, rounded rectangle] {unfettered unit interval graphs};
   \node (3) [below=of 2, draw, rounded rectangle] {mixed unit interval graphs};
   \node (4) [below=of 3, draw, rounded rectangle] {unit interval graphs};
-  \node (5) [left=of 1, draw, rounded rectangle] {unit disk graphs};
-  \node (6) [left=of 2, below=of 5] {};
-  \draw[<-] (1) edge (2) (2) edge (3) (3) edge (4)
-            (5) edge (6.south);
-  \draw[-] (2) edge (6.south);
+  \draw[<-] (1) edge (2) (2) edge (3) (3) edge (4);
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
 \end{center}
-\caption{Extension of the graph classes diagram from Figure \ref{fig:hierarchyMUIG} with \emph{UUIG} and \emph{UDG}.}
+\caption{Extension of the graph classes diagram from Figure \ref{fig:hierarchyMUIG} with \emph{UUIG}.}
 \label{fig:hierarchyUUIG}
 \end{figure}
 
@@ -827,8 +823,8 @@ By this lemma we can suppose that the input graph $G$ is a connected graph. This
 
 \proof{The UUIG recognition of a graph $G$ is in $\mathcal{NP}$ because we can build a \emph{polynomial time verifier} that takes a level structure of $G$ and check whether each level is a clique or not. Viceversa, we can build another one that takes a partition and check whether each clique is a level of a level structure. \qed}
 
-Future work on the recognition of unfettered unit interval graphs would be to adapt this algorithm to avoid combinatorial complexity. In our case we are interested in seeing the recognition of UUIG for unit disk graphs. We know that the CLIQUE problem is in $\mathcal{P}$ for unit disk graphs and the first hypothesis was that given an UUIG $G$, at least one level of $G$ is a maximal clique of the graph. Nevertheless, we have a counterexample in $T_{0,0}$ (Fig. \ref{graphsT}) where the levels of the graph are $\{K_1, K_2, K_2, K_1\}$ while $\omega(T_{0,0}) = 3$.
+Future work on the recognition of unfettered unit interval graphs would be to adapt this algorithm to avoid combinatorial complexity. In our case we are interested in seeing the recognition of UUIG for unit disk graphs. We know that the CLIQUE problem is in $\mathcal{P}$ for unit disk graphs \cite{CLARK1990165} and the first hypothesis was that given an UUIG $G$, at least one level of $G$ is a maximal clique of the graph. Nevertheless, we have a counterexample in $T_{0,0}$ (Fig. \ref{fig:graphsT}) where the levels of the graph are $\{K_1, K_2, K_2, K_1\}$ while $\omega(T_{0,0}) = 3$.
 
 \begin{obs}
-  Given an UUIG $G$, no level of $G$ has to be a maximal clique.
+  Given an UUIG $G$, a level of $G$ does not have to be necessarily a maximal clique.
 \end{obs}
