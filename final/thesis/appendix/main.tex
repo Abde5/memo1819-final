@@ -1,24 +1,5 @@
 \begin{appendices}
 
-\chapter{Graph classes hierarchy}
-
-\begin{figure}
-\centering
-\input{../scripts/graph_classes}
-\caption{A hierarchy of every relevant graph of this document. The relation $\text{class}_1 \rightarrow \text{class}_2$ means that $\text{class}_1 \subset \text{class}_2$.}
-\label{fig:graph_classes}
-\end{figure}
-
-\chapter{Problems in inclusion}
- \begin{itemize}
-   \item \textbf{MUIG $\subsetneq$ TSG $\subsetneq$ UUIG }: Hayashi \cite {hayashiThinStripGraphs2017}
-   \item \textbf{MUIG $\neq$ TTLG (Open)}: To prove that MUIG $\subsetneq$ TSG, Hayashi \cite{hayashiThinStripGraphs2017} could simulate MUIGs with 4 different levels. Having only two levels, I conjecture that this is not possible. However, MUIG can have $C_4$, so an inclusion between these two classes is impossible (it has to be rewritten).
-   \item \textbf{TTLG $\subsetneq$ TSG (Open)}: This problem has been solved in my thesis by finding a forbidden graph for TTLG, theorem 4.1.3.
-   \item \textbf{TLG $\subset$ TSG (Open)}: This is a plausible stronger statement than the one before. However, this result could make the study of TTLG less relevant. Thus, this result would imply:
-
-   $$G \in \text{TLG}(j) \to G \in \text{SG}(k) : j,k \in \mathbb{R}$$
- \end{itemize}
-
 \chapter{Problems in forbidden induced subgraph characterization}
   \begin{itemize}
     \item \textbf{MUIG}: Joos \cite{joosCharacterizationMixedUnit2013} gives us a complete characterization of forbidden graphs.
@@ -30,7 +11,7 @@
   \chapter{Problems in complexity}
     \begin{itemize}
       \item \textbf{UIG/IG recognition}: Both of these problems are polynomial.
-      \item \textbf{MUIG recognition}: Schuchat et al. give a linear algorithm ($O(|V|^2)$) to recognise MUIGs \cite{shuchatUnitMixedInterval2014}.
+      \item \textbf{MUIG recognition}: Schuchat et al. give a linear algorithm ($\mathcal{O}(|V|^2)$) to recognise MUIGs \cite{shuchatUnitMixedInterval2014}.
       \item \textbf{UDG recognition}: $\exists\mathbb{R}$-complete \cite{ExistentialTheoryReals2006}.
       \item \textbf{SG($c$) recognition (Open)}: Breu  \cite{breuAlgorithmicAspectsConstrained1996} states that SG($c$) recognition is polynomial if a complement edge orientation and a mapping $\phi : V \to [0,c]$ is polynomial as an input of the decision problem.
       \item \textbf{TSG recognition (Open)}: Can we get rid of the mapping as input to recognise TSGs? In that case the problem would be at least NP.

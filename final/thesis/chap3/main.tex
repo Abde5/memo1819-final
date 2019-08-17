@@ -8,9 +8,49 @@
 The goal of this chapter is to introduce the main subject of this thesis. \emph{\index{Thin strip graphs}} is a class of graphs that lie between unit disk graphs
 and mixed interval graphs. We can define formally a \emph{\index{$c$-strip graph}} as a unit disk graph such that the centers of the disks belong to $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$, more intuitively we can see this as a unit disk graph where the centers of the disks lie between two parallel horizontal lines with a distance of $c$ between them. We denote this class by SG($c$). We have then that SG($0$) = UIG and SG($\infty$) = UDG.
 
-The definition and main work for this class comes from Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. However, Hayashi et al. \cite{hayashiThinStripGraphs2017} expand his work by defining the class of thin strip graphs.
+The definition and main work for this class comes from Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. However, Hayashi \textit{et al.} \cite{hayashiThinStripGraphs2017} expand his work by defining the class of thin strip graphs. Also, a first review of unit disk graphs will be done in the first section of this chapter, based on the original paper of Clark \textit{et al.} \cite{CLARK1990165} where unit disks graphs were defined with some interesting results.
+
+\begin{figure}
+\centering
+
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1.5, rotate=-65]
+
+
+\node[inner sep=0pt] (b) at (1,2)
+    {\includegraphics[width=.1\textwidth]{res/antenna}};
+\node[inner sep=0pt] (c) at (2,3)
+    {\includegraphics[width=.1\textwidth]{res/antenna}};
+\node[inner sep=0pt] (d) at (0,0)
+    {\includegraphics[width=.1\textwidth]{res/antenna}};
+\node[inner sep=0pt] (e) at (-0.5,1.5)
+    {\includegraphics[width=.1\textwidth]{res/antenna}};
+\node[inner sep=0pt] (e) at (0.25,3.25)
+    {\includegraphics[width=.1\textwidth]{res/antenna}};
+
+
+\draw[color=green]  (-0.5,1.5) circle [radius=1];
+\draw[color=red]  (1,2) circle [radius=1];
+\draw[color=green]  (2,3) circle [radius=1];
+\draw[color=red]  (0,0) circle [radius=1];
+\draw[color=blue]  (0.25,3.25) circle [radius=1];
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\caption{A broadcast network with its respective unit disk graph model. The color of each disk represents the frequency of the signals sent by its broadcast node. It has to be different for adjacent antennas to avoid signal interference. The broadcast problem is equivalent to the coloring problem of the graph.}
+\label{fig:antenna}
+\end{figure}
+
+\section{Unit disk graphs}
+
+An \emph{\index{unit disk graph}} is an intersection graph of equal-sized disks on a plane - also called \emph{unitary}. The main interest of this class of graphs is its application. They can be used to create a graph-theoretic model for any kind broadcast networks. This can be useful in the case where a broadcast node needs to have a different frequency from another broadcast node that is close enough. With the unit disk graph model, we can solve this with algorithms for well known graph-theoretic problems like the coloration problem.
+
+The most studied problem for this class of graphs is its recognition and characterization. It has been proven that its recognition problem is \index{$\exists\mathbb{R}$-complete} \cite{Schaefer2013}. In the other hand, its characterization is still not complete and an open question. Atminas \textit{et al.} tackled this problem by finding forbidden subgraphs to some of its subclasses \cite{atminasForbiddenInducedSubgraphs2016}. However, since its definition, we know that some graph-theoretic problems have different complexity when applied to unit disk graphs like the CLIQUE problem which has been proven to be polynomial when applied to UDGs \cite{CLARK1990165}. The approximation complexity of these problems has also been studied \cite{DBLP:journals/corr/abs-1712-05010}.
 
 \section{$c$-strip graphs}
+
+A $c$-strip graph can be defined as a unit disk graph such that the centers of the disks are located between two horizontal parallel lines with a distance of $c$ between both of them.
+
 
 \section{Thin strip graphs}
 
@@ -263,7 +303,7 @@ In this subsection, we are going to see the relationship between thin strip grap
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
 \end{center}
-\caption{Every possible clique partition of $R_0$. You may notice that any of the partitions is a level structure.}\label{fig:R0level}
+\caption{Every possible clique partition of $R_0$. You may notice that none of the partition is a level structure.}\label{fig:R0level}
 \end{figure}
 
 \begin{figure}[H]
@@ -376,7 +416,7 @@ We see that $\mathcal{R}$ is a family of forbidden subgraphs of TSG. Nevertheles
 \caption{The graph $F$ where each level is represented by a different color.}\label{fig:graphF_clique}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[b]
 \begin{center}
 \begin{tikzpicture}[scale=1.7]
 
@@ -449,6 +489,163 @@ $$\phi(u_2) = (-1, 0)$$
 
 You can find a visual representation of this graph in Figure \ref{fig:graphF_thin}. \qed
 }
+
+
+To prove the realization of $\mathcal{T}, \mathcal{S}$ and $\mathcal{S''}$ as thin strip graphs, we first must define a new family of graphs. The family of graphs $\mathcal{Q}$ can be defined as a $K_{1,3}$ where two of its vertices of degree one are cliques. You can find an example in Figure \ref{fig:graph_Q}.
+
+\begin{figure}[t]
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xc{9}
+\def\yc{0}
+
+\def\xd{2}
+\def\yd{-2.5}
+
+\path[fill] (\xa,\ya) circle (\ver);
+\path[fill] (\xa,\ya+1) circle (\ver);
+\path[fill] (\xa+1,\ya) circle (\ver);
+\path[fill] (\xa-1,\ya) circle (\ver);
+
+\draw[thick] (\xa-1,\ya)--(\xa+1,\ya) (\xa,\ya) -- (\xa,\ya+1);
+
+\node (1) at (\xa,\ya-0.7) {$Q_{1,1}$};
+
+
+\path[fill] (\xb,\yb) circle (\ver);
+\path[fill] (\xb,\yb+1) circle (\ver);
+\path[fill] (\xb+1,\yb) circle (\ver);
+\path[fill] (\xb+1,\yb+1) circle (\ver);
+\path[fill] (\xb-1,\yb) circle (\ver);
+\path[fill] (\xb-1,\yb+1) circle (\ver);
+
+\draw[thick] (\xb-1,\yb)--(\xb+1,\yb)
+(\xb,\yb) -- (\xb,\yb+1)
+(\xb-1,\yb) -- (\xb-1,\yb+1) -- (\xb,\yb) -- (\xb+1,\yb+1) -- (\xb+1,\yb);
+
+\node (1) at (\xb,\yb-0.7) {$Q_{2,2}$};
+
+
+\draw[thick] (\xd-1,\yd)--(\xd+1,\yd)
+(\xd,\yd) -- (\xd,\yd+1)
+(\xd-1,\yd+1) -- (\xd,\yd) -- (\xd+1,\yd+1);
+\draw[thick, dashed, color=gray] (\xd-1,\yd+.33) -- (\xd,\yd) -- (\xd+1,\yd+.33);
+\draw[thick, dashed, color=gray] (\xd-1,\yd+.66) -- (\xd,\yd) -- (\xd+1,\yd+.66);
+
+\path[fill] (\xd,\yd) circle (\ver);
+\path[fill] (\xd,\yd+1) circle (\ver);
+\path[fill] (\xd+1,\yd) circle (\ver);
+\path[fill=gray] (\xd+1,\yd+0.33) circle (\ver);
+\path[fill=gray] (\xd+1,\yd+0.66) circle (\ver);
+\path[fill] (\xd+1,\yd+1) circle (\ver);
+\path[fill] (\xd-1,\yd) circle (\ver);
+\path[fill=gray] (\xd-1,\yd+.33) circle (\ver);
+\path[fill=gray] (\xd-1,\yd+.66) circle (\ver);
+\path[fill] (\xd-1,\yd+1) circle (\ver);
+
+%\draw (\xd-1,\yd+0.5) ellipse (0.5 and 1);
+%\draw (\xd+1,\yd+0.5) ellipse (0.5 and 1);
+
+\draw[thick,decoration={brace,mirror,raise=0.2cm},decorate] (\xd+1.1,\yd-.2) -- (\xd+1.1,\yd+1.2)
+node [pos=0.5,anchor=west,xshift=+0.4cm] {\scriptsize clique of size $j$};
+\draw[thick,decoration={brace,mirror,raise=0.2cm},decorate] (\xd-1.1,\yd+1.2) -- (\xd-1.1,\yd-.2)
+node [pos=0.5,anchor=east,xshift=-0.4cm] {\scriptsize clique of size $i$};
+
+\node (1) at (\xd,\yd-0.7) {$Q_{i,j}$};
+
+
+\end{tikzpicture}
+\end{center}
+\caption{The family of graphs $\mathcal{Q}$.}\label{fig:graph_Q}
+\end{figure}
+
+\begin{claim}
+  The family of graphs $\mathcal{Q}$ is a subset of the class of thin strip graphs and can be realized such that the position of every vertex is different.
+\end{claim}
+
+\proof{
+We proceed to realize $Q_{1,1}$ and $Q_{2,2}$ as thin strip graphs. With their realizations we can also deduce the realization of $Q_{i,j}$ for every $i,j \in \mathbb{N}_0$. The clique of size $i$ is called $A$ and the clique of size $j$ is called $B$ based on Figure \ref{fig:graph_Q}.
+
+$Q_{1,1}$ is $K_{1,3}$ and it has been shown that it is realizable as a thin strip graph with coordinates $(0,0), (-1,0), (1,0), (0,\varepsilon)$ for $\varepsilon > 0$. We can realize $Q_{i,j}$ if the position of every vertex in $A$ equals $(-1,0)$ and $(1,0)$ for $B$. However, we want that every vertex of $A$ and $B$ has a different position, so we proceed to construct a realization that holds for $Q_{2,2}$.
+
+Let $a,b,c,d$ be the vertices of a graph $K_{1,3}$ where $c$ is the vertex of highest degree. $a$ and $b$ are the leftmost and rightmost vertices when realized as a thin strip graph, so their positions are $(-1,0)$ and $(1,0)$ respectively and $c$ is the top disk with coordinates $(0, \varepsilon)$ as seen in Figure \ref{fig:graph_Q_real}. If we add now the vertices $e$ and $f$ with the same neighbourhood as $a$ and $b$, we have to find out how much they can move with respect to $a$ and $b$ to still be in contact with $d$ and not with $c$. We can build this new position by taking the same $y$-coordinate as $a$ and $b$, so for the moment $\phi_y(e) = 0$ and $\phi_y(f) = 0$. We can see that the procedure is the same for $e$ and $f$ by symmetry, so we are going to prove this for $e$.
+
+If $\phi_y(e)=0$, then we have to find $\phi_x(e)$ such that $e$ is not in contact with $c$ with a position $\phi(c) = (0, \varepsilon)$.
+
+\begin{equation*}
+  \begin{split}
+    \sqrt{\phi_x(e)^2 + \varepsilon^2} &> 1\\
+    \phi_x(e)^2 + \varepsilon^2 &> 1\\
+    \phi_x(e)^2 &> 1 - \varepsilon^2\\
+    \phi_x(e) &> \sqrt{1 - \varepsilon^2}\ \ \text{or}\ \  \phi_x(e) < -\sqrt{1 - \varepsilon^2}
+  \end{split}
+\end{equation*}
+
+with $\varepsilon > 0$.
+
+With this, we can see that $\phi_x(e) \in (-1, -\sqrt{1 - \varepsilon^2})$ and $\phi_x(f) \in (\sqrt{1 - \varepsilon^2},1)$. To finalize this proof, we can see that every vertex of $v \in A$ such that $\phi_x(v)\in (-1, -\sqrt{1 - \varepsilon^2})$, we have infinitely different positions to choose. The same holds for $B$. \qed
+}
+
+\begin{figure}[t]
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+\def\ver{0.1} %size of a vertex
+\def\verc{0.8}
+
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xd{\xb}
+\def\yd{-3}
+
+
+\draw[thick] (\xb-1,\yb)--(\xb+1,\yb)
+(\xb,\yb) -- (\xb,\yb+1)
+(\xb-1,\yb) -- (\xb-1,\yb+1) -- (\xb,\yb) -- (\xb+1,\yb+1) -- (\xb+1,\yb);
+
+\node (1) at (\xb,\yb-0.4) {$d$};
+\node (1) at (\xb,\yb+1.4) {$c$};
+\node (1) at (\xb+1,\yb-0.4) {$b$};
+\node (1) at (\xb+1,\yb+1.4) {$f$};
+\node (1) at (\xb-1,\yb-0.4) {$a$};
+\node (1) at (\xb-1,\yb+1.4) {$e$};
+
+\path[fill] (\xb,\yb) circle (\ver);
+\path[fill] (\xb,\yb+1) circle (\ver);
+\path[fill=red] (\xb+1,\yb) circle (\ver);
+\path[fill=green] (\xb+1,\yb+1) circle (\ver);
+\path[fill=red] (\xb-1,\yb) circle (\ver);
+\path[fill=green] (\xb-1,\yb+1) circle (\ver);
+
+
+
+\draw (\xd,\yd) circle (\verc);
+\draw (\xd,\yd+0.4*\verc*2) circle (\verc);
+\draw[color=red] (\xd-\verc*2,\yd) circle (\verc);
+\draw[color=red] (\xd+\verc*2,\yd) circle (\verc);
+\draw[color=green] (\xd-0.95*\verc*2,\yd) circle (\verc);
+\draw[color=green] (\xd+0.95*\verc*2,\yd) circle (\verc);
+
+\end{tikzpicture}
+\end{center}
+\caption{The graph $Q_{2,2}$ and its realization. You can see that the green disk is shifted towards the center with respect to the red one and still does not touch the top disk.}\label{fig:graph_Q_real}
+\end{figure}
 
 
 \begin{figure}[t]
@@ -539,6 +736,7 @@ You can find a visual representation of this graph in Figure \ref{fig:graphF_thi
 \caption{A realization as a thin strip graph of $T_{4,2}$ from Figure \ref{fig:graph_T_clique}. The distance between the disks disminishes with the value of $\varepsilon$, but the disks designated by the black points will never touch.}
 \end{figure}
 
+
 \todo[inline]{Add drawings for $S$ and $S''$ like Figure \ref{fig:graph_T_clique} and the actual proofs (similar to proof of $F$, only have to write them!).}
 
 
@@ -555,7 +753,7 @@ The recognition of this class of graphs is approached by Breu in his thesis \cit
 \end{obs}
 
 \proof{
-  Given an polynomial-time algorithm with a complexity of $O(f(n))$ to solve recognition of $G = (V,E,\gamma,\overrightarrow{E})$, we can run again this algorithm by testing every possible orientation of its complement. This algorithm would take $O(f(n))2^{|E|-1} = O(f(n)2^{|E|})$ time to execute. \qed
+  Given an polynomial-time algorithm with a complexity of $\mathcal{O}(f(n))$ to solve recognition of $G = (V,E,\gamma,\overrightarrow{E})$, we can run again this algorithm by testing every possible orientation of its complement. This algorithm would take $\mathcal{O}(f(n))2^{|E|-1} = \mathcal{O}(f(n)2^{|E|})$ time to execute. \qed
 }\\
 
 We would like to have an algorithm that solves this problem without knowing the $y$-coordinates of the vertices. Nevertheless, further research would concentrate on recognition of UUIGs. We know that TSG $\subsetneq$ UUIG, and recognition of UUIGs is $\mathcal{NP}$. If we the problem of recognising TSG given a UUIG and is solved in polynomial time, then TSG recognition would be $\mathcal{NP}$. However, given the observations in the end of chapter \ref{chap:interval}, there may be a polynomial-time algorithm for UUIG.
