@@ -478,7 +478,7 @@ and by symmetry, $-\frac{\sqrt{16 - \varepsilon^2}}{4}$ is also a candidate. We 
   \end{split}
 \end{equation*}
 
-the expression of the left will always be bigger than one if $\varepsilon \neq 0$, which means that $w$ will never be adjacent to $v_2$.
+the expression on the left will always be bigger than one if $\varepsilon \neq 0$, which means that $w$ will never be adjacent to $v_2$.
 
 $$\phi(w) = \Bigg(\frac{\sqrt{16 - \varepsilon^2}}{4}, \frac{\varepsilon}{4}\Bigg)$$
 
@@ -569,7 +569,7 @@ node [pos=0.5,anchor=east,xshift=-0.4cm] {\scriptsize clique of size $i$};
 \caption{The family of graphs $\mathcal{Q}$.}\label{fig:graph_Q}
 \end{figure}
 
-\begin{claim}
+\begin{claim}\label{claim:graph_Q}
   The family of graphs $\mathcal{Q}$ is a subset of the class of thin strip graphs and can be realized such that the position of every vertex is different.
 \end{claim}
 
@@ -647,8 +647,10 @@ With this, we can see that $\phi_x(e) \in (-1, -\sqrt{1 - \varepsilon^2})$ and $
 \caption{The graph $Q_{2,2}$ and its realization. You can see that the green disk is shifted towards the center with respect to the red one and still does not touch the top disk.}\label{fig:graph_Q_real}
 \end{figure}
 
+With this result, we proceed to show the realization of $\mathcal{T}$, $\mathcal{S}$ and $\mathcal{S''}$ as thin strip graphs.
 
-\begin{figure}[t]
+
+\begin{figure}
 \begin{center}
 \begin{tikzpicture}[scale=1]
 \def\ver{0.1} %size of a vertex
@@ -696,12 +698,12 @@ With this, we can see that $\phi_x(e) \in (-1, -\sqrt{1 - \varepsilon^2})$ and $
 
 \end{tikzpicture}
 \end{center}
-\caption{The graph $T_{4,2}$ with the diamond in red and the arms in green. The $K_{1,3}$ bis from previous lemma is in blue.}\label{fig:graph_T_clique}
+\caption{The graph $T_{4,2}$ with the diamond in red and the arms in green. The $Q_{2,1}$ from previous lemma are in blue.}\label{fig:graph_T_clique}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[b]
 \begin{center}
-\begin{tikzpicture}[rotate=90, scale=1.7]
+\begin{tikzpicture}[rotate=0, scale=1.2]
 
 \def\ver{0.6}
 \def\verp{0.04} %size of a vertex
@@ -733,13 +735,197 @@ With this, we can see that $\phi_x(e) \in (-1, -\sqrt{1 - \varepsilon^2})$ and $
 
 \end{tikzpicture}
 \end{center}
-\caption{A realization as a thin strip graph of $T_{4,2}$ from Figure \ref{fig:graph_T_clique}. The distance between the disks disminishes with the value of $\varepsilon$, but the disks designated by the black points will never touch.}
+\caption{A realization as a thin strip graph of $T_{4,2}$ from Figure \ref{fig:graph_T_clique}. The distance between the disks disminishes with the value of $\varepsilon$, but the disks designated by the black points will never touch.}\label{fig:graph_T_realization}
+\end{figure}
+
+\begin{theorem}
+  $\mathcal{T}$ is a family of thin strip graphs.
+\end{theorem}
+
+\proof{
+We take as a reference $T_{4,2}$ in Figure \ref{fig:graph_T_clique}. We can partition this graph in three parts: the \emph{hands} (blue), the \emph{arms} (green) and the \emph{diamond} in the center (red). You may notice that the "hands" are actually $Q_{2,1}$ from Claim \ref{claim:graph_Q}. We begin placing the left "hand" by minimizing the $x$-coordinate of the fifth node as stated in the claim, we give it a $x$-coordinate with value:
+
+$$\tau_0 = \sqrt{1 - \varepsilon^2} + \delta$$
+
+with $0 < \delta < 1 - \sqrt{1 - \varepsilon^2}$. And its $y$-coordinate equals 0, following the same procedure as in the claim.
+
+Next, we place the disks that represent the "arm" of our graph. We place them by clique levels of two indexed by $i \geqslant 1$ from left to right with respect to Figure \ref{fig:graph_T_clique}. The $y$-coordinate of the entire arm equals $0$, it is actually an unit interval graph. We only have to set the $x$-coordinate of each one of the disks $u_i,v_i$ of our level indexed by $i$. The disk $u_i$ will be placed at the $x$-coordinate $i+1$, it will be adjacent to $u_{i-1}$ or the rightmost vertex of the "hand" if $i = 1$. On the other hand, our second disk $v_i$ will be placed in the $x$-coordinate:
+
+$$\tau_i = \tau_{i-1} + 1 + \delta$$
+
+with $0 < \delta < i - \tau_{i-1}$ so that $v_i$ will be on the left of $u_i$. We do this consecutively for each level until we arrive to the diamond. The two leftmost vertices of the diamond are built as a level of the "arm". However, the right two vertices have the same coordinates of the left ones but shifted by one on the $x$-coordinate. By symmetry, the right arm is built equally, by taking care that the last level corresponds with the coordinates of the diamond. You can find the realization of $T_{4,2}$ as a thin strip graph in Figure \ref{fig:graph_T_realization}.
+}
+
+This proof will be used as a basis that we are going to use to construct the realization of $\mathcal{S}$ and $\mathcal{S''}$ because as you can see, their structure is very similar. Actually, the "hand" and "arm" that have been used during the proof are directly applicable for the other graphs.
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xc{9}
+\def\yc{0}
+
+\def\xd{3}
+\def\yd{-2.5}
+
+\draw[thick] (\xb+1,\yb)--(\xb+2,\yb)--(\xb+3,\yb)
+(\xb+1,\yb)--(\xb+1.5,\yb+1)--(\xb+2,\yb)--(\xb+2.5,\yb+1)
+--(\xb+2,\yb+1.5)--(\xb+2,\yb)
+(\xb+1.5,\yb+1)--(\xb+2,\yb+1.5);
+
+
+%graph S_1
+\path[fill=blue] (\xb+1,\yb) circle (\ver);
+\path[fill=blue] (\xb+2,\yb) circle (\ver);
+\path[fill=blue] (\xb+3,\yb) circle (\ver);
+\path[fill] (\xb+2,\yb+1.5) circle (\ver);
+\path[fill=blue] (\xb+1.5,\yb+1) circle (\ver);
+\path[fill=blue] (\xb+2.5,\yb+1) circle (\ver);
+
+
+\end{tikzpicture}
+\end{center}
+\caption{The graph $S_{1}$. We have colored the induced $Q_{1,2}$ in blue.}\label{fig:graph_S1_clique}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\def\ver{0.6} %size of a vertex
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xc{9}
+\def\yc{0}
+
+\def\xd{3}
+\def\yd{-2.5}
+
+\draw[color=blue] (\ver*4-0.1,0) circle (\ver);
+\draw[color=blue] (\ver*4-0.1+0.12,0) circle (\ver);
+\draw[color=blue] (\ver*6-0.1,0) circle (\ver);
+\draw[color=blue] (\ver*6-0.1,\ver+\ver/9) circle (\ver);
+\draw (\ver*6-0.1,\ver-\ver/2) circle (\ver);
+\draw[color=blue] (\ver*8-0.1,0) circle (\ver);
+
+\end{tikzpicture}
+\end{center}
+\caption{A realization of $S_1$ as a thin strip graph.}\label{fig:graph_S1_realization}
 \end{figure}
 
 
-\todo[inline]{Add drawings for $S$ and $S''$ like Figure \ref{fig:graph_T_clique} and the actual proofs (similar to proof of $F$, only have to write them!).}
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xc{9}
+\def\yc{0}
+
+\def\xd{3}
+\def\yd{-2.5}
 
 
+\draw[thick] (\xc,\yc)--(\xc+5,\yc)
+(\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+1.5,\yc+1)--(\xc+2,\yc)--(\xc+2.5,\yc+1)--(\xc+3,\yc)--(\xc+3.5,\yc+1)--(\xc+4,\yc)--(\xc+4.5,\yc+1)
+(\xc,\yc)--(\xc+0.5,\yc+1)--(\xc+1,\yc+1.5)--(\xc+1.5,\yc+1)
+(\xc+1,\yc)--(\xc+1,\yc+1.5);
+
+%graph S_2
+\path[fill=red] (\xc,\yc) circle (\ver);
+\path[fill=red] (\xc+1,\yc) circle (\ver);
+\path[fill=green] (\xc+2,\yc) circle (\ver);
+\path[fill=blue] (\xc+3,\yc) circle (\ver);
+\path[fill=blue] (\xc+4,\yc) circle (\ver);
+\path[fill=blue] (\xc+5,\yc) circle (\ver);
+\path[fill=red] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill=red] (\xc+1.5,\yc+1) circle (\ver);
+\path[fill=green] (\xc+2.5,\yc+1) circle (\ver);
+\path[fill=blue] (\xc+3.5,\yc+1) circle (\ver);
+\path[fill=blue] (\xc+4.5,\yc+1) circle (\ver);
+\path[fill=red] (\xc+1,\yc+1.5) circle (\ver);
+
+\end{tikzpicture}
+\end{center}
+\caption{The graph $S_{4}$ with the arm in green and the induced $Q_{2,1}$ in blue.}\label{fig:graph_S4_clique}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\def\ver{0.6} %size of a vertex
+\def\verp{0.1}
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xc{9}
+\def\yc{0}
+
+\def\xd{3}
+\def\yd{-2.5}
+
+
+
+\draw[color=red] (-\ver*2-0.1,0) circle (\ver);
+\draw[color=red] (-\ver*2,0) circle (\ver);
+\draw[color=red] (-0.1,0.3) circle (\ver);
+\draw[color=red] (-0.1,0) circle (\ver);
+\draw[color=red] (-0.1+0.12,0) circle (\ver);
+\draw[color=green] (\ver*2-0.1,0) circle (\ver);
+\draw[color=green] (\ver*2-0.1+0.12,0) circle (\ver);
+\draw[color=blue] (\ver*4-0.1,0) circle (\ver);
+\draw[color=blue] (\ver*4-0.1+0.12,0) circle (\ver);
+\draw[color=blue] (\ver*6-0.1,0) circle (\ver);
+\draw[color=blue] (\ver*6-0.1,\ver+\ver/9) circle (\ver);
+\draw[color=blue] (\ver*8-0.1,0) circle (\ver);
+
+\end{tikzpicture}
+\end{center}
+\caption{A realization of $S_4$ as a thin strip graph based on Figure \ref{fig:graph_S4_realization}. The black points indicate that the disks do not touch at that spot.}\label{fig:graph_S4_realization}
+\end{figure}
+
+\begin{theorem}
+  $\mathcal{S}$ is a family of thin strip graphs.
+\end{theorem}
+
+\proof{
+In this case, we are going to construct $S_1$ and $S_i$ with $i > 1$ differently. For $S_1$, we build the induced $Q_{2,1}$ as described on \ref{fig:graph_S1_clique}. Then, we add another disk on the center such that its $y$-coordinate is bigger than $0$ and smaller than $\varepsilon$ with a certain value that it touches the left disk as shown in Figure \ref{fig:graph_S1_realization}.
+
+In the other hand, for $S_i$ with $i > 1$ the construction is quite different. Indeed, we can see by Figure \ref{fig:graph_S4_clique} that the "arm" and "hand" subgraphs are exactly the same as for $\mathcal{T}$ in Figure \ref{fig:graph_T_clique}. The same construction works in this case. Now, we only have to build the red subgraph of $S_i$ as shown in the Figure.
+}
+
+\begin{theorem}
+  $\mathcal{S''}$ is a family of thin strip graphs.
+\end{theorem}
+
+\proof{
+We take as a reference $T_{4,2}$ in Figure \ref{fig:graph_T_clique}. We can partition this graph in three parts: the \emph{hands} (blue), the \emph{arms} (green) and the \emph{diamond} in the center (red). You may notice that the "hands" are actually $Q_{2,1}$ from Claim \ref{claim:graph_Q}. We begin placing the left "hand" by minimizing the $x$-coordinate of the fifth node as stated in the claim, we give it a $x$-coordinate bigger than $\sqrt{1 - \varepsilon^2} + \delta$ with $\delta < 1 - \sqrt{1 - \varepsilon^2}$. Then we place
+}
 \section{Recognition}
 
 The recognition of this class of graphs is approached by Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. He gives a polynomial-time algorithm to recognise strip graphs for a given input with an assignment of $y$-coordinates for each vertex of the graph and an orientation of the edges of its complement.
@@ -753,7 +939,7 @@ The recognition of this class of graphs is approached by Breu in his thesis \cit
 \end{obs}
 
 \proof{
-  Given an polynomial-time algorithm with a complexity of $\mathcal{O}(f(n))$ to solve recognition of $G = (V,E,\gamma,\overrightarrow{E})$, we can run again this algorithm by testing every possible orientation of its complement. This algorithm would take $\mathcal{O}(f(n))2^{|E|-1} = \mathcal{O}(f(n)2^{|E|})$ time to execute. \qed
+  Given a polynomial-time algorithm with a complexity of $\mathcal{O}(f(n))$ to solve recognition of $G = (V,E,\gamma,\overrightarrow{E})$, we can run again this algorithm by testing every possible orientation of its complement. This algorithm would take $\mathcal{O}(f(n))2^{|E|-1} = \mathcal{O}(f(n)2^{|E|})$ time to execute. \qed
 }\\
 
 We would like to have an algorithm that solves this problem without knowing the $y$-coordinates of the vertices. Nevertheless, further research would concentrate on recognition of UUIGs. We know that TSG $\subsetneq$ UUIG, and recognition of UUIGs is $\mathcal{NP}$. If we the problem of recognising TSG given a UUIG and is solved in polynomial time, then TSG recognition would be $\mathcal{NP}$. However, given the observations in the end of chapter \ref{chap:interval}, there may be a polynomial-time algorithm for UUIG.
