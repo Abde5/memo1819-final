@@ -211,7 +211,11 @@ Thin strip graphs can also be seen as unfettered unit interval graphs, which mea
   TSG $\subsetneq$ UUIG.
 \end{theorem}
 
-\proof{See \cite{hayashiThinStripGraphs2017}.}
+\proof{
+The inequality is proven by Theorem \ref{theo:uuigudg} because TSG $\subset$ UDG by definition. We only have to show that TSG $\subseteq$ UUIG. Let $G = (V,E)$ a TSG with $V = \{v_1, v_2, \dots, v_n\}$ and $n \geqslant 2$. 
+
+
+See \cite{hayashiThinStripGraphs2017}.}
 
 
 \begin{figure}
@@ -738,7 +742,7 @@ With this result, we proceed to show the realization of $\mathcal{T}$, $\mathcal
 \caption{A realization as a thin strip graph of $T_{4,2}$ from Figure \ref{fig:graph_T_clique}. The distance between the disks disminishes with the value of $\varepsilon$, but the disks designated by the black points will never touch.}\label{fig:graph_T_realization}
 \end{figure}
 
-\begin{theorem}
+\begin{theorem}\label{theo:T_TSG}
   $\mathcal{T}$ is a family of thin strip graphs.
 \end{theorem}
 
@@ -852,29 +856,38 @@ This proof will be used as a basis that we are going to use to construct the rea
 (\xc+1,\yc)--(\xc+1,\yc+1.5);
 
 %graph S_2
-\path[fill=red] (\xc,\yc) circle (\ver);
-\path[fill=red] (\xc+1,\yc) circle (\ver);
+\path[fill=green] (\xc,\yc) circle (\ver);
+\path[fill=green] (\xc+1,\yc) circle (\ver);
 \path[fill=green] (\xc+2,\yc) circle (\ver);
 \path[fill=blue] (\xc+3,\yc) circle (\ver);
 \path[fill=blue] (\xc+4,\yc) circle (\ver);
 \path[fill=blue] (\xc+5,\yc) circle (\ver);
-\path[fill=red] (\xc+0.5,\yc+1) circle (\ver);
-\path[fill=red] (\xc+1.5,\yc+1) circle (\ver);
+\path[fill=green] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill=green] (\xc+1.5,\yc+1) circle (\ver);
 \path[fill=green] (\xc+2.5,\yc+1) circle (\ver);
 \path[fill=blue] (\xc+3.5,\yc+1) circle (\ver);
 \path[fill=blue] (\xc+4.5,\yc+1) circle (\ver);
 \path[fill=red] (\xc+1,\yc+1.5) circle (\ver);
 
+
+\node (1) at (\xc,\yc-0.4) {$v_3$};
+\node (1) at (\xc+1,\yc-0.4) {$v_2$};
+\node (1) at (\xc+2,\yc-0.4) {$v_1$};
+
+\node (1) at (\xc+.5,\yc+1.4) {$u_3$};
+\node (1) at (\xc+1.5,\yc+1.4) {$u_2$};
+\node (1) at (\xc+2.5,\yc+1.4) {$u_1$};
+
 \end{tikzpicture}
 \end{center}
-\caption{The graph $S_{4}$ with the arm in green and the induced $Q_{2,1}$ in blue.}\label{fig:graph_S4_clique}
+\caption{The graph $S_{4}$ with the arm in green and the induced $Q_{2,1}$ in blue. We also noted the vertices of each level of the arm.}\label{fig:graph_S4_clique}
 \end{figure}
 
 \begin{figure}
 \begin{center}
 \begin{tikzpicture}[scale=1]
 \def\ver{0.6} %size of a vertex
-\def\verp{0.1}
+\def\verp{0.04}
 \def\x{1}
 
 \def\xa{0}
@@ -890,12 +903,11 @@ This proof will be used as a basis that we are going to use to construct the rea
 \def\yd{-2.5}
 
 
-
-\draw[color=red] (-\ver*2-0.1,0) circle (\ver);
-\draw[color=red] (-\ver*2,0) circle (\ver);
-\draw[color=red] (-0.1,0.3) circle (\ver);
-\draw[color=red] (-0.1,0) circle (\ver);
-\draw[color=red] (-0.1+0.12,0) circle (\ver);
+\draw[color=green] (-\ver*2-0.1,0) circle (\ver);
+\draw[color=green] (-\ver*2,0) circle (\ver);
+\draw[color=red] (-0.1,0.5) circle (\ver);
+\draw[color=green] (-0.1,0) circle (\ver);
+\draw[color=green] (-0.1+0.12,0) circle (\ver);
 \draw[color=green] (\ver*2-0.1,0) circle (\ver);
 \draw[color=green] (\ver*2-0.1+0.12,0) circle (\ver);
 \draw[color=blue] (\ver*4-0.1,0) circle (\ver);
@@ -904,28 +916,136 @@ This proof will be used as a basis that we are going to use to construct the rea
 \draw[color=blue] (\ver*6-0.1,\ver+\ver/9) circle (\ver);
 \draw[color=blue] (\ver*8-0.1,0) circle (\ver);
 
+\draw[fill] (-\ver+0.01,0) circle (\verp);
+\draw[fill] (\ver+0.01,0) circle (\verp);
+\draw[fill] (\ver*3+0.02,0) circle (\verp);
+
+
 \end{tikzpicture}
 \end{center}
-\caption{A realization of $S_4$ as a thin strip graph based on Figure \ref{fig:graph_S4_realization}. The black points indicate that the disks do not touch at that spot.}\label{fig:graph_S4_realization}
+\caption{A realization of $S_4$ as a thin strip graph based on Figure \ref{fig:graph_S4_clique}. The black points indicate that the disks do not touch at that spot.}\label{fig:graph_S4_realization}
 \end{figure}
 
 \begin{theorem}
+  \label{theo:S_TSG}
   $\mathcal{S}$ is a family of thin strip graphs.
 \end{theorem}
 
 \proof{
 In this case, we are going to construct $S_1$ and $S_i$ with $i > 1$ differently. For $S_1$, we build the induced $Q_{2,1}$ as described on \ref{fig:graph_S1_clique}. Then, we add another disk on the center such that its $y$-coordinate is bigger than $0$ and smaller than $\varepsilon$ with a certain value that it touches the left disk as shown in Figure \ref{fig:graph_S1_realization}.
 
-In the other hand, for $S_i$ with $i > 1$ the construction is quite different. Indeed, we can see by Figure \ref{fig:graph_S4_clique} that the "arm" and "hand" subgraphs are exactly the same as for $\mathcal{T}$ in Figure \ref{fig:graph_T_clique}. The same construction works in this case. Now, we only have to build the red subgraph of $S_i$ as shown in the Figure.
+In the other hand, for $S_i$ with $i > 1$ the construction is quite different. Indeed, we can see by Figure \ref{fig:graph_S4_clique} that the "arm" and "hand" subgraphs are exactly the same as for $\mathcal{T}$ in Figure \ref{fig:graph_T_clique}. The same construction works in this case. Now, we only have to add the red vertex $w$ that differs, as seen in \ref{fig:graph_S4_clique}. If we take the same notation as in Theorem \ref{theo:T_TSG}, we construct the arms by clique levels of two vertices of $u_i$ and $v_i$. With this information,
+we see that we have an arm of $i-1$ levels in a graph $S_i$ with $i > 1$. The last vertex $w$ can be placed at the $x$-coordinate of $v_{i-2}$ at a $y$-coordinate smaller than $\varepsilon$ so that $w$ is adjacent to $u_3$ and does not touch a vertex from the hand when $i = 2$. You can find the final realization of our example $S_4$ in Figure \ref{fig:graph_S4_clique}. \qed
 }
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xc{9}
+\def\yc{0}
+
+\def\xd{3}
+\def\yd{-2.5}
+
+
+\draw[thick] (\xc,\yc)--(\xc+5,\yc)
+(\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+1.5,\yc+1)--(\xc+2,\yc)--(\xc+2.5,\yc+1)--(\xc+3,\yc)--(\xc+3.5,\yc+1)--(\xc+4,\yc)--(\xc+4.5,\yc+1)
+(\xc,\yc)--(\xc+0.5,\yc+1)--(\xc+1,\yc+1.5)--(\xc+1.5,\yc+1)
+(\xc+1,\yc)--(\xc+1,\yc+1.5);
+
+\draw[thick] (\xc+2,\yc) arc(-20:85:1.16);
+
+%graph S_2
+\path[fill=green] (\xc,\yc) circle (\ver);
+\path[fill=green] (\xc+1,\yc) circle (\ver);
+\path[fill=green] (\xc+2,\yc) circle (\ver);
+\path[fill=blue] (\xc+3,\yc) circle (\ver);
+\path[fill=blue] (\xc+4,\yc) circle (\ver);
+\path[fill=blue] (\xc+5,\yc) circle (\ver);
+\path[fill=green] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill=green] (\xc+1.5,\yc+1) circle (\ver);
+\path[fill=green] (\xc+2.5,\yc+1) circle (\ver);
+\path[fill=blue] (\xc+3.5,\yc+1) circle (\ver);
+\path[fill=blue] (\xc+4.5,\yc+1) circle (\ver);
+\path[fill=red] (\xc+1,\yc+1.5) circle (\ver);
+
+
+\node (1) at (\xc,\yc-0.4) {$v_3$};
+\node (1) at (\xc+1,\yc-0.4) {$v_2$};
+\node (1) at (\xc+2,\yc-0.4) {$v_1$};
+
+\node (1) at (\xc+.5,\yc+1.4) {$u_3$};
+\node (1) at (\xc+1.5,\yc+0.5) {$u_2$};
+\node (1) at (\xc+2.5,\yc+1.4) {$u_1$};
+
+\end{tikzpicture}
+\end{center}
+\caption{The graph $S_{4}''$ with the arm in green and the induced $Q_{2,1}$ in blue. We also noted the vertices of each level of the arm.}\label{fig:graph_S24_clique}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\def\ver{0.6} %size of a vertex
+\def\verp{0.04}
+\def\x{1}
+
+\def\xa{0}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xc{9}
+\def\yc{0}
+
+\def\xd{3}
+\def\yd{-2.5}
+
+
+\draw[color=green] (-\ver*2-0.1,0) circle (\ver);
+\draw[color=green] (-\ver*2,0) circle (\ver);
+\draw[color=red] (-0.05,0) circle (\ver);
+\draw[color=green] (-0.1,0) circle (\ver);
+\draw[color=green] (-0.1+0.12,0) circle (\ver);
+\draw[color=green] (\ver*2-0.1,0) circle (\ver);
+\draw[color=green] (\ver*2-0.1+0.12,0) circle (\ver);
+\draw[color=blue] (\ver*4-0.1,0) circle (\ver);
+\draw[color=blue] (\ver*4-0.1+0.12,0) circle (\ver);
+\draw[color=blue] (\ver*6-0.1,0) circle (\ver);
+\draw[color=blue] (\ver*6-0.1,\ver+\ver/9) circle (\ver);
+\draw[color=blue] (\ver*8-0.1,0) circle (\ver);
+
+\draw[fill] (-\ver+0.01,0) circle (\verp);
+\draw[fill] (\ver+0.01,0) circle (\verp);
+\draw[fill] (\ver*3+0.02,0) circle (\verp);
+
+
+\end{tikzpicture}
+\end{center}
+\caption{A realization of $S_4''$ as a thin strip graph based on Figure \ref{fig:graph_S24_clique}. The black points indicate that the disks do not touch at that spot.}\label{fig:graph_S24_realization}
+\end{figure}
 
 \begin{theorem}
   $\mathcal{S''}$ is a family of thin strip graphs.
 \end{theorem}
 
 \proof{
-We take as a reference $T_{4,2}$ in Figure \ref{fig:graph_T_clique}. We can partition this graph in three parts: the \emph{hands} (blue), the \emph{arms} (green) and the \emph{diamond} in the center (red). You may notice that the "hands" are actually $Q_{2,1}$ from Claim \ref{claim:graph_Q}. We begin placing the left "hand" by minimizing the $x$-coordinate of the fifth node as stated in the claim, we give it a $x$-coordinate bigger than $\sqrt{1 - \varepsilon^2} + \delta$ with $\delta < 1 - \sqrt{1 - \varepsilon^2}$. Then we place
+This family of graphs is a variant of $\mathcal{S}$ and as proven on Theorem \ref{theo:S_TSG} it is a subset of TSG. The only difference here is that now the red vertex $w$ is also adjacent to $v_1$. In this case, we can simply place $w$ at the $y$-coordinate $0$ like the other vertices of the arm. The $x$-coordinate can be any position between the $x$-coordinates of $v_2$ and $v_1$. A realization can be found in \ref{fig:graph_S24_realization}.
 }
+
+Now we have a slightly better understanding of the structure of TSG. We have proven in this section that $\mathcal{R}$ is the only family of forbidden subgraphs of MUIG that is also forbidden for TSG. Moreover, $\mathcal{R}$ is also forbidden for UUIG. A good starting point, as stated by Hayashi \textit{et al.} \cite{hayashiThinStripGraphs2017}, is to find a graph that is in $(\text{UDG} \cap \text{UUIG}) \setminus \text{TSG}$. This graph will be the key for understanding what are the graph structures that are not likely to be a TSG.
+
+
 \section{Recognition}
 
 The recognition of this class of graphs is approached by Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. He gives a polynomial-time algorithm to recognise strip graphs for a given input with an assignment of $y$-coordinates for each vertex of the graph and an orientation of the edges of its complement.
