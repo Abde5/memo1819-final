@@ -5,10 +5,10 @@
   Sometimes it is the people no one imagines anything of who do the things that no one can imagine.
 \end{fquote}
 
-The goal of this chapter is to introduce the main subject of this thesis. \emph{\index{Thin strip graphs}} is a class of graphs that lie between unit disk graphs
-and mixed interval graphs. We can define formally a \emph{\index{$c$-strip graph}} as a unit disk graph such that the centers of the disks belong to $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$, more intuitively we can see this as a unit disk graph where the centers of the disks lie between two parallel horizontal lines with a distance of $c$ between them. We denote this class by SG($c$). We have then that SG($0$) = UIG and SG($\infty$) = UDG.
+The goal of this chapter is to introduce the main subject of this thesis which is a class of graphs that lie between unit disk graphs
+and mixed interval graphs called \emph{\index{thin strip graphs}}. We can define formally a \emph{\index{$c$-strip graph}} as a unit disk graph such that the centers of the disks belong to $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$, more intuitively we can see this as a unit disk graph where the centers of the disks lie between two parallel horizontal lines with a distance of $c$ between them. We denote this class by SG($c$). We then have that SG($0$) = UIG and SG($\infty$) = UDG.
 
-The definition and main work for this class comes from Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. However, Hayashi \textit{et al.} \cite{hayashiThinStripGraphs2017} expand his work by defining the class of thin strip graphs. Also, a first review of unit disk graphs will be done in the first section of this chapter, based on the original paper of Clark \textit{et al.} \cite{CLARK1990165} where unit disks graphs were defined with some interesting results.
+The definition and main work for this class comes from Breu in his thesis \cite{breuAlgorithmicAspectsConstrained1996}. However, Hayashi \textit{et al.} \cite{hayashiThinStripGraphs2017} expanded his work by defining the class of thin strip graphs. A first review of unit disk graphs will be done in the first section of this chapter, based on the original paper of Clark \textit{et al.} \cite{CLARK1990165} where unit disks graphs were defined with some interesting results.
 
 \begin{figure}
 \centering
@@ -43,9 +43,9 @@ The definition and main work for this class comes from Breu in his thesis \cite{
 
 \section{Unit disk graphs}
 
-An \emph{\index{unit disk graph}} is an intersection graph of equal-sized disks on a plane - also called \emph{unitary}. The main interest of this class of graphs is its application. They can be used to create a graph-theoretic model for any kind broadcast networks. This can be useful in the case where a broadcast node needs to have a different frequency from another broadcast node that is close enough. With the unit disk graph model, we can solve this with algorithms for well known graph-theoretic problems like the coloration problem.
+An \emph{\index{unit disk graph}} is an intersection graph of equal-sized disks on a plane - also called \emph{unitary}. The main interest of this class of graphs is its application. They can be used to create a graph-theoretic model for any kind broadcast networks. This can be useful in the case where a broadcast node needs to have a different frequency from another broadcast node that is close enough. With the unit disk graph model, we can solve this problem using algorithms for well known graph-theoretic problems such that the coloration problem.
 
-The most studied problem for this class of graphs is its recognition and characterization. It has been proven that its recognition problem is \index{$\exists\mathbb{R}$-complete} \cite{Schaefer2013}. In the other hand, its characterization is still not complete and an open question. Atminas \textit{et al.} tackled this problem by finding forbidden subgraphs to some of its subclasses \cite{atminasForbiddenInducedSubgraphs2016}. However, since its definition, we know that some graph-theoretic problems have different complexity when applied to unit disk graphs like the CLIQUE problem which has been proven to be polynomial when applied to UDGs \cite{CLARK1990165}. The approximation complexity of these problems has also been studied \cite{DBLP:journals/corr/abs-1712-05010}.
+The most studied problem for this class of graphs is its recognition and characterization. It has been proven that its recognition problem is \index{$\exists\mathbb{R}$-complete} \cite{Schaefer2013}. On the other hand, its characterization is still not complete and is an open question. Atminas \textit{et al.} tackled this problem by finding forbidden subgraphs to some of its subclasses \cite{atminasForbiddenInducedSubgraphs2016}. However, from its definition, we know that some graph-theoretic problems have different complexity when applied to unit disk graphs like the CLIQUE problem which has been proven to be polynomial when applied to UDGs \cite{CLARK1990165}. The approximation complexity of these problems has also been studied \cite{DBLP:journals/corr/abs-1712-05010}.
 
 \section{$c$-strip graphs}
 
@@ -123,8 +123,8 @@ A thin strip graph can be intuitively defined as a $c$-strip graph where $c$ is 
   There is no constant $t$ such that SG($t$) = UDG.
 \end{theorem}
 
-Hayashi et al. left some open problems. We try to expand the knowledge around some of these problems
-to understand them better, largely for the recognition of this class of graphs. Before that, we see where this class lays in the hierarchy of classes. We know by definition that TSG $\subsetneq$ UDG.
+Hayashi et al. left some open problems. We try to elaborate the knowledge around some of these problems
+to understand them better, mainly for the recognition of this class of graphs. Before that, we see where this class lays in the hierarchy of classes. We know by definition that TSG $\subsetneq$ UDG.
 
 \subsection{Interval graphs}
 
@@ -212,10 +212,91 @@ Thin strip graphs can also be seen as unfettered unit interval graphs, which mea
 \end{theorem}
 
 \proof{
-The inequality is proven by Theorem \ref{theo:uuigudg} because TSG $\subset$ UDG by definition. We only have to show that TSG $\subseteq$ UUIG. Let $G = (V,E)$ a TSG with $V = \{v_1, v_2, \dots, v_n\}$ and $n \geqslant 2$. 
+The inequality is proven by Theorem \ref{theo:uuigudg} because TSG $\subset$ UDG by definition. We only have to show that TSG $\subseteq$ UUIG. Let $G = (V,E)$ a TSG with $V = \{v_1, v_2, \dots, v_n\}$ and $n \geqslant 2$. Let $\varepsilon \leqslant \frac{\sqrt{8n+1}}{4n + 1}$ and $\phi$ the $\varepsilon$-realization of $G$. We sort the vertices from left to right, thus $0 \leqslant \phi_x(v_1) \leqslant \phi_x(v_2) \leqslant \phi_x(v_3) \leqslant \dots \leqslant \phi_x(v_n)$. Let $\delta = \min(\{\sqrt{1+\varepsilon^2} - 1\} \cup \{\text{dist}(\phi(v_i), \phi(v_j)) - 1 : \{v_i,v_j\} \notin E\})$.
 
+Now we construct another $\varepsilon$-realization $\phi'$ that is built by moving every disk to the left as much as possible, by keeping the same $y$-coordinates and the condition of adjacency $0 \leqslant \phi'_x(v_1) \leqslant \phi'_x(v_2) \leqslant \phi'_x(v_3) \leqslant \dots \leqslant \phi'_x(v_n)$. This $\phi'$ realization can be built as an optimal solution of this program:
 
-See \cite{hayashiThinStripGraphs2017}.}
+\begin{gather*}
+\max \quad \sum_{1\leqslant i \leqslant n} x_i \\
+\begin{aligned}
+\textup{subject to}\quad (x_i - x_j)^2 + (\phi_y(v_i) - \phi_y(v_j))^2  &\leqslant  1\ \ \ \ \text{s.t.}\  \{v_i,v_j\} \in E\\
+(x_i - x_j)^2 + (\phi_y(v_i) - \phi_y(v_j))^2  &\leqslant  1 + \delta\ \ \ \ \text{s.t.}\  \{v_i,v_j\} \notin E\\
+0 \leqslant x_1 \leqslant x_2 \leqslant x_3 \leqslant \dots \leqslant x_n \\
+\end{aligned}
+\end{gather*}
+
+Recall that $\phi_y(v_i)$ stays the same so they are constants in our program. If we develop the conditions of our program we find that this is a linear program and it has an optimal solution:
+
+\begin{gather*}
+\max \quad \sum_{1\leqslant i \leqslant n} x_i \\
+\begin{aligned}
+\textup{subject to}\quad x_i - x_j &\leqslant \sqrt{1 - (\phi_y(v_i) - \phi_y(v_j))^2}\ \ \ \ \text{s.t.}\  \{v_i,v_j\} \in E\\
+x_i - x_j &\leqslant \sqrt{(1 + \delta) - (\phi_y(v_i) - \phi_y(v_j))^2}\ \ \ \ \text{s.t.}\  \{v_i,v_j\} \notin E\\
+0 &\leqslant x_1 \leqslant x_2 \leqslant x_3 \leqslant \dots \leqslant x_n \\
+\end{aligned}
+\end{gather*}
+
+We construct a digraph $D = (V,A)$ based on the positions of the vertices of $G$ in $\phi'$. An arc $(v_i, v_j) \in A$ if and only if:
+
+\begin{enumerate}
+  \item $i > j$, $\{v_i, v_j\} \in E$ and $\text{dist}(\phi'(v_i), \phi'(v_j)) = 1$ called \emph{left arcs}.
+  \item $i < j$, $\{v_i, v_j\} \notin E$ and $\text{dist}(\phi'(v_i), \phi'(v_j)) = 1 + \delta$ called \emph{right arcs}.
+  \item $i < j$ and $\phi_x'(v_i) = \phi_x'(v_j)$ called \emph{vertical arcs}.
+\end{enumerate}
+
+Based on the optimality of the linear program, we should have a path between $v_1$ and $v_i$ with $1 \leq i \leqslant n$. We can prove this in the next claim.
+
+\begin{claim}\label{claim:D_direct}
+  In $D$, there is a directed path from $v_1$ to $v_i$ for each $v_i \in V$.
+\end{claim}
+
+\begin{proof}[Proof of Claim \ref{claim:D_direct}]
+  Let $S$ be a non-empty subset of $V$ and $v_1 \in V \setminus S$. Assume that there is no arc from $V \setminus S$ to $S$. That means that every vertex of $S$ can be shifted to the left to meet the condition of optimality. This contradicts the optimality of $x_i$. Therefore, there is an arc from $V\setminus S$ to $S$ for all $S \subset V$ such that $v_i \notin S$. This implies the claim.
+\end{proof}
+
+For each $k$, $P_k$ is the shortest directed path $v_1 \dots v_k$ in $D$. Let $\ell_k$ and $r_k$ be the number of left arcs and right arcs in $P_k$, respectively. Clearly, $r_k + \ell_k < n$.
+
+\begin{claim}\label{claim:neighbours}
+  For every $k$, $(r_k - \ell_k) - \frac{\sqrt{1 - \varepsilon^2}}{2} \leqslant x_k \leqslant (r_k - \ell_k) + \frac{\sqrt{1 - \varepsilon^2}}{2}$.
+\end{claim}
+
+\begin{proof}[Proof of Claim \ref{claim:neighbours}]
+  With a left arc, the $x$-coordinate increases by at least $\sqrt{(1 + \delta)^2 - \varepsilon^2}$ and at most by $\sqrt{1 + \delta}$. With a left arc, it decreases by at least $\sqrt{1 - \varepsilon^2}$ and at most $1$. Clearly, vertical arcs do not change the $x$-coordinate. It holds that:
+
+  $$r_k \sqrt{(1 + \delta)^2 - \varepsilon^2} - \ell_k \leqslant x_k \leqslant r_k(1 + \delta) - \ell_k \sqrt{1 - \varepsilon^2}$$
+
+  which implies:
+
+  $$(r_k - \ell_k) - r_k \Big(1 -\sqrt{(1 + \delta)^2 - \varepsilon^2}\Big) \leqslant x_k \leqslant (r_k - \ell_k) + r_k\delta + \ell_k \Big(1 - \sqrt{1 - \varepsilon^2} \Big)$$
+
+  Which is similar to the inequality to prove. Actually, to prove the inequality of the claim we have to prove the following equations:
+
+  \begin{equation}\label{eq:first_condition}
+    r_k \Big(1 -\sqrt{(1 + \delta)^2 - \varepsilon^2}\Big) \leqslant \frac{\sqrt{1 - \varepsilon^2}}{2}
+  \end{equation}
+
+  \begin{equation}\label{eq:second_condition}
+    r_k\delta + \ell_k \Big(1 - \sqrt{1 - \varepsilon^2} \Big) \leqslant \frac{\sqrt{1 - \varepsilon^2}}{2}
+  \end{equation}
+
+  By the value of $\delta$, the left side of both equations are nonnegative. We can then show only the next equation:
+
+  \begin{equation}\label{eq:third_condition}
+      r_k \Big(1 -\sqrt{(1 + \delta)^2 - \varepsilon^2}\Big) + r_k\delta + \ell_k \Big(1 - \sqrt{1 - \varepsilon^2} \Big) \leqslant \frac{\sqrt{1 - \varepsilon^2}}{2}
+  \end{equation}
+
+  If we suppose that Equation \ref{eq:third_condition} does not hold and since $n > r_k + \ell_k$:
+
+  \begin{equation}\label{eq:fourth_condition}
+      n \Big(\Big(1 -\sqrt{(1 + \delta)^2 - \varepsilon^2}\Big) + \delta + \Big(1 - \sqrt{1 - \varepsilon^2} \Big)\Big) > \frac{\sqrt{1 - \varepsilon^2}}{2}
+  \end{equation}
+
+  By developing, we show that $1 - \sqrt{(1 + \delta)^2 - \varepsilon^2} + \delta \leqslant 1 - \sqrt{1 - \varepsilon^2}$ for $0 \leqslant \varepsilon \leqslant 1$ and $\delta > 0$. Then it holds that $2n \Big(1 - \sqrt{1 - \varepsilon^2} \Big) > \frac{\sqrt{1 - \varepsilon^2}}{2}$. This implies that $\varepsilon > \frac{\sqrt{8n + 1}}{4n + 1}$, which is a contradiction. Thus, Equation \ref{eq:third_condition} is correct which proves the claim.
+\end{proof}
+
+By Claim \ref{claim:neighbours}, we can classify the vertices in levels $L_k = \{v_i : r_k - \ell_k = k\}$. By the claim we imply that if $u,w \in L_k$, then $\phi'(u)$ and $\phi'(w)$ are placed on a rectangle $\varepsilon \times \sqrt{1 - \varepsilon^2}$.
+Thus, $L_k$ is a clique. Now if we take another level $k'$ such that $|k - k'| \geqslant 2$ with $v_k \in L_k$ and $v_{k'} \in L_{k'}$, then $\phi'_x(v_k) - \phi'_x(v_{k'}) \geqslant k
+- k' - \sqrt{1 - \varepsilon^2} \geqslant 2 - \sqrt{1 - \varepsilon^2} > 1$, which means that for $v_k \in L_k$: $N(v_k) \subseteq L(v_{k-1}) \cup L(v_{k}) \cup L(v_{k+1})$. Thus, $G$ is an unfettered unit interval graph. \qed}
 
 
 \begin{figure}
@@ -241,12 +322,12 @@ See \cite{hayashiThinStripGraphs2017}.}
 
 \section{Characterization of thin strip graphs}
 
-One of the main goals of this thesis is to characterize thin strip graphs by forbidden induced subgraphs. We know that TSG is an hereditary class, then a way to characterize this class of graphs is by looking for its forbidden subgraphs the same way as MUIG has been characterized by Joos. Furthermore, MUIG $\subsetneq$ TSG by Theorem \ref{theo:muigTSG}, so the first we can do is to check if the forbidden subgraphs of MUIG are also for TSG.
+One of the main goals of this thesis is to characterize thin strip graphs with forbidden induced subgraphs. We know that TSG is an hereditary class, then a way to characterize this class of graphs is by looking for its forbidden subgraphs the same way as MUIG has been characterized by Joos. Furthermore, MUIG $\subsetneq$ TSG by Theorem \ref{theo:muigTSG}, so the first we can do is to check if the forbidden subgraphs of MUIG are also for TSG.
 
 
 \subsection{Mixed unit interval graph forbidden subgraphs}
 
-In the previous section we have shown that MUIG $\subsetneq$ TSG \ref{theo:muigTSG}. We have even shown every forbidden induced subgraph of MUIG in Chapter \ref{chap:interval}. Here we are going to overview these forbidden induced subgraphs and we their inclusion in TSG. Moreover, we will verify if one of these families is at least in UUIG.
+In the previous section we have shown that MUIG $\subsetneq$ TSG \ref{theo:muigTSG}. Here we are going to overview these forbidden induced subgraphs and we their inclusion in TSG. Moreover, we will verify if one of these families is at least in UUIG. This will help us to add thin strip graphs to the hierarchy of classes we are building.
 
 In this subsection, we are going to see the relationship between thin strip graphs and mixed unit interval graphs.
 
