@@ -4,8 +4,8 @@
   \begin{itemize}
     \item \textbf{MUIG}: Joos \cite{joosCharacterizationMixedUnit2013} gives us a complete characterization of forbidden graphs.
     \item \textbf{TSG (Open)}: Hayashi \cite{hayashiThinStripGraphs2017} says that MUIG's forbidden induced subgraphs also are in TSG. He claims that finding a graph $F \in (\text{UDG}\cap\text{UUIG}) \setminus \text{TSG}$ could be a good starting point. In my thesis I show that a forbidden induced subgraph for MUIG is in $\text{UDG}\cap\text{UUIG}$.
-    \item \textbf{TTLG (Open)}: There are many properties about these graphs in Breu's thesis \cite{breuAlgorithmicAspectsConstrained1996}.
-    \item \textbf{UDG (Open)}: There is no complete characterization of UDG. Can the results of this thesis help find new ones?U
+    \item \textbf{UDG (Open)}: There is no complete characterization of UDG. This task could not be approachable as it has been proven that the recognition problem for UDG is $\exists\mathbb{R}$-complete.
+    \item \textbf{Two-level graph (Open)}: A complete characterization for a two-level graph has not been given yet for every $c$. Breu \cite{breuAlgorithmicAspectsConstrained1996} approached this problem by giving a good basis and several forbidden graphs for this class.
   \end{itemize}
 
   \chapter{Problems in complexity}
@@ -13,9 +13,10 @@
       \item \textbf{UIG/IG recognition}: Both of these problems are polynomial.
       \item \textbf{MUIG recognition}: Schuchat et al. give a linear algorithm ($\mathcal{O}(|V|^2)$) to recognise MUIGs \cite{shuchatUnitMixedInterval2014}.
       \item \textbf{UDG recognition}: $\exists\mathbb{R}$-complete \cite{ExistentialTheoryReals2006}.
-      \item \textbf{SG($c$) recognition (Open)}: Breu  \cite{breuAlgorithmicAspectsConstrained1996} states that SG($c$) recognition is polynomial if a complement edge orientation and a mapping $\phi : V \to [0,c]$ is polynomial as an input of the decision problem.
-      \item \textbf{TSG recognition (Open)}: Can we get rid of the mapping as input to recognise TSGs? In that case the problem would be at least NP.
-      \item \textbf{UUIG recognition (Open)}: Informally the recognition of this class of graphs \textbf{cannot} be polynomial because we have to find all the cliques of the graph; the CLIQUE problem is NP-complete.
+      \item \textbf{SG($c$) recognition (Open)}: Breu  \cite{breuAlgorithmicAspectsConstrained1996} states that SG($c$) recognition is polynomial if a complement edge orientation and a mapping $\phi : V \to [0,c]$ is polynomial as an input of the decision problem. We should research the complexity of the decision problem when the mapping $\phi$ is not given as input.
+      \item \textbf{TSG recognition (Open)}: Corollary of previous problem. We should be able to recognize them at least in $\mathcal{NP}$ if the characterization with forbidden subgraphs is complete.
+      \item \textbf{UUIG recognition (Open)}: We have seen in this thesis that the problem of UUIG recognition is at least $\mathcal{NP}$. An observation has been shown that could be looked at in further research. This observation has been made while trying to create a polynomial algorithm by looking at maximal cliques. The observation actually proves this intuition wrong.
+      \item \textbf{Two-level graph recognition (Open)}: Breu \cite{breuAlgorithmicAspectsConstrained1996} also finds a polynomial algorithm if a mapping $\phi: V \to {0,1}$ that maps a vertex to a level of the graph. It can be an accessible problem as Breu states that a two-level graph is only a union of interval graphs, and these are recognizable in polynomial time.
     \end{itemize}
 
 \end{appendices}

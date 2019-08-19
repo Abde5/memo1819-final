@@ -47,10 +47,6 @@ An \emph{\index{unit disk graph}} is an intersection graph of equal-sized disks 
 
 The most studied problem for this class of graphs is its recognition and characterization. It has been proven that its recognition problem is \index{$\exists\mathbb{R}$-complete} \cite{Schaefer2013}. On the other hand, its characterization is still not complete and is an open question. Atminas \textit{et al.} tackled this problem by finding forbidden subgraphs to some of its subclasses \cite{atminasForbiddenInducedSubgraphs2016}. However, from its definition, we know that some graph-theoretic problems have different complexity when applied to unit disk graphs like the CLIQUE problem which has been proven to be polynomial when applied to UDGs \cite{CLARK1990165}. The approximation complexity of these problems has also been studied \cite{DBLP:journals/corr/abs-1712-05010}.
 
-\section{$c$-strip graphs}
-
-A $c$-strip graph can be defined as a unit disk graph such that the centers of the disks are located between two horizontal parallel lines with a distance of $c$ between both of them.
-
 
 \section{Thin strip graphs}
 
@@ -115,20 +111,163 @@ A thin strip graph can be intuitively defined as a $c$-strip graph where $c$ is 
 \label{fig:thinK13}
 \end{figure}
 
+Two important properties about this class of graphs have been proven by Hayashi \textit{et al.} \cite{hayashiThinStripGraphs2017} which impedes us to analyse it as a case of $c$-strip graphs. We proceed to prove this properties in this section. Before that, we have to clarify an observation from the definition.
+
+\begin{obs}
+  For a realization $\phi$ of a unit disk graph $G$, $\text{diam}(\phi) \leqslant \text{diam}(G)$.
+\end{obs}
+
+This simple observation will allow us to state our first claim, which characterizes partly TSG.
+
+\begin{claim}
+  If $c^2 + \Big(\frac{\text{diam}(G)}{\alpha(G) - 1}\Big)^2 \leqslant 1$, then there is no $c$-realization of $G$.
+\end{claim}
+
+\proof{
+Suppose that there exists $\phi$ a $c$-realization of $G$ such that $c^2 + \Big(\frac{\text{diam}(G)}{\alpha(G) - 1}\Big)^2 \leqslant 1$. Consider the minimum axis-parallel rectangle that covers $\phi$, and partition that rectangle into $\alpha(G) - 1$ vertical blocks of the same length. By the previous observation, the horizontal length of each block is at most of $\frac{\text{diam}(G)}{\alpha(G)-1}$. The vertical length is at most $c$. The diagonal length is then $\sqrt{c^2 + \Big(\frac{\text{diam}(G)}{\alpha(G)-1}\Big)^2} \leq 1$. This means that two points in a block are adjacent. By the pidgeonhole principile, there are two vertices of the maximum independent set on the same block, which is a contradiction. \qed
+}
+
+From this claim follows the next corollary.
+
+\begin{figure}
+\begin{center}
+  \begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=1]
+\def\ver{0.1} %size of a vertex
+\def\x{1}
+
+\def\xa{0.5}
+\def\ya{0}
+
+\def\xb{4}
+\def\yb{0}
+
+\def\xc{8}
+\def\yc{0}
+
+\def\xd{3.5}
+\def\yd{-2.5}
+
+
+%graph R_0
+\path[fill] (\xa+0.5,\ya) circle (\ver);
+\path[fill] (\xa+1,\ya+1) circle (\ver);
+\path[fill] (\xa+2,\ya+1) circle (\ver);
+\path[fill] (\xa+2.5,\ya) circle (\ver);
+\path[fill] (\xa+1.5,\ya) circle (\ver);
+
+\draw[thick] (\xa+0.5,\ya)--(\xa+1.5,\ya)--(\xa+1,\ya+1)
+(\xa+2,\ya+1)--(\xa+1.5,\ya)--(\xa+2.5,\ya);
+
+\node (1) at (\xa+1.5,\ya-0.7) {$R_2$};
+
+%graph R_1
+\path[fill] (\xb,\yb) circle (\ver);
+\path[fill] (\xb+1,\yb) circle (\ver);
+\path[fill] (\xb+2,\yb) circle (\ver);
+\path[fill] (\xb+3,\yb) circle (\ver);
+\path[fill] (\xb+0.5,\yb+1) circle (\ver);
+\path[fill] (\xb+1.5,\yb+1) circle (\ver);
+\path[fill] (\xb+2.5,\yb+1) circle (\ver);
+
+\draw[thick] (\xb,\yb)--(\xb+1,\yb)--(\xb+2,\yb)--(\xb+3,\yb)
+(\xb+0.5,\yb+1)--(\xb+1,\yb)--(\xb+1.5,\yb+1)--(\xb+2,\yb)--(\xb+2.5,\yb+1);
+
+\node (1) at (\xb+1.5,\yb-0.7) {$R_3$};
+
+
+%graph R_2
+\path[fill] (\xc,\yc) circle (\ver);
+\path[fill] (\xc+1,\yc) circle (\ver);
+\path[fill] (\xc+2,\yc) circle (\ver);
+\path[fill] (\xc+3,\yc) circle (\ver);
+\path[fill] (\xc+4,\yc) circle (\ver);
+\path[fill] (\xc+0.5,\yc+1) circle (\ver);
+\path[fill] (\xc+1.5,\yc+1) circle (\ver);
+\path[fill] (\xc+2.5,\yc+1) circle (\ver);
+\path[fill] (\xc+3.5,\yc+1) circle (\ver);
+
+\draw[thick] (\xc,\yc)--(\xc+1,\yc)--(\xc+2,\yc)--(\xc+3,\yc)--(\xc+4,\yc)
+(\xc+0.5,\yc+1)--(\xc+1,\yc)--(\xc+1.5,\yc+1)--(\xc+2,\yc)--(\xc+2.5,\yc+1)--(\xc+3,\yc)--(\xc+3.5,\yc+1);
+
+\node (1) at (\xc+2,\yc-0.7) {$R_4$};
+
+%graph R_i
+\path[fill] (\xd,\yd) circle (\ver);
+\path[fill] (\xd+1,\yd) circle (\ver);
+\path[fill] (\xd+2,\yd) circle (\ver);
+\path[fill] (\xd+3,\yd) circle (\ver);
+\path[fill] (\xd+4.5,\yd) circle (\ver);
+\path[fill] (\xd+5.5,\yd) circle (\ver);
+\path[fill] (\xd+6.5,\yd) circle (\ver);
+\path[fill] (\xd+0.5,\yd+1) circle (\ver);
+\path[fill] (\xd+1.5,\yd+1) circle (\ver);
+\path[fill] (\xd+2.5,\yd+1) circle (\ver);
+\path[fill] (\xd+5,\yd+1) circle (\ver);
+\path[fill] (\xd+6,\yd+1) circle (\ver);
+
+\fill (\xd+3.35,\yd) circle (\ver/2);
+\fill (\xd+3.75,\yd) circle (\ver/2);
+\fill (\xd+4.15,\yd) circle (\ver/2);
+
+\draw[thick] (\xd,\yd)--(\xd+3,\yd)
+(\xd+4.5,\yd)--(\xd+6.5,\yd)
+(\xd+0.5,\yd+1)--(\xd+1,\yd)--(\xd+1.5,\yd+1)--(\xd+2,\yd)--(\xd+2.5,\yd+1)--(\xd+3,\yd)
+(\xd+4.5,\yd)--(\xd+5,\yd+1)--(\xd+5.5,\yd)--(\xd+6,\yd+1);
+
+
+\node (1) at (\xd+6,\yd-0.7) {$R_i$};
+
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{The class $\mathcal{R}$, with the indexes arranged for the thin strip graph theorem. \cite{joosCharacterizationMixedUnit2013}}\label{fig:graphsR'}
+\end{figure}
+
+\begin{corollary}
+  If $\text{diam}(G) < \alpha(G) - 1$, then $G \notin \text{SG}\Bigg(\sqrt{1 - \Big(\frac{\text{diam}(G)}{\alpha(G)-1}\Big)^2}\Bigg)$.
+\end{corollary}
+
+Now we are going to prove the main property of TSG. For that, we are going to use the family of graphs $\mathcal{R}$ as seen in Figure \ref{fig:graphsR} of the past chapter. For this proof, we are going to rename it and change the indexes of the graphs as shown in Figure \ref{fig:graphsR'}. Let $\Gamma(G) = \sqrt{1 - \Big(\frac{\text{diam}(G)}{\alpha(G)-1}\Big)^2}$ for simplicity and $\gamma(i) = \sqrt{1 - \Big(\frac{i}{i+1}\Big)^2}$. The proof of the theorem will follow the next lemmas, where we show that $\mathcal{R}$ is indeed a forbidden family of subgraphs of TSG.
+
+\begin{lemma}
+  For each $k \geqslant 2$, $R_k$ has no $\gamma(k)$-realization.
+\end{lemma}
+
+\proof{
+  Effectively, $\text{diam}(R_k) = k$ and $\alpha(R_k) \geqslant k + 2$, $\Gamma(R_k) = \gamma(k)$ holds. The lemma follows from the previous corollary. \qed
+}
+
+\begin{lemma}
+  For each odd integer $k \geqslant 3$, $R_k$ has a $(\gamma(k) + \varepsilon)$-realization with $\varepsilon > 0$.
+\end{lemma}
+
+\proof{See \cite{hayashiThinStripGraphs2017}.}
+
+And because $\lim_{k \to \infty}\gamma(k) = 0$, the next theorem follows.
+
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   There is no constant $t$ such that SG($t$) = TSG.
 \end{theorem}
+
+Also, a corollary is presented.
 
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   There is no constant $t$ such that SG($t$) = UDG.
 \end{theorem}
 
-Hayashi et al. left some open problems. We try to elaborate the knowledge around some of these problems
-to understand them better, mainly for the recognition of this class of graphs. Before that, we see where this class lays in the hierarchy of classes. We know by definition that TSG $\subsetneq$ UDG.
+\proof{
+
+Suppose that there exists a constant $t$ such that SG($t$) = UDG. Let $G_k$ be a $k \times k$ grid with $k \geqslant 16t$. We have that $G_k \in UDG$. Let $\phi_k$ be a $t$-realization of $G_k$. By the first observation of this section, all the centers of disks lie in a rectangle $R$ of side lengths $t$ and $\text{diam}(G_k) < 2k$, If $\alpha(G_k) \geqslant \frac{k^2}{2}$, there must be at least $\frac{k^2}{2}$ points such that there is a distance of at least $1$ between them. On the other hand, we can cover $R$ by at most $\Bigl\lceil \frac{t}{\sqrt{\frac{1}{2}}}\Bigr\rceil \Bigl\lceil \frac{2k}{\sqrt{\frac{1}{2}}}\Bigr\rceil < 8tk < \frac{k^2}{2}$ squares of diagonal length 1. By the pidgeonhole principle, there is a square with two points of the maximum independent set of $G_k$.
+
+}
+
+Hayashi \textit{et al.} left some open problems. We try to elaborate the knowledge around some of these problems
+to understand them better, mainly for the recognition of this class of graphs. Before that, we see where this class lies in the hierarchy of classes. We know by definition that TSG $\subsetneq$ UDG.
 
 \subsection{Interval graphs}
 
-Thin strip graphs shares their geometrical structure with interval graphs (remember SG($0$) = UIG). In this subsection, we overview the results of Hayashi et al. \cite{hayashiThinStripGraphs2017} where they find maximal and minimal superclasses for TSG in the interval graphs presented in chapter \ref{chap:interval}. The following theorem will be proven by taking the proof written by Hayashi et al. in order to use their mapping in other theorems (e.g. \ref{chap:twolevel}).
+Thin strip graphs shares their geometrical structure with interval graphs (remember SG($0$) = UIG). In this subsection, we overview the results of Hayashi et al. \cite{hayashiThinStripGraphs2017} where they find maximal and minimal superclasses for TSG in the interval graphs presented in chapter \ref{chap:interval}. The following theorem will be proven by taking the proof written by Hayashi \textit{et al.} in order to use their mapping in other theorems.
 
 \begin{theorem}[Hayashi et al. \cite{hayashiThinStripGraphs2017}]
   \label{theo:muigTSG}
