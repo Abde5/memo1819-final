@@ -4,7 +4,10 @@
 \usepackage{lipsum, lmodern}
 \usepackage{tikz}
 \usepackage{hyperref}
-\usetikzlibrary{arrows}
+\usetikzlibrary{decorations,arrows, hobby, graphs, quotes}
+\usetikzlibrary{shapes.misc, positioning}
+%\usetikzlibrary{decorations.pathmorphing}
+\usepgflibrary{decorations.pathreplacing}
 
 \usetheme{/Milano} % or Median, or Metro, or PraterStreet, or Milano
 
@@ -28,13 +31,28 @@
 	\tableofcontents
 \end{frame}
 
-\input{chapters/0-intersection}
-\input{chapters/3-unitdiskgraph}
-\input{chapters/4-thinstripgraph}
+%\input{chapters/0-intersection}
+%\input{chapters/3-unitdiskgraph}
+%\input{chapters/4-thinstripgraph}
+
+\input{chapters/0-background}
+\input{chapters/1-state-of-art}
+\input{chapters/2-results}
+\input{chapters/3-conclusion}
+
+%\begin{frame}{Enumerate}
+%\begin{enumerate}
+%\item Here you can see an enumeration
+%\item It has items
+%\item The items are numbered
+%\end{enumerate}
+%\[
+%	f(x)=\sum_{i=0}^\infty \frac{f^{(i)}(x_0)}{i!}(x-x_0)^i
+%\]
+%\end{frame}
 
 
-\thanksframe{Thanks for listening \\
 
-Slides and resources can be found here: \url{https://github.com/Abde5/memo201718}}
+\thanksframe{Thanks for listening.}
 
 \end{document}
