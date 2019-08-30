@@ -1,78 +1,63 @@
-\section{Introduction}
+\section{Context}
 
-\begin{frame}{Introduction}
-An \emph{intersection graph} is a graph $G = (\zeta, E)$ where $\zeta$ is a collection of objects. Two vertices of the graph are adjacent if the objects \emph{intersect}.
+\begin{frame}{Context}
 
+Thin strip graphs are graphs that lie between the classes of unit disk graphs and unit interval graphs.
 \vfill
 \pause
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=1]
 
-\begin{columns}
-  \begin{column}{0.5\textwidth}
+\draw (-2,0) -- (2,0);
+\draw[red ,opacity = 0.5] (-2,0.07) -- (2,0.07);
+\draw  (-1,0) circle [radius=0.5];
+\draw[color=black] (-1,0.2265) node {$v_1$};
+\draw  (0,0) circle [radius=0.5];
+\draw[color=black] (0,0.2265) node {$v_4$};
+\draw  (1,0) circle [radius=0.5];
+\draw[color=black] (1,0.2265) node {$v_3$};
 
-    \begin{figure}
-    \begin{center}
-    \begin{tikzpicture}[scale=1]
-    \def\ver{0.1} %size of a vertex
-    \def\x{1}
+\draw[red, opacity = 0.5] (0,0.07) circle [radius=0.5];
+\draw[color=black] (2.4386,0.0367) node {\tiny $\varepsilon > 0$};
 
-    \def\xa{0.5}
-    \def\ya{0}
+% lines to describe distance (epsilon)
+\draw[very thin] (2.1,0.07) -- (2.1,0);
+\draw[very thin] (2.05,0.07) -- (2.1,0.07);
+\draw[very thin] (2.05,0) -- (2.1,0);
 
-    \def\xd{4.5}
-    \def\yd{0}
+\draw[opacity = 0.5] (-2,-2.07) -- (2,-2.07);
+\draw[red] (-2,-2) -- (2,-2);
+\draw[opacity = 0.5]  (0,-2.07) circle [radius=0.5];
+\draw[opacity = 0.5]  (1,-2.07) circle [radius=0.5];
+\draw[opacity = 0.5]  (-1,-2.07) circle [radius=0.5];
+\draw[red] (0,-2) circle [radius=0.5];
+\draw[color=black] (0,-1.765) node {$v_2$};
 
-    \draw [fill=black, opacity= 0.5] plot [smooth cycle] coordinates {(0,1.5) (0,0.5) (3,0.5) (3,1.5)};
+\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v1) at (-5,-0.5) {};
+\draw[color=black] (-5,-0.2) node {$v_4$};
+\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v3) at (-5,-1.5) {};
+\draw[color=black] (-5,-1.8) node {$v_2$};
+\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v2) at (-6,-1.5) {};
+\draw[color=black] (-4,-1.8) node {$v_3$};
+\node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v4) at (-4,-1.5) {};
+\draw[color=black] (-6,-1.8) node {$v_1$};
+\draw  (v1) edge (v2);
+\draw  (v1) edge (v3);
+\draw  (v1) edge (v4);
+\end{tikzpicture}
+\label{fig:thinK13}
+\end{figure}
 
-    \draw [fill=red, opacity=0.5] plot [smooth cycle] coordinates {(-1,0) (0,1) (2,1) (0,0) (1,-1)};
-
-    \draw [fill=green, opacity= 0.5] plot [smooth cycle] coordinates {(2.2,0.5) (3.2,0.5) (4.2,1) (4.2,-0.5)};
-
-    \draw [fill=blue, opacity= 0.5] plot [smooth cycle] coordinates {(1.5,1.2) (0,2) (2.5,2)};
-
-
-    \end{tikzpicture}
-    \end{center}
-    \end{figure}
-  \pause
-  \end{column}
-  \begin{column}{0.5\textwidth}
-    \begin{figure}
-    \begin{center}
-      \begin{tikzpicture}[scale=1]
-    \def\ver{0.1} %size of a vertex
-    \def\x{1}
-
-    \def\xa{0.5}
-    \def\ya{0}
-
-    \def\xd{4.5}
-    \def\yd{0}
-
-
-    \draw[thick] (\xa,\ya)--(\xa+1,\ya)--(\xa+1,\ya+1) (\xa, \ya+1) -- (\xa +1, \ya);
-
-    %graph R_0
-    \path[fill=red] (\xa,\ya) circle (\ver);
-    \path[fill=green] (\xa+1,\ya+1) circle (\ver);
-    \path[fill=blue] (\xa,\ya+1) circle (\ver);
-    \path[fill] (\xa+1,\ya) circle (\ver);
-
-
-    \end{tikzpicture}
-    \end{center}
-    \end{figure}
-
-  \end{column}
-\end{columns}
 \end{frame}
 
+\begin{frame}{Context}
+  The research in this paper is based on three papers.
 
-\begin{frame}{Introduction}
-A \emph{forbidden subgraph/minor characterization} is a description of a family of graphs based on the graphs that do not belong to that family.
-\vfill
-\pause
+  \begin{itemize}[<+->]
+    \item T. Hayashi, A. Kawamura, Y, Otachi, H. Shinohara and K. Yamazaki. Thin Strip Graphs. Discrete Applied Mathematics. 2017.
+    \item F. Joos. A Characterization of Mixed Unit Interval Graphs. Journal of Graph Theory. 2014.
+    \item H. Breu. Algorithmic aspects of constrained unit disk graphs. Thesis, 1996
+  \end{itemize}
 
-\begin{example}[Kuratowski]
-  A graph $G$ is planar if it does not contain $K_{3,3}$ or $K_5$ as a minor.
-\end{example}
 \end{frame}

@@ -1,18 +1,7 @@
 \section{State of the art}
+\begin{frame}{Mixed unit interval graphs}
 
-\begin{frame}{State of the art: interval graphs}
-
-  An \emph{interval graph} is an intersection graph of closed intervals in the real line. If the length of the intervals are the same, then it is an \emph{unit interval graph}.
-  \vfill
-  There exists a characterization of unit interval graphs for interval graphs.
-  \begin{theorem}[Roberts]
-    An interval graph is an unit interval graph if and only if it has no induced subgraph $K_{1,3}$.
-  \end{theorem}
-\end{frame}
-
-\begin{frame}{State of the art: mixed unit interval graphs}
-
-  A \emph{mixed unit interval graph} is an intersection graph of unitary intervals in the real line. The interval of mixed unit interval graphs can be open, closed, open-closed or closed-open.
+  A \emph{mixed unit interval graph} is an intersection graph of unita intervals in the real line. The interval of mixed unit interval graphs can be open, closed, open-closed or closed-open.
   \vfill
   \pause
 
@@ -47,8 +36,8 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}{State of the art: mixed unit interval graphs}
-Joos characterizes mixed unit interval graphs with an exhaustive list of families of forbidden subgraphs.
+\begin{frame}{Mixed unit interval graphs}
+Joos characterizes mixed unit interval graphs with an exhaustive list of families of minimal forbidden subgraphs.
 \vfill
 
 \begin{figure}
@@ -83,7 +72,7 @@ Joos characterizes mixed unit interval graphs with an exhaustive list of familie
 
 
 \end{frame}
-\begin{frame}{State of the art: mixed unit interval graphs}
+\begin{frame}{Mixed unit interval graphs}
 Joos characterizes mixed unit interval graphs with an exhaustive list of families of forbidden subgraphs.
 \vfill
 
@@ -182,11 +171,9 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 \end{center}
 \caption{The family $\mathcal{R}$.}\label{fig:graphsR}
 \end{figure}
-
-
-
 \end{frame}
-\begin{frame}{State of the art: mixed unit interval graphs}
+
+\begin{frame}{Mixed unit interval graphs}
 Joos characterizes mixed unit interval graphs with an exhaustive list of families of forbidden subgraphs.
 \vfill
 
@@ -285,7 +272,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 
 
 \end{frame}
-\begin{frame}{State of the art: mixed unit interval graphs}
+\begin{frame}{Mixed unit interval graphs}
 Joos characterizes mixed unit interval graphs with an exhaustive list of families of forbidden subgraphs.
 \vfill
 
@@ -390,7 +377,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$i$ triangles};
 
 
 \end{frame}
-\begin{frame}{State of the art: mixed unit interval graphs}
+\begin{frame}{Mixed unit interval graphs}
 Joos characterizes mixed unit interval graphs with an exhaustive list of families of forbidden subgraphs.
 \vfill
 
@@ -514,8 +501,8 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
 
 \end{frame}
 
-\begin{frame}{State of the art: unfettered unit interval graphs}
-  An \emph{unfettered unit interval graph} is an intersection graph of unitary intervals in the real line. However, if two intervals \emph{kiss}, we can choose whether they are adjacent or not.
+\begin{frame}{Unfettered unit interval graphs}
+  An \emph{unfettered unit interval graph} is an intersection graph of unit intervals in the real line. However, if two intervals \emph{kiss}, we can choose whether they are adjacent or not.
   \vfill
   \pause
   \begin{columns}
@@ -640,7 +627,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
 
 \end{frame}
 
-\begin{frame}{State of the art: unfettered unit interval graphs}
+\begin{frame}{Unfettered unit interval graphs}
   This class has been completely characterized by its structure.
 
   \begin{theorem}[Hayashi]
@@ -656,39 +643,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
   \end{definition}
 \end{frame}
 
-\begin{frame}{State of the art: unit disk graphs}
-  A \emph{disk graph} is an intersection graph of closed intervals in the real line. If the length of the intervals are the same, then it is an \emph{unit disk graph}.
-  \vfill
-  \begin{figure}
-  \centering
-
-  \begin{tikzpicture}[scale=1.5]
-
-    \draw (-0.5,2.5) circle [radius=0.5];
-    \draw (0,2.5) circle [radius=0.5];
-    \draw (-0.5,2) circle [radius=0.5];
-    \draw (0,2) circle [radius=0.5];
-
-
-    \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v1) at (-2.5,2.25) {};
-
-    \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v2) at (-2,1.95) {};
-    \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v3) at (-2,2.55) {};
-    \node[draw,circle,inner sep=2pt,fill,label distance=1cm] (v4) at (-1.5,2.25) {};
-
-    \draw  (v3) edge (v2);
-    \draw  (v4) edge (v1);
-    \draw  (v3) edge (v1);
-    \draw  (v4) edge (v2);
-    \draw  (v3) edge (v4);
-    \draw  (v1) edge (v2);
-
-  \end{tikzpicture}
-  \label{fig:udg}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{State of the art: $c$-strip graphs}
+\begin{frame}{$c$-strip graphs}
   A \emph{$c$-strip graph} - or SG($c$) is a unit disk graph such that the centers of each disk belong to $\{(x,y) : -\infty < x < \infty, 0 \leq y \leq c\}$
   \vfill
   \pause
@@ -704,8 +659,10 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
 
 \end{frame}
 
-\begin{frame}{State of the art: thin strip graphs}
-  The class of \emph{thin strip graphs} is the intersection of every $c$-strip graph with $c > 0$. Thus, a $\varepsilon$-strip graph with $\varepsilon$ arbitrarily small.
+\begin{frame}{Thin strip graphs}
+  \begin{definition}
+      The class of \emph{thin strip graphs} is defined as $\text{TSG} = \cap_{c>0} \text{SG}(c)$.
+  \end{definition}
   \vfill
   \begin{figure}
   \centering
@@ -752,7 +709,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
   \end{figure}
 \end{frame}
 
-\begin{frame}{State of the art: thin strip graphs}
+\begin{frame}{Thin strip graphs}
   Hayashi \textit{et al.} introduced the class of \textit{thin strip graphs}. They also found these important results about $c$-strip graphs and thin strip graphs.
   \vfill
   \begin{theorem}
@@ -765,7 +722,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
   In order to prove these theorems, they proved that a forbidden subgraph of MUIG is also forbidden in TSG.
 \end{frame}
 
-\begin{frame}{State of the art: thin strip graphs}
+\begin{frame}{Thin strip graphs}
   Hayashi \textit{et al.} introduced the class of \textit{thin strip graphs}. They also found these important results about $c$-strip graphs and thin strip graphs.
   \vfill
   \begin{theorem}
@@ -776,7 +733,7 @@ node [pos=0.5,anchor=north,yshift=-0.4cm] {$j$ triangles};
   \end{theorem}
 \end{frame}
 
-\begin{frame}{State of the art: thin strip graphs}
+\begin{frame}{Thin strip graphs}
   \begin{figure}
   \begin{center}
   \begin{tikzpicture}[scale=1]

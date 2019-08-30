@@ -4,14 +4,40 @@
 \usepackage{lipsum, lmodern}
 \usepackage{tikz}
 \usepackage{hyperref}
+\usepackage[backend=bibtex, style=authoryear-comp]{biblatex}
+\usepackage{filecontents}
 \usetikzlibrary{decorations,arrows, hobby, graphs, quotes}
 \usetikzlibrary{shapes.misc, positioning}
 %\usetikzlibrary{decorations.pathmorphing}
 \usepgflibrary{decorations.pathreplacing}
-
+\newcommand{\customcite}[1]{\citeauthor{#1}, \citetitle{#1}, \citeyear{#1}}
 \usetheme{/Milano} % or Median, or Metro, or PraterStreet, or Milano
 
+\usepackage{environ}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+
+\usepackage{adjustbox}
+
+\bibliography{main.bib}
+
+
 \newtheorem{remark}[theorem]{Remark}
+
+\definecolor{NormalBlue}{RGB}{200,200,255}
+\setbeamercolor{block title}{bg=NormalBlue}
+
+\definecolor{LightBlue}{RGB}{220,220,255}
+\setbeamercolor{block body}{bg=LightBlue}
 
 \author{Abdeselam\\ El-Haman Abdeselam}
 \supervisor{Jean\\ Cardinal}
@@ -27,13 +53,11 @@
 
 \begin{document}
 \frame{\maketitle}
-\begin{frame}{Table of contents}
-	\tableofcontents
-\end{frame}
 
 %\input{chapters/0-intersection}
 %\input{chapters/3-unitdiskgraph}
 %\input{chapters/4-thinstripgraph}
+
 
 \input{chapters/0-background}
 \input{chapters/1-state-of-art}

@@ -219,4 +219,136 @@
   \end{center}
   \caption{The graph $R_{i+1}$. You can see that the red edges and vertices are what differ from $R_i$.}\label{fig:ri+1}
   \end{figure}
+
+\end{frame}
+
+\begin{frame}{Results}
+  On the other hand, every other minimal forbidden subgraph of MUIG is a TSG.
+  \vfill
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+  \begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[scale=1]
+      \def\ver{0.1} %size of a vertex
+      \def\x{1}
+
+      \def\xa{0}
+      \def\ya{0}
+
+      %G_1
+      \path[fill] (\xa+1,\ya) circle (\ver);
+      \path[fill] (\xa+2,\ya) circle (\ver);
+      \path[fill] (\xa+0.5,\ya+1) circle (\ver);
+      \path[fill] (\xa+1.5,\ya+1) circle (\ver);
+      \path[fill] (\xa+2.5,\ya+1) circle (\ver);
+      \path[fill] (\xa,\ya) circle (\ver);
+
+      \draw[thick] (\xa+1,\ya)--(\xa+2,\ya)
+      (\xa+1,\ya)--(\xa+0.5,\ya+1)--(\xa+2,\ya)
+      (\xa+1,\ya)--(\xa+2.5,\ya+1)--(\xa+2,\ya)
+      (\xa+1,\ya)--(\xa+1.5,\ya+1)--(\xa+2,\ya)
+      (\xa+1,\ya)--(\xa,\ya)--(\xa+0.5,\ya+1);
+
+      \path[fill=red] (\xa+1,\ya) circle (\ver);
+      \path[fill=red] (\xa+2,\ya) circle (\ver);
+      \path[fill=green] (\xa+0.5,\ya+1) circle (\ver);
+      \path[fill=red] (\xa+1.5,\ya+1) circle (\ver);
+      \path[fill=blue] (\xa+2.5,\ya+1) circle (\ver);
+      \path[fill=green] (\xa,\ya) circle (\ver);
+
+      \node (1) at (\xa,\ya-0.4) {$u_0$};
+      \node (1) at (\xa+0.5,\ya+1.3) {$u_1$};
+      \node (1) at (\xa+1,\ya-0.4) {$v_0$};
+      \node (1) at (\xa+2,\ya-0.4) {$v_1$};
+      \node (1) at (\xa+1.5,\ya+1.3) {$v_2$};
+      \node (1) at (\xa+2.5,\ya+1.3) {$w$};
+
+  \end{tikzpicture}
+  \end{center}
+  \label{fig:graphF_clique}
+  \end{figure}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+  \begin{figure}[b]
+  \begin{center}
+  \begin{tikzpicture}[scale=1.7]
+
+  \def\ver{0.5}
+  \def\verp{0.04} %size of a vertex
+  \def\epsilon{0.5}
+
+
+  \draw[color=green] ({((\epsilon/4)*(\epsilon/4) - 1)*2*\ver},{(\epsilon/4)*2*\ver}) circle (\ver);
+  \draw[color=green] (-1,0) circle (\ver);
+
+  \draw[color=red] (0,0) circle (\ver);
+  \draw[color=red] (0,{(\epsilon / 2) *2* \ver}) circle (\ver);
+  \draw[color=red] (0,{(2* \epsilon / 2)*2* \ver}) circle (\ver);
+
+  \draw[color=blue] ({(1 - (\epsilon/4)*(\epsilon/4))*2*\ver},{(\epsilon/4)*2*\ver}) circle (\ver);
+
+  \end{tikzpicture}
+  \end{center}\label{fig:graphF_thin}
+  \end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Results}
+
+  \begin{figure}
+  \begin{center}
+    \begin{adjustbox}{max totalsize={.9\textwidth}{.8\textheight},center}
+  \begin{tikzpicture}[scale=1]
+
+    \draw[rounded corners=15pt, fill=purple, opacity=.2]
+    (-3,-7) --
+    ++(6,0)  --
+    ++(0,6) --
+    ++(-6,0) --
+    cycle;
+
+    \draw[rounded corners=15pt, fill=blue, opacity=.2]
+    (-3,-.5) --
+    ++(6,0)  --
+    ++(0,1) --
+    ++(-6,0) --
+    cycle;
+
+    \draw[fill=purple, opacity=.2]
+    (-8,-7) --
+    ++(.5,0)  --
+    ++(0,.5) --
+    ++(-.5,0) --
+    cycle;
+    \draw[color=black] (-6.4,-6.75) node {$\mathcal{R}$ forbidden};
+
+    \draw[fill=blue, opacity=.2]
+    (-8,-6) --
+    ++(.5,0)  --
+    ++(0,.5) --
+    ++(-.5,0) --
+    cycle;
+    \draw[color=black] (-6.4,-5.75) node {$\mathcal{R}$ realizable};
+
+    \node (0) [draw, rounded rectangle] {co-comparability graphs};
+    \node (1) [below= of 0, draw, rounded rectangle] {unfettered unit interval graphs};
+    \node (2) [below=of 1, draw, rounded rectangle] {thin strip graphs};
+    \node (3) [below=of 2, draw, rounded rectangle] {mixed unit interval graphs};
+    \node (4) [below=of 3, draw, rounded rectangle] {unit interval graphs};
+    \node (5) [left=of 1, draw, rounded rectangle] {unit disk graphs};
+    \node (6) [left=of 2, below=of 5] {};
+    \draw[<-, color=red, dashed] (0) edge (1);
+    \draw[<-] (1) edge (2) (2) edge (3) (3) edge (4) (5) edge (6.south);
+    \draw[-] (2) edge (6.south);
+
+  \end{tikzpicture}
+  \end{adjustbox}
+  \end{center}
+  \label{fig:hierarchyTSG}
+  \end{figure}
+
 \end{frame}
